@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import requests
 import json
 import threading 
+from .models import Case
 # Create your views here.
 def load_index(request):
     return render(request,'index.html')
@@ -10,7 +11,6 @@ def load_index(request):
 
 def big_test(request):
 
-    caseMedianPrices = {}
     caseUrls = {"Revoultion": "hhttps://steamcommunity.com/market/priceoverview/?appid=730&market_hash_name=Revolution%20Case&currency=2",
                 "DreamsNightmares": "hhttps://steamcommunity.com/market/priceoverview/?appid=730&market_hash_name=Dreams%20%26%20Nightmares%20Case&currency=2",
                 "Recoil" : "hhttps://steamcommunity.com/market/priceoverview/?appid=730&market_hash_name=Recoil%20Case&currency=2",
@@ -91,6 +91,10 @@ def big_test(request):
                 "Spectrum_2":"Spectrum%202%20Case",
                 "Winter_Offensive":"Winter%20Offensive%20Weapon%20Case"
                 }
+    caseMedianPrices = {}
+    caseMedianPrices2 = {}
+    Hashid2 = {}
+
     for key, value in caseUrls.items():
         try:
             data = requests.get(value).json()["median_price"]
@@ -98,7 +102,10 @@ def big_test(request):
             data = 1.15
         caseMedianPrices[key] = data
    
+    for case in Case.objects.all().values():
+        caseMedianPrices2[case['name']] = case['price']
+        Hashid2[case['name']] = case['hashid']
+    context = {"caseMedianPrices":caseMedianPrices2,'Hashid' : Hashid2}
 
 
-    context = {"caseMedianPrices":caseMedianPrices,'Hashid' : Hashid }
     return render(request, "calculator.html",context=context)
