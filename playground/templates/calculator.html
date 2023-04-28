@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+     
+{% load static %}
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Ben Hodges</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico'%}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-lg-5">
+                <a class="navbar-brand" href="{% url 'index' %}">Ben Hodges</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://steamcommunity.com/tradeoffer/new/?partner=127649164&token=AG79v66Q">Donate</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <html>
+            <head>
+                   <!-- Required meta tags -->
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+                <title>test</title>
+                <style>
+                    .container {
+                        display: flex;
+                        flex-direction: row;
+                    }
+                    .left {
+                        height: 875px;
+                        display: block;
+                        width: 50%;
+                        background-color: white;
+                        overflow-y: scroll;
+                    }
+                    .right {
+                        height: 650px;
+                        background-color: white;
+                        display: block;
+                        width: 50%;
+                        
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="left">
+                        <h1> Select Case</h1>
+                      
+                        {% for key,value in caseMedianPrices.items %}
+                       
+                            <img id="{{key}}"src=""onclick="myFunction(['{{key}}', '{{value}}' ])" alt="{{key}}">
+                            {{value}}
+                            
+                        <script>
+                            var path = "{% static 'cases/'%}" +"{{key}}"+".png";
+                            document.getElementById("{{key}}").src=path;
+                        </script>
+                         {% endfor %}
+
+                    </div>
+                 
+                    <div class="right">
+                            
+                            <h1 id="title"></h1>
+                            <h5 id="desc"></h5>
+                            <p id="case"></p>
+
+                            <h6 id="desc2"></h6>
+                            <p id="input"></p>
+                            
+                            <h6 id="desc3"></h6>
+                            <p id="price"></p>
+
+                            <h6 id="desc4"></h6>
+                            <p id="keyprice"></p>
+                            
+            
+                            <h6 id="desc5"></h6>
+                            <p id="total"></p>
+
+                            <div style="width: 75px; float:left; height:10px;  margin:5px">
+                                <p id="buy"></p>
+                            </div>
+                            <div style="width: 75px; float:left; height:10px;  margin:5px">
+                                <p id="simulate"></p>
+                            </div>
+                    {{ Hashid|json_script:"hashids" }}
+                    <script>
+                         const formatter = new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'GBP',
+                        });
+                        
+                    </script>
+                    <script>
+                    function myFunction(name) {
+                        var path = "{% static 'cases/'%}" +name[0]+".png";
+                        document.getElementById("case").innerHTML =  '<img src='+path+'>';
+                       
+                        document.getElementById("desc3").innerHTML = "Case Price";
+                        document.getElementById("price").innerHTML = formatter.format(0) ;
+
+                        document.getElementById("desc4").innerHTML = "Key Price" ;
+                        document.getElementById("keyprice").innerHTML = formatter.format(0);
+                        
+
+                        document.getElementById("title").innerHTML = "Choose Amount";
+                        document.getElementById("desc2").innerHTML = "Number of cases";
+                        document.getElementById("desc").innerHTML = name[0] + " Case";
+                        document.getElementById("desc5").innerHTML = "Total Cost";
+                        document.getElementById("total").innerHTML = formatter.format(0);
+                        document.getElementById("input").innerHTML = '<input id="ValueField" type="text" min="0" onkeyup="calculatetotal()"/>';
+                        document.getElementById("buy").innerHTML =''
+                        document.getElementById("simulate").innerHTML =''
+           
+                    }
+                    
+                    function comingsoon(){
+
+                        alert("Feature Coming Soon");
+                    }
+                    function calculatetotal(){
+                       
+                        document.getElementById("price").innerHTML = formatter.format(document.getElementById("ValueField").value * 1.15) ;
+                        var caseprice = document.getElementById("ValueField").value * 1.15;
+
+                        document.getElementById("keyprice").innerHTML = formatter.format(document.getElementById("ValueField").value * 1.99);
+                        keyprice = document.getElementById("ValueField").value * 1.99
+                        
+                        document.getElementById("total").innerHTML =formatter.format(caseprice +keyprice)  ;
+                        
+                        var value = JSON.parse(document.getElementById('hashids').textContent);
+                        casename = document.getElementById("desc").innerHTML.split(" ")[0];
+                        var link = 'https://steamcommunity.com/market/listings/730/'+value[casename];
+                        document.getElementById("buy").innerHTML ='<form action='+link+'><input type="submit" value="Buy Case" /></form>'
+                        document.getElementById("simulate").innerHTML ='<button onclick="comingsoon()"> Simulate</button>'
+                    }
+                    </script>
+                    
+             
+                    </div>
+            </body>
