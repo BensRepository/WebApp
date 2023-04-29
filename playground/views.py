@@ -2,14 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 import json
-import threading 
 from .models import Case
+
 # Create your views here.
+
 def load_index(request):
     return render(request,'index.html')
 
+def load_sticker(request):
+    return render(request,'sticker.html')
 
-def big_test(request):
+def load_calculator(request):
 
     caseUrls = {"Revoultion": "hhttps://steamcommunity.com/market/priceoverview/?appid=730&market_hash_name=Revolution%20Case&currency=2",
                 "DreamsNightmares": "hhttps://steamcommunity.com/market/priceoverview/?appid=730&market_hash_name=Dreams%20%26%20Nightmares%20Case&currency=2",
@@ -94,13 +97,15 @@ def big_test(request):
     caseMedianPrices = {}
     caseMedianPrices2 = {}
     Hashid2 = {}
+    
 
-    for key, value in caseUrls.items():
-        try:
-            data = requests.get(value).json()["median_price"]
-        except:
-            data = 1.15
-        caseMedianPrices[key] = data
+
+    ##for key, value in caseUrls.items():
+        ##try:
+           ## data = requests.get(value).json()["median_price"]
+       ## except:
+          ##  data = 1.15
+        ##caseMedianPrices[key] = data
    
     for case in Case.objects.all().values():
         caseMedianPrices2[case['name']] = case['price']
