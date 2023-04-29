@@ -147,7 +147,7 @@
                         document.getElementById("desc").innerHTML = name[0].split('_').join(' ') + " Case";
                         document.getElementById("desc5").innerHTML = "Total Cost";
                         document.getElementById("total").innerHTML = formatter.format(0);
-                        document.getElementById("input").innerHTML = '<input id="ValueField" type="text" min="0" onkeyup="calculatetotal()"/>';
+                        document.getElementById("input").innerHTML = '<input id="ValueField" type="number" min="0" onchange="calculatetotal()" onkeyup="calculatetotal()"/>';
                         document.getElementById("buy").innerHTML ='';
                         document.getElementById("simulate").innerHTML ='';
                         document.getElementById("blues").innerHTML = "";
@@ -155,8 +155,6 @@
                         document.getElementById("pinks").innerHTML = "";
                         document.getElementById("reds").innerHTML = "";
                         document.getElementById("yellows").innerHTML = "";
-                        
-           
                     }
                     
                     function simulateloot(){
@@ -211,7 +209,7 @@
 
                     function calculatetotal(){
                         
-                        casename = document.getElementById("desc").innerHTML.split(" ")[0];
+                        casename = document.getElementById("desc").innerHTML.split(' ').join('_').replace("_Case","");
                         var case_cost = JSON.parse(document.getElementById('caseMedianPrices').textContent)[casename];
                         document.getElementById("price").innerHTML = formatter.format(document.getElementById("ValueField").value * case_cost) ;
 
