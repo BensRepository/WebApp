@@ -67,7 +67,7 @@
                       
                         {% for key,value in caseMedianPrices.items %}
                        
-                            <img id="{{key}}"src=""onclick="myFunction(['{{key}}', '{{value}}' ])" alt="{{key}}">
+                            <img id="{{key}}"src=""onclick="myFunction('{{key}}')" alt="{{key}}">
                             £{{value}}
                             
                         <script>
@@ -116,118 +116,41 @@
                             
                         </div>
 
-                          
+                        <script>
+                            function myFunction(name) {
+                                var path = "{% static 'cases/'%}" +name+".png";
+                                document.getElementById("case").innerHTML =  '<img src='+path+'>';
+                            
+                                document.getElementById("desc3").innerHTML = "Case Price";
+                                document.getElementById("price").innerHTML = formatter.format(0) ;
+
+                                document.getElementById("desc4").innerHTML = "Key Price" ;
+                                document.getElementById("keyprice").innerHTML = formatter.format(0);
+                                
+
+                                document.getElementById("title").innerHTML = "Choose Amount";
+                                document.getElementById("desc2").innerHTML = "Number of cases";
+                                document.getElementById("desc").innerHTML = name.split('_').join(' ') + " Case";
+                                document.getElementById("desc5").innerHTML = "Total Cost";
+                                document.getElementById("total").innerHTML = formatter.format(0);
+                                document.getElementById("input").innerHTML = '<input id="ValueField" type="number" min="0" onchange="calculatetotal()" onkeyup="calculatetotal()"/>';
+                                document.getElementById("buy").innerHTML ='';
+                                document.getElementById("simulate").innerHTML ='';
+                                document.getElementById("blues").innerHTML = "";
+                                document.getElementById("purples").innerHTML = "";
+                                document.getElementById("pinks").innerHTML = "";
+                                document.getElementById("reds").innerHTML = "";
+                                document.getElementById("yellows").innerHTML = "";
+}
+                        </script>
                      
                             
                             
                             
                     {{ Hashid|json_script:"hashids" }}
                     {{ caseMedianPrices|json_script:"caseMedianPrices" }}
-                    <script>
-                         const formatter = new Intl.NumberFormat('en-US', {
-                            style: 'currency',
-                            currency: 'GBP',
-                        });
-                        
-                    </script>
-                    <script>
-                    function myFunction(name) {
-                        var path = "{% static 'cases/'%}" +name[0]+".png";
-                        document.getElementById("case").innerHTML =  '<img src='+path+'>';
-                       
-                        document.getElementById("desc3").innerHTML = "Case Price";
-                        document.getElementById("price").innerHTML = formatter.format(0) ;
-
-                        document.getElementById("desc4").innerHTML = "Key Price" ;
-                        document.getElementById("keyprice").innerHTML = formatter.format(0);
-                        
-
-                        document.getElementById("title").innerHTML = "Choose Amount";
-                        document.getElementById("desc2").innerHTML = "Number of cases";
-                        document.getElementById("desc").innerHTML = name[0].split('_').join(' ') + " Case";
-                        document.getElementById("desc5").innerHTML = "Total Cost";
-                        document.getElementById("total").innerHTML = formatter.format(0);
-                        document.getElementById("input").innerHTML = '<input id="ValueField" type="number" min="0" onchange="calculatetotal()" onkeyup="calculatetotal()"/>';
-                        document.getElementById("buy").innerHTML ='';
-                        document.getElementById("simulate").innerHTML ='';
-                        document.getElementById("blues").innerHTML = "";
-                        document.getElementById("purples").innerHTML = "";
-                        document.getElementById("pinks").innerHTML = "";
-                        document.getElementById("reds").innerHTML = "";
-                        document.getElementById("yellows").innerHTML = "";
-                    }
-                    
-                    function simulateloot(){
-                        
-                        blue_odds = 0.7992;
-                        purple_odds = 0.1598;
-                        pink_odds = 0.032;
-                        red_odds = 0.0064;
-                        yellow_odds =  0.0026
-
-                        unboxed_blue =0;
-                        unboxed_purple =0;
-                        unboxed_pink =0;
-                        unboxed_red =0;
-                        unboxed_yellow =0;
-
-                        for (let i = 0; i < document.getElementById("ValueField").value; i++) {
-                            num = Math.random();
-
-                            if (num >= 0 && num <= yellow_odds) {
-                                unboxed_yellow +=1
-                            }
-                            else if (num >= (yellow_odds) && num <= yellow_odds+red_odds) {
-                                unboxed_red +=1
-                            }
-                            else if  (num >= (yellow_odds+red_odds) && num <= yellow_odds+red_odds+pink_odds) {
-                                unboxed_pink +=1
-                            }
-                            else if (num >= yellow_odds+red_odds+pink_odds&& num <= yellow_odds+red_odds+pink_odds+purple_odds) {
-                                unboxed_purple +=1
-                            }
-                            else if (num > yellow_odds+red_odds+pink_odds+purple_odds) {
-                                unboxed_blue +=1
-                            }
-                            
-                        }
- 
-                        document.getElementById("blues").innerHTML = String(unboxed_blue) + " Mil-spec";
-                        document.getElementById("purples").innerHTML = String(unboxed_purple)+ " Restricted";
-                        document.getElementById("pinks").innerHTML = String(unboxed_pink)+ " Classified";
-                        document.getElementById("reds").innerHTML = String(unboxed_red)+ " Covert";
-                        document.getElementById("yellows").innerHTML = String(unboxed_yellow)+ " Special item";
-
-                        document.getElementById("blues").style.background = "aqua";
-                        document.getElementById("purples").style.background = "blueviolet";
-                        document.getElementById("pinks").style.background = "fuchsia";
-                        document.getElementById("reds").style.background = "red";
-                        document.getElementById("yellows").style.background = "yellow";
-                       
-                    }
-
-
-                    function calculatetotal(){
-                        
-                        casename = document.getElementById("desc").innerHTML.split(' ').join('_').replace("_Case","");
-                        var case_cost = JSON.parse(document.getElementById('caseMedianPrices').textContent)[casename];
-                        document.getElementById("price").innerHTML = formatter.format(document.getElementById("ValueField").value * case_cost) ;
-
-                        var caseprice = document.getElementById("ValueField").value * case_cost;
-
-                        document.getElementById("keyprice").innerHTML = formatter.format(document.getElementById("ValueField").value * 1.99);
-                        keyprice = document.getElementById("ValueField").value * 1.99
-                        
-                        document.getElementById("total").innerHTML =formatter.format(caseprice +keyprice)  ;
-                        
-                        var value = JSON.parse(document.getElementById('hashids').textContent);
-                        
-                        var link = 'https://steamcommunity.com/market/listings/730/'+value[casename];
-                        document.getElementById("buy").innerHTML ='<form action='+link+'><input type="submit" value="Buy Case" /></form>'
-                        document.getElementById("simulate").innerHTML ='<button onclick="simulateloot()"> Simulate</button>'
-                    }
-                    </script>
-                    
+                
              
                     </div>
             </body>
+            <script src="{% static 'js/calculatorscript.js' %}"></script>
