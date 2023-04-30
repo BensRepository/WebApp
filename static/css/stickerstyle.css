@@ -11584,10 +11584,10 @@ textarea.form-control-lg {
   }
 
   /* Style each tab content individually */
-  #London {background-color:red;}
-  #Paris {background-color:green;}
-  #Tokyo {background-color:blue;}
-  #Oslo {background-color:orange;}
+  #Paper {background-color:var(--bs-blue);}
+  #Holo {background-color:var(--bs-purple);}
+  #Foil {background-color:var(--bs-pink);}
+  #Misc {background-color:var(--bs-red);}
 
           .tab {
   overflow: hidden;

@@ -49,7 +49,7 @@ function openCity(cityName, elmnt, color) {
         }
 
         // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(cityName+'2').style.display = "block";
+        document.getElementById(cityName+'Content').style.display = "block";
         evt.currentTarget.className += " active";
     }
      

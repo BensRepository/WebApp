@@ -37,48 +37,51 @@
 
 
         </script>
-        <div id="London" class="tabcontent">
-            <h1>London</h1>
-            <p>London is the capital city of England.</p>
+        <div id="Paper" class="tabcontent">
+            <h1>Paper</h1>
+            <p>EMS Katowice 2014 Non-Holo Stickers.</p>
         </div>
         
-        <div id="Paris" class="tabcontent">
-            <h1>Paris</h1>
-            <p>Paris is the capital of France.</p>
+        <div id="Holo" class="tabcontent">
+            <h1>Holo</h1>
+            <p>EMS Katowice 2014 Holo Stickers.</p>
         </div>
         
-        <div id="Tokyo" class="tabcontent">
-            <h1>Tokyo</h1>
-            <p>Tokyo is the capital of Japan.</p>
+        <div id="Foil" class="tabcontent">
+            <h1>Foil</h1>
+            <p>EMS Katowice 2014 Foil Stickers.</p>
         </div>
         
-        <div id="Oslo" class="tabcontent">
-            <h1>Oslo</h1>
-            <p>Oslo is the capital of Norway.</p>
+        <div id="Misc" class="tabcontent">
+            <h1>Misc</h1>
+            <p>Collection of other rare CS:GO stickers.</p>
         </div>
         
-        <button class="tablink" onclick="openCity('London', this, 'red');openCity2(event, 'London');" id="defaultOpen">London</button>
-        <button class="tablink" onclick="openCity('Paris', this, 'green');openCity2(event, 'Paris');">Paris</button>
-        <button class="tablink" onclick="openCity('Tokyo', this, 'blue');openCity2(event, 'Tokyo');">Tokyo</button>
-        <button class="tablink" onclick="openCity('Oslo', this, 'orange');openCity2(event, 'Oslo');">Oslo</button> 
+        <button class="tablink" onclick="openCity('Paper', this, '#0d6efd');openCity2(event, 'Paper');" id="defaultOpen">Paper</button>
+        <button class="tablink" onclick="openCity('Holo', this, '#6f42c1');openCity2(event, 'Holo');">Holo</button>
+        <button class="tablink" onclick="openCity('Foil', this, '#d63384');openCity2(event, 'Foil');">Foil</button>
+        <button class="tablink" onclick="openCity('Misc', this, '#dc3545');openCity2(event, 'Misc');">Misc</button> 
         
         <P id="sticker"></P>
         <!-- Tab content -->
-        <div id="London2" class="tabcontent2">
-            <h3>London</h3>
+        <div id="PaperContent" class="tabcontent2">
+            <h3>Paper</h3>
             <p>reeeee.</p>
         </div>
         
-        <div id="Paris2" class="tabcontent2">
-            <h3>Paris</h3>
+        <div id="HoloContent" class="tabcontent2">
+            <h3>Holo</h3>
             <p>reeee</p>
         </div>
         
-        <div id="Tokyo2" class="tabcontent2">
-            <h3>Tokyo</h3>
+        <div id="FoilContent" class="tabcontent2">
+            <h3>Foil</h3>
             <p>Treeeee</p>
         </div>
-        <style>
-       
-        </style>
+
+        <div id="MiscContent" class="tabcontent2">
+            <h3>Misc</h3>
+            <p>Treeeee</p>
+        </div>
+    
 <script src="{% static 'js/stickerscript.js' %}"></script>
