@@ -11587,9 +11587,9 @@ textarea.form-control-lg {
   #Paper {background-color:var(--bs-blue);}
   #Holo {background-color:var(--bs-purple);}
   #Foil {background-color:var(--bs-pink);}
-  #Misc {background-color:var(--bs-red);}
+  #Gold {background-color:var(--bs-yellow);}
 
-          .tab {
+  .tab {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
@@ -11623,3 +11623,23 @@ textarea.form-control-lg {
   border: 1px solid #ccc;
   border-top: none;
   }
+
+.container {
+    display: flex;
+    flex-direction: row;
+
+}
+.left {
+    height: 87px;
+    display: block;
+    width: 100%;
+    background-color: blue;
+
+}
+.right {
+    height: 87px;
+    background-color: red;
+    display: block;
+    width: 100%;
+    
+}

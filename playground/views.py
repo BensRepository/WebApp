@@ -4,7 +4,8 @@ import requests
 import json
 from .models import Case
 from rest_framework import viewsets
-
+import glob
+from WebApp.settings import STATIC_URL
 # Create your views here.
 class WebAppViewset(viewsets.ModelViewSet):
     def load_index(request):
@@ -12,7 +13,32 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'index.html')
 
     def load_sticker(request):
-        return render(request,'sticker.html')
+        filespaperESLKatowice14 = glob.glob("."+STATIC_URL+"stickers/Paper/ESLKatowice14/*") 
+        filesholoESLKatowice14 = glob.glob("."+STATIC_URL+"stickers/Holo/ESLKatowice14/*")
+        filesfoilESLKatowice14 = glob.glob("."+STATIC_URL+"stickers/Foil/ESLKatowice14/*")
+
+        filespaperClujNapoca2015 = glob.glob("."+STATIC_URL+"stickers/paper/Cluj-Napoca2015/*") 
+        filesholoClujNapoca2015 = glob.glob("."+STATIC_URL+"stickers/holo/Cluj-Napoca2015/*")
+        filesfoilClujNapoca2015 = glob.glob("."+STATIC_URL+"stickers/foil/Cluj-Napoca2015/*")
+
+        filenames ={"ESLKatowice14":{"filespaper":[],"filesholo":[],"filesfoil":[]},"ClujNapoca2015":{"filespaper":[],"filesholo":[],"filesfoil":[],"filesgold":[]}}
+
+        for i in  filespaperESLKatowice14:
+            filenames["ESLKatowice14"]["filespaper"].append(i[24:len(i)-4])
+        for i in  filesholoESLKatowice14:
+            filenames["ESLKatowice14"]["filesholo"].append(i[23:len(i)-4])
+        for i in  filesfoilESLKatowice14:
+            filenames["ESLKatowice14"]["filesfoil"].append(i[23:len(i)-4])
+
+        
+        for i in  filespaperClujNapoca2015:
+            filenames["ClujNapoca2015"]["filespaper"].append(i[24:len(i)-4])
+        for i in  filesholoClujNapoca2015:
+            filenames["ClujNapoca2015"]["filesholo"].append(i[23:len(i)-4])
+        for i in  filesfoilClujNapoca2015:
+            filenames["ClujNapoca2015"]["filesfoil"].append(i[23:len(i)-4])
+
+        return render(request,'sticker.html',context=filenames)
 
     def load_calculator(request):
 
@@ -51,10 +77,4 @@ class WebAppViewset(viewsets.ModelViewSet):
                 print("Didn't save model")
                 pass
 
-            ##caseMedianPrices = {}
-            ##for key, value in caseUrls.items():
-                ##try:
-                ## data = requests.get(value).json()["median_price"]
-            ## except:
-                ##  data = 1.15
-                ##caseMedianPrices[key] = data
+ 
