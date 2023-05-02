@@ -52,4 +52,5 @@ function openCity(cityName, elmnt, color) {
         document.getElementById(cityName+'Content').style.display = "block";
         evt.currentTarget.className += " active";
     }
-     
+
+    

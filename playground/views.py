@@ -13,31 +13,30 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'index.html')
 
     def load_sticker(request):
-        filespaperESLKatowice14 = glob.glob("."+STATIC_URL+"stickers/Paper/ESLKatowice14/*") 
-        filesholoESLKatowice14 = glob.glob("."+STATIC_URL+"stickers/Holo/ESLKatowice14/*")
-        filesfoilESLKatowice14 = glob.glob("."+STATIC_URL+"stickers/Foil/ESLKatowice14/*")
+##  ,,GOLD FOR DREAMHACK 2014
+        tornamantNames = ["ESLKatowice14","IntelRio22","PGLAntwerp22","PGLStockholm21","StarLadderBerlin19",
+                        "FACEITLondon18","ELEAGUEBoston18","ELEAGUEAtlanta17","ESLCologne16",
+                          "MLGColumbus16","ClujNapoca2015","ESLKatowice15","DreamHack14","ESLCologne14",
+                          "ESLKatowice14","DreamHack13","RMR22","ESLKatowice19","PGLKrakow17","ESLCologne15","Misc"]
 
-        filespaperClujNapoca2015 = glob.glob("."+STATIC_URL+"stickers/paper/Cluj-Napoca2015/*") 
-        filesholoClujNapoca2015 = glob.glob("."+STATIC_URL+"stickers/holo/Cluj-Napoca2015/*")
-        filesfoilClujNapoca2015 = glob.glob("."+STATIC_URL+"stickers/foil/Cluj-Napoca2015/*")
+        filenames = {}
 
-        filenames ={"ESLKatowice14":{"filespaper":[],"filesholo":[],"filesfoil":[]},"ClujNapoca2015":{"filespaper":[],"filesholo":[],"filesfoil":[],"filesgold":[]}}
-
-        for i in  filespaperESLKatowice14:
-            filenames["ESLKatowice14"]["filespaper"].append(i[24:len(i)-4])
-        for i in  filesholoESLKatowice14:
-            filenames["ESLKatowice14"]["filesholo"].append(i[23:len(i)-4])
-        for i in  filesfoilESLKatowice14:
-            filenames["ESLKatowice14"]["filesfoil"].append(i[23:len(i)-4])
-
-        
-        for i in  filespaperClujNapoca2015:
-            filenames["ClujNapoca2015"]["filespaper"].append(i[24:len(i)-4])
-        for i in  filesholoClujNapoca2015:
-            filenames["ClujNapoca2015"]["filesholo"].append(i[23:len(i)-4])
-        for i in  filesfoilClujNapoca2015:
-            filenames["ClujNapoca2015"]["filesfoil"].append(i[23:len(i)-4])
-
+    
+        for i in tornamantNames:
+            filespaper = glob.glob("."+STATIC_URL+"stickers/Paper/"+i+"/*") 
+            filesholo = glob.glob("."+STATIC_URL+"stickers/Holo/"+i+"/*")
+            filesfoil = glob.glob("."+STATIC_URL+"stickers/Foil/"+i+"/*")
+            filesgold = glob.glob("."+STATIC_URL+"stickers/gold/"+i+"/*")
+            filenames[i] = {"filespaper":[],"filesholo":[],"filesfoil":[],"filesgold":[]}
+            for j in  filespaper:
+                filenames[i]["filespaper"].append(j[24:len(j)-4])
+            for j in  filesholo:
+                filenames[i]["filesholo"].append(j[23:len(j)-4])
+            for j in  filesfoil:
+                filenames[i]["filesfoil"].append(j[23:len(j)-4])
+            for j in  filesgold:
+                filenames[i]["filesgold"].append(j[23:len(j)-4])
+            
         return render(request,'sticker.html',context=filenames)
 
     def load_calculator(request):
@@ -77,4 +76,4 @@ class WebAppViewset(viewsets.ModelViewSet):
                 print("Didn't save model")
                 pass
 
- 
+
