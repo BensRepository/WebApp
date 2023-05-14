@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-     
+
 {% load static %}
 
     <head>
@@ -208,24 +208,202 @@
 
         </div>
     <script>
+        
         document.getElementById('GoldContent').innerHTML = "No gold stickers exist for ESL Katowice 2014"; 
         
     </script>
-        <div>
-        <span> Wear:</span>
-        <input id="wearFN" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory0">
-        <label for="wearFN">FN</label>
-        <input id="wearMW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory1">
-        <label for="wearMW">MW</label>
-        <input id="wearFT" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory2">
-        <label for="wearFT">FT</label>
-        <input id="wearWW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory3">
-        <label for="wearWW">WW</label>
-        <input id="wearBS" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory4">
-        <label for="wearBS">BS</label>
-        </div>
-      
-        <div >
+    
+        <style>
+
+            #outer {
+                background: rgb(161, 159, 159);
+                text-align: center;
+                
+            }
+            .inner {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                height:160px;
+                margin:10px;
+                width: 10%;
+                background: white;
+                vertical-align:top;
+                
+            }
+            .inner3 {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                height:160px;
+                margin:10px;
+                width: 10%;
+                vertical-align:top;
+                
+            }
+
+            .inner4{
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                margin:10px;
+                width: 12%;
+                background: gray;
+                vertical-align:top;
+                
+            }
+            .inner2 {
+                display: inline;
+                height:50px;
+                margin:10px;
+               
+            }
+            .button2 {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                padding: 15px 20px;
+                background-color: #212121;
+                border: none;
+                font: inherit;
+                color: #e8e8e8;
+                font-size: 15px;
+                font-weight: 600;
+                border-radius: 20px;
+                cursor: not-allowed;
+                overflow: hidden;
+                transition: all 0.3s ease cubic-bezier(0.23, 1, 0.320, 1);
+                border: 5px solid #6c757d;
+}
+
+            .button2 span {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+            }
+
+            .button2::before {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                translate: 0 105%;
+                background-color: #F53844;
+                transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+
+            .button2 svg {
+                width: 32px;
+                height: 32px;
+                fill: #F53844;
+                transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+            .circleBase {
+                border-radius: 50%;
+                behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+                border: 10px solid #6c757d;
+            }
+            .button2:hover {
+                animation: shake 0.2s linear 1;
+            }
+
+            .button2:hover::before {
+                translate: 0 0;
+            }
+
+            .button2:hover svg {
+                fill: #e8e8e8;
+            }
+
+            @keyframes shake {
+            0% {
+                rotate: 0deg;
+            }
+
+            33% {
+                rotate: 10deg;
+            }
+
+            66% {
+                rotate: -10deg;
+            }
+
+            100% {
+                rotate: 10deg;
+            }
+            }
+            .button3 {
+                position: relative;
+                background-color: #212121;
+                border-radius: 5px;
+                padding: 5px;
+                background-repeat: no-repeat;
+                box-sizing: border-box;
+                width: 170px;
+                height: 40px;
+                color: #fff;
+                border: none;
+                font-size: 15px;
+                transition: all .3s ease-in-out;
+                z-index: 1;
+                border: 4px solid #6c757d;
+                overflow: hidden;
+            }
+
+            .button3::before {
+                content: "";
+                background-color: #74925c;
+                width: 0;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 700ms ease-in-out;
+                display: inline-block;
+            }
+
+            .button3:hover::before {
+                width: 100%;
+            }
+            
+        </style>
+        <div id="outer">
+   
+            <div class="inner circleBase" id="selectedSticker" ></div>
+            <div class="inner circleBase" id="selectedSticker2"></div>
+            <div class="inner circleBase" id="selectedSticker3"></div>
+            <div class="inner circleBase" id="selectedSticker4"></div>
+            <div class="inner3"> <button id="clearStickerSelectionButton" class="button2" onclick=clearStickerSelection() >
+                <span>Clear Selected
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-miterlimit="2" stroke-linejoin="round" fill-rule="evenodd" clip-rule="evenodd"><path fill-rule="nonzero" d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm0 7.425 2.717-2.718c.146-.146.339-.219.531-.219.404 0 .75.325.75.75 0 .193-.073.384-.219.531l-2.717 2.717 2.727 2.728c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.384-.073-.53-.219l-2.729-2.728-2.728 2.728c-.146.146-.338.219-.53.219-.401 0-.751-.323-.751-.75 0-.192.073-.384.22-.531l2.728-2.728-2.722-2.722c-.146-.147-.219-.338-.219-.531 0-.425.346-.749.75-.749.192 0 .385.073.531.219z"></path></svg>
+              </span>
+              </button></div>
+            
+
+            
+        </div> 
+        <div id="outer">
+            <div class="inner4">
+                <span > Wear: </span>
+                <input id="wearFN" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory0">
+                <label for="wearFN">FN</label>
+                <input id="wearMW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory1">
+                <label for="wearMW">MW</label>
+                <input id="wearFT" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory2">
+                <label for="wearFT">FT</label>
+                <input id="wearWW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory3">
+                <label for="wearWW">WW</label>
+                <input id="wearBS" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory4">
+                <label for="wearBS">BS</label>
+            </div>
+        <div id="outer">
+            <div class="inner2">
             <select id="weaponSelector">
                 <option value="any">Any Weapon</option>
                 <option disabled="disabled">──────────</option>
@@ -255,30 +433,27 @@
                 <option value="tag_weapon_mp9">MP9</option><option value="tag_weapon_p90">P90</option>
                 <option value="tag_weapon_bizon">PP-Bizon</option><option value="tag_weapon_ump45">UMP-45</option> 
             </select>
-        </div> 
-        
-        <div>
-            <select id="typeSelector">
-                <option value="">Any Type</option>
-                <option value="tag_strange" class="stattrak">StatTrak™</option>
-                <option value="tag_tournament" class="souvenir">Souvenir</option>
-            </select>
-        </div>
+            </div>
+            <div class="inner2">
+                <select id="typeSelector">
+                    <option value="">Any Type</option>
+                    <option value="tag_strange" class="stattrak">StatTrak™</option>
+                    <option value="tag_tournament" class="souvenir">Souvenir</option>
+                </select>
+            </div>
+       
 
-        <div id="searchbuttonContent">
-            <button id="searchButton" onclick=searchMarket()>Search Market</button>
-        </div>
-        <div>
-            <button id="clearStickerSelectionButton" onclick=clearStickerSelection()>Clear Selection</button>
-        </div>
-        <div id="selectedSticker"></div>
-        <div id="selectedSticker2"></div>
-        <div id="selectedSticker3"></div>
-        <div id="selectedSticker4"></div>
-    
+            <div class="inner2">
+                <button class="button3" style="width: 100px;"id="searchButton" onclick=searchMarket()>Search Market</button>
+                <button class="button3" id="searchIgnoreButton" onclick=searchMarketIgnore()>Search Market (Ignore Order)</button>
+            </div>
+        </div> 
+        <div class="outer"><br></br></div>
         <script>
 
-        //Fnatic%20
+        function searchMarketIgnore(){
+            alert("in progress")
+        }
         function searchMarket(){
 
 
@@ -382,11 +557,6 @@
             window.open(query, '_blank');
             
         }
-        function getImages(){
-
-        var tournamantName = document.getElementById("tournamentSelector").value
-        updateStickers(tournamantName)
-        }
 
         function clearStickerSelection(){
 
@@ -396,6 +566,13 @@
             document.getElementById("selectedSticker4").innerHTML =""
 
         }
+        function getImages(){
+
+        var tournamantName = document.getElementById("tournamentSelector").value
+        updateStickers(tournamantName)
+        }
+
+       
 
 
         function displayStickerSelected(stickerdiv,value,imagez){
