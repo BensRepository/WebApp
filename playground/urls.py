@@ -8,9 +8,9 @@ router = DefaultRouter()
 
 urlpatterns =[
 
-    path("calculator/",WebAppViewset.load_calculator, name='calculator'),
-    path("index/",WebAppViewset.load_index, name='index'),
-    path("sticker/",WebAppViewset.load_sticker, name='sticker'),
+    path("CaseCalculator/",WebAppViewset.load_calculator, name='calculator'),
+    path("",WebAppViewset.load_index, name='index'),
+    path("StickerSearch/",WebAppViewset.load_sticker, name='sticker'),
   
 
             ]
