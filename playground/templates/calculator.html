@@ -38,7 +38,7 @@
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-                <title>test</title>
+             
                 <style>
                     .container {
                         display: flex;
@@ -48,19 +48,28 @@
                         height: 875px;
                         display: block;
                         width: 50%;
-                        background-color: white;
+                        background-color: rgb(196, 191, 191);
                         overflow-y: scroll;
                     }
                     .right {
                         height: 650px;
-                        background-color: white;
+                        background-color: rgb(182, 180, 180);
                         display: block;
                         width: 50%;
                         
                     }
+                    img {
+                        transition: opacity .3s linear;
+                    }
+
+                    img:hover {
+                        opacity: .5;
+                        cursor: pointer;
+                    }
+                    
                 </style>
             </head>
-            <body>
+            <body style="background-color: rgb(48, 48, 47);">
                 <div class="container">
                     <div class="left">
                         <h1> Select Case</h1>
@@ -117,9 +126,33 @@
                         </div>
 
                         <script>
+                            function removeCase(){
+                                document.getElementById("case").innerHTML =  '';
+                            
+                                document.getElementById("desc3").innerHTML = '';
+                                document.getElementById("price").innerHTML = '';
+
+                                document.getElementById("desc4").innerHTML = '';
+                                document.getElementById("keyprice").innerHTML = '';
+                                
+
+                                document.getElementById("title").innerHTML = '';
+                                document.getElementById("desc2").innerHTML = '';
+                                document.getElementById("desc").innerHTML = '';
+                                document.getElementById("desc5").innerHTML = ""
+                                document.getElementById("total").innerHTML = '';
+                                document.getElementById("input").innerHTML = '';
+                                document.getElementById("buy").innerHTML ='';
+                                document.getElementById("simulate").innerHTML ='';
+                                document.getElementById("blues").innerHTML = "";
+                                document.getElementById("purples").innerHTML = "";
+                                document.getElementById("pinks").innerHTML = "";
+                                document.getElementById("reds").innerHTML = "";
+                                document.getElementById("yellows").innerHTML = "";
+                            }
                             function myFunction(name) {
                                 var path = "{% static 'cases/'%}" +name+".png";
-                                document.getElementById("case").innerHTML =  '<img src='+path+'>';
+                                document.getElementById("case").innerHTML =  '<img onclick="removeCase()" src='+path+'>';
                             
                                 document.getElementById("desc3").innerHTML = "Case Price";
                                 document.getElementById("price").innerHTML = formatter.format(0) ;
@@ -150,7 +183,9 @@
                     {{ Hashid|json_script:"hashids" }}
                     {{ caseMedianPrices|json_script:"caseMedianPrices" }}
                 
-             
+                          
                     </div>
+             
             </body>
+            
             <script src="{% static 'js/calculatorscript.js' %}"></script>

@@ -17,7 +17,7 @@
         <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
         <link href="{% static 'css/stickerstyle.css'%}" rel="stylesheet" />
     </head>
-    <body>
+    <body style="background-color: #353434;" >
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-lg-5">
@@ -133,7 +133,12 @@
         {{ Misc.filesholo|json_script:"Misc_filesholo" }}
         {{ Misc.filesfoil|json_script:"Misc_filesfoil" }}
         {{ Misc.filesgold|json_script:"Misc_filesgold" }}
-        <div id="Paper" class="tabcontent">
+
+        {{ Paris23.filespaper|json_script:"Paris23_filespaper" }}
+        {{ Paris23.filesholo|json_script:"Paris23_filesholo" }}
+        {{ Paris23.filesfoil|json_script:"Paris23_filesfoil" }}
+        {{ Paris23.filesgold|json_script:"Paris23_filesgold" }}
+        <div id="Paper" class="tabcontent" >
             <h1>Paper</h1>
             <p id="stickerDescPaper">EMS Katowice 2014 Non-Holo Stickers.</p>
             
@@ -161,14 +166,15 @@
         
         
         
-        <div>
-            <select class="tag_tournament" id="tournamentSelector" onchange="updateStickers(value)">
+        <div style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);">
+            <select class="tag_tournament" id="tournamentSelector" onchange="updateStickers(value)"style="background-color: #212121; color: white;border-radius: 5px;border: 2px solid #6c757d;height:  30px;" >
                 <option value="ESLKatowice14">Select Tournament</option>
                 <option disabled="disabled">──────────</option>
+                <option value="Paris23">Paris'23</option>
                 <option value="IntelRio22">Intel Rio'22</option>
-                <option value="RMR20">RMR'20</option>
                 <option value="PGLAntwerp22">PGL Antwerp'22</option>
                 <option value="PGLStockholm21">PGL Stockholm'21</option>
+                <option value="RMR20">RMR'20</option>
                 <option value="StarLadderBerlin19">StarLadder Berlin'19</option>
                 <option value="ESLKatowice19">ESL Katowice'19</option>
                 <option value="FACEITLondon18">FACEIT London'18</option>
@@ -185,27 +191,28 @@
                 <option value="ESLKatowice14">ESL Katowice'14</option>
                 <option value="DreamHack13">DreamHack'13</option>
                 <option value="Misc">Misc</option>
+           
         </select>
       
         </div>
         
         <!-- Tab content -->
-        <div id="PaperContent" class="tabcontent2">
+        <div id="PaperContent" class="tabcontent2" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1); border-color: #212121;color: #e8e8e8;">
             <img src="wadd" onerror='getImages()'>
 
         </div>
         
-        <div id="HoloContent" class="tabcontent2">
+        <div id="HoloContent" class="tabcontent2" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);border-color: #212121;color: #e8e8e8;">
             <img src="wadd" onerror='getImages()'>
 
         </div>
 
-        <div id="FoilContent" class="tabcontent2">
+        <div id="FoilContent" class="tabcontent2" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);border-color: #212121;color: #e8e8e8;">
             <img src="wadd" onerror='getImages()'>
         </div>
 
-        <div id="GoldContent" class="tabcontent2">
-
+        <div id="GoldContent" class="tabcontent2" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);border-color: #212121; color: #e8e8e8;">
+            <img src="wadd" onerror='getImages()'>
         </div>
     <script>
         
@@ -216,7 +223,7 @@
         <style>
 
             #outer {
-                background: rgb(161, 159, 159);
+                background: rgb(77, 77, 75);
                 text-align: center;
                 
             }
@@ -227,7 +234,7 @@
                 height:160px;
                 margin:10px;
                 width: 10%;
-                background: white;
+                background: whitesmoke;
                 vertical-align:top;
                 
             }
@@ -241,13 +248,35 @@
                 vertical-align:top;
                 
             }
+                    /* width */
+            ::-webkit-scrollbar {
+            width: 20px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px rgb(252, 248, 248); 
+            border-radius: 10px;
+            }
+            
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: rgb(255, 255, 255); 
+            border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: #ffffff; 
+            }
+
 
             .inner4{
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
                 margin:10px;
-                width: 12%;
+                width: 25%;
                 background: gray;
                 vertical-align:top;
                 
@@ -342,20 +371,20 @@
                 padding: 5px;
                 background-repeat: no-repeat;
                 box-sizing: border-box;
-                width: 170px;
-                height: 40px;
+                width: 230px;
+                height: 35px;
                 color: #fff;
                 border: none;
                 font-size: 15px;
                 transition: all .3s ease-in-out;
                 z-index: 1;
-                border: 4px solid #6c757d;
+                border: 2px solid #6c757d;
                 overflow: hidden;
             }
 
             .button3::before {
                 content: "";
-                background-color: #74925c;
+                background-color: green;
                 width: 0;
                 height: 100%;
                 position: absolute;
@@ -369,14 +398,34 @@
             .button3:hover::before {
                 width: 100%;
             }
-            
+     
+            label {
+                display: flex;
+                flex-direction: row;
+                padding-left: 0.4em;
+            }
+
+            input {
+                height: 20px;
+                flex: 0 0 20px;
+                margin-left: 5px;
+            }
+            img {
+                transition: opacity .3s linear;
+            }
+
+            img:hover {
+                opacity: .5;
+                cursor: pointer;
+            }
+
         </style>
         <div id="outer">
    
-            <div class="inner circleBase" id="selectedSticker" ></div>
-            <div class="inner circleBase" id="selectedSticker2"></div>
-            <div class="inner circleBase" id="selectedSticker3"></div>
-            <div class="inner circleBase" id="selectedSticker4"></div>
+            <div class="inner circleBase" id="selectedSticker" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);"></div>
+            <div class="inner circleBase" id="selectedSticker2" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);"></div>
+            <div class="inner circleBase" id="selectedSticker3" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);"></div>
+            <div class="inner circleBase" id="selectedSticker4" style="box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);"></div>
             <div class="inner3"> <button id="clearStickerSelectionButton" class="button2" onclick=clearStickerSelection() >
                 <span>Clear Selected
               </span>
@@ -389,22 +438,33 @@
             
         </div> 
         <div id="outer">
-            <div class="inner4">
-                <span > Wear: </span>
-                <input id="wearFN" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory0">
-                <label for="wearFN">FN</label>
-                <input id="wearMW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory1">
-                <label for="wearMW">MW</label>
-                <input id="wearFT" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory2">
-                <label for="wearFT">FT</label>
-                <input id="wearWW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory3">
-                <label for="wearWW">WW</label>
-                <input id="wearBS" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory4">
-                <label for="wearBS">BS</label>
+            <div class="inner4" style="background-color: #212121; color: white;border-radius: 5px;border: 2px solid #6c757d;height:  35px;">
+                <span > Wear:</span>
+                <div class="inner4" style="border-radius: 5px; background-color: #353434;">    
+                    <input id="wearFN" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory0">
+                    <label for="wearFN">FN</label>
+                </div>
+            
+                <div class="inner4" style="border-radius: 5px; background-color: #353434;">    
+                    <input id="wearMW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory1" >
+                    <label for="wearMW">MW</label>
+                </div> 
+                <div class="inner4" style="border-radius: 5px; background-color: #353434;">    
+                    <input id="wearFT" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory2">
+                    <label for="wearFT">FT</label>
+                </div>
+                <div class="inner4" style="border-radius: 5px; background-color: #353434;">    
+                    <input id="wearWW" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory3">
+                    <label for="wearWW">WW</label>
+                </div>
+                <div class="inner4" style="border-radius: 5px; background-color: #353434;">    
+                    <input id="wearBS" type="checkbox" value="&amp;category_730_Exterior%5B%5D=tag_WearCategory4">
+                    <label for="wearBS">BS</label>
+                </div>
             </div>
         <div id="outer">
             <div class="inner2">
-            <select id="weaponSelector">
+            <select id="weaponSelector" style="background-color: #212121; color: white;border-radius: 5px;border: 2px solid #6c757d;height:  35px;">
                 <option value="any">Any Weapon</option>
                 <option disabled="disabled">──────────</option>
                 <option value="tag_weapon_awp">AWP</option>
@@ -433,27 +493,128 @@
                 <option value="tag_weapon_mp9">MP9</option><option value="tag_weapon_p90">P90</option>
                 <option value="tag_weapon_bizon">PP-Bizon</option><option value="tag_weapon_ump45">UMP-45</option> 
             </select>
+            <select id="typeSelector"style="background-color: #212121; color: white;border-radius: 5px;border: 2px solid #6c757d;height:  35px;">
+                <option value="">Any Type</option>
+                <option value="tag_strange" class="stattrak">StatTrak™</option>
+                <option value="tag_tournament" class="souvenir">Souvenir</option>
+            </select>
             </div>
-            <div class="inner2">
-                <select id="typeSelector">
-                    <option value="">Any Type</option>
-                    <option value="tag_strange" class="stattrak">StatTrak™</option>
-                    <option value="tag_tournament" class="souvenir">Souvenir</option>
-                </select>
-            </div>
+         
        
 
             <div class="inner2">
-                <button class="button3" style="width: 100px;"id="searchButton" onclick=searchMarket()>Search Market</button>
+                <button class="button3" style="width: 127px;"id="searchButton" onclick=searchMarket()>Search Market</button>
                 <button class="button3" id="searchIgnoreButton" onclick=searchMarketIgnore()>Search Market (Ignore Order)</button>
             </div>
         </div> 
-        <div class="outer"><br></br></div>
+<div class="outer" style="background-color: rgba(27, 27, 27, 0.5)"><p class="m-0 text-center text-white">Copyright &copy; CS:GO Tools 2023</p></div>
         <script>
 
         function searchMarketIgnore(){
-            alert("in progress")
+            
+
+            Hashnames = {"ESLKatowice14":"Katowice 2014",
+                        "ESLCologne14":"Cologne 2014",
+                        "ESLKatowice15":"Katowice 2015",
+                        "IntelRio22":"Rio 2022",
+                        "PGLAntwerp22":"Antwerp 2022",
+                        "PGLStockholm21":"Stockholm 2021",
+                        "FACEITLondon18":"London 2018",
+                        "StarLadderBerlin19":"Berlin 2019",
+                        "ELEAGUEBoston18":"Boston 2018",
+                        "ELEAGUEAtlanta17":"Atlanta 2017",
+                        "ESLCologne16":"Cologne 2016",
+                        "MLGColumbus16":"MLG Columbus 2016",
+                        "ClujNapoca2015":"Cluj-Napoca 2015",
+                        "DreamHack14":"DreamHack 2014",
+                        "DreamHack13":"",
+                        "RMR20":"2020 RMR",
+                        "ESLKatowice19":"Katowice 2019",
+                        "PGLKrakow17":"Krakow 2017",
+                        "ESLCologne15":"Cologne 2015",
+                        "Misc":"",
+                        "Paris23": "Paris 2023"}
+            var weaponSearch = document.getElementById("weaponSelector").value;
+            var typeSearch = document.getElementById("typeSelector").value;
+
+            try{
+                var stickerSearch = document.getElementById("selectedStickerImage").src;
+                stickerSearch = stickerSearch.split("/")[7].substring(0, stickerSearch.split("/")[7].length-4).replaceAll("_","%20")+"%20"+ Hashnames[stickerSearch.split("/")[6]]
+            }
+            catch {
+                var stickerSearch = ""   
+            }
+
+            try{
+                var stickerSearch2 = document.getElementById("selectedSticker2Image2").src;
+                stickerSearch2 = stickerSearch2.split("/")[7].substring(0, stickerSearch2.split("/")[7].length-4).replaceAll("_","%20")+"%20"+ Hashnames[stickerSearch2.split("/")[6]]
+            }
+            catch {
+                var stickerSearch2 = ""   
+            }
+
+            try{
+                var stickerSearch3 = document.getElementById("selectedSticker3Image3").src;
+                stickerSearch3 = stickerSearch3.split("/")[7].substring(0, stickerSearch3.split("/")[7].length-4).replaceAll("_","%20")+"%20"+ Hashnames[stickerSearch3.split("/")[6]]
+            }   
+            catch {
+                var stickerSearch3 = ""   
+            }
+
+            try{
+                var stickerSearch4 = document.getElementById("selectedSticker4Image4").src;
+                stickerSearch4 = stickerSearch4.split("/")[7].substring(0, stickerSearch4.split("/")[7].length-4).replaceAll("_","%20")+"%20"+ Hashnames[stickerSearch4.split("/")[6]]
+            }
+            catch {
+                var stickerSearch4 = ""   
+            }
+
+
+            if(document.getElementById('wearFN').checked == true){
+
+                wearSearchFN = "category_730_Exterior%5B%5D=tag_WearCategory0&"
+            }
+            else{
+                wearSearchFN = ""
+            }
+            if(document.getElementById('wearMW').checked == true){
+
+                wearSearchMW = "category_730_Exterior%5B%5D=tag_WearCategory1&"
+            }        
+            else{
+                wearSearchMW = ""
+            }    
+            if(document.getElementById('wearFT').checked == true){
+
+                wearSearchFT = "category_730_Exterior%5B%5D=tag_WearCategory2&"
+            }    
+            else{
+                wearSearchFT = ""
+            }        
+            if(document.getElementById('wearWW').checked == true){
+
+                wearSearchWW = "category_730_Exterior%5B%5D=tag_WearCategory3&"
+            }   
+            else{
+                wearSearchWW = ""
+            }         
+            if(document.getElementById('wearBS').checked == true){
+
+                wearSearchBS = "category_730_Exterior%5B%5D=tag_WearCategory4&"
+            }
+            else{
+                wearSearchBS = ""
+            }
+
+            var stickers = '"'+stickerSearch +'"'+" "+'"'+stickerSearch2+'"'+" " +'"'+stickerSearch3+'"'+" " +'"'+stickerSearch4+'"'
+            var wearCategory = ""
+            var weapon =  document.getElementById("weaponSelector").value;
+            var gunType = document.getElementById("typeSelector").value;
+            var query = 'https://steamcommunity.com/market/search?q='+stickers+'&descriptions=1&category_730_ItemSet%5B%5D=any&'+wearSearchFN+wearSearchMW+wearSearchFT+wearSearchWW+wearSearchBS+'category_730_Weapon%5B%5D='+weapon+'&category_730_Quality%5B%5D='+gunType+'#p1_price_asc';
+            window.open(query, '_blank');
+
         }
+
         function searchMarket(){
 
 
@@ -476,7 +637,8 @@
                         "ESLKatowice19":"Katowice 2019",
                         "PGLKrakow17":"Krakow 2017",
                         "ESLCologne15":"Cologne 2015",
-                        "Misc":""}
+                        "Misc":"",
+                        "Paris23": "Paris 2023"}
             var weaponSearch = document.getElementById("weaponSelector").value;
             var typeSearch = document.getElementById("typeSelector").value;
 
@@ -582,10 +744,16 @@
             img.id = stickerdiv+imagez;
             var myVariable = value
             img.style.width = "155px";
-            img.style.height = "auto"; 
+            img.style.height = "auto";
+            img.addEventListener("click", function(){removeSelected(stickerdiv) });; 
             document.getElementById(stickerdiv).appendChild(img);
 
         }
+
+        function removeSelected(id){
+            document.getElementById(id).innerHTML =""
+        }
+
         function stickerSelected(value){
             var contentCheck = document.getElementById("selectedSticker").innerHTML ===""
             var contentCheck2 = document.getElementById("selectedSticker2").innerHTML ==="";
@@ -691,3 +859,4 @@
 
         </script>
 <script src="{% static 'js/stickerscript.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
