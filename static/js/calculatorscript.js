@@ -22,9 +22,10 @@ function calculatetotal(){
     var value = JSON.parse(document.getElementById('hashids').textContent);
     
     var link = 'https://steamcommunity.com/market/listings/730/'+value[casename];
-    document.getElementById("buy").innerHTML ='<form action='+link+'><input type="submit" value="Buy Case" /></form>'
-    document.getElementById("simulate").innerHTML ='<button onclick="simulateloot()"> Simulate</button>'
+    document.getElementById("buy").innerHTML ='<form action='+link+'><input type="submit" value="Buy Case" /></form>';
+    document.getElementById("simulate").innerHTML ='<button onclick="simulateloot()"> Simulate</button>';
 }
+
 function simulateloot(){
                         
     blue_odds = 0.7992;
@@ -78,5 +79,6 @@ const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'GBP',
 });
+
 
 

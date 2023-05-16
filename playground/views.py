@@ -26,7 +26,7 @@ class WebAppViewset(viewsets.ModelViewSet):
             filespaper = glob.glob("."+STATIC_URL+"stickers/Paper/"+i+"/*") 
             filesholo = glob.glob("."+STATIC_URL+"stickers/Holo/"+i+"/*")
             filesfoil = glob.glob("."+STATIC_URL+"stickers/Foil/"+i+"/*")
-            filesgold = glob.glob("."+STATIC_URL+"stickers/gold/"+i+"/*")
+            filesgold = glob.glob("."+STATIC_URL+"stickers/Gold/"+i+"/*")
             filenames[i] = {"filespaper":[],"filesholo":[],"filesfoil":[],"filesgold":[]}
             for j in  filespaper:
                 filenames[i]["filespaper"].append(j[24:len(j)-4])
