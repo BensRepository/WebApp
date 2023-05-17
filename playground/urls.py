@@ -11,6 +11,7 @@ urlpatterns =[
     path("CaseCalculator/",WebAppViewset.load_calculator, name='calculator'),
     path("",WebAppViewset.load_index, name='index'),
     path("StickerSearch/",WebAppViewset.load_sticker, name='sticker'),
+    path("StratRoulette/",WebAppViewset.load_roulette, name='roulette'),
   
 
             ]

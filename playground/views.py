@@ -11,7 +11,10 @@ class WebAppViewset(viewsets.ModelViewSet):
     def load_index(request):
         print(Case.objects.all().order_by('date_modified').last())
         return render(request,'index.html')
-
+    
+    def load_roulette(request):
+        return render(request,'roulette.html')
+    
     def load_sticker(request):
 ##  ,,GOLD FOR DREAMHACK 2014
         tornamantNames = ["ESLKatowice14","IntelRio22","PGLAntwerp22","PGLStockholm21","StarLadderBerlin19",
