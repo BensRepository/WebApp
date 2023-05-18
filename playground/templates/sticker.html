@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>CS:GO Tools</title>
+        <title>CS:GO Tools Sticker Search</title>
         <!-- tab bar icon-->
         <link rel="icon" type="image/x-icon" href="{% static 'stickers/Holo/ESLKatowice14/iBUYPOWER_(Holo).png'%}" />
         <!-- Bootstrap icons-->
@@ -161,10 +161,10 @@
             <p id="stickerDescGold">No Gold Stickers for Katowice 2014.</p>
         </div>
         
-        <button class="tablink" onclick="openCity('Paper', this, '#0d6efd');openCity2(event, 'Paper');" id="defaultOpen">Paper</button>
-        <button class="tablink" onclick="openCity('Holo', this, '#6f42c1');openCity2(event, 'Holo');">Holo</button>
-        <button class="tablink" onclick="openCity('Foil', this, '#d63384');openCity2(event, 'Foil');">Foil</button>
-        <button class="tablink" onclick="openCity('Gold', this, '#ffc107');openCity2(event, 'Gold');">Gold</button> 
+        <button class="tablink" onclick="openTitleTab('Paper', this, '#0d6efd');openTabContent(event, 'Paper');" id="defaultOpen">Paper</button>
+        <button class="tablink" onclick="openTitleTab('Holo', this, '#6f42c1');openTabContent(event, 'Holo');">Holo</button>
+        <button class="tablink" onclick="openTitleTab('Foil', this, '#d63384');openTabContent(event, 'Foil');">Foil</button>
+        <button class="tablink" onclick="openTitleTab('Gold', this, '#ffc107');openTabContent(event, 'Gold');">Gold</button> 
         
         
         
@@ -824,7 +824,7 @@
             document.getElementById('stickerDescGold').innerHTML = tournamantName + " Gold Stickers";
 
 
-            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filespaper').textContent);
+            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filespaper').textContent).sort();
             if (stickerNames.length > 0) {
             for (let i = 0; i < stickerNames.length; i++) {
                 makeImages(stickerNames[i],"Paper");
@@ -836,7 +836,7 @@
                 document.getElementById('PaperContent').innerHTML = "No paper stickers exist for "+tournamantName;
 
             }
-            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filesholo').textContent);
+            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filesholo').textContent).sort();
             if (stickerNames.length > 0) {
                 for (let i = 0; i < stickerNames.length; i++) {
                 makeImages(stickerNames[i],"Holo");
@@ -848,7 +848,7 @@
 
             }
             
-            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filesfoil').textContent);
+            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filesfoil').textContent).sort();
             if (stickerNames.length > 0) {
             for (let i = 0; i < stickerNames.length; i++) {
                 makeImages(stickerNames[i],"Foil");
@@ -858,7 +858,7 @@
                 document.getElementById('FoilContent').innerHTML = "No foil stickers exist for "+tournamantName;
             }
 
-            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filesgold').textContent);
+            stickerNames = JSON.parse(document.getElementById(tournamantName+'_filesgold').textContent).sort();
             if (stickerNames.length > 0) {
 
             for (let i = 0; i < stickerNames.length; i++) {

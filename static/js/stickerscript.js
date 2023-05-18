@@ -6,7 +6,7 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-function openCity(cityName, elmnt, color) {
+function openTitleTab(tabName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -21,7 +21,7 @@ function openCity(cityName, elmnt, color) {
     }
 
     // Show the specific tab content
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
 
     // Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;
@@ -30,9 +30,8 @@ function openCity(cityName, elmnt, color) {
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
     
-    //var path = "{% static 'stickers/paper'%}" +"/iBUYPOWER.png";
-    //document.getElementById("sticker").innerHTML =  '<img src='+path+'>';
-    function openCity2(evt, cityName) {
+
+    function openTabContent(evt, tabName) {
         // Declare all variables
         var i, tabcontent, tablinks;
 
@@ -49,7 +48,7 @@ function openCity(cityName, elmnt, color) {
         }
 
         // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(cityName+'Content').style.display = "block";
+        document.getElementById(tabName+'Content').style.display = "block";
         evt.currentTarget.className += " active";
     }
 
