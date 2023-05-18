@@ -15,8 +15,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
+        <link href="{% static 'css/calculator.css'%}" rel="stylesheet" />
     </head>
-    <body>
+    <body  style="background-color: rgb(48, 48, 47);">
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-lg-5">
@@ -32,192 +33,125 @@
                 </div>
             </div>
         </nav>
+        <script>
+            function showInfo(name) {
+                var path = "{% static 'cases/'%}" +name+".png";
+                document.getElementById("case").innerHTML =  '<img onclick="removeCase()" src='+path+'>';
 
-        <html>
-            <head>
-                   <!-- Required meta tags -->
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                document.getElementById("desc3").innerHTML = "Case Price";
+                document.getElementById("price").innerHTML = formatter.format(0) ;
 
-             
-                <style>
-                    .container {
-                        display: flex;
-                        flex-direction: row;
-                    }
-                    .left {
-                        height: 875px;
-                        display: block;
-                        width: 50%;
-                        background-color: rgb(255, 255, 255);
-                        overflow-y: scroll;
-                    }
-                    .right {
-                        height: 650px;
-                        background-color: rgb(250, 248, 248);
-                        display: block;
-                        width: 50%;
-                        
-                    }
-                    img {
-                        transition: opacity .3s linear;
-                    }
+                document.getElementById("desc4").innerHTML = "Key Price" ;
+                document.getElementById("keyprice").innerHTML = formatter.format(0);
+                
 
-                    img:hover {
-                        opacity: .5;
-                        cursor: pointer;
-                    }
-                                  /* width */
-                    ::-webkit-scrollbar {
-                    width: 20px;
-                    }
-
-                    /* Track */
-                    ::-webkit-scrollbar-track {
-                    box-shadow: inset 0 0 5px rgb(48, 48, 47); 
-                    border-radius: 10px;
-                    }
-                    
-                    /* Handle */
-                    ::-webkit-scrollbar-thumb {
-                    background: rgb(48, 48, 47);
-                    border-radius: 10px;
-                    }
-
-                    /* Handle on hover */
-                    ::-webkit-scrollbar-thumb:hover {
-                    background: #979595; 
-                    }
-
-                </style>
-            </head>
-            <section>
-            <body style="background-color: rgb(48, 48, 47);">
-                <div class="container">
-                    <div class="left">
-                        <h1> Select Case</h1>
-                      
-                        {% for key,value in caseMedianPrices.items %}
-                       
-                            <img id="{{key}}"src=""onclick="myFunction('{{key}}')" alt="{{key}}">
-                            £{{value}}
-                            
-                        <script>
-                            var path = "{% static 'cases/'%}" +"{{key}}"+".png";
-                            document.getElementById("{{key}}").src=path;
-                        </script>
-                         {% endfor %}
-
-                    </div>
-                 
-                    <div class="right">
-                        
-                        <div style="width: 300px; float:left; height:650px;  margin:5px">
-                            <h1 id="title"></h1>
-                            <h5 id="desc"></h5>
-                            <p id="case"></p>
-
-                            <h6 id="desc2"></h6>
-                            <p id="input"></p>
-                            
-                            <h6 id="desc3"></h6>
-                            <p id="price"></p>
-                            <h6 id="desc4"></h6>
-                            <p id="keyprice"></p>
+                document.getElementById("title").innerHTML = "Choose Amount";
+                document.getElementById("desc2").innerHTML = "Number of cases";
+                document.getElementById("desc").innerHTML = name.split('_').join(' ') + " Case";
+                document.getElementById("desc5").innerHTML = "Total Cost";
+                document.getElementById("total").innerHTML = formatter.format(0);
+                document.getElementById("input").innerHTML = '<input id="ValueField" type="number" min="0" onchange="calculatetotal()" onkeyup="calculatetotal()"/>';
+                document.getElementById("buy").innerHTML ='';
+                document.getElementById("simulate").innerHTML ='';
+                document.getElementById("blues").innerHTML = "";
+                document.getElementById("purples").innerHTML = "";
+                document.getElementById("pinks").innerHTML = "";
+                document.getElementById("reds").innerHTML = "";
+                document.getElementById("yellows").innerHTML = "";
+            }
             
-                            <h6 id="desc5"></h6>
-                            <p id="total"></p>
+            function removeCase(){
+                document.getElementById("case").innerHTML =  "";
 
-                            <div style="width: 75px; float:left; height:50px;  margin:5px">
-                                <p id="buy"></p>
-                            </div>
-                            <div style="width: 75px; float:left; height:50px;  margin:5px">
-                                <p id="simulate"></p>
-                            </div>
+                document.getElementById("desc3").innerHTML = "";
+                document.getElementById("price").innerHTML = "";
+
+                document.getElementById("desc4").innerHTML = "";
+                document.getElementById("keyprice").innerHTML = "";
+                
+
+                document.getElementById("title").innerHTML = "";
+                document.getElementById("desc2").innerHTML = "";
+                document.getElementById("desc").innerHTML = "";
+                document.getElementById("desc5").innerHTML = "";
+                document.getElementById("total").innerHTML = "";
+                document.getElementById("input").innerHTML = "";
+                document.getElementById("buy").innerHTML ="";
+                document.getElementById("simulate").innerHTML ="";
+                document.getElementById("blues").innerHTML = "";
+                document.getElementById("purples").innerHTML = "";
+                document.getElementById("pinks").innerHTML = "";
+                document.getElementById("reds").innerHTML = "";
+                document.getElementById("yellows").innerHTML = "";
+            }
+            
+         
+        </script>
+        <!-- Page Content-->
+        <section>
+            <div class="container">
+                <div class="left">
+                    <h1> Select Case</h1>
+                    {% for key,value in caseMedianPrices.items %}
+                    
+                        <img id="{{key}}"src=""onclick="showInfo('{{key}}')" alt="{{key}}">
+                        £{{value}}
+                        
+                    <script>
+                        var path = "{% static 'cases/'%}" +"{{key}}"+".png";
+                        document.getElementById("{{key}}").src=path;
+                    </script>
+                        {% endfor %}
+                </div>
+                
+                <div class="right">
+                    <div style="width: 300px; float:left; height:650px;  margin:5px">
+                        <h1 id="title"></h1>
+                        <h5 id="desc"></h5>
+                        <p id="case"></p>
+
+                        <h6 id="desc2"></h6>
+                        <p id="input"></p>
+                        
+                        <h6 id="desc3"></h6>
+                        <p id="price"></p>
+                        <h6 id="desc4"></h6>
+                        <p id="keyprice"></p>
+        
+                        <h6 id="desc5"></h6>
+                        <p id="total"></p>
+
+                        <div style="width: 75px; float:left; height:50px;  margin:5px">
+                            <p id="buy"></p>
                         </div>
-                        <div style="width: 150px; float:left; height:500px;  margin:35px">
-                            <div >
-                                <p id="blues"></p>
-                                <p id="purples"></p>
-                                <p id="pinks"></p>
-                            </div>
-                            <div>
-                                <p id="reds"></p>
-                                <p id="yellows"></p>
-                            </div>
-                            
+                        <div style="width: 75px; float:left; height:50px;  margin:5px">
+                            <p id="simulate"></p>
                         </div>
+                    </div>
 
-                        <script>
-                            function removeCase(){
-                                document.getElementById("case").innerHTML =  '';
-                            
-                                document.getElementById("desc3").innerHTML = '';
-                                document.getElementById("price").innerHTML = '';
-
-                                document.getElementById("desc4").innerHTML = '';
-                                document.getElementById("keyprice").innerHTML = '';
-                                
-
-                                document.getElementById("title").innerHTML = '';
-                                document.getElementById("desc2").innerHTML = '';
-                                document.getElementById("desc").innerHTML = '';
-                                document.getElementById("desc5").innerHTML = ""
-                                document.getElementById("total").innerHTML = '';
-                                document.getElementById("input").innerHTML = '';
-                                document.getElementById("buy").innerHTML ='';
-                                document.getElementById("simulate").innerHTML ='';
-                                document.getElementById("blues").innerHTML = "";
-                                document.getElementById("purples").innerHTML = "";
-                                document.getElementById("pinks").innerHTML = "";
-                                document.getElementById("reds").innerHTML = "";
-                                document.getElementById("yellows").innerHTML = "";
-                            }
-                            function myFunction(name) {
-                                var path = "{% static 'cases/'%}" +name+".png";
-                                document.getElementById("case").innerHTML =  '<img onclick="removeCase()" src='+path+'>';
-                            
-                                document.getElementById("desc3").innerHTML = "Case Price";
-                                document.getElementById("price").innerHTML = formatter.format(0) ;
-
-                                document.getElementById("desc4").innerHTML = "Key Price" ;
-                                document.getElementById("keyprice").innerHTML = formatter.format(0);
-                                
-
-                                document.getElementById("title").innerHTML = "Choose Amount";
-                                document.getElementById("desc2").innerHTML = "Number of cases";
-                                document.getElementById("desc").innerHTML = name.split('_').join(' ') + " Case";
-                                document.getElementById("desc5").innerHTML = "Total Cost";
-                                document.getElementById("total").innerHTML = formatter.format(0);
-                                document.getElementById("input").innerHTML = '<input id="ValueField" type="number" min="0" onchange="calculatetotal()" onkeyup="calculatetotal()"/>';
-                                document.getElementById("buy").innerHTML ='';
-                                document.getElementById("simulate").innerHTML ='';
-                                document.getElementById("blues").innerHTML = "";
-                                document.getElementById("purples").innerHTML = "";
-                                document.getElementById("pinks").innerHTML = "";
-                                document.getElementById("reds").innerHTML = "";
-                                document.getElementById("yellows").innerHTML = "";
-                                }
-                            </script>
-                     
-                            
-                            
-                            
+                    <div style="width: 150px; float:left; height:500px;  margin:35px">
+                        <div >
+                            <p id="blues"></p>
+                            <p id="purples"></p>
+                            <p id="pinks"></p>
+                        </div>
+                        <div>
+                            <p id="reds"></p>
+                            <p id="yellows"></p>
+                        </div>
+                    </div>
+    
                     {{ Hashid|json_script:"hashids" }}
                     {{ caseMedianPrices|json_script:"caseMedianPrices" }}
-                
-                          
-                    </div>
                     
-                </section>
+                </div>
+        </section>
         
-                <!-- Footer-->
-                <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);;position: fixed;text-align: center;bottom: 0px;width: 101%; "><p class="m-0 text-center text-white">Copyright &copy; CS:GO Tools 2023</p></div>
-                <!-- Bootstrap core JS-->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-                <!-- Core theme JS-->
-                <script src="{% static 'js/calculatorscript.js' %}"></script>
-            </body>
-        </html>
-        
-          
+        <!-- Footer-->
+        <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);;position: fixed;text-align: center;bottom: 0px;width: 101%; "><p class="m-0 text-center text-white">Copyright &copy; CS:GO Tools 2023</p></div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/calculatorscript.js' %}"></script>
+    </body>
+</html>
