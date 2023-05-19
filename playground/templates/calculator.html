@@ -33,8 +33,15 @@
                 </div>
             </div>
         </nav>
+        {{ caseMedianPrices|json_script:"caseMedianPrices" }}
+        {{ caseNames|json_script:"caseNames" }}
+        {{ Hashid|json_script:"hashids" }}
+ 
         <script>
             function showInfo(name) {
+
+                document.getElementById("budgetInput").type =  "hidden";
+                document.getElementById('caseList').innerHTML=""
                 var path = "{% static 'cases/'%}" +name+".png";
                 document.getElementById("case").innerHTML =  '<img onclick="removeCase()" src='+path+'>';
 
@@ -50,7 +57,10 @@
                 document.getElementById("desc").innerHTML = name.split('_').join(' ') + " Case";
                 document.getElementById("desc5").innerHTML = "Total Cost";
                 document.getElementById("total").innerHTML = formatter.format(0);
-                document.getElementById("input").innerHTML = '<input id="ValueField" type="number" min="0" onchange="calculatetotal()" onkeyup="calculatetotal()"/>';
+                if(document.getElementById("input").innerHTML ==""){
+                    document.getElementById("input").innerHTML = '<input id="ValueField" type="number" min="0" onchange="onChange();" onkeyup="calculatetotal()"/>';
+                    
+                }
                 document.getElementById("buy").innerHTML ='';
                 document.getElementById("simulate").innerHTML ='';
                 document.getElementById("blues").innerHTML = "";
@@ -58,9 +68,31 @@
                 document.getElementById("pinks").innerHTML = "";
                 document.getElementById("reds").innerHTML = "";
                 document.getElementById("yellows").innerHTML = "";
+                document.getElementById("simulatorTitle").innerHTML = "";
+                var casePrices = JSON.parse(document.getElementById('caseMedianPrices').textContent);
+
+                if((document.getElementById("budgetInput").value !="£1,000,000.00")&& document.getElementById("input")!= ""){
+                    caseAndKeyPrice = casePrices[name] + 1.99;
+                    caseAmount = document.getElementById("budgetInput").value/caseAndKeyPrice;
+                    document.getElementById("ValueField").value = Math.trunc(caseAmount);
+                    calculatetotal();
+               } 
+                
+              
+               calculatetotal();
+               
+                }
+            function onChange(){
+                clearBudget()
+                calculatetotal()
+            }
+            function clearBudget(){
+                document.getElementById("budgetInput").value = "£1,000,000.00"
             }
             
             function removeCase(){
+
+             
                 document.getElementById("case").innerHTML =  "";
 
                 document.getElementById("desc3").innerHTML = "";
@@ -70,9 +102,12 @@
                 document.getElementById("keyprice").innerHTML = "";
                 
 
-                document.getElementById("title").innerHTML = "";
+                document.getElementById("title").innerHTML = "Budget Case Calculator";
+                document.getElementById("budgetInput").type='number';
+                document.getElementById("desc").innerHTML = "Enter budget";
                 document.getElementById("desc2").innerHTML = "";
-                document.getElementById("desc").innerHTML = "";
+    
+         
                 document.getElementById("desc5").innerHTML = "";
                 document.getElementById("total").innerHTML = "";
                 document.getElementById("input").innerHTML = "";
@@ -83,15 +118,62 @@
                 document.getElementById("pinks").innerHTML = "";
                 document.getElementById("reds").innerHTML = "";
                 document.getElementById("yellows").innerHTML = "";
+                document.getElementById("simulatorTitle").innerHTML = "";
+                calculateBudget()
             }
             
-         
+            function calculateBudget(){
+       
+                var budget = document.getElementById("budgetInput").value;
+                var casePrices = JSON.parse(document.getElementById('caseMedianPrices').textContent) ;
+                var caseNames = JSON.parse(document.getElementById('caseNames').textContent);
+                document.getElementById('caseList').innerHTML=""
+                for (let i = 0; i < caseNames.length; i++) {
+                    caseAndKeyPrice = casePrices[caseNames[i]] + 1.99
+                    caseAmount = budget/caseAndKeyPrice
+                    if(caseAmount > 1){
+                        makeImages(caseNames[i],caseAmount);
+                    }
+                   
+                    ///document.getElementById('caseImages').appendChild(casePrices[casesNames[i]]);
+                }
+
+            }
+
+
+
+            function makeImages(caseName,caseAmount){
+                var img = document.createElement("IMG");
+                url = "/static/cases/"+caseName+".png"
+                img.src = url;
+                img.id = caseName;
+                img.style.width = "100px";
+                img.style.height = "auto"; 
+                img.addEventListener("click", function(){showInfo(caseName) });;
+
+                let p = document.createElement('p');
+                p.id = caseName +"p"
+                p.style.display="inline-block"
+                document.getElementById("caseList").appendChild(p);
+                document.getElementById(caseName +"p").appendChild(img);
+                
+                let p2 = document.createElement('p');
+                p2.id = caseName +"p2"
+                p2.style.display="inline-block"
+                document.getElementById("caseList").appendChild(p);
+                p2.innerHTML="x "+String(Math.trunc(caseAmount));
+                document.getElementById(caseName +"p").appendChild(p2)
+                //document.getElementById(div.id).appendChild(p);
+                
+            }
         </script>
         <!-- Page Content-->
         <section>
             <div class="container">
                 <div class="left">
-                    <h1> Select Case</h1>
+                    <h1> Specific Case Calculator</h1>
+                    <h4>Select Case</h4>
+                    
                     {% for key,value in caseMedianPrices.items %}
                     
                         <img id="{{key}}"src=""onclick="showInfo('{{key}}')" alt="{{key}}">
@@ -105,12 +187,15 @@
                 </div>
                 
                 <div class="right">
-                    <div style="width: 300px; float:left; height:650px;  margin:5px">
-                        <h1 id="title"></h1>
-                        <h5 id="desc"></h5>
+                    <div style="display: inline-block;">
+                        <h1 id="title">Budget Case Calculator</h1>
+                        <h4 id="desc">Enter budget</h4>
+                        <input style="display: block;"id="budgetInput"step="any" placeholder ="£1,000,000.00"type="number" min="0" onchange="calculateBudget()" onkeyup="calculateBudget()"/>
+                        
+                        <div style=" display: inline-block; padding: 0px; "id="caseList"></div >
                         <p id="case"></p>
 
-                        <h6 id="desc2"></h6>
+                        <h5 id="desc2"></h5>
                         <p id="input"></p>
                         
                         <h6 id="desc3"></h6>
@@ -129,8 +214,9 @@
                         </div>
                     </div>
 
-                    <div style="width: 150px; float:left; height:500px;  margin:35px">
+                    <div style="width: 150px; display: inline-block;">
                         <div >
+                            <h5 id="simulatorTitle"></h5>
                             <p id="blues"></p>
                             <p id="purples"></p>
                             <p id="pinks"></p>
@@ -140,10 +226,6 @@
                             <p id="yellows"></p>
                         </div>
                     </div>
-    
-                    {{ Hashid|json_script:"hashids" }}
-                    {{ caseMedianPrices|json_script:"caseMedianPrices" }}
-                    
                 </div>
         </section>
         

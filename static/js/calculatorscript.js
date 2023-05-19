@@ -66,7 +66,8 @@ function simulateloot(){
     document.getElementById("pinks").innerHTML = String(unboxed_pink)+ " Classified";
     document.getElementById("reds").innerHTML = String(unboxed_red)+ " Covert";
     document.getElementById("yellows").innerHTML = String(unboxed_yellow)+ " Special item";
-
+    document.getElementById("simulatorTitle").innerHTML = "Potential Loot";
+    
     document.getElementById("blues").style.background = "aqua";
     document.getElementById("purples").style.background = "blueviolet";
     document.getElementById("pinks").style.background = "fuchsia";
@@ -74,4 +75,9 @@ function simulateloot(){
     document.getElementById("yellows").style.background = "yellow";
    
 }
+
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'GBP',
+});
 

@@ -4,21 +4,24 @@
 }
 .left {
     height: 875px;
+    background-color: rgb(156, 152, 152);
     display: block;
     width: 50%;
-    background-color: rgb(255, 255, 255);
     overflow-y: scroll;
+
 }
 .right {
-    height: 650px;
-    background-color: rgb(250, 248, 248);
+    height: 720px;
+    background-color: rgb(173, 169, 169);
     display: block;
     width: 50%;
-    
+    overflow-y: scroll;
 }
 img {
     transition: opacity .3s linear;
 }
+
+  
 
 img:hover {
     opacity: .5;
@@ -43,5 +46,10 @@ border-radius: 10px;
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-background: #979595; 
+background: #585353; 
+}
+
+li{
+    display: inline;
+
 }

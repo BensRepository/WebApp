@@ -46,12 +46,12 @@ class WebAppViewset(viewsets.ModelViewSet):
 
         caseMedianPrices = {}
         Hashid = {}
-        
-        for case in Case.objects.all().values():
+        caseNames =[]
+        for case in Case.objects.all().values().order_by('price'):
             caseMedianPrices[case['name']] = case['price']
             Hashid[case['name']] = case['hashid']
-        context = {"caseMedianPrices":caseMedianPrices,'Hashid' : Hashid}
-
+            caseNames.append(case['name']) 
+        context = {"caseMedianPrices":caseMedianPrices,'Hashid' : Hashid,'caseNames':caseNames}
 
         return render(request, "calculator.html",context=context)
     
