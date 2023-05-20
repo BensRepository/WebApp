@@ -106,7 +106,7 @@ var gen = setInterval(function() {
        
 }
 }
-}, 32);
+},32);
 }
 var initTitle = function(str) {
     var count = str.length;

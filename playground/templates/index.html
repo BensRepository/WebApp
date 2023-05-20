@@ -41,7 +41,8 @@
         
         <!-- Page Content-->
         <section>
-            <div class="container px-4 px-lg-5" style=" color: aliceblue;">
+        
+            <div class="container px-4 px-lg-5" style=" color: aliceblue;">    
                 <div class="col-lg-6" style="float: right;">
                     <h1 class="mt-5">Case Calculator</h1>
                     <p>Streamline your case opening hobby with our tool that eliminates the tedium of constantly fluctuating prices. 
@@ -68,16 +69,24 @@
                     <p>   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFeatures and functionality will continue to be updated. If you 
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspencounter any bugs or have specific requests,  kindly leave a 
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcomment on my <a style="color: antiquewhite;" href="https://steamcommunity.com/id/SteamArtillery/">Steam profile</a>. Thank you :)
-                    
                     </p>
                 </div>
-           
+   
+    
+               
             </div>
+        <div style="position: fixed; bottom: 10px; display: inline;padding-left: 0px;"class="container">
+            <p style="color: aliceblue;background-color:  rgba(27, 27, 27, 0.9); margin-bottom: 0px;width: 210px;font-weight: bold; padding-left: 5px;"> Time Till Drop Cap Reset </p>
+            <p style="float: left; color: aliceblue;background-color:  rgba(27, 27, 27, 0.9);width: 300px;padding-left: 5px;" id="countdown"></p>
+        </div>
         </section>
         
         <!-- Footer-->
         <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);;position: fixed;text-align: center;bottom: 0px;width: 100%; "><p class="m-0 text-center text-white">Copyright &copy; CS:GO Tools 2023</p></div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'js/index.js' %}"></script>
     </body>
 </html>
+<div id="countdown"></div>
+<div id="newcountdown"></div>
