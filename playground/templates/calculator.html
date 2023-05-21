@@ -171,13 +171,13 @@
         <section>
             <div class="container">
                 <div class="left">
-                    <h1> Specific Case Calculator</h1>
-                    <h4>Select Case</h4>
+                    <h1 style="background-color: rgb(48, 48, 47);color: white;margin-bottom: 0px;padding-left: 20px;"> Specific Case Calculator</h1>
+                    <h4  style="background-color: rgb(70, 70, 69);color: white;padding-left: 20px;padding-bottom: 5px;">Select Case</h4>
                     
                     {% for key,value in caseMedianPrices.items %}
                     
                         <img id="{{key}}"src=""onclick="showInfo('{{key}}')" alt="{{key}}">
-                        £{{value}}
+                        <p id="{{key}}Cost" style="display: inline-block;">£{{value}}</p>
                         
                     <script>
                         var path = "{% static 'cases/'%}" +"{{key}}"+".png";
@@ -186,42 +186,41 @@
                         {% endfor %}
                 </div>
                 
-                <div class="right">
+                <div class="right" >
+                    <h1 style="background-color: rgb(48, 48, 47);color: white;margin-bottom: 0px; padding-left: 20px;" id="title">Budget Case Calculator</h1>
+                    <h4 style="background-color: rgb(70, 70, 69);color: white;padding-left: 20px;padding-bottom: 5px;" id="desc">Enter budget - Includes key price</h4>
                     <div style="display: inline-block;">
-                        <h1 id="title">Budget Case Calculator</h1>
-                        <h4 id="desc">Enter budget - Includes key price</h4>
-                        <input style="display: block;"id="budgetInput"step="any" placeholder ="£1,000,000.00"type="number" min="0" onchange="calculateBudget()" onkeyup="calculateBudget()"/>
+                
+                        <input style="display: block;margin-left: 20px;"id="budgetInput"step="any" placeholder ="£1,000,000.00"type="number" min="0" onchange="calculateBudget()" onkeyup="calculateBudget()"/>
                         
                         <div style=" display: inline-block; padding: 0px; "id="caseList"></div >
                         <p id="case"></p>
 
-                        <h5 id="desc2"></h5>
-                        <p id="input"></p>
+                        <h5 style="padding-left: 20px;"id="desc2"></h5>
+                        <p style="margin-left: 20px;"id="input"></p>
                         
-                        <h6 id="desc3"></h6>
-                        <p id="price"></p>
-                        <h6 id="desc4"></h6>
-                        <p id="keyprice"></p>
+                        <h6 style="padding-left: 20px;" id="desc3"></h6>
+                        <p style="padding-left: 20px;"id="price"></p>
+                        <h6 style="padding-left: 20px;"id="desc4"></h6>
+                        <p style="padding-left: 20px;"id="keyprice"></p>
         
-                        <h6 id="desc5"></h6>
-                        <p id="total"></p>
+                        <h6 style="padding-left: 20px;"id="desc5"></h6>
+                        <p style="padding-left: 20px;"id="total"></p>
 
-                        <div style="width: 75px; float:left; height:50px;  margin:5px">
-                            <p id="buy"></p>
+                        <div style="width: 75px; display: inline-block; height:50px;  margin:5px;">
+                            <p style="margin-left: 20px;" id="buy"></p>
                         </div>
-                        <div style="width: 75px; float:left; height:50px;  margin:5px">
-                            <p id="simulate"></p>
+                        <div style="width: 75px; display: inline-block; height:50px;  margin:5px; ">
+                            <p style="margin-left: 20px;" id="simulate"></p>
                         </div>
                     </div>
 
-                    <div style="width: 150px; display: inline-block;">
-                        <div >
+                    <div style="width: 150px;display: inline-block;">
+                        <div>
                             <h5 id="simulatorTitle"></h5>
                             <p id="blues"></p>
                             <p id="purples"></p>
                             <p id="pinks"></p>
-                        </div>
-                        <div>
                             <p id="reds"></p>
                             <p id="yellows"></p>
                         </div>
