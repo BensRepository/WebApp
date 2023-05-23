@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'playground',
     'bootstrap5',
     'django.contrib.sites',
-    'django.contrib.sessions',
-    'django_extensions'
+    'django.contrib.sessions'
 ]
 
 MIDDLEWARE = [
