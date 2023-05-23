@@ -3,7 +3,7 @@
     flex-direction: row;
 }
 .left {
-    height: 875px;
+    height: 850px;
     background-color: rgb(156, 152, 152);
     display: block;
     width: 50%;
@@ -20,8 +20,6 @@
 img {
     transition: opacity .3s linear;
 }
-
-  
 
 img:hover {
     opacity: .5;

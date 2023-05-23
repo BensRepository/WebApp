@@ -379,7 +379,12 @@ select:disabled {
   display: none !important;
 }
 
-
+button:not(:disabled),
+[type=button]:not(:disabled),
+[type=reset]:not(:disabled),
+[type=submit]:not(:disabled) {
+  cursor: pointer;
+}
 
 ::-moz-focus-inner {
   padding: 0;
