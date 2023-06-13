@@ -1,9 +1,24 @@
 
 
-CountDownTimer('05/24/2023 01:00 AM', 'countdown');
+CountDownTimer(['06/14/2023 01:00 AM','06/20/2023 01:00 AM','06/27/2023 01:00 AM',
+                '07/04/2023 01:00 AM','07/11/2023 01:00 AM','06/18/2023 01:00 AM'], 'countdown');
 
-function CountDownTimer(dt, id)
+function CountDownTimer(dtList, id)
 {
+    for (let i = 0; i < dtList.length; i++) {
+        var timeItem = new Date(dtList[i]);
+        var currentTime = new Date();
+        if (timeItem.getTime() > currentTime.getTime()){
+            dt = new Date(dtList[i]);
+            break
+        }
+        else{
+            continue
+        }
+       
+
+    }
+
     var end = new Date(dt);
 
     var _second = 1000;
@@ -18,7 +33,7 @@ function CountDownTimer(dt, id)
         if (distance < 0) {
 
             clearInterval(timer);
-            document.getElementById(id).innerHTML = '🥳🥳🥳!! GET THOSE CASES !!🥳🥳🥳';
+           
 
             return;
         }
