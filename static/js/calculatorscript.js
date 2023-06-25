@@ -6,25 +6,6 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-function calculatetotal(){
-                        
-    casename = document.getElementById("desc").innerHTML.split(' ').join('_').replace("_Case","");
-    var case_cost = JSON.parse(document.getElementById('caseMedianPrices').textContent)[casename];
-    document.getElementById("price").innerHTML = formatter.format(document.getElementById("ValueField").value * case_cost) ;
-
-    var caseprice = document.getElementById("ValueField").value * case_cost;
-
-    document.getElementById("keyprice").innerHTML = formatter.format(document.getElementById("ValueField").value * 1.99);
-    keyprice = document.getElementById("ValueField").value * 1.99
-    
-    document.getElementById("total").innerHTML =formatter.format(caseprice +keyprice)  ;
-    
-    var value = JSON.parse(document.getElementById('hashids').textContent);
-    
-    var link = 'https://steamcommunity.com/market/listings/730/'+value[casename];
-    document.getElementById("buy").innerHTML ='<form action='+link+'><input type="submit" value="Buy Case" /></form>';
-    document.getElementById("simulate").innerHTML ='<button onclick="simulateloot()"> Simulate</button>';
-}
 
 function simulateloot(){
                         
@@ -76,8 +57,13 @@ function simulateloot(){
    
 }
 
-const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'GBP',
-});
+function formatter(value){
+    selectedCurrency = document.getElementById('currency').value
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: selectedCurrency,
+    });
+    return formatter.format(value)
+}
+
 

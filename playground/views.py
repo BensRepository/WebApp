@@ -65,7 +65,21 @@ class WebAppViewset(viewsets.ModelViewSet):
         except:
             print("no data returned")
             return None
-
+    def _get_conversion_rates(self):
+        url = "https://openexchangerates.org/api/latest.json?app_id=97690a0737ec4f75a6e93c705a61e81d%27"
+        api_request = requests.get(url)
+        try:
+            api_request.raise_for_status()
+            return api_request.json()
+        except:
+            print("no data returned")
+            return None
+        
+    def _set_conversion_rates(self):
+        data = self._get_conversion_rates()
+        print(data['rates']["GBP"])
+        return data['rates']
+    
     def save_price_data(self):
         needs_updating = Case.objects.all().order_by('date_modified').first()
         case_data = self._get_prices()
