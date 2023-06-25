@@ -31,9 +31,9 @@
                         <li class="nav-item"><a class="nav-link" href="https://steamcommunity.com/tradeoffer/new/?partner=127649164&token=AG79v66Q">DONATE (Trade Link)</a></li>
                         <li class="nav-item">
                             <select style="height: 40px;width: 100px;padding-left: 10px;"class="form-select" id="currency" onchange="currencyUpdators()">
-                                <option value="EUR">🇪🇺&emsp;€&emsp;EUR&emsp;</option>
                                 <option value="GBP">🇬🇧&emsp;£&emsp;GBP&emsp;</option>
                                 <option value="USD">🇺🇸&emsp;$&emsp;USD&emsp;</option>
+                                <option value="EUR">🇪🇺&emsp;€&emsp;EUR&emsp;</option>
                             </select>
                         </li>
                     
@@ -74,7 +74,15 @@
                 document.getElementById("buy").innerHTML ='<form action='+link+'><input type="submit" value="Buy Case" /></form>';
                 document.getElementById("simulate").innerHTML ='<button onclick="simulateloot()"> Simulate</button>';
                 }
-                
+
+            function formatter(value){
+                selectedCurrency = document.getElementById('currency').value
+                const formatter = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: selectedCurrency,
+                });
+                return formatter.format(value)
+            }
             function showInfo(name) {
 
                 document.getElementById("budgetInput").type =  "hidden";

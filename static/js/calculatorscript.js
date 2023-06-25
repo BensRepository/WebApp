@@ -57,13 +57,6 @@ function simulateloot(){
    
 }
 
-function formatter(value){
-    selectedCurrency = document.getElementById('currency').value
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: selectedCurrency,
-    });
-    return formatter.format(value)
-}
+
 
 
