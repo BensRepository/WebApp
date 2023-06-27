@@ -8,5 +8,5 @@ def start():
     price = WebAppViewset()
     rates = WebAppViewset()
     scheduler.add_job(price.save_price_data,"interval",minutes=10,id="caseprice_001",replace_existing=True)
-    #scheduler.add_job(rates._set_conversion_rates,"interval",minutes=1,id="currencyrates_001",replace_existing=True)
+    scheduler.add_job(rates._save_conversion_rates,"interval",minutes=1440,id="currencyrates_001",replace_existing=True)
     scheduler.start()

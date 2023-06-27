@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import requests
 import json
 from .models import Case
+from .models import Rate
 from rest_framework import viewsets
 import glob
 from WebApp.settings import STATIC_URL
@@ -65,6 +66,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         except:
             print("no data returned")
             return None
+        
     def _get_conversion_rates(self):
         url = "https://openexchangerates.org/api/latest.json?app_id=97690a0737ec4f75a6e93c705a61e81d%27"
         api_request = requests.get(url)
@@ -75,10 +77,22 @@ class WebAppViewset(viewsets.ModelViewSet):
             print("no data returned")
             return None
         
-    def _set_conversion_rates(self):
-        data = self._get_conversion_rates()
-        print(data['rates']["GBP"])
-        return data['rates']
+    def _save_conversion_rates(self):
+        update_rate = Rate.objects.all()
+        required_rates = ['GBP','USD','EUR']
+        rate_data = self._get_conversion_rates()
+       
+        if rate_data is not None:
+            try:
+                for i in required_rates:
+                    print(float(rate_data['rates'][i]))
+                    rate_object = Rate.objects.get(name=i)
+                    rate_object.value = float(rate_data['rates'][i])
+                    rate_object.save(update_fields=['value'])
+                    print("saves model")
+            except:
+                print("Didn't save model")
+                pass
     
     def save_price_data(self):
         needs_updating = Case.objects.all().order_by('date_modified').first()
