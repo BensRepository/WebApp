@@ -16,6 +16,9 @@ class WebAppViewset(viewsets.ModelViewSet):
     def load_roulette(request):
         return render(request,'roulette.html')
     
+    def load_bind(request):
+        return render(request,'bind.html')
+    
     def load_sticker(request):
 ##  ,,GOLD FOR DREAMHACK 2014
         tornamantNames = ["ESLKatowice14","IntelRio22","PGLAntwerp22","PGLStockholm21","StarLadderBerlin19",

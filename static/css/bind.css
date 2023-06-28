@@ -1,0 +1,50 @@
+.keyboardKey {
+    background-color: aliceblue;
+
+}
+.row {
+    padding: 1px;
+    width: 800px;
+}
+.parent {
+    padding: 2px;
+    margin: 2px;
+    border-color: aliceblue;
+    border-style: solid;
+    border: 5px;
+    background: gray;
+    color: aliceblue;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.parent:hover{
+    background: green;
+}
+
+.rowOneKey{
+    height: 50px;
+    width: 56.16px;
+}
+
+.rowTwoKey{
+    height: 50px;
+    width: 50px;
+}
+.rowThreeKey{
+    height: 50px;
+    width: 50px;
+}
+.rowFourKey{
+    height: 50px;
+    width: 50px;
+}
+.rowFiveKey{
+    height: 50px;
+    width: 50px;
+}
+.rowSixKey{
+    height: 50px;
+    width: 50px;
+}

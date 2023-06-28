@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+     
+{% load static %}
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>CS:GO Tools Case Calculator</title>
+        <!-- tab bar icon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'cases/Chroma_2.png'%}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
+        <link href="{% static 'css/bind.css'%}" rel="stylesheet" />
+    </head>
+    <body style="background-color: rgb(48, 48, 47);">
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+            <div class="container px-lg-5">
+                <a class="navbar-brand" href="{% url 'index' %}">CS:GO Tools</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link"  href="{% url 'calculator' %}">Case Calculator</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sticker' %}">Sticker Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'roulette' %}">Strat Roulette</a></li>
+                        <li class="nav-item"><a class="nav-link active"aria-current="page" href="{% url 'bind' %}">Bind Generator</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://steamcommunity.com/tradeoffer/new/?partner=127649164&token=AG79v66Q">DONATE (Trade Link)</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="container" style="color: white;">
+                <h3>1. Select a key you wish to bind.</h3>
+                <div id="keyboardDiv">
+                    <div id="row1" class="row">
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F1')">F1</div>
+                        <div class="keyboardKey parent rowOneKey">F2</div>
+                        <div class="keyboardKey parent rowOneKey">F3</div>
+                        <div class="keyboardKey parent rowOneKey">F4</div>
+                        <div class="keyboardKey parent rowOneKey">F5</div>
+                        <div class="keyboardKey parent rowOneKey">F6</div>
+                        <div class="keyboardKey parent rowOneKey">F7</div>
+                        <div class="keyboardKey parent rowOneKey">F8</div>
+                        <div class="keyboardKey parent rowOneKey">F9</div>
+                        <div class="keyboardKey parent rowOneKey">F10</div>
+                        <div class="keyboardKey parent rowOneKey">F11</div>
+                        <div class="keyboardKey parent rowOneKey">F12</div>
+                    </div>
+                    <div id="row2" class="row">
+                        <div class="keyboardKey parent rowTwoKey" style="width: 45.03px;">`</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44px;">1</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.38px;">2</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.45px;">3</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.47px;">4</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.38px;">5</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.42px;">6</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.28px;">7</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.41px;">8</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.42px;">9</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.42px;">0</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 43.98px;">-</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.52px;">=</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 92.84px;">Backspace</div>
+                    </div>
+                    <div id="row3" class="row">
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">Tab</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">Q</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">W</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">E</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">R</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">T</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">Y</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">U</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">I</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">O</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">P</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">[</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">]</div>
+                        <div class="keyboardKey parent rowThreeKey" style="width: px;">\</div>
+                    </div>
+                    <div id="row4" class="row">
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">Capslock</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">A</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">S</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">D</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">F</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">G</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">H</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">J</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">K</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">L</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">;</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">'</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">#</div>
+                        <div class="keyboardKey parent rowFourKey" style="width: px;">Enter</div>
+                    </div>
+                    <div id="row5" class="row">
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">Shift</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">Z</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">X</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">C</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">V</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">B</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">N</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">M</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">,</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">.</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">/</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: px;">Shift</div>
+                    </div>
+                    <div id="row6" class="row">
+                        <div class="keyboardKey parent rowSixKey" style="width: px;">Cnrl</div>
+                        <div class="keyboardKey parent rowSixKey" style="width: px;">----</div>
+                        <div class="keyboardKey parent rowSixKey" style="width: px;">Alt</div>
+                        <div class="keyboardKey parent rowSixKey" style="width: px;">Space</div>
+                        <div class="keyboardKey parent rowSixKey" style="width: px;">Alt</div>
+                        <div class="keyboardKey parent rowSixKey" style="width: px;">---</div>
+                        <div class="keyboardKey parent rowSixKey" style="width: px;">Cnrl</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+   
+        
+        <!-- Footer-->
+        <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);;position: fixed;text-align: center;bottom: 0px;width: 101%; "><p class="m-0 text-center text-white">Copyright &copy; CS:GO Tools 2023</p></div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/bindscript.js' %}"></script>
+
+    </body>
+</html>
