@@ -36,96 +36,156 @@
             </div>
         </nav>
         <section>
-            <div class="container" style="color: white;">
-                <h3>1. Select a key you wish to bind.</h3>
+            <div class="container">
+                <h3 class="textStyle">1. Select a key you wish to bind.</h3>
                 <div id="keyboardDiv">
                     <div id="row1" class="row">
                         <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F1')">F1</div>
-                        <div class="keyboardKey parent rowOneKey">F2</div>
-                        <div class="keyboardKey parent rowOneKey">F3</div>
-                        <div class="keyboardKey parent rowOneKey">F4</div>
-                        <div class="keyboardKey parent rowOneKey">F5</div>
-                        <div class="keyboardKey parent rowOneKey">F6</div>
-                        <div class="keyboardKey parent rowOneKey">F7</div>
-                        <div class="keyboardKey parent rowOneKey">F8</div>
-                        <div class="keyboardKey parent rowOneKey">F9</div>
-                        <div class="keyboardKey parent rowOneKey">F10</div>
-                        <div class="keyboardKey parent rowOneKey">F11</div>
-                        <div class="keyboardKey parent rowOneKey">F12</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F2')">F2</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F3')">F3</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F4')">F4</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F5')">F5</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F6')">F6</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F7')">F7</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F8')">F8</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F9')">F9</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F10')">F10</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F11')">F11</div>
+                        <div class="keyboardKey parent rowOneKey" onclick="keyboardKeyClick('F12')">F12</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
                     </div>
                     <div id="row2" class="row">
-                        <div class="keyboardKey parent rowTwoKey" style="width: 45.03px;">`</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44px;">1</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.38px;">2</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.45px;">3</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.47px;">4</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.38px;">5</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.42px;">6</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.28px;">7</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.41px;">8</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.42px;">9</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.42px;">0</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 43.98px;">-</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 44.52px;">=</div>
-                        <div class="keyboardKey parent rowTwoKey" style="width: 92.84px;">Backspace</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 45.03px;"onclick="keyboardKeyClick('`')">`</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44px;"onclick="keyboardKeyClick('1')">1</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.28px;"onclick="keyboardKeyClick('2')">2</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.25px;"onclick="keyboardKeyClick('3')">3</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.27px;"onclick="keyboardKeyClick('4')">4</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.28px;"onclick="keyboardKeyClick('5')">5</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.22px;"onclick="keyboardKeyClick('6')">6</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.28px;"onclick="keyboardKeyClick('7')">7</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.21px;"onclick="keyboardKeyClick('8')">8</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.22px;"onclick="keyboardKeyClick('9')">9</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.22px;"onclick="keyboardKeyClick('10')">0</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 43.20px;"onclick="keyboardKeyClick('11')">-</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 44.22px;"onclick="keyboardKeyClick('12')">=</div>
+                        <div class="keyboardKey parent rowTwoKey" style="width: 92.84px;"onclick="keyboardKeyClick('13')">Backspace</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('Num Lock')">Num Lock</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('/')">/</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('*')">*</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('-')">-</div>
                     </div>
                     <div id="row3" class="row">
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">Tab</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">Q</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">W</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">E</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">R</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">T</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">Y</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">U</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">I</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">O</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">P</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">[</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">]</div>
-                        <div class="keyboardKey parent rowThreeKey" style="width: px;">\</div>
+                        <div class="keyboardKey parent" style="width: 50px;">Tab</div>
+                        <div class="keyboardKey parent" style="width: 47.45px;">Q</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('W')">W</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('E')">E</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('R')">R</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('T')">T</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('Y')">Y</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('U')">U</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('I')">I</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('O')">O</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('P')">P</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('[')">[</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick(']')">]</div>
+                        <div class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('\')">\</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent rowOneKey">7</div>
+                        <div class="keyboardKey parent rowOneKey">8</div>
+                        <div class="keyboardKey parent rowOneKey">9</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('+')">+</div>
                     </div>
                     <div id="row4" class="row">
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">Capslock</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">A</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">S</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">D</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">F</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">G</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">H</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">J</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">K</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">L</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">;</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">'</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">#</div>
-                        <div class="keyboardKey parent rowFourKey" style="width: px;">Enter</div>
+                        <div class="keyboardKey parent" style="width: 77px;"onclick="keyboardKeyClick('Capslock')">Capslock</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('A')">A</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('S')">S</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('D')">D</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('F')">F</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('G')">G</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('H')">H</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('J')">J</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('K')">K</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('L')">L</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick(';')">;</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick(''')">'</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('#')">#</div>
+                        <div class="keyboardKey parent rowFourKey"onclick="keyboardKeyClick('Enter')">Enter</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('4')">4</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('5')">5</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('6')">6</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('+')">+</div>
                     </div>
                     <div id="row5" class="row">
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">Shift</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">Z</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">X</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">C</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">V</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">B</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">N</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">M</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">,</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">.</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">/</div>
-                        <div class="keyboardKey parent rowFiveKey" style="width: px;">Shift</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: 60px;"onclick="keyboardKeyClick('Shift')">Shift</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('Z')">Z</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('X')">X</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('C')">C</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('V')">V</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('B')">B</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('N')">N</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('M')">M</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick(',')">,</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('.')">.</div>
+                        <div class="keyboardKey parent rowFiveKey"onclick="keyboardKeyClick('/')">/</div>
+                        <div class="keyboardKey parent rowFiveKey" style="width: 60px;"onclick="keyboardKeyClick('Shift')">Shift</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('↑')">↑</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('1')">1</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('2')">2</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('3')">3</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('Enter')">Enter</div>
                     </div>
-                    <div id="row6" class="row">
-                        <div class="keyboardKey parent rowSixKey" style="width: px;">Cnrl</div>
-                        <div class="keyboardKey parent rowSixKey" style="width: px;">----</div>
-                        <div class="keyboardKey parent rowSixKey" style="width: px;">Alt</div>
-                        <div class="keyboardKey parent rowSixKey" style="width: px;">Space</div>
-                        <div class="keyboardKey parent rowSixKey" style="width: px;">Alt</div>
-                        <div class="keyboardKey parent rowSixKey" style="width: px;">---</div>
-                        <div class="keyboardKey parent rowSixKey" style="width: px;">Cnrl</div>
+            
+                    <div id="row6" class="row">   
+                        <div class="keyboardKey parent rowSixKey"onclick="keyboardKeyClick('Cnrl')">Cnrl</div>
+                        <div class="keyboardKey parent_no_key rowSixKey"></div>
+                        <div class="keyboardKey parent rowSixKey"onclick="keyboardKeyClick('Alt')">Alt</div>
+                        <div class="keyboardKey parent rowSixKey" style="width: 343px;"onclick="keyboardKeyClick('Space')">Space</div>
+                        <div class="keyboardKey parent rowSixKey"onclick="keyboardKeyClick('Alt')">Alt</div>
+                        <div class="keyboardKey parent_no_key rowSixKey"></div>
+                        <div class="keyboardKey parent rowSixKey"onclick="keyboardKeyClick('Cnrl')">Cnrl</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('←')">←</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('↓')">↓</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('→')">→</div>
+                        <div class="keyboardKey parent_no_key rowOneKey"></div>
+                        <div class="keyboardKey parent "style="height: 50px;width: 118px;"onclick="keyboardKeyClick('0')">0</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('Del')">Del</div>
+                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('Enter')">Enter</div>
                     </div>
                 </div>
+                <div id="bindType">
+                    <h4 style="color: rgb(230, 221, 221);" id="selectedKey"></h4>
+                    <h3 class="textStyle"id="secondTwoTitle"></h3>
+                </div>
             </div>
+   
+
         </section>
       
    
