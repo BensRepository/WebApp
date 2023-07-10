@@ -13,7 +13,7 @@
 .right {
     height: 720px;
     background-color: rgb(173, 169, 169);
-    color: aliceblue;
+    color: rgb(7, 7, 7);
     display: block;
     width: 50%;
     overflow-y: scroll;

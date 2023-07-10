@@ -4,6 +4,9 @@
 {% load static %}
 
     <head>
+         <!-- Core theme JS-->
+        <script src="{% static 'js/bindscript.js' %}"></script>
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -35,7 +38,12 @@
                 </div>
             </div>
         </nav>
+        {{ filenames|json_script:"Filenames" }}
+        <script>
+            var selectedBind = "test";
+        </script>
         <section>
+          
             <div class="container">
                 <h3 class="textStyle">1. Select a key you wish to bind.</h3>
                 <div id="keyboardDiv">
@@ -179,12 +187,129 @@
                         <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('Enter')">Enter</div>
                     </div>
                 </div>
+                
                 <div id="bindType">
                     <h4 style="color: rgb(230, 221, 221);" id="selectedKey"></h4>
+                   
                     <h3 class="textStyle"id="secondTwoTitle"></h3>
+                    <div id="binds" style="display: none;">
+                        <p class="bindItem displayDesc" onclick="bindClick('Remove Crosshair')">Remove Crosshair</p>
+                        <p class="hide">toggle the visibility of your crosshair. 
+                            This can be useful if you're ever in need of taking in-game screenshots.</p>
+
+                        <p class="bindItem displayDesc" onclick="bindClick('Mute')">Mute Team</p>
+                        <p class="hide">This bind will mute your teammates voice communition.</p>
+
+                        <p class="bindItem displayDesc" onclick="bindClick('Clear Decals')">Clear Decals</p>
+                        <p class="hide">Decals are any effects added to the walls and ground of map as a result of gameplay: blood, graffitis, etc.
+                             This bind will instantly clear all decals.</p>
+
+                        <p class="bindItem displayDesc" onclick="bindClick('Toggle Hands')">Toggle Hands</p>
+                        <p class="hide">Will switch your gun position between your left and right hand. 
+                            Typically used to help prevent your gun model reducing visability.</p>
+
+                        <p class="bindItem displayDesc" onclick="bindClick('Jumpthrow')">Jump Throw</p>
+                        <p class="hide"><strong>Must be placed in your autoexec</strong> Pull pin and throw perfect jump throws every time</p>
+
+                        <p class="bindItem displayDesc" onclick="bindClick('Net_graph')">Net_graph</p>
+                        <div class="hide">The net_graph is a useful tool, showing for statistics at the bottom of your screen.
+                            however, in turn adds unnecessary clutter to your game and can be distracting. 
+                            This bind will make it so that when you click a key, the net_graph menu will show, and when you let go it will hide. 
+                        </div>
+
+                        <p class="bindItem displayDesc" onclick="bindClick('Zoom Radar')">Zoom Radar</p>
+                        <div class="hide">Zoom into your radar! Pressing it 4 times will loop the size back round to where it was originally.</div>
+
+                        <p class="bindItem displayDesc" onclick="bindClick('Weapon Buys')">Weapon Buys</p>
+                        <div class="hide">Configure binds to buy loadouts with a single button press.</div>
+                    </div>
                 </div>
+                <div id="loadoutChoice"  style="display: none;">
+                    <h3 class="textStyle"> 2.5 Pick Loadout</h3>
+                    <div id="primaryName">
+                        <h4 style="color: rgb(230, 221, 221);">Primary</h4>
+                        <script>
+                            function test(type) {
+                                if(document.getElementById(type).style.display == "none") {
+                                    document.getElementById(type).style.display = "block"
+                                }
+                                    
+                                else{
+                                    document.getElementById(type).style.display = "none"
+                                }
+                            }
+                        </script>
+                        <h5 style="color: rgb(202, 194, 194)"> Rifles</h4>
+                        <button onclick="test('Rifles')"></button>
+                        <div class="pickLoadoutText" id="Rifles">
+                            
+                               
+                            <script>
+                                displayLoadoutImage("Rifles");   
+                            </script>
+                        </div>
+
+                        <h5 style="color: rgb(202, 194, 194)"> SMGs</h4>
+                            <button onclick="test('SMGs')"></button>
+                        <div class="pickLoadoutText" id="SMGs">
+                            
+                            <script>
+                                displayLoadoutImage("SMGs");   
+                            </script>
+                        </div>
+
+                        <h5 style="color: rgb(202, 194, 194)">  Heavy</h4>
+                        <button onclick="test('Heavy')"></button>
+                        <div class="pickLoadoutText" id="Heavy">
+                           
+                            <script>
+                                displayLoadoutImage("Heavy");   
+                            </script>
+                        </div>
+                    </div>
+               
+                    <h4 style="color: rgb(230, 221, 221);">Secondary</h4>
+                    <button onclick="test('Secondary')"></button>
+                    <div class="pickLoadoutText" id="Secondary">
+                        
+                        <script>
+                            displayLoadoutImage("Secondary");   
+                        </script>
+                    </div>
+
+                    <h4 style="color: rgb(230, 221, 221);">Grenades</h4>
+                    <button onclick="test('Grenade')"></button>
+                    <div class="pickLoadoutText" id="Grenade">
+                        
+                        <script>
+                            displayLoadoutImage("Grenade");   
+                        </script>
+                    </div>
+
+                    <h4 style="color: rgb(230, 221, 221);">Equipment </h4>
+                    <button onclick="test('Equipment')"></button>
+                    <div class="pickLoadoutText" id="Equipment">
+                        
+                        <script>
+                            displayLoadoutImage("Equipment");   
+                        </script>
+                    </div>
+                </div>
+                <div id="thirdSection"  style="display: none;">
+                    <h3 class="textStyle" id="thirdTitle"> 3.  Copy your bind!</h3>
+                    <textarea readonly id="consoleCode" rows="6" cols="100"></textarea>
+                    <button onclick="CopyFunction()">Copy text</button>
+                    
+
+                </div>
+    
             </div>
-   
+       
+            <!-- 
+                any bind suggestions join steamgroup and post
+                export as auto exec button
+                green text instead of pop up
+            -->
 
         </section>
       
@@ -194,8 +319,7 @@
         <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);;position: fixed;text-align: center;bottom: 0px;width: 101%; "><p class="m-0 text-center text-white">Copyright &copy; CS:GO Tools 2023</p></div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'js/bindscript.js' %}"></script>
+     
 
     </body>
 </html>

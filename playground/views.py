@@ -17,7 +17,14 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'roulette.html')
     
     def load_bind(request):
-        return render(request,'bind.html')
+    
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
+        context['filenames']=filenames
+        return render(request,'bind.html',context=context)
     
     def load_sticker(request):
 ##  ,,GOLD FOR DREAMHACK 2014

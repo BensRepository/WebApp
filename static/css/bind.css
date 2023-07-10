@@ -57,3 +57,32 @@
 .textStyle {
     color: white;
 }
+
+.bindItem {
+    color: white;
+    background: blue;
+    width: 20%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+  }
+    
+  .displayDesc:hover + .hide {
+    display: block;
+    color: rgb(218, 203, 203);
+  }
+
+  .displayDesc:hover{
+    background: rgb(42, 42, 175);
+
+  }
+
+
+  .pickLoadoutText{
+    color: rgb(230, 221, 221);
+
+  }
