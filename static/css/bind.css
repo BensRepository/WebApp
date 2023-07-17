@@ -27,6 +27,8 @@
   }
 .parent:hover{
     background: green;
+    opacity: .5;
+    cursor: pointer;
 }
 
 .rowOneKey{
@@ -65,6 +67,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .hide {
@@ -86,3 +89,16 @@
     color: rgb(230, 221, 221);
 
   }
+
+img {
+    transition: opacity .3s linear;
+}
+img:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.gunBackground {
+    background-color: transparent;
+     
+}

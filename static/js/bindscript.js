@@ -1,6 +1,7 @@
 function keyboardKeyClick(key){
     selectedBind = key
     document.getElementById("thirdSection").style.display ="none"
+    document.getElementById("loadoutChoice").style.display ="none"
     document.getElementById("selectedKey").innerHTML="Selected Key: "+key;
     document.getElementById("secondTwoTitle").innerHTML="2. What type of bind do you need?";
     document.getElementById("binds").style.display = "Block"
@@ -49,16 +50,40 @@ function displayLoadoutImage(type){
         var img = document.createElement("IMG");
         url = filenames[type][i]
         img.src = url.slice(1,);
-        img.id = filenames[type][i].slice(24,filenames[type][i].length -4);
+        img.id = filenames[type][i].split("\\")[1];
         img.style.width = "150px";
         img.style.height = "auto";
-        img.addEventListener("click", function(){configureBuyBind(filenames[type][i]) });
+        img.setAttribute("class", "gunBackground");
+        img.addEventListener("click", function(){configureBuyBind(filenames[type][i].split("\\")[1].split(".")[0])});
         document.getElementById(type).appendChild(img);
       }
 
 }
 
 
-function configureBuyBind(test){
-    alert(test)
+function configureBuyBind(gun){
+
+    weapons = {"ak47":"Primary","aug":"Primary","awp":"Primary","famas":"Primary","g3sg1":"Primary","galilar":"Primary","m4a1":"Primary","m4a4":"Primary","scar20":"Primary","sg556":"Primary","ssg08":"Primary",
+    "m249":"Primary","mag-7":"Primary","negev":"Primary","nova":"Primary","sawed-off":"Primary","xm1014":"Primary",
+    "bizon":"Primary","mac10":"Primary","mp5":"Primary","mp7":"Primary","mp9":"Primary","p90":"Primary","ump45":"Primary",
+    "cz75-auto":"Secondary","deagle":"Secondary","elite":"Secondary","fiveseven":"Secondary","p250":"Secondary","p2000":"Secondary","revolver":"Secondary","tec9":"Secondary",
+    "decoy":"Grenades","flashbang":"Grenades","flashbang2":"Grenades","hegrenade":"Grenades","incgrenade":"Grenades","molitov":"Grenades","smokegrenade":"Grenades",
+    "defuser":"Equipment","taser":"Equipment","vest":"Equipment","vesthelm":"Equipment"}
+    alert(weapons[gun])
+
+    alert(document.getElementById("consoleCode").innerHTML.split("'")[3])
+    //document.getElementsByClassName("gunBackground").backgroundColor ="transparent"
+
+    //document.getElementById(gun+".png").style.borderColor = "green"
+
+    document.getElementById("thirdSection").style.display = "Block"
+
+    var key = document.getElementById("selectedKey").innerHTML
+    newBind = "bind " +key.slice(14,)+" 'buy " + gun+";'"
+   
+    document.getElementById("consoleCode").innerText =  document.getElementById("consoleCode").innerHTML + newBind
+    
+
+    
 }
+
