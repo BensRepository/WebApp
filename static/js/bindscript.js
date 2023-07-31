@@ -1,6 +1,8 @@
 var previousKey = "F1"
 function keyboardKeyClick(key){
-    
+    if (key == "test"){
+        key = "'"
+    }
     document.getElementById(key).style.backgroundColor = "green"
     document.getElementById(previousKey).style.backgroundColor = "gray"
     previousKey = key
@@ -17,6 +19,15 @@ function bindClick(bind){
     if (previousBind == "") {
         previousBind = bind
     }
+    else if (previousBind == bind) {
+        document.getElementById("loadoutChoice").style.display ="none"
+        document.getElementById("thirdSection").style.display ="none"
+        document.getElementById(previousBind).style.backgroundColor = "blue" 
+        previousBind = ""
+        bind = ""
+        
+        clearBinds()
+    } 
     else{
         document.getElementById(previousBind).style.backgroundColor = "blue"    
         previousBind = bind
@@ -36,7 +47,9 @@ function bindClick(bind){
         document.getElementById("thirdSection").style.display ="none"
  
     }
-    else{
+    else if (bind == "") {
+        document.getElementById("thirdSection").style.display ="none"
+    } else{
         document.getElementById("loadoutChoice").style.display ="none"
         document.getElementById("thirdSection").style.display ="Block"
         document.getElementById("consoleCode").innerText = bindsCode[bind]
@@ -81,6 +94,28 @@ function clearBinds(){
     TPriceEquipment1 = 0
     TPriceEquipment2 = 0
     TPriceEquipment3= 0
+
+    document.getElementById(selectedPrimary).style.backgroundColor = "transparent"
+    document.getElementById(selectedSecondary).style.backgroundColor = "transparent"
+    document.getElementById(selectedGrenade1).style.backgroundColor = "transparent"
+    document.getElementById(selectedGrenade2).style.backgroundColor = "transparent"
+    document.getElementById(selectedGrenade3).style.backgroundColor = "transparent"
+    document.getElementById(selectedGrenade4).style.backgroundColor = "transparent"
+    document.getElementById(selectedEquipment1).style.backgroundColor = "transparent"
+    document.getElementById(selectedEquipment2).style.backgroundColor = "transparent"
+    document.getElementById(selectedEquipment3).style.backgroundColor = "transparent"
+
+    selectedPrimary = ""
+    selectedSecondary = ""
+    selectedGrenade1 = "" 
+    selectedGrenade2 = ""
+    selectedGrenade3 = ""
+    selectedGrenade4 = ""
+    selectedEquipment1 = ""
+    selectedEquipment2 = ""
+    selectedEquipment3 = ""
+
+    
 }
 function CopyFunction(){
     var copyText = document.getElementById("consoleCode");
@@ -189,6 +224,8 @@ function configureBuyBind(gun){
             document.getElementById(selectedPrimary).style.backgroundColor = "transparent"
             Primary = ""
             selectedPrimary =""
+            CTPricePrimary = 0 
+            TPricePrimary = 0
             gun=""
         }
         else {
@@ -203,11 +240,7 @@ function configureBuyBind(gun){
                 TPricePrimary = costs[gun]
                 CTPricePrimary = costs["m4a1"]
             }
-            else if(gun =="m4a1"){
-                CTPricePrimary = costs[gun]
-                TPricePrimary = costs["ak47"]
-            }
-            else if(gun =="m4a4"){
+            else if(gun =="m4a1" || "m4a4"){
                 CTPricePrimary = costs[gun]
                 TPricePrimary = costs["ak47"]
             }
@@ -291,6 +324,8 @@ function configureBuyBind(gun){
             Secondary = ""
             selectedSecondary =""
             gun=""
+            CTPriceSecondary = 0 
+            TPriceSecondary = 0
             }
         else {
             document.getElementById(gun+".png").style.backgroundColor = "green"
@@ -308,7 +343,7 @@ function configureBuyBind(gun){
                 TPriceSecondary = costs["revolver"]
                 CTPriceSecondary = costs["revolver"]
             }
-            else if(gun =="deagle9"){
+            else if(gun =="deagle"){
                 CTPriceSecondary = costs["deagle"]
                 TPriceSecondary = costs["deagle"]
             }
@@ -328,7 +363,10 @@ function configureBuyBind(gun){
             Grenade1 = "buy " + gun + ";" //cant have molitov and incen - both teams
             CTPriceGrenade1 = costs[gun] // cant have 2 flashes
             TPriceGrenade1 = costs[gun]
+            selectedGrenade1 = gun+".png"
+            document.getElementById(gun+".png").style.backgroundColor = "green"
         }
+        
         else if(Grenade2 == ""){
             Grenade2 = "buy " + gun + ";"
             CTPriceGrenade2 = costs[gun]
@@ -375,10 +413,14 @@ function configureBuyBind(gun){
     TPrice = TPricePrimary + TPriceSecondary + TPriceGrenade1 + TPriceGrenade2 + TPriceGrenade3 + TPriceGrenade4 + TPriceEquipment1 + TPriceEquipment2 + TPriceEquipment3
     document.getElementById("T-Price").innerHTML = "Terroist Price: $"+TPrice
     document.getElementById("CT-Price").innerHTML = "Counter-Terroist Price : $"+CTPrice
-    var newBind = 'Bind ' + " "+key+ " '" + Primary + Secondary + Grenade1 + Grenade2 + Grenade3 + Grenade4 + Equipment1 + Equipment2 + Equipment3 +"'"
+    var newBind = 'Bind' + " "+key+ " '" + Primary + Secondary + Grenade1 + Grenade2 + Grenade3 + Grenade4 + Equipment1 + Equipment2 + Equipment3 +"'"
 
     document.getElementById("consoleCode").innerText =  newBind
-    
+
+    if(newBind == ('Bind' + " "+key+ " '" +"'")){
+   
+        document.getElementById("consoleCode").innerText = "" 
+    }
      
     
 }
