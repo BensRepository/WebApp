@@ -3,22 +3,54 @@ function keyboardKeyClick(key){
     if (key == "test"){
         key = "'"
     }
-    document.getElementById(key).style.backgroundColor = "green"
-    document.getElementById(previousKey).style.backgroundColor = "gray"
-    previousKey = key
-    selectedBind = key
-    document.getElementById("thirdSection").style.display ="none"
-    document.getElementById("loadoutChoice").style.display ="none"
-    document.getElementById("selectedKey").innerHTML="Selected Key: "+key;
-    document.getElementById("secondTwoTitle").innerHTML="2. What type of bind do you need?";
-    document.getElementById("binds").style.display = "Block"
+    if (previousKey == key) {
+        document.getElementById(previousKey).style.backgroundColor = "gray"
+        document.getElementById(key).style.backgroundColor = "gray"
+        key = ""
+        document.getElementById("selectedKey").innerHTML="Selected Key: "+"NONE!";
+
+    }
+    else{
+        //change key in gun bind
+           //change for bind
+
+           document.getElementById(key).style.backgroundColor = "green"
+           document.getElementById(previousKey).style.backgroundColor = "gray"
+           previousKey = key
+           selectedBind = key
+               
+            document.getElementById("selectedKey").innerHTML="Selected Key: "+key;
+            document.getElementById("secondTwoTitle").innerHTML="2. What type of bind do you need?";
+            document.getElementById("binds").style.display = "Block"
+        try{
+            if(gunsSelected!=""){
+                var newBind = 'Bind' + " "+key+ " '" + Primary + Secondary + Grenade1 + Grenade2 + Grenade3 + Grenade4 + Equipment1 + Equipment2 + Equipment3 +"'"
+                document.getElementById("consoleCode").innerText =  newBind
+            }
+            else{
+                previousBind2 = previousBind
+                previousBind = ""
+                bindClick(previousBind2)
+            }
+        }
+        catch{}
+        
+     
+
+        
+    }
+
 }
+
+gunsSelected = ""
 previousBind = ""
 function bindClick(bind){
+    clearBinds()
     document.getElementById(bind).style.backgroundColor = "green"
     if (previousBind == "") {
         previousBind = bind
     }
+
     else if (previousBind == bind) {
         document.getElementById("loadoutChoice").style.display ="none"
         document.getElementById("thirdSection").style.display ="none"
@@ -28,6 +60,7 @@ function bindClick(bind){
         
         clearBinds()
     } 
+   
     else{
         document.getElementById(previousBind).style.backgroundColor = "blue"    
         previousBind = bind
@@ -50,9 +83,11 @@ function bindClick(bind){
     else if (bind == "") {
         document.getElementById("thirdSection").style.display ="none"
     } else{
+        gunsSelected = ""
         document.getElementById("loadoutChoice").style.display ="none"
         document.getElementById("thirdSection").style.display ="Block"
         document.getElementById("consoleCode").innerText = bindsCode[bind]
+      
        
 
     }
@@ -95,15 +130,52 @@ function clearBinds(){
     TPriceEquipment2 = 0
     TPriceEquipment3= 0
 
-    document.getElementById(selectedPrimary).style.backgroundColor = "transparent"
-    document.getElementById(selectedSecondary).style.backgroundColor = "transparent"
-    document.getElementById(selectedGrenade1).style.backgroundColor = "transparent"
-    document.getElementById(selectedGrenade2).style.backgroundColor = "transparent"
-    document.getElementById(selectedGrenade3).style.backgroundColor = "transparent"
-    document.getElementById(selectedGrenade4).style.backgroundColor = "transparent"
-    document.getElementById(selectedEquipment1).style.backgroundColor = "transparent"
-    document.getElementById(selectedEquipment2).style.backgroundColor = "transparent"
-    document.getElementById(selectedEquipment3).style.backgroundColor = "transparent"
+  
+    try {
+        document.getElementById(selectedPrimary).style.backgroundColor = "transparent"
+    } catch (error) { 
+    }
+    try {
+        document.getElementById(selectedSecondary).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }    try {
+        document.getElementById(selectedGrenade1).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }    try {
+        document.getElementById(selectedGrenade2).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }    try {
+        document.getElementById(selectedGrenade3).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }    try {
+        document.getElementById(selectedGrenade4).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }
+    try {
+        document.getElementById(selectedEquipment1).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }
+    try {
+        document.getElementById(selectedEquipment2).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }
+    try {
+        document.getElementById(selectedEquipment3).style.backgroundColor = "transparent"
+    } catch (error) {
+        
+    }
+
+
+
+    
+    
 
     selectedPrimary = ""
     selectedSecondary = ""
@@ -414,7 +486,7 @@ function configureBuyBind(gun){
     document.getElementById("T-Price").innerHTML = "Terroist Price: $"+TPrice
     document.getElementById("CT-Price").innerHTML = "Counter-Terroist Price : $"+CTPrice
     var newBind = 'Bind' + " "+key+ " '" + Primary + Secondary + Grenade1 + Grenade2 + Grenade3 + Grenade4 + Equipment1 + Equipment2 + Equipment3 +"'"
-
+    gunsSelected = newBind
     document.getElementById("consoleCode").innerText =  newBind
 
     if(newBind == ('Bind' + " "+key+ " '" +"'")){
