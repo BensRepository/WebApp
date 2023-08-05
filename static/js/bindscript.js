@@ -57,6 +57,9 @@ function keyboardKeyClick(key){
 
 gunsSelected = ""
 previousBind = ""
+function displayBindDescription(){
+    
+}
 function bindClick(bind){
     clearBinds()
     document.getElementById(bind).style.backgroundColor = "green"
@@ -547,21 +550,21 @@ function configureBuyBind(gun){
             if (position == "grenade1") {
                 TPriceGrenade1 = costs[gun]
                 CTPriceGrenade1 = costs[gun]
-                Grenade1 = "buy " +gun2 +";"
+                Grenade1 = "buy " +gun +";"
             } else if(position == "grenade2") {
                 TPriceGrenade2 = costs[gun]
                 CTPriceGrenade2 = costs[gun]
-                Grenade2 = "buy " +gun2+ ";"
+                Grenade2 = "buy " +gun+ ";"
             }
             else if(position == "grenade3") {
                 TPriceGrenade3 = costs[gun]
                 CTPriceGrenade3 = costs[gun]
-                Grenade3 = "buy " +gun2 +";"
+                Grenade3 = "buy " +gun +";"
             }
             else if(position == "grenade4") {
                 TPriceGrenade4 = costs[gun]
                 CTPriceGrenade4 = costs[gun]
-                Grenade4 = "buy " +gun2 +";"
+                Grenade4 = "buy " +gun +";"
             }
             break;
             }  
