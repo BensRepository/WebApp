@@ -7,8 +7,11 @@ function keyboardKeyClick(key){
         document.getElementById(previousKey).style.backgroundColor = "gray"
         document.getElementById(key).style.backgroundColor = "gray"
         key = ""
-        document.getElementById("selectedKey").innerHTML="Selected Key: "+"NONE!";
-
+        previousKey = "F1"
+        document.getElementById("selectedKey").innerHTML="Selected Key: "+"None";
+        previousBind2 = previousBind //MEED
+        previousBind = ""
+        bindClick(previousBind2)
     }
     else{
         //change key in gun bind
@@ -129,7 +132,7 @@ function clearBinds(){
     TPriceEquipment1 = 0
     TPriceEquipment2 = 0
     TPriceEquipment3= 0
-
+ 
   
     try {
         document.getElementById(selectedPrimary).style.backgroundColor = "transparent"
@@ -140,19 +143,19 @@ function clearBinds(){
     } catch (error) {
         
     }    try {
-        document.getElementById(selectedGrenade1).style.backgroundColor = "transparent"
+        document.getElementById(positions_selected_grenades["grenade1"]+".png").style.backgroundColor = "transparent"
+    } catch (error) {
+
+    }    try {
+        document.getElementById(positions_selected_grenades["grenade2"]+".png").style.backgroundColor = "transparent"
     } catch (error) {
         
     }    try {
-        document.getElementById(selectedGrenade2).style.backgroundColor = "transparent"
+        document.getElementById(positions_selected_grenades["grenade3"]+".png").style.backgroundColor = "transparent"
     } catch (error) {
         
     }    try {
-        document.getElementById(selectedGrenade3).style.backgroundColor = "transparent"
-    } catch (error) {
-        
-    }    try {
-        document.getElementById(selectedGrenade4).style.backgroundColor = "transparent"
+        document.getElementById(positions_selected_grenades["grenade4"]+".png").style.backgroundColor = "transparent"
     } catch (error) {
         
     }
@@ -172,22 +175,9 @@ function clearBinds(){
         
     }
 
-
-
-    
-    
-
+    positions_selected_grenades = {"grenade1":"","grenade2":"","grenade3":"","grenade4":""}
     selectedPrimary = ""
     selectedSecondary = ""
-    selectedGrenade1 = "" 
-    selectedGrenade2 = ""
-    selectedGrenade3 = ""
-    selectedGrenade4 = ""
-    selectedEquipment1 = ""
-    selectedEquipment2 = ""
-    selectedEquipment3 = ""
-
-    
 }
 function CopyFunction(){
     var copyText = document.getElementById("consoleCode");
@@ -227,13 +217,7 @@ var CTPrice =0
 
 var selectedPrimary = ""
 var selectedSecondary = ""
-var selectedGrenade1 = "" 
-var selectedGrenade2 = ""
-var selectedGrenade3 = ""
-var selectedGrenade4 = ""
-var selectedEquipment1 = ""
-var selectedEquipment2 = ""
-var selectedEquipment3 = ""
+
 
 var CTPricePrimary = 0
 var CTPriceSecondary = 0
@@ -254,6 +238,7 @@ var TPriceGrenade4 = 0
 var TPriceEquipment1 = 0
 var TPriceEquipment2 = 0
 var TPriceEquipment3= 0
+var positions_selected_grenades = {"grenade1":"","grenade2":"","grenade3":"","grenade4":""}
 
 function configureBuyBind(gun){
     
@@ -428,56 +413,152 @@ function configureBuyBind(gun){
         
     }
     else if(weapons[gun] == "Grenades"){
+        gun2 = gun
         if(gun == "flashbang2"){
             gun = "flashbang"
         }
-        if(Grenade1 == ""){
-            Grenade1 = "buy " + gun + ";" //cant have molitov and incen - both teams
-            CTPriceGrenade1 = costs[gun] // cant have 2 flashes
-            TPriceGrenade1 = costs[gun]
-            selectedGrenade1 = gun+".png"
-            document.getElementById(gun+".png").style.backgroundColor = "green"
+        
+        position = ""
+        
+        //iterate through values and find key with earliest blank slot. 
+        for (const [key, value] of Object.entries(positions_selected_grenades)) {
+            if(value == ""){
+                position = key
+                break;
+            }
+            else{
+                continue
+            } 
+        }
+        //iterate through to find if any are dups
+        dups = ""
+        for (const [key, value] of Object.entries(positions_selected_grenades)) {
+            if(gun2 == value){
+                dups = "yes"
+                document.getElementById(gun2+".png").style.backgroundColor = "transparent"
+                positions_selected_grenades[key] = ""
+                if (key == "grenade1") {
+                    TPriceGrenade1 = 0
+                    CTPriceGrenade1 = 0
+                    Grenade1 = ""
+             
+                } else if(key == "grenade2") {
+                    TPriceGrenade2 = 0
+                    CTPriceGrenade2 = 0
+                    Grenade2 = ""
+    
+                }
+                else if(key == "grenade3") {
+                    TPriceGrenade3 = 0
+                    CTPriceGrenade3 = 0
+                    Grenade3 = ""
+                }
+                else if(key == "grenade4") {
+                    TPriceGrenade4 = 0
+                    CTPriceGrenade4 = 0
+                    Grenade4 = ""
+                }
+                break;
+            } 
+            continue
+           }
+        
+        if(dups == ""){
+        for (const [key, value] of Object.entries(positions_selected_grenades)) {
+            
+            if((positions_selected_grenades[key] == "incgrenade") && (gun == "molitov")){
+                document.getElementById(gun2+".png").style.backgroundColor = "green"
+                document.getElementById("incgrenade.png").style.backgroundColor = "transparent"
+                positions_selected_grenades[key] = "molitov"
+                if (key == "grenade1") {
+                    TPriceGrenade1 = costs["molitov"]
+                    CTPriceGrenade1 = costs["incgrenade"]
+                    Grenade1 = "buy molitov;buy incgrenade;"
+                } else if(key == "grenade2") {
+                    TPriceGrenade2 = costs["molitov"]
+                    CTPriceGrenade2 = costs["incgrenade"]
+                    Grenade2 = "buy molitov;buy incgrenade;"
+                }
+                else if(key == "grenade4") {
+                    TPriceGrenade3 = costs["molitov"]
+                    CTPriceGrenade3 = costs["incgrenade"]
+                    Grenade3 = "buy molitov;buy incgrenade;"
+                }
+                else if(key == "grenade4") {
+                    TPriceGrenade4 = costs["molitov"] 
+                    CTPriceGrenade4 = costs["incgrenade"]
+                    Grenade4 = "buy molitov;buy incgrenade;"
+                }
+                break
+            }
+            if((positions_selected_grenades[key] == "molitov") && (gun == "incgrenade")){
+                document.getElementById(gun2+".png").style.backgroundColor = "green"
+                document.getElementById("molitov.png").style.backgroundColor = "transparent"
+                positions_selected_grenades[key] = "incgrenade"
+                
+                if (key == "grenade1") {
+                    TPriceGrenade1 = costs["molitov"]
+                    CTPriceGrenade1 = costs["incgrenade"]
+                    Grenade1 = "buy incgrenade;buy molitov;"
+                } else if(key == "grenade2") {
+                    TPriceGrenade2 = costs["molitov"]
+                    CTPriceGrenade2 = costs["incgrenade"]
+                    Grenade2 = "buy incgrenade;buy molitov;"
+                }
+                else if(key == "grenade4") {
+                    TPriceGrenade3 = costs["molitov"]
+                    CTPriceGrenade3 = costs["incgrenade"]
+                    Grenade3 = "buy incgrenade;buy molitov;"
+                }
+                else if(key == "grenade4") {
+                    TPriceGrenade4 = costs["molitov"] 
+                    CTPriceGrenade4 = costs["incgrenade"]
+                    Grenade4 = "buy incgrenade;buy molitov;"
+                }
+                break
+            }
+            else if(position != "") {
+            document.getElementById(gun2+".png").style.backgroundColor = "green"
+            positions_selected_grenades[position] = gun2
+            if(gun =="molitov"){
+                gun = "molitov: buy incgrenade;"
+            }
+            if(gun =="incgrenade"){
+                gun = "incgrenade: buy incgrenade;"
+            }
+            if (position == "grenade1") {
+                TPriceGrenade1 = costs[gun]
+                CTPriceGrenade1 = costs[gun]
+                Grenade1 = "buy " +gun +";"
+            } else if(position == "grenade2") {
+                TPriceGrenade2 = costs[gun]
+                CTPriceGrenade2 = costs[gun]
+                Grenade2 = "buy " +gun+ ";"
+            }
+            else if(position == "grenade3") {
+                TPriceGrenade3 = costs[gun]
+                CTPriceGrenade3 = costs[gun]
+                Grenade3 = "buy " +gun +";"
+            }
+            else if(position == "grenade4") {
+                TPriceGrenade4 = costs[gun]
+                CTPriceGrenade4 = costs[gun]
+                Grenade4 = "buy " +gun +";"
+            }
+            break;
+            }  
+            else{
+                alert("Grenades full!")
+                break
+            }
         }
         
-        else if(Grenade2 == ""){
-            Grenade2 = "buy " + gun + ";"
-            CTPriceGrenade2 = costs[gun]
-            TPriceGrenade2 = costs[gun]
-        }
-        else if(Grenade3 == ""){
-            Grenade3 = "buy " + gun + ";"
-            CTPriceGrenade3 = costs[gun]
-            TPriceGrenade3 = costs[gun]
-        }
-        else if(Grenade4 == ""){
-            Grenade4 = "buy " + gun + ";"
-            CTPriceGrenade4 = costs[gun]
-            TPriceGrenade4 = costs[gun]
-        }
-        else{
-            alert("Grenades Full")
-        }
     }
-    else if(weapons[gun] == "Equipment"){
-        if(Equipment1 == ""){
-            Equipment1 = "buy " + gun + ";" // one amour
-            CTPriceEquipment1 = costs[gun]
-            TPriceEquipment1 = costs[gun]
-        }
-        else if(Equipment2 == ""){
-            Equipment2 = "buy " + gun + ";"
-            CTPriceEquipment2 = costs[gun]
-            TPriceEquipment2 = costs[gun]
-        }
-        else if(Equipment3 == ""){
-            Equipment3 = "buy " + gun + ";"
-            CTPriceEquipment3 = costs[gun]
-            TPriceEquipment3 = costs[gun]
-        }
-        else{
-            alert("Equipment full")
-        }
-    }
+ 
+}
+    else if(weapons[gun] == "Equipment"){}
+        
+     
     else{
         alert("fuck")
     }
@@ -496,4 +577,3 @@ function configureBuyBind(gun){
      
     
 }
-
