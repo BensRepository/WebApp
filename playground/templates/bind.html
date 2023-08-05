@@ -107,7 +107,7 @@
                         <div id = "P" class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('P')">P</div>
                         <div id = "[" class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('[')">[</div>
                         <div id = "]" class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick(']')">]</div>
-                        <div id = "\\" class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('\\')">\</div>
+                        <div id = "\" class="keyboardKey parent rowThreeKey"onclick="keyboardKeyClick('\')">\</div>
                         <div id = "" class="keyboardKey parent_no_key rowOneKey"></div>
                         <div id = "" class="keyboardKey parent_no_key rowOneKey"></div>
                         <div id = "" class="keyboardKey parent_no_key rowOneKey"></div>
@@ -138,10 +138,10 @@
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
-                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_leftarrow')">4</div>
-                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_5')">5</div>
-                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_rightarrow')">6</div>
-                        <div class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_plus')">+</div>
+                        <div id="kp_leftarrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_leftarrow')">4</div>
+                        <div id="kp_5" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_5')">5</div>
+                        <div id="kp_rightarrow"  class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_rightarrow')">6</div>
+                        <div id="kp_plus"  class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_plus')">+</div>
                     </div>
                     <div id="row5" class="row">
                         <div id= "Shift"class="keyboardKey parent rowFiveKey" style="width: 60px;"onclick="keyboardKeyClick('Shift')">Shift</div>
@@ -158,7 +158,7 @@
                         <div id = "Shift" class="keyboardKey parent rowFiveKey" style="width: 60px;"onclick="keyboardKeyClick('Shift')">Shift</div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
-                        <div id = "uparrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('↑')">↑</div>
+                        <div id = "uparrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('uparrow')">↑</div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
                         <div id = "kp_end" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('kp_end')">1</div>
@@ -174,11 +174,11 @@
                         <div id="Space" class="keyboardKey parent rowSixKey" style="width: 343px;"onclick="keyboardKeyClick('Space')">Space</div>
                         <div id="Alt" class="keyboardKey parent rowSixKey"onclick="keyboardKeyClick('Alt')">Alt</div>
                         <div class="keyboardKey parent_no_key rowSixKey"></div>
-                        <div id="Ctrl2" class="keyboardKey parent rowSixKey"onclick="keyboardKeyClick('Cnrl')">Cnrl</div>
+                        <div id="Ctrl2" class="keyboardKey parent rowSixKey"onclick="keyboardKeyClick('Cnrl2')">Cnrl</div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
                         <div id="leftarrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('leftarrow')">←</div>
-                        <div id="downarrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('↓')">↓</div>
-                        <div id="rightarrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('→')">→</div>
+                        <div id="downarrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('downarrow')">↓</div>
+                        <div id="rightarrow" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('rightarrow')">→</div>
                         <div class="keyboardKey parent_no_key rowOneKey"></div>
                         <div id="kp_ins" class="keyboardKey parent "style="height: 50px;width: 118px;"onclick="keyboardKeyClick('0')">0</div>
                         <div id="kp_del" class="keyboardKey parent rowOneKey"onclick="keyboardKeyClick('.')">.</div>
@@ -197,7 +197,7 @@
 
                         <p id="Mute" class="bindItem displayDesc" onclick="bindClick('Mute')">Mute Team</p>
                         <p class="hide">This bind will mute your teammates voice communition.</p>
-q
+
                         <p id="Clear Decals" class="bindItem displayDesc" onclick="bindClick('Clear Decals')">Clear Decals</p>
                         <p class="hide">Decals are any effects added to the walls and ground of map as a result of gameplay: blood, graffitis, etc.
                              This bind will instantly clear all decals.</p>

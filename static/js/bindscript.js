@@ -3,13 +3,14 @@ function keyboardKeyClick(key){
     if (key == "test"){
         key = "'"
     }
+
     if (previousKey == key) {
         document.getElementById(previousKey).style.backgroundColor = "gray"
         document.getElementById(key).style.backgroundColor = "gray"
         key = ""
         previousKey = "F1"
         document.getElementById("selectedKey").innerHTML="Selected Key: "+"None";
-        previousBind2 = previousBind //MEED
+        previousBind2 = previousBind //Need to fix: num Enter. Cnrl,Shift, F1 , \
         previousBind = ""
         bindClick(previousBind2)
     }
@@ -69,13 +70,13 @@ function bindClick(bind){
         previousBind = bind
     }
    
-    bindsCode = {"Mute": "bind toggle " + selectedBind+ " voice_enable",
-                 "Remove Crosshair": "bind " + selectedBind+ " toggle crosshair 0 1",
-                "Clear Decals":"bind "+selectedBind+" r_cleardecals",
-                "Toggle Hands":"bind "+selectedBind+" toggle cl_righthand 0 1",
-                "Jumpthrow":'alias "+jumpthrow" "+jump;-attack"; alias "-jumpthrow" "-jump"; bind '+selectedBind+' "+jumpthrow"',
-                "Net_graph":'alias +netg "net_graph 1;+showscores";alias -netg "net_graph 0;-showscores";bind ' + selectedBind +' "+netg";',
-                "Zoom Radar":'bind ' +selectedBind+ ' "incrementvar cl_radar_scale 0 1 0.25"',
+    bindsCode = {"Mute": "bind " + '"'+selectedBind+'"'+ ' "'+"toggle voice_enable 0 1"+'"',
+                 "Remove Crosshair": "bind " + '"'+selectedBind+'"'+ ' "'+"toggle crosshair 0 1"+'"',
+                "Clear Decals":"bind "+'"'+selectedBind+'"'+' "'+"r_cleardecals"+'"',
+                "Toggle Hands":"bind "+'"'+selectedBind+'" '+'"'+"toggle cl_righthand 0 1"+'"',
+                "Jumpthrow":'alias "+jumpthrow" "+jump;-attack"; alias "-jumpthrow" "-jump"; bind '+'"'+selectedBind+'"'+' "+jumpthrow"',
+                "Net_graph":'alias +netg "net_graph 1;+showscores";alias -netg "net_graph 0;-showscores";bind ' + '"'+selectedBind+'"' +' "+netg";',
+                "Zoom Radar":'bind ' +'"'+selectedBind+'"'+ ' "incrementvar cl_radar_scale 0 1 0.25"',
                 }
 
     if (bind == "Weapon Buys"){
@@ -198,7 +199,7 @@ function displayLoadoutImage(type){
             img.addEventListener("click", function(){configureBuyBind(filenames[type][i].split("\\")[1].split(".")[0])});
             document.getElementById(type).appendChild(img);
 
-        } else if(filenames[type][i].split("\\")[1] === undefined) {
+        } else if(filenames[type][i].split("\\")[1] === undefined) { //For AWS website url path
             img.id = filenames[type][i].split("/")[4];
             img.style.width = "150px";
             img.style.height = "auto";
@@ -696,7 +697,7 @@ function configureBuyBind(gun){
     TPrice = TPricePrimary + TPriceSecondary + TPriceGrenade1 + TPriceGrenade2 + TPriceGrenade3 + TPriceGrenade4 + TPriceEquipment1 + TPriceEquipment2 + TPriceEquipment3
     document.getElementById("T-Price").innerHTML = "Terroist Price: $"+TPrice
     document.getElementById("CT-Price").innerHTML = "Counter-Terroist Price : $"+CTPrice
-    var newBind = 'Bind' + " "+key+ " '" + Primary + Secondary + Grenade1 + Grenade2 + Grenade3 + Grenade4 + Equipment1 + Equipment2 + Equipment3 +"'"
+    var newBind = 'Bind' + " "+'"'+key+'"'+ ' "' + Primary + Secondary + Grenade1 + Grenade2 + Grenade3 + Grenade4 + Equipment1 + Equipment2 + Equipment3 +'"'
     gunsSelected = newBind
     document.getElementById("consoleCode").innerText =  newBind
 
