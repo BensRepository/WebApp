@@ -190,12 +190,23 @@ function displayLoadoutImage(type){
         var img = document.createElement("IMG");
         url = filenames[type][i]
         img.src = url.slice(1,);
-        img.id = filenames[type][i].split("\\")[1];
-        img.style.width = "150px";
-        img.style.height = "auto";
-        img.setAttribute("class", "gunBackground");
-        img.addEventListener("click", function(){configureBuyBind(filenames[type][i].split("\\")[1].split(".")[0])});
-        document.getElementById(type).appendChild(img);
+        if (filenames[type][i].split("\\")[1] !== undefined) {
+            img.id = filenames[type][i].split("\\")[1];
+            img.style.width = "150px";
+            img.style.height = "auto";
+            img.setAttribute("class", "gunBackground");
+            img.addEventListener("click", function(){configureBuyBind(filenames[type][i].split("\\")[1].split(".")[0])});
+            document.getElementById(type).appendChild(img);
+
+        } else if(filenames[type][i].split("\\")[1] === undefined) {
+            img.id = filenames[type][i].split("/")[4];
+            img.style.width = "150px";
+            img.style.height = "auto";
+            img.setAttribute("class", "gunBackground");
+            img.addEventListener("click", function(){configureBuyBind(filenames[type][i].split("/")[4].split(".")[0])});
+            document.getElementById(type).appendChild(img);
+        }
+        
       }
 
 }
