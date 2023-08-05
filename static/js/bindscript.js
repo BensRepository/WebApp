@@ -3,7 +3,7 @@ function keyboardKeyClick(key){
     if (key == "test"){
         key = "'"
     }
-
+   
     if (previousKey == key) {
         document.getElementById(previousKey).style.backgroundColor = "gray"
         document.getElementById(key).style.backgroundColor = "gray"
@@ -17,17 +17,26 @@ function keyboardKeyClick(key){
     else{
         //change key in gun bind
            //change for bind
-
-           document.getElementById(key).style.backgroundColor = "green"
-           document.getElementById(previousKey).style.backgroundColor = "gray"
-           previousKey = key
-           selectedBind = key
-               
-            document.getElementById("selectedKey").innerHTML="Selected Key: "+key;
-            document.getElementById("secondTwoTitle").innerHTML="2. What type of bind do you need?";
-            document.getElementById("binds").style.display = "Block"
+     
+        document.getElementById(key).style.backgroundColor = "green"
+        document.getElementById(previousKey).style.backgroundColor = "gray"
+        previousKey = key
+        if(key == "Cntrl2"){
+            key = "Cntrl"
+        }
+        if(key == "Shift2"){
+            key = "Shift"
+        }
+        if(key == "kp_enter2"){
+            key = "kp_enter"
+         }
+         selectedBind = key
+        document.getElementById("selectedKey").innerHTML="Selected Key: "+key;
+        document.getElementById("secondTwoTitle").innerHTML="2. What type of bind do you need?";
+        document.getElementById("binds").style.display = "Block"
         try{
             if(gunsSelected!=""){
+                
                 var newBind = 'Bind' + " "+key+ " '" + Primary + Secondary + Grenade1 + Grenade2 + Grenade3 + Grenade4 + Equipment1 + Equipment2 + Equipment3 +"'"
                 document.getElementById("consoleCode").innerText =  newBind
             }
@@ -530,10 +539,10 @@ function configureBuyBind(gun){
             document.getElementById(gun2+".png").style.backgroundColor = "green"
             positions_selected_grenades[position] = gun2
             if(gun == "molitov"){
-                gun2 = "molitov;buy incgrenade;"
+                gun2 = "molitov;buy incgrenade"
             }
             if(gun == "incgrenade"){
-                gun2 = "incgrenade;buy molitov;"
+                gun2 = "incgrenade;buy molitov"
             }
             if (position == "grenade1") {
                 TPriceGrenade1 = costs[gun]
@@ -701,7 +710,7 @@ function configureBuyBind(gun){
     gunsSelected = newBind
     document.getElementById("consoleCode").innerText =  newBind
 
-    if(newBind == ('Bind' + " "+key+ " '" +"'") ){
+    if(newBind == ('Bind ' +'"'+key+'" '+'""') ){
    
         document.getElementById("consoleCode").innerText = "" 
     }

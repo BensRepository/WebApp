@@ -27,7 +27,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'bind.html',context=context)
     
     def load_sticker(request):
-##  ,,GOLD FOR DREAMHACK 2014
+
         tornamantNames = ["ESLKatowice14","IntelRio22","PGLAntwerp22","PGLStockholm21","StarLadderBerlin19",
                         "FACEITLondon18","ELEAGUEBoston18","ELEAGUEAtlanta17","ESLCologne16",
                           "MLGColumbus16","ClujNapoca2015","ESLKatowice15","DreamHack14","ESLCologne14",
