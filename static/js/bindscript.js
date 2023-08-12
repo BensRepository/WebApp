@@ -541,30 +541,65 @@ function configureBuyBind(gun){
             else if(position != "") {
             document.getElementById(gun2+".png").style.backgroundColor = "green"
             positions_selected_grenades[position] = gun2
+            fire = false
             if(gun == "molitov"){
                 gun2 = "molitov;buy incgrenade"
+                fire = true
             }
             if(gun == "incgrenade"){
                 gun2 = "incgrenade;buy molitov"
+                fire = true
             }
             if (position == "grenade1") {
-                TPriceGrenade1 = costs[gun]
-                CTPriceGrenade1 = costs[gun]
-                Grenade1 = "buy " +gun +";"
+                if(fire == true){
+                    TPriceGrenade1 = costs["molitov"]
+                    CTPriceGrenade1 = costs["incgrenade"]
+                    Grenade1 = "buy " +gun2 +";"
+                }
+                else{
+                    TPriceGrenade1 = costs[gun]
+                    CTPriceGrenade1 = costs[gun]
+                    Grenade1 = "buy " +gun2 +";"
+                }
+
             } else if(position == "grenade2") {
-                TPriceGrenade2 = costs[gun]
-                CTPriceGrenade2 = costs[gun]
-                Grenade2 = "buy " +gun+ ";"
+                if(fire == true){
+                    TPriceGrenade2 = costs["molitov"]
+                    CTPriceGrenade2 = costs["incgrenade"]
+                    Grenade2 = "buy " +gun2 +";"
+                }
+                else{
+                    TPriceGrenade2 = costs[gun]
+                    CTPriceGrenade2 = costs[gun]
+                    Grenade2 = "buy " +gun+ ";"
+                }
+          
             }
             else if(position == "grenade3") {
-                TPriceGrenade3 = costs[gun]
-                CTPriceGrenade3 = costs[gun]
-                Grenade3 = "buy " +gun +";"
+                if(fire == true){
+                    TPriceGrenade3 = costs["molitov"]
+                    CTPriceGrenade3 = costs["incgrenade"]
+                    Grenade3 = "buy " +gun2 +";"
+                }
+                else{
+                    TPriceGrenade3 = costs[gun]
+                    CTPriceGrenade3 = costs[gun]
+                    Grenade3 = "buy " +gun +";"
+                }
+
             }
             else if(position == "grenade4") {
-                TPriceGrenade4 = costs[gun]
-                CTPriceGrenade4 = costs[gun]
-                Grenade4 = "buy " +gun +";"
+                if(fire == true){
+                    TPriceGrenade4 = costs["molitov"]
+                    CTPriceGrenade4 = costs["incgrenade"]
+                    Grenade4 = "buy " +gun2 +";"
+                }
+                else{
+                    TPriceGrenade4 = costs[gun]
+                    CTPriceGrenade4 = costs[gun]
+                    Grenade4 = "buy " +gun +";"
+                }
+        
             }
             break;
             }  
@@ -720,3 +755,5 @@ function configureBuyBind(gun){
      
     
 }
+
+
