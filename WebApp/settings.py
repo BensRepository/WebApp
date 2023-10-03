@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-#"13.41.222.173","www.csgotools.co.uk","csgotools.co.uk"
+#"13.41.222.173","www.csgotools.co.uk","csgotools.co.uk","cstools.co.uk","www.cstools.co.uk"
 
 
 # Application definition

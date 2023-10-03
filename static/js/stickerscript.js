@@ -231,7 +231,7 @@ function displayStickerSelected(stickerdiv,value,imagez){
     img.src = url;
     img.id = stickerdiv+imagez;
     var myVariable = value
-    img.style.width = "155px";
+    img.style.width = "100%";
     img.style.height = "auto";
     img.addEventListener("click", function(){removeSelected(stickerdiv) });; 
     document.getElementById(stickerdiv).appendChild(img);
@@ -278,7 +278,7 @@ function makeImages(value,stickerType){
     img.src = url;
     img.id = ""+stickerType+"\\"+value;
     var myVariable = value
-    img.style.width = "155px";
+    img.style.width = "8%";
     img.style.height = "auto"; 
     img.addEventListener("click", function(){stickerSelected(img.id) });;
     document.getElementById(stickerType+'Content').appendChild(img);

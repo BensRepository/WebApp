@@ -1,0 +1,95 @@
+body {
+    background-color: rgb(20, 13, 9);
+    text-align: center;
+    
+    }
+
+p1 {
+    color: white;
+}
+
+p2 {
+    color: white;
+}
+
+
+nav[role="skinmaster"] ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav[role="skinmaster"] ul li {
+    --c: goldenrod;
+    color: var(--c);
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 40%;
+    height: 50%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+nav[role="skinmaster"] ul li span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+nav[role="skinmaster"] ul li:hover {
+    color: black;
+}
+
+nav[role="skinmaster"] ul li:hover span {
+    transform: translateY(0) scale(2);
+}
+
+nav[role="skinmaster"] ul li span:nth-child(1) {
+    --n: 1;
+}
+
+nav[role="skinmaster"] ul li span:nth-child(2) {
+    --n: 2;
+}
+
+nav[role="skinmaster"] ul li span:nth-child(3) {
+    --n: 3;
+}
+
+nav[role="skinmaster"] ul li span:nth-child(4) {
+    --n: 4;
+}
+    
+.main_screen{
+    width: 100%;
+    height: 100%;
+}
+.back-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}

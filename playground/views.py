@@ -118,3 +118,11 @@ class WebAppViewset(viewsets.ModelViewSet):
                 pass
 
 
+    def skin_master(request):
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
+        context['filenames']=filenames
+        return render(request, "skin_master.html",context=context)

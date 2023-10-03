@@ -13,6 +13,6 @@ urlpatterns =[
     path("StickerSearch/",WebAppViewset.load_sticker, name='sticker'),
     path("StratRoulette/",WebAppViewset.load_roulette, name='roulette'),
     path("BindGenerator/",WebAppViewset.load_bind, name='bind'),
-  
+    path("SkinMaster/",WebAppViewset.skin_master, name='skin_master'),
 
             ]
