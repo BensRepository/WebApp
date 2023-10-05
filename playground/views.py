@@ -168,7 +168,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                     skinname = j.split("\\")[2]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
     
-        print(filenames)
+
         return render(request, "skin_master_practise.html",context=filenames)    
     
     def skin_master_survival(request):
