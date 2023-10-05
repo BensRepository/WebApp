@@ -126,3 +126,97 @@ class WebAppViewset(viewsets.ModelViewSet):
             filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
         context['filenames']=filenames
         return render(request, "skin_master.html",context=context)
+    
+    def skin_master_practise(request):
+        types = ["machineguns","shotguns","smgs","pistols","rifles"]
+        weapons = {"machineguns":[],"shotguns":[],"smgs":[],"pistols":[],"rifles":[]}
+        filenames = {}
+        for i in types:
+            weapons[i] = glob.glob("."+STATIC_URL+"skins/"+i+"/*")
+
+        for t in types:
+             for w in weapons[t]:
+                grey = glob.glob(w+"/grey/*") 
+                light_blue = glob.glob(w+"/light_blue/*")
+                blue = glob.glob(w+"/blue/*")
+                purple = glob.glob(w+"/purple/*")
+                pink = glob.glob(w+"/pink/*")
+                red =  glob.glob(w+"/red/*")
+                weapon_name = w.split("\\")[1]
+                filenames[weapon_name] = {"grey":[],"light_blue":[],"blue":[],"purple":[],"pink":[],"red":[]}
+
+                for j in grey:
+                    skinname = j.split("\\")[2]
+                    filenames[weapon_name]["grey"].append(skinname[0:len(skinname)-4])
+                for j in  light_blue:
+                    skinname = j.split("\\")[2]
+                    filenames[weapon_name]["light_blue"].append(skinname[0:len(skinname)-4])
+                for j in  blue:
+                    skinname = j.split("\\")[2]
+                    filenames[weapon_name]["blue"].append(skinname[0:len(skinname)-4])
+                for j in  purple:
+                    skinname = j.split("\\")[2]
+                    filenames[weapon_name]["purple"].append(skinname[0:len(skinname)-4])
+                for j in  pink:
+                    skinname = j.split("\\")[2]
+                    filenames[weapon_name]["pink"].append(skinname[0:len(skinname)-4])
+                for j in  red:
+                    skinname = j.split("\\")[2]
+                    filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
+           
+        print(filenames)
+        return render(request, "skin_master_practise.html",context=filenames)    
+    
+    def skin_master_survival(request):
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[15:]] = glob.glob("."+STATIC_URL+"loadout/"+i[15:]+"/*")
+        context['filenames']=filenames
+        return render(request, "skin_master_survival.html",context=context)    
+    
+    def skin_master_ranked(request):
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
+        context['filenames']=filenames
+        return render(request, "skin_master_ranked.html",context=context)    
+    
+    def skin_master_play(request):
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
+        context['filenames']=filenames
+        return render(request, "skin_master_play.html",context=context)    
+    
+    def skin_master_leaderboard(request):
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
+        context['filenames']=filenames
+        return render(request, "skin_master_leaderboard.html",context=context)    
+
+    def skin_master_about(request):
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
+        context['filenames']=filenames
+        return render(request, "skin_master_about.html",context=context)    
+
+    def skin_master_report_bug(request):
+        types = glob.glob("."+STATIC_URL+"loadout/*")
+        filenames = {}
+        context = {}
+        for i in types:
+            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
+        context['filenames']=filenames
+        return render(request, "skin_master_report_bug.html",context=context)    

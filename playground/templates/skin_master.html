@@ -38,8 +38,8 @@
         </nav>
         <!-- Content -->
   
-        <section>
-            <div id="main_screen">
+        <section >
+            <div>
               <video autoplay loop muted plays-inline class="back-video">
                 <source src="/static/videos/TEST.mp4">
               </video>
@@ -57,24 +57,25 @@
                         Play
                         <span></span><span></span><span></span><span></span>
                       </li>
-                      <li>
+                      <li onclick="leaderboard_button()">
                         Leaderboard
                         <span></span><span></span><span></span><span></span>
                       </li>
-                      <li>
+                      <li onclick="about_button()">
                         About
                         <span></span><span></span><span></span><span></span>
                       </li>
-                      <li>
+                      <li onclick="report_bug_screen_button()">
                         Report Bug
                         <span></span><span></span><span></span><span></span>
                       </li>
                     </ul>
                   </nav>
             </div>
-            <div id="play_screen" style="display: none;">
-              <p1> test</p1> 
-            </div>
+   
+         
+            <!-- Could also add timed at a later date-->
+
         </section>
         <!-- Footer-->
         <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);position: fixed;text-align: center;bottom: 0px;width: 100%; "><p class="m-0 text-center text-white">Copyright &copy; CSTools 2023</p></div>
