@@ -1,6 +1,6 @@
 body {
     background-color: rgb(20, 13, 9);
-    text-align: center;
+
     
     }
 
@@ -109,12 +109,12 @@ nav[role="skinmaster"] ul li span:nth-child(4) {
     width: 22%;
     margin: 5px 1% 5px 1%;
     float: left;
-    position: relative;
+
     transition: height 0.5s;
     -webkit-transition: height 0.5s;
-    text-align: center;
+
     overflow: hidden;
-    vertical-align: middle;
+
   }
   .grow:hover {
     height: 500px;

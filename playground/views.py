@@ -131,10 +131,13 @@ class WebAppViewset(viewsets.ModelViewSet):
         types = ["machineguns","shotguns","smgs","pistols","rifles"]
         weapons = {"machineguns":[],"shotguns":[],"smgs":[],"pistols":[],"rifles":[]}
         filenames = {}
-        filenamescompressed ={}
-        for i in types:
-            weapons[i] = glob.glob("."+STATIC_URL+"skins/"+i+"/*")
+        filenames['types'] = types
 
+        for t in types:
+            weapons[t] = glob.glob("."+STATIC_URL+"skins/"+t+"/*")
+            filenames[t] = []
+            for j in weapons[t]:
+                filenames[t].append(j.split("\\")[1])
         for t in types:
              for w in weapons[t]:
                 grey = glob.glob(w+"/grey/*") 

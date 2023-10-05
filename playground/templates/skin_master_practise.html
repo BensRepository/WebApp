@@ -75,9 +75,21 @@
         {{ scar20|json_script:"scar20"}}
         {{ sg553|json_script:"sg553"}}
         {{ ssg08|json_script:"ssg08"}}
+       
+        {{ pistols|json_script:"pistols"}}
+        {{ rifles|json_script:"rifles"}}
+        {{ machineguns|json_script:"machineguns"}}
+        {{ smgs|json_script:"smgs"}}
+        {{ shotguns|json_script:"shotguns"}}
+        {{ types|json_script:"types"}}
         <!-- Content -->
+        
         <section> 
             <p1 onclick="test()">Practise</p1><br>
+             <div style="background-color: red; width: 100%;float: left;" id="test" onclick=" updateGuns('awp','blue','rifles')">
+                CLick for images</div>
+            <div id="practise_game" onclick="practiseGame()">Click to practise</div>
+            
              <!-- Skin look up 
             Need a way to navigate via gun and rarity colour to look up 
             need a practise game that has no score attached
