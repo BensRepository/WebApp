@@ -22,7 +22,7 @@ function play_button(){
   }
 
   function test(){
-    skinname = JSON.parse(document.getElementById('p90_grey').textContent);
-    alert(skinname[0])
+    skinname = JSON.parse(document.getElementById('p90').textContent);
+    alert(skinname['grey'])
   }
 

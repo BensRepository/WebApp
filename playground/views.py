@@ -131,6 +131,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         types = ["machineguns","shotguns","smgs","pistols","rifles"]
         weapons = {"machineguns":[],"shotguns":[],"smgs":[],"pistols":[],"rifles":[]}
         filenames = {}
+        filenamescompressed ={}
         for i in types:
             weapons[i] = glob.glob("."+STATIC_URL+"skins/"+i+"/*")
 
@@ -163,7 +164,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                 for j in  red:
                     skinname = j.split("\\")[2]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
-           
+    
         print(filenames)
         return render(request, "skin_master_practise.html",context=filenames)    
     
