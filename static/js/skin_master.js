@@ -58,12 +58,18 @@ function play_button(){
   var column9 = ""
   var column10 = ""
 
+
+  var correct = 0
+  var wrong = 0
+  var success_rate = 0
+  var estimated_rank = "Wood"
+
   function makeImagesBoxes(gun,colour,type,skin){
     currentPractiseskin = skin
     var img = document.createElement("IMG");
     url = "/static/skins/"+type+"/"+gun+"/"+colour+"/"+ skin+".png"
     img.src = url;
-    img.id = skin
+    img.id = "?"
     img.style.width = "100%";
     img.style.height = "auto"; 
     var p = document.createElement("p");
@@ -409,12 +415,25 @@ function test2(){
 
   if(nameValue === currentPractiseskin){
 
-    document.getElementById('column1').getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
+    correct += 1
+    
 
-  }
-  else{
+    estimated_rank = "Wood"
     document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
 
   }
+  else{
+    wrong += 1
+    document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
+
+  }
+  success_rate = correct/wrong
+  document.getElementById("Correct_value").innerText = correct
+  document.getElementById("Wrong_value").innerText = wrong
+  if(wrong ==0){
+    document.getElementById("success_rate_value").innerText = String((correct/1)*100)+"%"
+  }
+  document.getElementById("success_rate_value").innerText = String((correct/wrong)*100)+"%"
+  document.getElementById("rank_value").innerText = "wood"
   practiseGame()
 }
