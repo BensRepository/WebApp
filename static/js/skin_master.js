@@ -86,8 +86,16 @@ function play_button(){
     d.style.float = "left"
     
     document.getElementById(nextAvailableSplot(gun,colour,type,skin)).appendChild(d);
+    // var previousColumn = {"column2":"column1","column3":"column2","column4":"column2","column5":"column4",
+    // "column6":"column5","column7":"column6","column8":"column7","column9":"column8","column10":"column9"}
+    // if (nextAvailableSplot(gun,colour,type,skin) == "column1") {
+      
+    // } else {
+    //   document.getElementById(previousColumn[nextAvailableSplot(gun,colour,type,skin).style.backgroundColor = changeColours(colour)])
+    // }
     document.getElementById(d.id).appendChild(img);
     document.getElementById(d.id).appendChild(p);
+
   }
 
   function nextAvailableSplot(gun,colour,type,skin){
@@ -96,54 +104,54 @@ function play_button(){
     if(column1 == ""){
       column1= [gun,colour,type,skin]
       available_slot = "column1" 
-      document.getElementById("column1").style.backgroundColor = changeColours(colour)
+ 
     }
     else  if(column2 == ""){
       column2= [gun,colour,type,skin]
       available_slot = "column2" 
-      document.getElementById("column2").style.backgroundColor = changeColours(colour)
+
     }
 
     else  if(column3 == ""){
       column3= [gun,colour,type,skin]
       available_slot = "column3"  
-      document.getElementById("column3").style.backgroundColor = changeColours(colour)
+
     }
 
     else  if(column4 == ""){
       column4= [gun,colour,type,skin]
       available_slot = "column4" 
-      document.getElementById("column4").style.backgroundColor = changeColours(colour)
+
     }
 
     else  if(column5 == ""){
       column5= [gun,colour,type,skin]
       available_slot = "column5" 
-      document.getElementById("column5").style.backgroundColor = changeColours(colour)
+
     }  
 
     else  if(column6 == ""){
       column6= [gun,colour,type,skin]
       available_slot = "column6" 
-      document.getElementById("column6").style.backgroundColor = changeColours(colour)
+
     }
 
     else  if(column7 == ""){
       column7= [gun,colour,type,skin]
       available_slot = "column7" 
-      document.getElementById("column7").style.backgroundColor = changeColours(colour)
+
     }
 
     else  if(column8 == ""){
       column8= [gun,colour,type,skin]
       available_slot = "column8" 
-      document.getElementById("column8").style.backgroundColor = changeColours(colour)
+   
     }
 
     else  if(column9 == ""){
       column9= [gun,colour,type,skin]
       available_slot = "column9" 
-      document.getElementById("column9").style.backgroundColor = changeColours(colour)
+     
     }
 
     else  if(column10 == ""){
@@ -303,12 +311,62 @@ function play_button(){
           generated = 1
           makeImagesBoxes(randomGun,randomColour,randomType,randomSkin)
    
-         
         }
       }
 
     }
+    function randomisePathEqually(){
+      
+      skins_total_number = 43+ 346+380+134+237
 
+      machinegun_odds = 43/skins_total_number;
+      shotguns = 134/skins_total_number;
+      pistols_odds = 346/skins_total_number;
+      smgs =  237/skins_total_number;
+      rifles = 380/skins_total_number;
+
+
+
+  
+      for (let i = 0; i < document.getElementById("ValueField").value; i++) {
+          num = Math.random();
+  
+          if (num >= 0 && num <= yellow_odds) {
+              unboxed_yellow +=1
+          }
+          else if (num >= (yellow_odds) && num <= yellow_odds+red_odds) {
+              unboxed_red +=1
+          }
+          else if  (num >= (yellow_odds+red_odds) && num <= yellow_odds+red_odds+pink_odds) {
+              unboxed_pink +=1
+          }
+          else if (num >= yellow_odds+red_odds+pink_odds&& num <= yellow_odds+red_odds+pink_odds+purple_odds) {
+              unboxed_purple +=1
+          }
+          else if (num > yellow_odds+red_odds+pink_odds+purple_odds) {
+              unboxed_blue +=1
+          }
+      return(randomGun,randomColour,randomType,randomSkin)
+          
+      }
+  
+      document.getElementById("blues").innerHTML = String(unboxed_blue) + " Mil-spec";
+      document.getElementById("purples").innerHTML = String(unboxed_purple)+ " Restricted";
+      document.getElementById("pinks").innerHTML = String(unboxed_pink)+ " Classified";
+      document.getElementById("reds").innerHTML = String(unboxed_red)+ " Covert";
+      document.getElementById("yellows").innerHTML = String(unboxed_yellow)+ " Special item";
+      document.getElementById("simulatorTitle").innerHTML = "Potential Loot";
+      
+      document.getElementById("blues").style.background = "aqua";
+      document.getElementById("purples").style.background = "blueviolet";
+      document.getElementById("pinks").style.background = "fuchsia";
+      document.getElementById("reds").style.background = "red";
+      document.getElementById("yellows").style.background = "yellow";
+     
+  }
+  
+  
+  
     function autocomplete(inp, arr) {
       /*the autocomplete function takes two arguments,
       the text field element and an array of possible autocompleted values:*/
@@ -433,7 +491,10 @@ function test2(){
   if(wrong ==0){
     document.getElementById("success_rate_value").innerText = String((correct/1)*100)+"%"
   }
-  document.getElementById("success_rate_value").innerText = String((correct/wrong)*100)+"%"
+  else{
+    document.getElementById("success_rate_value").innerText = String((correct/wrong)*100)+"%"
+  }
+
   document.getElementById("rank_value").innerText = "wood"
   practiseGame()
 }

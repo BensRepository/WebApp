@@ -128,6 +128,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request, "skin_master.html",context=context)
     
     def skin_master_practise(request):
+
         types = ["machineguns","shotguns","smgs","pistols","rifles"]
         weapons = {"machineguns":[],"shotguns":[],"smgs":[],"pistols":[],"rifles":[]}
         filenames = {}
@@ -139,7 +140,7 @@ class WebAppViewset(viewsets.ModelViewSet):
             for j in weapons[t]:
                 filenames[t].append(j.split("\\")[1])
         for t in types:
-             for w in weapons[t]:
+            for w in weapons[t]:
                 grey = glob.glob(w+"/grey/*") 
                 light_blue = glob.glob(w+"/light_blue/*")
                 blue = glob.glob(w+"/blue/*")
@@ -148,7 +149,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                 red =  glob.glob(w+"/red/*")
                 weapon_name = w.split("\\")[1]
                 filenames[weapon_name] = {"grey":[],"light_blue":[],"blue":[],"purple":[],"pink":[],"red":[]}
-
+        
                 for j in grey:
                     skinname = j.split("\\")[2]
                     filenames[weapon_name]["grey"].append(skinname[0:len(skinname)-4])
@@ -167,8 +168,20 @@ class WebAppViewset(viewsets.ModelViewSet):
                 for j in  red:
                     skinname = j.split("\\")[2]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
-    
+            
+      
+        # type = "machineguns"
+        # gun2 = glob.glob("."+STATIC_URL+"skins/"+type+"/*")
+        # total = 0
+        # list = []
+        # for i in gun2:
+        #     gun = i.split("\\")[1]
+        #     for j in ["grey","light_blue","blue","purple","pink","red"]:
+        #         total += len(glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"))
+        #         for x in glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"):
 
+        #             list.append(x.split("\\")[1][0:len(x.split("\\")[1]) -4])
+        # print(list)
         return render(request, "skin_master_practise.html",context=filenames)    
     
     def skin_master_survival(request):
