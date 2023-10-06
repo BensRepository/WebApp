@@ -76,6 +76,7 @@ function play_button(){
     p.innerHTML = "?"
     p.id = skin+"_text"
     p.style.color ="white"
+    p.style.backgroundColor ="black"
     p.style.width = "100%"
     p.style.height = "auto"
     var d = document.createElement("div");
@@ -177,81 +178,102 @@ function play_button(){
         temp ="#87d3f1"
       }
       else if(temp == "purple"){
-        temp = '#282781'
+        temp = '#69178a'
       }
       else if(temp == "pink"){
-        temp = '#c514bf'
+        temp = '#ce33d6'
       }
       else if(temp == "blue"){
-        temp = '#c514bf'
+        temp = '#144fc5'
+      }
+      else if(temp == "red"){
+        temp = 'rgb(206, 41, 41)'
       }
       return temp
     }
     function switchPositions(gun,colour,type,skin){
       temp = column2
       document.getElementById(column1[3]).remove();
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column2[3]).remove();
       column1 =""
       column2 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById("column1").style.backgroundColor = changeColours(temp[1])
-      
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+
       temp = column3
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column3[3]).remove();
       column3 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column2").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
 
       temp = column4
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column4[3]).remove();
       column4 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column3").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
 
       temp = column5
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column5[3]).remove();
       column5 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column4").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
 
       temp = column6
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column6[3]).remove();
       column6 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column5").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
 
       temp = column7
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column7[3]).remove();
       column7 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column6").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
 
       temp = column8
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column8[3]).remove();
       column8 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column7").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
 
       temp = column9
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column9[3]).remove();
       column9 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column8").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
 
       temp = column10
+      bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
       document.getElementById(column10[3]).remove();
       column10 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column9").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
+      document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
     
 
       try{
@@ -796,12 +818,12 @@ function test2(){
 
     estimated_rank = "Wood"
     document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
-
+    document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "green"
   }
   else{
     wrong += 1
     document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
-
+    document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "red"
   }
   success_rate = correct/wrong
   document.getElementById("Correct_value").innerText = correct
