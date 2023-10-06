@@ -170,18 +170,18 @@ class WebAppViewset(viewsets.ModelViewSet):
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
             
       
-        # type = "machineguns"
-        # gun2 = glob.glob("."+STATIC_URL+"skins/"+type+"/*")
-        # total = 0
-        # list = []
-        # for i in gun2:
-        #     gun = i.split("\\")[1]
-        #     for j in ["grey","light_blue","blue","purple","pink","red"]:
-        #         total += len(glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"))
-        #         for x in glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"):
+        type = "rifles"
+        gun2 = glob.glob("."+STATIC_URL+"skins/"+type+"/*")
+        total = 0
+        list = []
+        for i in gun2:
+            gun = i.split("\\")[1]
+            for j in ["grey","light_blue","blue","purple","pink","red"]:
+                total += len(glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"))
+                for x in glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"):
 
-        #             list.append(x.split("\\")[1][0:len(x.split("\\")[1]) -4])
-        # print(list)
+                    list.append(x)
+        print(list)
         return render(request, "skin_master_practise.html",context=filenames)    
     
     def skin_master_survival(request):
