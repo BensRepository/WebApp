@@ -65,7 +65,7 @@ function play_button(){
   var estimated_rank = "Wood"
 
   function makeImagesBoxes(gun,colour,type,skin){
-    currentPractiseskin = skin
+
     var img = document.createElement("IMG");
     url = "/static/skins/"+type+"/"+gun+"/"+colour+"/"+ skin+".png"
     img.src = url;
@@ -86,6 +86,7 @@ function play_button(){
     d.style.float = "left"
     
     document.getElementById(nextAvailableSplot(gun,colour,type,skin)).appendChild(d);
+    currentPractiseskin = skin
     // var previousColumn = {"column2":"column1","column3":"column2","column4":"column2","column5":"column4",
     // "column6":"column5","column7":"column6","column8":"column7","column9":"column8","column10":"column9"}
     // if (nextAvailableSplot(gun,colour,type,skin) == "column1") {
@@ -104,60 +105,60 @@ function play_button(){
     if(column1 == ""){
       column1= [gun,colour,type,skin]
       available_slot = "column1" 
- 
+      
     }
     else  if(column2 == ""){
       column2= [gun,colour,type,skin]
       available_slot = "column2" 
-
+      document.getElementById("column1").style.backgroundColor = changeColours(column1[1])
     }
 
     else  if(column3 == ""){
       column3= [gun,colour,type,skin]
       available_slot = "column3"  
-
+      document.getElementById("column2").style.backgroundColor = changeColours(column2[1])
     }
 
     else  if(column4 == ""){
       column4= [gun,colour,type,skin]
       available_slot = "column4" 
-
+      document.getElementById("column3").style.backgroundColor = changeColours(column3[1])
     }
 
     else  if(column5 == ""){
       column5= [gun,colour,type,skin]
       available_slot = "column5" 
-
+      document.getElementById("column4").style.backgroundColor = changeColours(column4[1])
     }  
 
     else  if(column6 == ""){
       column6= [gun,colour,type,skin]
       available_slot = "column6" 
-
+      document.getElementById("column5").style.backgroundColor = changeColours(column5[1])
     }
 
     else  if(column7 == ""){
       column7= [gun,colour,type,skin]
       available_slot = "column7" 
-
+      document.getElementById("column6").style.backgroundColor = changeColours(column6[1])
     }
 
     else  if(column8 == ""){
       column8= [gun,colour,type,skin]
       available_slot = "column8" 
-   
+      document.getElementById("column7").style.backgroundColor = changeColours(column7[1])
     }
 
     else  if(column9 == ""){
       column9= [gun,colour,type,skin]
       available_slot = "column9" 
-     
+      document.getElementById("column8").style.backgroundColor = changeColours(column8[1])
     }
 
     else  if(column10 == ""){
       column10= [gun,colour,type,skin]
       available_slot = "column10" 
-    
+      document.getElementById("column9").style.backgroundColor = changeColours(column9[1])
     }
 
     else {
@@ -811,7 +812,7 @@ function test2(){
   else{
     document.getElementById("success_rate_value").innerText = String((correct/wrong)*100)+"%"
   }
-
+  
   document.getElementById("rank_value").innerText = "wood"
   practiseGame()
 }
