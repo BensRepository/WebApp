@@ -58,7 +58,7 @@ function play_button(){
   var column9 = ""
   var column10 = ""
 
-
+  var last_column = "column1"
   var correct = 0
   var wrong = 0
   var success_rate = 0
@@ -85,7 +85,7 @@ function play_button(){
     d.id = skin 
 
     d.style.float = "left"
-    
+    //last_column = nextAvailableSplot(gun,colour,type,skin)
     document.getElementById(nextAvailableSplot(gun,colour,type,skin)).appendChild(d);
     currentPractiseskin = skin
     // var previousColumn = {"column2":"column1","column3":"column2","column4":"column2","column5":"column4",
@@ -106,54 +106,63 @@ function play_button(){
     if(column1 == ""){
       column1= [gun,colour,type,skin]
       available_slot = "column1" 
+      last_column = "column1"
       
     }
     else  if(column2 == ""){
       column2= [gun,colour,type,skin]
       available_slot = "column2" 
       document.getElementById("column1").style.backgroundColor = changeColours(column1[1])
+      last_column = "column2"
     }
 
     else  if(column3 == ""){
       column3= [gun,colour,type,skin]
       available_slot = "column3"  
       document.getElementById("column2").style.backgroundColor = changeColours(column2[1])
+      last_column = "column3"
     }
 
     else  if(column4 == ""){
       column4= [gun,colour,type,skin]
       available_slot = "column4" 
       document.getElementById("column3").style.backgroundColor = changeColours(column3[1])
+      last_column = "column4"
     }
 
     else  if(column5 == ""){
       column5= [gun,colour,type,skin]
       available_slot = "column5" 
       document.getElementById("column4").style.backgroundColor = changeColours(column4[1])
+      last_column = "column5"
     }  
 
     else  if(column6 == ""){
       column6= [gun,colour,type,skin]
       available_slot = "column6" 
       document.getElementById("column5").style.backgroundColor = changeColours(column5[1])
+      last_column = "column6"
     }
 
     else  if(column7 == ""){
       column7= [gun,colour,type,skin]
       available_slot = "column7" 
       document.getElementById("column6").style.backgroundColor = changeColours(column6[1])
+      last_column = "column7"
     }
 
     else  if(column8 == ""){
       column8= [gun,colour,type,skin]
       available_slot = "column8" 
       document.getElementById("column7").style.backgroundColor = changeColours(column7[1])
+      last_column = "column8"
     }
 
     else  if(column9 == ""){
       column9= [gun,colour,type,skin]
       available_slot = "column9" 
       document.getElementById("column8").style.backgroundColor = changeColours(column8[1])
+      last_column = "column9"
     }
 
     else  if(column10 == ""){
@@ -175,19 +184,19 @@ function play_button(){
 
     function changeColours(temp){
       if(temp == "light_blue"){
-        temp ="#87d3f1"
+        temp ="#1a606e"
       }
       else if(temp == "purple"){
-        temp = '#69178a'
+        temp = '#241a3b'
       }
       else if(temp == "pink"){
-        temp = '#ce33d6'
+        temp = '#5c1153'
       }
       else if(temp == "blue"){
-        temp = '#144fc5'
+        temp = '#0b1666'
       }
       else if(temp == "red"){
-        temp = 'rgb(206, 41, 41)'
+        temp = '#421317'
       }
       return temp
     }
@@ -819,11 +828,13 @@ function test2(){
     estimated_rank = "Wood"
     document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
     document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "green"
+    document.getElementById(last_column).style.borderColor = "green"
   }
   else{
     wrong += 1
     document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
     document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "red"
+    document.getElementById(last_column).style.borderColor = "red"
   }
   success_rate = correct/wrong
   document.getElementById("Correct_value").innerText = correct

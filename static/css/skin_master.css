@@ -193,6 +193,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column2 {
     background-color: #7b7b80;
@@ -200,6 +203,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column3 {
     background-color: #4e4e4e;
@@ -207,6 +213,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column4 {
     background-color: #7b7b80;
@@ -214,6 +223,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column5 {
     background-color: #4e4e4e;
@@ -221,6 +233,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column6 {
     background-color: #7b7b80;
@@ -228,6 +243,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column7 {
     background-color: #4e4e4e;
@@ -235,6 +253,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column8 {
     background-color: #7b7b80;
@@ -242,6 +263,9 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
 }
 #column9 {
     background-color: #4e4e4e;
@@ -249,13 +273,21 @@ p{
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color: black;
+
 }
 #column10 {
-    background-color: rgb(163, 189, 16);
+    background-color: goldenrod;
     float: left;
     height: 190px;
     width: 220px;
     padding: 0 10px;
+    border: 2.5px;
+    border-style: solid;
+    border-color:  black;
+    border-top-color: black;
 }
 p1{
    font-size: 55px; 
