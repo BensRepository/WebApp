@@ -57,7 +57,7 @@ function play_button(){
   var column8 = ""
   var column9 = ""
   var column10 = ""
-
+  var result = "goldenrod";
   var last_column = "column1"
   var correct = 0
   var wrong = 0
@@ -86,6 +86,7 @@ function play_button(){
 
     d.style.float = "left"
     //last_column = nextAvailableSplot(gun,colour,type,skin)
+    
     document.getElementById(nextAvailableSplot(gun,colour,type,skin)).appendChild(d);
     currentPractiseskin = skin
     // var previousColumn = {"column2":"column1","column3":"column2","column4":"column2","column5":"column4",
@@ -177,17 +178,14 @@ function play_button(){
       column10= [gun,colour,type,skin]
       available_slot = "column10" 
       document.getElementById("column9").style.backgroundColor = changeColours(column9[1])
-
+      last_column = "column10"
       document.getElementById("column10").style.backgroundColor = "goldenrod";
-
+   
     }
 
     else {
-      available_slot = "stop"
-      switchPositions(gun,colour,type,skin);
-      alert("test")
-      document.getElementById("column10").style.backgroundColor = "goldenrod";
 
+      switchPositions(gun,colour,type,skin);
     }
   
     return(available_slot)
@@ -216,6 +214,8 @@ function play_button(){
       temp = column2
       document.getElementById(column1[3]).remove();
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column2").style.borderColor
+
       document.getElementById(column2[3]).remove();
       column1 =""
       column2 =""
@@ -223,79 +223,97 @@ function play_button(){
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById("column1").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column1").style.borderColor = b_colour
 
       temp = column3
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column3").style.borderColor
       document.getElementById(column3[3]).remove();
       column3 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column2").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column2").style.borderColor= b_colour
 
       temp = column4
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column4").style.borderColor
       document.getElementById(column4[3]).remove();
       column4 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column3").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column3").style.borderColor= b_colour
 
       temp = column5
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column5").style.borderColor
       document.getElementById(column5[3]).remove();
       column5 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column4").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column4").style.borderColor = b_colour
 
       temp = column6
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column6").style.borderColor
       document.getElementById(column6[3]).remove();
       column6 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column5").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column5").style.borderColor = b_colour
 
       temp = column7
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column7").style.borderColor
       document.getElementById(column7[3]).remove();
       column7 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column6").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column6").style.borderColor = b_colour
 
       temp = column8
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column8").style.borderColor
       document.getElementById(column8[3]).remove();
       column8 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column7").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column7").style.borderColor = b_colour
 
       temp = column9
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      b_colour = document.getElementById("column9").style.borderColor
       document.getElementById(column9[3]).remove();
       column9 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column8").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
+      document.getElementById("column8").style.borderColor = b_colour
+
 
       temp = column10
       bg_colour = document.getElementById(temp[3]+"_text").style.backgroundColor
+      //b_colour = document.getElementById("column10").style.borderColor
       document.getElementById(column10[3]).remove();
       column10 =""
       makeImagesBoxes(temp[0],temp[1],temp[2],temp[3])
       document.getElementById("column9").style.backgroundColor = changeColours(temp[1])
       document.getElementById(temp[3]+"_text").textContent = temp[3]
       document.getElementById(temp[3]+"_text").style.backgroundColor = bg_colour
-    
+      document.getElementById("column9").style.borderColor = result
+
 
       try{
         document.getElementById(column10[3]).remove();
@@ -320,6 +338,7 @@ function play_button(){
     var currentPractiseskin = ""
 
     function practiseGame(){   
+      
       document.getElementById("practise_game").style.display = "none"
       randomType = ""
       randomGun =""
@@ -658,7 +677,7 @@ function play_button(){
         './static/skins/rifles/m4a1s/purple\\Nitro.png', './static/skins/rifles/m4a1s/pink\\Atomic Alloy.png', './static/skins/rifles/m4a1s/pink\\Blue Phosphor.png', 
         './static/skins/rifles/m4a1s/pink\\Control Panel.png', './static/skins/rifles/m4a1s/pink\\Decimator.png', './static/skins/rifles/m4a1s/pink\\Guardian.png',
         './static/skins/rifles/m4a1s/pink\\Hot Rod.png', './static/skins/rifles/m4a1s/pink\\Knight.png', './static/skins/rifles/m4a1s/pink\\Leaded Glass.png',
-        './static/skins/rifles/m4a1s/pink\\Master Piece.png', './static/skins/rifles/m4a1s/pink\\Nightmare.png', "./static/skins/rifles/m4a1s/red\\Chantico's Fire - Copy.png",
+        './static/skins/rifles/m4a1s/pink\\Master Piece.png', './static/skins/rifles/m4a1s/pink\\Nightmare.png',
         "./static/skins/rifles/m4a1s/red\\Chantico's Fire.png", './static/skins/rifles/m4a1s/red\\Cyrex.png', './static/skins/rifles/m4a1s/red\\Golden Coil.png', 
         './static/skins/rifles/m4a1s/red\\Hyper Beast.png', './static/skins/rifles/m4a1s/red\\Imminent Danger.png', './static/skins/rifles/m4a1s/red\\Mecha Industries.png',
         './static/skins/rifles/m4a1s/red\\Player Two.png', './static/skins/rifles/m4a1s/red\\Printstream.png', './static/skins/rifles/m4a1s/red\\Welcome to the Jungle.png',
@@ -833,20 +852,31 @@ function test2(){
   var nameValue = document.getElementById("myInput").value;
 
   if(nameValue === currentPractiseskin){
-
     correct += 1
-    
-
     estimated_rank = "Wood"
     document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
     document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "green"
-    document.getElementById(last_column).style.borderColor = "green"
+    alert("applying green to :" + currentPractiseskin)
+    result = "green"
+    if(last_column == "column10"){
+      
+    }
+    else{
+      document.getElementById(last_column).style.borderColor = result
+    }
+    
   }
   else{
     wrong += 1
+    result = "red"
     document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
     document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "red"
-    document.getElementById(last_column).style.borderColor = "red"
+    if(last_column == "column10"){
+      
+    }
+    else{
+      document.getElementById(last_column).style.borderColor = result
+    }
   }
   success_rate = correct/wrong
   document.getElementById("Correct_value").innerText = correct
