@@ -378,13 +378,93 @@ all_guns_urls = ['./static/skins/machineguns/m249/grey\\Contrast Spray.png',
     './static/skins/rifles/ssg08/pink\\Death Strike.png', './static/skins/rifles/ssg08/pink\\Turbo Peek.png', './static/skins/rifles/ssg08/red\\Blood in the Water.png',
     './static/skins/rifles/ssg08/red\\Dragonfire.png']
 
-
-function colourChoice(){
-    var ele = document.getElementsByName('colour_checkbox');
-    output = "test"
-    for (i = 0; i < ele.length; i++) {
-        if (ele[i].checked)
-            output = ele[i].value;
+    var shotguns_urls =[]
+    var rifles_urls = []
+    var smgs_urls = []
+    var machineguns_urls = []
+    var pistols_urls = []
+    
+    function colourChoice(){
+        var ele = document.getElementsByName('colour_checkbox');
+        output = "test"
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                output = ele[i].value;
+        }
+        return output
     }
-    return output
-}
+    
+    function getTypeSelectColours(gun_type){
+        smgs = JSON.parse(document.getElementById(gun_type).textContent)
+        type_select_colours = []
+        for (let i = 0; i < smgs.length; i++){
+            if(smgs[i] != ""){
+                gunColours =JSON.parse(document.getElementById(smgs[i]).textContent)
+                if(document.getElementById("covert-checkbox").checked == true){
+                    for (x in gunColours["red"]){
+                        type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/red\\"+gunColours["red"][x]+".png")
+                    }
+                }
+                if(document.getElementById("classified-checkbox").checked == true){
+                    for (x in gunColours["pink"]){
+                        type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/pink\\"+gunColours["pink"][x]+".png")
+                    }
+                }
+                if(document.getElementById("restricted-checkbox").checked == true){
+                    for (x in gunColours["purple"]){
+                        type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/purple\\"+gunColours["purple"][x]+".png")
+                    }
+                }
+                if(document.getElementById("mil-mpec-checkbox").checked == true){
+                    for (x in gunColours["blue"]){
+                        type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/blue\\"+gunColours["blue"][x]+".png")
+                    }
+                }
+                if(document.getElementById("industrial-grade-checkbox").checked == true){
+                    for (x in gunColours["light_blue"]){
+                        type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/light_blue\\"+gunColours["light_blue"][x]+".png")
+                    }
+                }
+                if(document.getElementById("consumer-grade-checkbox").checked == true){
+                    for (x in gunColours["grey"]){
+                        type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/grey\\"+gunColours["grey"][x]+".png")
+                    }
+                }
+                
+            }
+           
+        }
+        return type_select_colours
+    }
+
+    function getSelectedSkinsUrls(){
+        
+        skins = []
+        if (document.getElementById("pistols-checkbox").checked == true) {
+            for (i in getTypeSelectColours("pistols") ){
+                skins.push(getTypeSelectColours("pistols")[i])
+            }  
+        } 
+        if(document.getElementById("machineguns-checkbox").checked== true) {
+            for (i in getTypeSelectColours("machineguns")){
+                skins.push(getTypeSelectColours("machineguns")[i])
+            }
+        }
+        if(document.getElementById("smgs-checkbox").checked== true) {
+            for (i in getTypeSelectColours("smgs")){
+                skins.push(getTypeSelectColours("smgs")[i])
+            }
+        } 
+        if(document.getElementById("rifles-checkbox").checked== true) {
+            for (i in getTypeSelectColours("rifles") ){
+                skins.push(getTypeSelectColours("rifles")[i])
+            }
+        } 
+        if(document.getElementById("shotguns-checkbox").checked == true) {
+            for (i in getTypeSelectColours("shotguns")){
+                skins.push(getTypeSelectColours("shotguns")[i])
+            }
+        }
+        //alert(skins)
+        return skins
+    }
