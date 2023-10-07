@@ -365,28 +365,33 @@ function play_button(){
       randomColour=""
       randomSkin = "" 
    
-    
-      all_guns_urls = getSelectedSkinsUrls()
+      if(getSelectedSkinsUrls().length == 0){
+        alert("Please select more options")
+      }
+      else{
+        all_guns_urls = getSelectedSkinsUrls()
     
       
-      randomSkinUrl = all_guns_urls[getRandomInt(all_guns_urls.length)]
-      //alert(randomSkinUrl)
-      randomSkinUrlTest = randomSkinUrl.split("\\")[1].substring(0,randomSkinUrl.split("\\")[1].length-4)
-      //alert(getSelectedSkinsUrls()[3].split("\\"))
-      while(randomSkinUrlTest == column1[3]  || randomSkinUrlTest == column2[3]  || randomSkinUrlTest == column4[3] 
-         || randomSkinUrlTest == column5[3]  || randomSkinUrlTest == column6[3]  || randomSkinUrlTest == column7[3]  
-        || randomSkinUrlTest == column8[3]  || randomSkinUrlTest == column9[3]  || randomSkinUrlTest == column10[3] ){
         randomSkinUrl = all_guns_urls[getRandomInt(all_guns_urls.length)]
+        //alert(randomSkinUrl)
         randomSkinUrlTest = randomSkinUrl.split("\\")[1].substring(0,randomSkinUrl.split("\\")[1].length-4)
+        //alert(getSelectedSkinsUrls()[3].split("\\"))
+        while(randomSkinUrlTest == column1[3]  || randomSkinUrlTest == column2[3]  || randomSkinUrlTest == column4[3] 
+           || randomSkinUrlTest == column5[3]  || randomSkinUrlTest == column6[3]  || randomSkinUrlTest == column7[3]  
+          || randomSkinUrlTest == column8[3]  || randomSkinUrlTest == column9[3]  || randomSkinUrlTest == column10[3] ){
+          randomSkinUrl = all_guns_urls[getRandomInt(all_guns_urls.length)]
+          randomSkinUrlTest = randomSkinUrl.split("\\")[1].substring(0,randomSkinUrl.split("\\")[1].length-4)
+        }
+  
+  
+        randomSkin = randomSkinUrl.split("\\")[1].substring(0,randomSkinUrl.split("\\")[1].length-4);
+        randomColour = randomSkinUrl.split("\\")[0].split("/")[5];
+        randomGun = randomSkinUrl.split("\\")[0].split("/")[4];
+        randomType = randomSkinUrl.split("\\")[0].split("/")[3];
+        makeImagesBoxes(randomGun,randomColour,randomType,randomSkin)
+            
+       
       }
-
-
-      randomSkin = randomSkinUrl.split("\\")[1].substring(0,randomSkinUrl.split("\\")[1].length-4);
-      randomColour = randomSkinUrl.split("\\")[0].split("/")[5];
-      randomGun = randomSkinUrl.split("\\")[0].split("/")[4];
-      randomType = randomSkinUrl.split("\\")[0].split("/")[3];
-      makeImagesBoxes(randomGun,randomColour,randomType,randomSkin)
-          
      
   }
   
