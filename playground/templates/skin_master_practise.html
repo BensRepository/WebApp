@@ -187,80 +187,118 @@
                 <div id = "boxes">
 
                     <div id = "leftbox" >
-                        <div id="middle_left" style="float: right;">
-                            <div style="float: right;">
-                                <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                    <input type="checkbox" name="checkbox-checked" checked />
-                                    Smgs
-                                  </label>
-        
-                                  <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                    <input type="checkbox" name="checkbox-checked" checked />
-                                    Rifles
-                                  </label>
-                                  <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                    <input type="checkbox" name="checkbox-checked" checked />
-                                    Pistols
-                                  </label>
-                                  <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                    <input type="checkbox" name="checkbox-checked" checked />
-                                    Shotguns
-                                  </label>
-                                  <label class="form-control" style="background-color: #1a606e;margin: 8px; width: 190px;vertical-align: middle;text-align: center;">
-                                    <input type="checkbox" name="checkbox-checked" checked />
-                                    Machineguns
-                                  </label>
-                            </div>
+                        <div id="middle_left">
+                            <p style="font-size: 25px;font-weight: bold;"> Stats </p>
+                            <p id="Correct" style=" display:inline-block;"> Correct:</p>   <p style=" display:inline-block;" id="Correct_value"> 0</p>
+                            <p style=" display:inline-block;" id="Wrong"> Wrong:</p>    <p style=" display:inline-block;" id="Wrong_value"> 0</p><br>
+                            <p style=" display:inline-block;" id="Success Rate"> Success Rate:</p>   <p style=" display:inline-block;" id="success_rate_value"> 100%</p><br>
+                            <p style=" display:inline-block;" id="Estimated Rank"> Estimated Rank: </p>   <p style=" display:inline-block;" id="rank_value"> Coming Soon</p><br>
+                            <p style=" display:inline-block;" id="Estimated Rank"> Difficulty: </p>   <p style=" display:inline-block;" id="rank_value"> Coming Soon</p><br>
+                      
                 
                               
                         </div>
                     </div> 
              
-                    <div id = "middlebox">
-                        <div class="autocomplete" style="width:300px;">
-                            <input id="myInput" type="text" placeholder="Enter Answer">
-                            </div>
-                            <input id="submit_button" type="submit" onclick="test2()">
-                       
-                        <div id ="stats">
-                            <p style="font-size: 25px;font-weight: bold;"> Stats </p>
-                            <p id="Correct" style=" display:inline-block;"> Correct:</p>   <p style=" display:inline-block;" id="Correct_value"> 0</p><br>
-                            <p style=" display:inline-block;" id="Wrong"> Wrong:</p>    <p style=" display:inline-block;" id="Wrong_value"> 0</p><br>
-                            <p style=" display:inline-block;" id="Success Rate"> Success Rate:</p>   <p style=" display:inline-block;" id="success_rate_value"> 100%</p><br>
-                            <p style=" display:inline-block;" id="Estimated Rank"> Estimated Rank: </p>   <p style=" display:inline-block;" id="rank_value"> Coming Soon</p><br>
+                    <div class="center" id = "middlebox" style="border: 0;" >
+                        <div  class="center" style="display: flex;width: 415px;border: 0;">
+                     
+                            <label class="form-control" style="background-color: #421317;margin: 8px; width: 50px;vertical-align: middle;text-align: center;">
+                                <input type="radio" name="checkbox-checked" unchecked />
+                                    
+                                </label>
+                                <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 50px;vertical-align: middle;text-align: center;">
+                                <input type="radio" name="checkbox-checked" unchecked />
+                        
+                                </label>
+                
+                                <label class="form-control" style="background-color: #241a3b;margin: 8px;width: 50px;vertical-align: middle;text-align: center;">
+                                <input type="radio" name="checkbox-checked" unchecked />
+                            
+                                </label>
+                
+                                <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 50px;vertical-align: middle;text-align: center;">
+                                <input type="radio" name="checkbox-checked" unchecked />
+                        
+                                </label>
+                
+                                <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 50px;vertical-align: middle;text-align: center;">
+                                <input type="radio" name="checkbox-checked" unchecked />
+                        
+                                </label>
+    
+                                <label class="form-control" style="background-color: grey;margin: 8px;width: 50px;text-align: center;">
+                                <input type="radio" name="checkbox-checked" unchecked />
+                        
+                                </label>
+                           
                         </div>
+                        <div>
+                            <div class="autocomplete" style="width:300px;">
+                                <input id="myInput" type="text" placeholder="Enter Answer">
+                            </div>
+                                <input id="submit_button" type="submit" onclick="test2()">
+                        </div>
+                       
+                      
                     </div>
                      
-                    <div id = "rightbox">
-                        <label class="form-control" style="background-color: #421317;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                            <input type="checkbox" name="checkbox-checked" checked />
-                            Covert 
-                          </label>
-                        
-                          <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                            <input type="checkbox" name="checkbox-checked" checked />
-                            Classified   
-                          </label>
-            
-                          <label class="form-control" style="background-color: #241a3b;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                            <input type="checkbox" name="checkbox-checked" checked />
-                           Restricted  
-                          </label>
-            
-                          <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                            <input type="checkbox" name="checkbox-checked" checked />
-                      Mil-spec
-                          </label>
-            
-                          <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 220px;vertical-align: middle;text-align: center;">
-                            <input type="checkbox" name="checkbox-checked" checked />
-                            Industrial Grade
-                          </label>
-
-                          <label class="form-control" style="background-color: grey;margin: 8px;width: 210px;vertical-align: middle;text-align: center;">
-                            <input type="checkbox" name="checkbox-checked" checked />
-                            Consumer Grade
-                          </label>
+                    <div id = "rightbox">   
+                        <div style="float: left;">
+                            <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Smgs
+                              </label>
+                              <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Rifles
+                              </label>
+                              <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Pistols
+                              </label>
+                              <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Shotguns
+                              </label>
+                              <label class="form-control" style="background-color: #1a606e;margin: 8px; width: 190px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Machineguns
+                              </label>
+                        </div>
+                    </div>
+                    <div id="rightbox2">
+                        <div style="float: right;">
+                            <label class="form-control" style="background-color: #421317;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Covert 
+                              </label>
+                            
+                              <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Classified   
+                              </label>
+                
+                              <label class="form-control" style="background-color: #241a3b;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                               Restricted  
+                              </label>
+                
+                              <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Mil-spec
+                              </label>
+                
+                              <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 220px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Industrial Grade
+                              </label>
+    
+                              <label class="form-control" style="background-color: grey;margin: 8px;width: 210px;vertical-align: middle;text-align: center;">
+                                <input type="checkbox" name="checkbox-checked" checked />
+                                Consumer Grade
+                              </label>
+                        </div>
                     </div>
                 </div>
             

@@ -379,28 +379,48 @@ input[type="checkbox"]:focus {
 #middle_left{
   text-align: center;
   align-items: center;
+  float: right;
+
 
 }
 #leftbox {
   float:left; 
   margin:0 auto;
-
+  text-align: center;
+  align-items: center;
   width:25%;
   height:280px;
+
 }
 #middlebox{
   float:left; 
 
   width:50%;
   height:280px;
+
 }
 #rightbox{
   float:right;
 
-  width:25%;
+  width:12.5%;
   height:280px;
+
+}
+#rightbox2{
+  float:right;
+
+  width:12.5%;
+  height:280px;
+
 }
 h1{
   color:green;
   text-align:center;
+}
+
+.center {
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }

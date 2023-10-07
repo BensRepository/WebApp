@@ -855,9 +855,9 @@ function test2(){
     document.getElementById("success_rate_value").innerText = String((correct/1)*100)+"%"
   }
   else{
-    document.getElementById("success_rate_value").innerText = String((correct/wrong)*100)+"%"
+    document.getElementById("success_rate_value").innerText = String((Math.round((correct/(wrong+correct)) * 100) / 100)*100)+"%"
   }
-  
+ 
   document.getElementById("rank_value").innerText = "wood"
   practiseGame()
 }
