@@ -68,7 +68,7 @@ function play_button(){
   var wrong = 0
   var success_rate = 0
   var estimated_rank = "Wood"
-
+  var skin_count = "" 
   var include_shotguns = true
   var include_smgs = true
   var include_rifles = true
@@ -345,7 +345,7 @@ function play_button(){
         document.getElementById("column10").style.backgroundColor = changeColours(colour)
       }
      
-      alert(skin)
+    
 
 
     }
@@ -364,8 +364,15 @@ function play_button(){
       randomGun =""
       randomColour=""
       randomSkin = "" 
-   
-      if(getSelectedSkinsUrls().length == 0){
+      skin_count = getSelectedSkinsUrls().length
+      try{
+        document.getElementById("difficulty_value").innerText= determinDifficulty()
+      }
+      catch{
+        document.getElementById("difficulty_value").innerText= "Start Game First"
+      }
+    
+      if( skin_count < 40){
         alert("Please select more options")
       }
       else{
@@ -375,12 +382,16 @@ function play_button(){
         randomSkinUrl = all_guns_urls[getRandomInt(all_guns_urls.length)]
         //alert(randomSkinUrl)
         randomSkinUrlTest = randomSkinUrl.split("\\")[1].substring(0,randomSkinUrl.split("\\")[1].length-4)
+        randomSkinUrlWeaponTest = randomSkinUrl.split("\\")[0].split("/")[4]
+      
         //alert(getSelectedSkinsUrls()[3].split("\\"))
-        while(randomSkinUrlTest == column1[3]  || randomSkinUrlTest == column2[3]  || randomSkinUrlTest == column4[3] 
-           || randomSkinUrlTest == column5[3]  || randomSkinUrlTest == column6[3]  || randomSkinUrlTest == column7[3]  
-          || randomSkinUrlTest == column8[3]  || randomSkinUrlTest == column9[3]  || randomSkinUrlTest == column10[3] ){
+        while((randomSkinUrlTest == column1[3])  || (randomSkinUrlTest == column2[3]) || (randomSkinUrlTest == column3[3]) || (randomSkinUrlTest == column4[3]) 
+           || (randomSkinUrlTest == column5[3])  || (randomSkinUrlTest == column6[3])  || (randomSkinUrlTest == column7[3]&& randomSkinUrlWeaponTest == column7[0])  
+          || (randomSkinUrlTest == column8[3])  || (randomSkinUrlTest == column9[3])  || (randomSkinUrlTest == column10[3])) {
           randomSkinUrl = all_guns_urls[getRandomInt(all_guns_urls.length)]
+          randomSkinUrlWeaponTest = randomSkinUrl.split("\\")[0].split("/")[4]
           randomSkinUrlTest = randomSkinUrl.split("\\")[1].substring(0,randomSkinUrl.split("\\")[1].length-4)
+
         }
   
   
@@ -559,8 +570,15 @@ function test2(){
  // Update Stats
   document.getElementById("rank_value").innerText = "wood"
   document.getElementById("streak").innerText = streak
+  try{
+    document.getElementById("difficulty_value").innerText= determinDifficulty()
+  }
+  catch{
+    document.getElementById("difficulty_value").innerText= "Start Game First"
+  }
+
   if(colours_wrong ==0){
-    document.getElementById("Colours_results").innerText = String((Math.round((colours_correct/1) * 100) / 100)*100)+"%"
+    document.getElementById("Colours_results").innerText = String((Math.round((colours_correct/1) * 100) / 100))+"%"
   }
   else{
     document.getElementById("Colours_results").innerText = String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%"
@@ -571,5 +589,28 @@ function test2(){
   else{
     document.getElementById("Skin_name_results").innerText = String((Math.round((skin_name_correct/(skin_name_wrong+skin_name_correct)) * 100) / 100)*100)+"%"
   }
+  
   practiseGame()
+}
+
+function determinDifficulty(){
+  
+  difficulty = "test"
+
+  if (skin_count > 1000) {
+    difficulty = "Ohnepixel"
+  }
+  else  if (skin_count > 850 ) {
+    difficulty = "Expert"
+  }
+  else  if (skin_count >  600 ) {
+    difficulty = "Hard"
+  }
+  else if (skin_count >  400) {
+    difficulty = "Medium"
+  }
+  else {
+    difficulty = "Easy"
+  }
+  return difficulty
 }
