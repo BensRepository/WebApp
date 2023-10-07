@@ -107,13 +107,14 @@ function play_button(){
       column1= [gun,colour,type,skin]
       available_slot = "column1" 
       last_column = "column1"
-      
+      document.getElementById("column1").style.backgroundColor = "goldenrod";
     }
     else  if(column2 == ""){
       column2= [gun,colour,type,skin]
       available_slot = "column2" 
       document.getElementById("column1").style.backgroundColor = changeColours(column1[1])
       last_column = "column2"
+      document.getElementById("column2").style.backgroundColor = "goldenrod";
     }
 
     else  if(column3 == ""){
@@ -121,6 +122,7 @@ function play_button(){
       available_slot = "column3"  
       document.getElementById("column2").style.backgroundColor = changeColours(column2[1])
       last_column = "column3"
+      document.getElementById("column3").style.backgroundColor = "goldenrod";
     }
 
     else  if(column4 == ""){
@@ -128,6 +130,7 @@ function play_button(){
       available_slot = "column4" 
       document.getElementById("column3").style.backgroundColor = changeColours(column3[1])
       last_column = "column4"
+      document.getElementById("column4").style.backgroundColor = "goldenrod";
     }
 
     else  if(column5 == ""){
@@ -135,6 +138,7 @@ function play_button(){
       available_slot = "column5" 
       document.getElementById("column4").style.backgroundColor = changeColours(column4[1])
       last_column = "column5"
+      document.getElementById("column5").style.backgroundColor = "goldenrod";
     }  
 
     else  if(column6 == ""){
@@ -142,6 +146,7 @@ function play_button(){
       available_slot = "column6" 
       document.getElementById("column5").style.backgroundColor = changeColours(column5[1])
       last_column = "column6"
+      document.getElementById("column6").style.backgroundColor = "goldenrod";
     }
 
     else  if(column7 == ""){
@@ -149,6 +154,7 @@ function play_button(){
       available_slot = "column7" 
       document.getElementById("column6").style.backgroundColor = changeColours(column6[1])
       last_column = "column7"
+      document.getElementById("column7").style.backgroundColor = "goldenrod";
     }
 
     else  if(column8 == ""){
@@ -156,6 +162,7 @@ function play_button(){
       available_slot = "column8" 
       document.getElementById("column7").style.backgroundColor = changeColours(column7[1])
       last_column = "column8"
+      document.getElementById("column8").style.backgroundColor = "goldenrod";
     }
 
     else  if(column9 == ""){
@@ -163,19 +170,24 @@ function play_button(){
       available_slot = "column9" 
       document.getElementById("column8").style.backgroundColor = changeColours(column8[1])
       last_column = "column9"
+      document.getElementById("column9").style.backgroundColor = "goldenrod";
     }
 
     else  if(column10 == ""){
       column10= [gun,colour,type,skin]
       available_slot = "column10" 
       document.getElementById("column9").style.backgroundColor = changeColours(column9[1])
+
+      document.getElementById("column10").style.backgroundColor = "goldenrod";
+
     }
 
     else {
       available_slot = "stop"
       switchPositions(gun,colour,type,skin);
       alert("test")
-      
+      document.getElementById("column10").style.backgroundColor = "goldenrod";
+
     }
   
     return(available_slot)
