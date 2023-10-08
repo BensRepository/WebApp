@@ -152,66 +152,93 @@
         {{ shotguns|json_script:"shotguns"}}
         {{ types|json_script:"types"}}
         <!-- Content -->
-        <section id="selection_screen" style="align-items: center;text-align: center;display: block;">
-            <p1> Select Difficulty</p1><br>
-            <p2>Please adjust the settings to adjust difficulty - These can not be changed during the game</p2><br>
+        <section id="selection_screen">
+            <div style="align-items: center;text-align: center;">
+                <p1> Select Difficulty</p1><br>
+                <p2>Please adjust the settings to adjust difficulty - These can not be changed during the game</p2><br>
+                <div id = "boxes">
 
-            <div>   
-                <label class="form-control" style="background-color: #4e4e4e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="smgs-checkbox" type="checkbox" name="smgs-checkbox" value="smgs" checked />
-                    Smgs
-                    </label>
-                    <label class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="rifles-checkbox" type="checkbox" name="rifles-checkbox" value="rifles" checked />
-                    Rifles
-                    </label>
-                    <label class="form-control" style="background-color: #4e4e4e;;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="pistols-checkbox" type="checkbox" name="pistols-checkbox" value="pistols" checked />
-                    Pistols
-                    </label>
-                    <label  class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="shotguns-checkbox" name="shotguns-checkbox" type="checkbox" value="shotguns"  checked  />
-                    Shotguns
-                    </label>
-                    <label class="form-control" style="background-color: #4e4e4e;;margin: 8px; width: 190px;vertical-align: middle;text-align: center;">
-                    <input id="machineguns-checkbox" type="checkbox" name="machineguns-checkbox" value="machineguns" checked />
-                    Machineguns
-                </label>
-            </div>
-         
-            <div>
-                <label class="form-control" style="background-color: #421317;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="covert-checkbox" type="checkbox" name="checkbox-checked" checked />
-                    Covert 
-                    </label>
+                    <div id = "leftbox" >
+                        <div id="middle_left">
+                            test
+                            
                 
-                    <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="classified-checkbox" type="checkbox" name="checkbox-checked" checked />
-                    Classified   
-                    </label>
+                              
+                        </div>
+                    </div> 
+             
+                    <div class="center" id = "middlebox" style="border: 0;" >
+                        test
+                   
+                       
+                      
+                    </div>
+                     
+                    <div id = "rightbox">   
+                        <div style="float: left;">
+                            <label class="form-control" style="background-color: #4e4e4e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="smgs-checkbox" type="checkbox" name="smgs-checkbox" value="smgs" checked />
+                                Smgs
+                              </label>
+                              <label class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="rifles-checkbox" type="checkbox" name="rifles-checkbox" value="rifles" checked />
+                                Rifles
+                              </label>
+                              <label class="form-control" style="background-color: #4e4e4e;;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="pistols-checkbox" type="checkbox" name="pistols-checkbox" value="pistols" checked />
+                                Pistols
+                              </label>
+                              <label  class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="shotguns-checkbox" name="shotguns-checkbox" type="checkbox" value="shotguns"  checked  />
+                                Shotguns
+                              </label>
+                              <label class="form-control" style="background-color: #4e4e4e;;margin: 8px; width: 190px;vertical-align: middle;text-align: center;">
+                                <input id="machineguns-checkbox" type="checkbox" name="machineguns-checkbox" value="machineguns" checked />
+                                Machineguns
+                              </label>
+                        </div>
+                    </div>
+                    <div id="rightbox2">
+                        <div style="float: right;">
+                            <label class="form-control" style="background-color: #421317;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="covert-checkbox" type="checkbox" name="checkbox-checked" checked />
+                                Covert 
+                              </label>
+                            
+                              <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="classified-checkbox" type="checkbox" name="checkbox-checked" checked />
+                                Classified   
+                              </label>
+                
+                              <label  class="form-control" style="background-color: #241a3b;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="restricted-checkbox" type="checkbox" name="checkbox-checked" checked />
+                               Restricted  
+                              </label>
+                
+                              <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                <input id="mil-mpec-checkbox" type="checkbox" name="checkbox-checked" checked />
+                                Mil-spec 
+                              </label>
+                
+                              <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 220px;vertical-align: middle;text-align: center;">
+                                <input id="industrial-grade-checkbox" type="checkbox" name="checkbox-checked" checked />
+                                Industrial Grade
+                              </label>
     
-                    <label  class="form-control" style="background-color: #241a3b;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="restricted-checkbox" type="checkbox" name="checkbox-checked" checked />
-                    Restricted  
-                    </label>
-    
-                    <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                    <input id="mil-mpec-checkbox" type="checkbox" name="checkbox-checked" checked />
-                    Mil-spec 
-                    </label>
-    
-                    <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 220px;vertical-align: middle;text-align: center;">
-                    <input id="industrial-grade-checkbox" type="checkbox" name="checkbox-checked" checked />
-                    Industrial Grade
-                    </label>
-
-                    <label class="form-control" style="background-color: grey;margin: 8px;width: 210px;vertical-align: middle;text-align: center;">
-                    <input id="consumer-grade-checkbox" type="checkbox" name="checkbox-checked" checked  />
-                    Consumer Grade
-                    </label>
-            </div>
+                              <label class="form-control" style="background-color: grey;margin: 8px;width: 210px;vertical-align: middle;text-align: center;">
+                                <input id="consumer-grade-checkbox" type="checkbox" name="checkbox-checked" checked  />
+                                Consumer Grade
+                              </label>
+                        </div>
+                    </div>
+                </div>
             
-      
+            
+            <div style="align-items: center;text-align: center;">
+                <p1> Selected</p1>
+                <p> x</p>
+            </div>
+        
         </section>
         <section id="game" style="align-items: center;text-align: center;display: none;"> 
             <p1>Survival</p1><br>
