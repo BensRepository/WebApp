@@ -70,7 +70,7 @@ function bindClick(bind){
     else if (previousBind == bind) {
         document.getElementById("loadoutChoice").style.display ="none"
         document.getElementById("thirdSection").style.display ="none"
-        document.getElementById(previousBind).style.backgroundColor = "blue" 
+        document.getElementById(previousBind).style.backgroundColor = "rgb(54, 54, 58)" 
         previousBind = ""
         bind = ""
         
@@ -78,7 +78,7 @@ function bindClick(bind){
     } 
    
     else{
-        document.getElementById(previousBind).style.backgroundColor = "blue"    
+        document.getElementById(previousBind).style.backgroundColor = "rgb(54, 54, 58)"    
         previousBind = bind
     }
    

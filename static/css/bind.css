@@ -62,7 +62,7 @@
 
 .bindItem {
     color: white;
-    background: blue;
+    background: rgb(54, 54, 58);
     width: 20%;
     display: inline-flex;
     align-items: center;

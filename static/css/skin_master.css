@@ -63,6 +63,7 @@ nav[role="skinmaster"] ul li:hover {
 
 nav[role="skinmaster"] ul li:hover span {
     transform: translateY(0) scale(2);
+    
 }
 
 nav[role="skinmaster"] ul li span:nth-child(1) {
@@ -109,7 +110,6 @@ nav[role="skinmaster"] ul li span:nth-child(4) {
     width: 22%;
     margin: 5px 1% 5px 1%;
     float: left;
-
     transition: height 0.5s;
     -webkit-transition: height 0.5s;
 
@@ -117,7 +117,8 @@ nav[role="skinmaster"] ul li span:nth-child(4) {
 
   }
 .grow:hover {
-    height: 500px;
+    height: 570px;
+
   }
 
   * { box-sizing: border-box; }

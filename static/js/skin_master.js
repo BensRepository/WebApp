@@ -365,6 +365,8 @@ function play_button(){
       randomColour=""
       randomSkin = "" 
       skin_count = getSelectedSkinsUrls().length
+
+   
       try{
         document.getElementById("difficulty_value").innerText= determineDifficulty()
       }
@@ -506,7 +508,7 @@ function play_button(){
     }
     autocomplete(document.getElementById("myInput"), countries);
 
-
+var best_streak = 0
 function test2(){
 
 
@@ -569,8 +571,13 @@ function test2(){
 
  // Update Stats
 
-  document.getElementById("streak").innerText = streak
 
+  if(streak > best_streak){
+    best_streak = streak
+
+    document.getElementById("best_streak").innerText = best_streak
+  }
+  document.getElementById("streak").innerText = streak
   document.getElementById("rank_value").innerText =  determineRank()
   try{
     document.getElementById("difficulty_value").innerText= determineDifficulty()
@@ -620,38 +627,41 @@ var roundsPLayed = 0
 
 function determineRank(){
  
-  rate =   (colours_correct*0.55+skin_name_correct*1.45)/(skin_name_wrong*1.45+colours_wrong*0.55)*100
+  rate =   ((colours_correct*0.55+skin_name_correct*1.45)/(skin_name_wrong*1.45+colours_wrong*0.55+colours_correct*0.55+skin_name_correct*1.45))*100
 
   if (roundsPLayed > 30) {
-    alert(rate)
-    if (rate > 85) {
+
+    if (rate > 65) {
       rank = "Global Elite"
-    } else  if (rate > 85) {
+    } else  if (rate > 55) {
       rank = "Supreme"
     }
-    else  if (rate > 75) {
+    else  if (rate > 50) {
       rank = "LEM"
     }
-    else  if (rate > 65) {
+    else  if (rate > 45) {
       rank = "LE"
     }
-    else  if (rate > 55) {
+    else  if (rate > 40) {
       rank = "DMG"
     }
-    else  if (rate > 45) {
+    else  if (rate > 35) {
       rank = "MGE"
     }
-    else  if (rate > 35) {
+    else  if (rate > 30) {
       rank = "MG2"
     }
     else  if (rate > 25) {
       rank = "MG"
     }
-    else  if (rate > 15) {
+    else  if (rate > 20) {
       rank = "NOVA"
     }
     else  if (rate > 15) {
       rank = "Silver"
+    }
+    else if(rate < 10){
+      rank = "Shit"
     }
   } else{
     rank = "Unranked - Play more! " + String(30 - roundsPLayed) + " more"
