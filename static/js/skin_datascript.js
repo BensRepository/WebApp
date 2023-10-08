@@ -468,3 +468,5 @@ all_guns_urls = ['./static/skins/machineguns/m249/grey\\Contrast Spray.png',
         //alert(skins)
         return skins
     }
+
+    

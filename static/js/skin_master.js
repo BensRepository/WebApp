@@ -366,7 +366,7 @@ function play_button(){
       randomSkin = "" 
       skin_count = getSelectedSkinsUrls().length
       try{
-        document.getElementById("difficulty_value").innerText= determinDifficulty()
+        document.getElementById("difficulty_value").innerText= determineDifficulty()
       }
       catch{
         document.getElementById("difficulty_value").innerText= "Start Game First"
@@ -510,7 +510,7 @@ function play_button(){
 function test2(){
 
 
-
+   roundsPLayed +=1
   // Name Answer
   var nameValue = document.getElementById("myInput").value;
   if(nameValue === currentPractiseskin){
@@ -568,10 +568,12 @@ function test2(){
 
 
  // Update Stats
-  document.getElementById("rank_value").innerText = "wood"
+
   document.getElementById("streak").innerText = streak
+
+  document.getElementById("rank_value").innerText =  determineRank()
   try{
-    document.getElementById("difficulty_value").innerText= determinDifficulty()
+    document.getElementById("difficulty_value").innerText= determineDifficulty()
   }
   catch{
     document.getElementById("difficulty_value").innerText= "Start Game First"
@@ -593,7 +595,7 @@ function test2(){
   practiseGame()
 }
 
-function determinDifficulty(){
+function determineDifficulty(){
   
   difficulty = "test"
 
@@ -613,4 +615,46 @@ function determinDifficulty(){
     difficulty = "Easy"
   }
   return difficulty
+}
+var roundsPLayed = 0
+
+function determineRank(){
+ 
+  rate =   (colours_correct*0.55+skin_name_correct*1.45)/(skin_name_wrong*1.45+colours_wrong*0.55)*100
+
+  if (roundsPLayed > 30) {
+    alert(rate)
+    if (rate > 85) {
+      rank = "Global Elite"
+    } else  if (rate > 85) {
+      rank = "Supreme"
+    }
+    else  if (rate > 75) {
+      rank = "LEM"
+    }
+    else  if (rate > 65) {
+      rank = "LE"
+    }
+    else  if (rate > 55) {
+      rank = "DMG"
+    }
+    else  if (rate > 45) {
+      rank = "MGE"
+    }
+    else  if (rate > 35) {
+      rank = "MG2"
+    }
+    else  if (rate > 25) {
+      rank = "MG"
+    }
+    else  if (rate > 15) {
+      rank = "NOVA"
+    }
+    else  if (rate > 15) {
+      rank = "Silver"
+    }
+  } else{
+    rank = "Unranked - Play more! " + String(30 - roundsPLayed) + " more"
+  }
+  return rank
 }
