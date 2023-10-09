@@ -153,92 +153,199 @@
         {{ types|json_script:"types"}}
         <!-- Content -->
         <section id="selection_screen">
+          
             <div style="align-items: center;text-align: center;">
                 <p1> Select Difficulty</p1><br>
                 <p2>Please adjust the settings to adjust difficulty - These can not be changed during the game</p2><br>
-                <div id = "boxes">
+                <div style="height: 10px;">
 
-                    <div id = "leftbox" >
-                        <div id="middle_left">
-                            test
-                            
-                
-                              
-                        </div>
+                    <div id = "leftboxtitle" >
+                        <p style="color: goldenrod;font-size: 35px;">High Scores</p>
+                        
                     </div> 
              
-                    <div class="center" id = "middlebox" style="border: 0;" >
-                        test
+                    <div id = "middleboxtitle" style="border: 0;color: goldenrod;font-size: 35px;" >
+                        <p style="color: goldenrod;font-size: 35px;">Presets</p>
                    
                        
                       
                     </div>
                      
-                    <div id = "rightbox">   
-                        <div style="float: left;">
-                            <label class="form-control" style="background-color: #4e4e4e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="smgs-checkbox" type="checkbox" name="smgs-checkbox" value="smgs" checked />
-                                Smgs
-                              </label>
-                              <label class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="rifles-checkbox" type="checkbox" name="rifles-checkbox" value="rifles" checked />
-                                Rifles
-                              </label>
-                              <label class="form-control" style="background-color: #4e4e4e;;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="pistols-checkbox" type="checkbox" name="pistols-checkbox" value="pistols" checked />
-                                Pistols
-                              </label>
-                              <label  class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="shotguns-checkbox" name="shotguns-checkbox" type="checkbox" value="shotguns"  checked  />
-                                Shotguns
-                              </label>
-                              <label class="form-control" style="background-color: #4e4e4e;;margin: 8px; width: 190px;vertical-align: middle;text-align: center;">
-                                <input id="machineguns-checkbox" type="checkbox" name="machineguns-checkbox" value="machineguns" checked />
-                                Machineguns
-                              </label>
-                        </div>
+                    <div id = "rightboxtitle" style="display: none;" >   
+                            <p style="color: goldenrod;font-size: 35px;padding-right: 70px;">Custom</p>
+                       
                     </div>
-                    <div id="rightbox2">
-                        <div style="float: right;">
-                            <label class="form-control" style="background-color: #421317;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="covert-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Covert 
-                              </label>
-                            
-                              <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="classified-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Classified   
-                              </label>
-                
-                              <label  class="form-control" style="background-color: #241a3b;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="restricted-checkbox" type="checkbox" name="checkbox-checked" checked />
-                               Restricted  
-                              </label>
-                
-                              <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="mil-mpec-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Mil-spec 
-                              </label>
-                
-                              <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 220px;vertical-align: middle;text-align: center;">
-                                <input id="industrial-grade-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Industrial Grade
-                              </label>
-    
-                              <label class="form-control" style="background-color: grey;margin: 8px;width: 210px;vertical-align: middle;text-align: center;">
-                                <input id="consumer-grade-checkbox" type="checkbox" name="checkbox-checked" checked  />
-                                Consumer Grade
-                              </label>
-                        </div>
-                    </div>
+                   
                 </div>
-            
-            
-            <div style="align-items: center;text-align: center;">
-                <p1> Selected</p1>
-                <p> x</p>
-            </div>
+                <div id = "boxes">
+
+                    <div id = "leftbox" style="align-items: center;text-align: center;color: wheat;" >
+                        Coming soon!
+                              
+                    </div> 
+             
+                    <div class="center" id = "middlebox" style="border: 0;" >
+                        <div>
+                            <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;vertical-align: middle;font-size: 20px;">
+                                <input id="easy-checkbox" type="radio" name="difficulty-checkbox" value="easy" onclick=" selectDifficulty()" unchecked />
+                                Easy
+                            </label>
+                            <label class="form-control middle-on-hover" style="background-color: #5e5858;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
+                                <input id="medium-checkbox" type="radio" name="difficulty-checkbox" value="medium" onclick=" selectDifficulty()" unchecked />
+                                Medium
+                            </label>
+                            <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
+                                <input id="hard-checkbox" type="radio" name="difficulty-checkbox" value="hard" onclick=" selectDifficulty()" unchecked />
+                                Hard
+                            </label>
+                            <label class="form-control middle-on-hover" style="background-color: #5e5858;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
+                                <input id="expert-checkbox" type="radio" name="difficulty-checkbox" value="expert" onclick=" selectDifficulty()" unchecked />
+                                Expert
+                            </label>
+                            <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
+                                <input id="Ohnepixel-checkbox" type="radio" name="difficulty-checkbox" value="Ohnepixel" onclick=" selectDifficulty()" checked />
+                                Ohnepixel
+                            </label>
+                            <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
+                                <input id="custom-checkbox" type="radio" name="difficulty-checkbox" value="custom" onclick=" selectDifficulty()" unchecked />
+                                Custom
+                            </label>
+                
+                
+                           </div>
+                              
+                   
+                       
+                      
+                    </div>
+                    <div>
+                        <div id = "rightbox" style="display: none;"  >   
+                            <div style="float: left;">
+                                <label class="form-control" style="background-color: #4e4e4e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="smgs-checkbox" type="checkbox" name="smgs-checkbox" value="smgs" onclick="selectDifficulty()" checked />
+                                    Smgs
+                                  </label>
+                                  <label class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="rifles-checkbox" type="checkbox" name="rifles-checkbox" value="rifles" onclick="selectDifficulty()" checked />
+                                    Rifles
+                                  </label>
+                                  <label class="form-control" style="background-color: #4e4e4e;;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="pistols-checkbox" type="checkbox" name="pistols-checkbox" value="pistols" onclick="selectDifficulty()" checked />
+                                    Pistols
+                                  </label>
+                                  <label  class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="shotguns-checkbox" name="shotguns-checkbox" type="checkbox" value="shotguns" onclick="selectDifficulty()"  checked  />
+                                    Shotguns
+                                  </label>
+                                  <label class="form-control" style="background-color: #4e4e4e;;margin: 8px; width: 190px;vertical-align: middle;text-align: center;">
+                                    <input id="machineguns-checkbox" type="checkbox" name="machineguns-checkbox" value="machineguns" onclick="selectDifficulty()" checked />
+                                    Machineguns
+                                  </label>
+                            </div>
+                        </div  >
+                        <div id="rightbox2" style="display: none;" >
+                            <div style="float: right;" >
+                                <label class="form-control" style="background-color: #421317;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="covert-checkbox" type="checkbox" name="checkbox-checked" onclick="selectDifficulty()"  checked />
+                                    Covert 
+                                  </label>
+                                
+                                  <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="classified-checkbox" type="checkbox" name="checkbox-checked" onclick="selectDifficulty()" checked />
+                                    Classified   
+                                  </label>
+                    
+                                  <label  class="form-control" style="background-color: #241a3b;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="restricted-checkbox" type="checkbox" name="checkbox-checked" onclick="selectDifficulty()" checked />
+                                   Restricted  
+                                  </label>
+                    
+                                  <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
+                                    <input id="mil-mpec-checkbox" type="checkbox" name="checkbox-checked" onclick="selectDifficulty()" checked />
+                                    Mil-spec 
+                                  </label>
+                    
+                                  <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 220px;vertical-align: middle;text-align: center;">
+                                    <input id="industrial-grade-checkbox" type="checkbox" name="checkbox-checked" onclick="selectDifficulty()" checked />
+                                    Industrial Grade
+                                  </label>
         
+                                  <label class="form-control" style="background-color: grey;margin: 8px;width: 210px;vertical-align: middle;text-align: center;">
+                                    <input id="consumer-grade-checkbox" type="checkbox" name="checkbox-checked" onclick="selectDifficulty()" checked  />
+                                    Consumer Grade
+                                  </label>
+                            </div>
+                        </div>   
+                    </div>
+                
+                </div>
+               <br><br><br><br>
+            
+            <div>
+                <p1> Selected</p1>
+                <p id="selected_difficulty" style="font-size: 30px;font-weight: bold;color: goldenrod;"> Ohnepixel</p>
+                                <!-- HTML !-->
+                <button class="button-73" role="button" style="height: auto;width: 25%;">Start Game</button>
+            </div>
+        <script>
+            function selectDifficulty(){
+                difficulty = "Ohnepixel"
+                document.getElementById("rightbox").style.display = "none"
+                document.getElementById("rightbox2").style.display = "none"
+                if (document.getElementById("easy-checkbox").checked == true) {
+                    difficulty = "Easy"
+                } 
+                else if(document.getElementById("medium-checkbox").checked== true) {
+                    difficulty = "Medium"
+                }
+                else if(document.getElementById("hard-checkbox").checked== true) {
+                    difficulty = "Hard"
+                } 
+                else if(document.getElementById("expert-checkbox").checked== true) {
+                    difficulty = "Expert"
+                } 
+                else if(document.getElementById("Ohnepixel-checkbox").checked == true) {
+                    difficulty = "Ohnepixel"
+                }
+                else if(document.getElementById("custom-checkbox").checked == true) {
+                    document.getElementById("rightbox").style.display = "block"
+                    document.getElementById("rightbox2").style.display = "block"
+                    skin_count_temp = getSelectedSkinsUrls().length
+                    alert(skin_count_temp)
+                    if (skin_count_temp > 1000) {
+                        difficulty_temp = "Ohnepixel"
+                    }
+                    else  if (skin_count_temp > 850 ) {
+                        difficulty_temp = "Expert"
+                    }
+                    else  if (skin_count_temp >  650 ) {
+                        difficulty_temp = "Hard"
+                    }
+                    else if (skin_count_temp >  500) {
+                        difficulty_temp = "Medium"
+                    }
+                    else if (skin_count_temp >  400) {
+                        difficulty_temp = "Easy"
+                    }
+                    else{
+                        alert("Please select more options")
+                        document.getElementById("start_buttom").style.display = "none"
+                    }
+                    difficulty = "Custom: " +  difficulty_temp 
+                }
+                document.getElementById("selected_difficulty").innerText = difficulty
+               
+    
+  
+  
+   
+
+              
+                //get skins from selected criteria compare with practise function
+                //detect preset change - on click send value and run new function to change custom preset to match difficulty
+                //custom option enables and disables right buttons
+            }
+        </script>
         </section>
         <section id="game" style="align-items: center;text-align: center;display: none;"> 
             <p1>Survival</p1><br>
