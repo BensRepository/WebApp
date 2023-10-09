@@ -187,27 +187,27 @@
                     <div class="center" id = "middlebox" style="border: 0;" >
                         <div>
                             <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;vertical-align: middle;font-size: 20px;">
-                                <input id="easy-checkbox" type="radio" name="difficulty-checkbox" value="easy" onclick=" selectDifficulty()" unchecked />
+                                <input style="accent-color: #50a4db;" id="easy-checkbox" type="radio" name="difficulty-checkbox" value="easy" onclick=" selectDifficulty()" unchecked />
                                 Easy
                             </label>
                             <label class="form-control middle-on-hover" style="background-color: #5e5858;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
-                                <input id="medium-checkbox" type="radio" name="difficulty-checkbox" value="medium" onclick=" selectDifficulty()" unchecked />
+                                <input style="accent-color: #1f08eb;" id="medium-checkbox" type="radio" name="difficulty-checkbox" value="medium" onclick=" selectDifficulty()" unchecked />
                                 Medium
                             </label>
                             <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
-                                <input id="hard-checkbox" type="radio" name="difficulty-checkbox" value="hard" onclick=" selectDifficulty()" unchecked />
+                                <input style="accent-color: #8211c4;" id="hard-checkbox" type="radio" name="difficulty-checkbox" value="hard" onclick=" selectDifficulty()" unchecked />
                                 Hard
                             </label>
                             <label class="form-control middle-on-hover" style="background-color: #5e5858;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
-                                <input id="expert-checkbox" type="radio" name="difficulty-checkbox" value="expert" onclick=" selectDifficulty()" unchecked />
+                                <input style="accent-color: #a31898;" id="expert-checkbox" type="radio" name="difficulty-checkbox" value="expert" onclick=" selectDifficulty()" unchecked />
                                 Expert
                             </label>
                             <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
-                                <input id="Ohnepixel-checkbox" type="radio" name="difficulty-checkbox" value="Ohnepixel" onclick=" selectDifficulty()" checked />
+                                <input style="accent-color: #d61f1f;" id="Ohnepixel-checkbox" type="radio" name="difficulty-checkbox" value="Ohnepixel" onclick=" selectDifficulty()" checked />
                                 Ohnepixel
                             </label>
                             <label class="form-control middle-on-hover" style="background-color: #4e4e4e;width: 100%;vertical-align: middle;text-align: center;height: 40px;font-size: 20px;">
-                                <input id="custom-checkbox" type="radio" name="difficulty-checkbox" value="custom" onclick=" selectDifficulty()" unchecked />
+                                <input style="accent-color: #dfee0f;" id="custom-checkbox" type="radio" name="difficulty-checkbox" value="custom" onclick=" selectDifficulty()" unchecked />
                                 Custom
                             </label>
                 
@@ -285,33 +285,192 @@
                 <p1> Selected</p1>
                 <p id="selected_difficulty" style="font-size: 30px;font-weight: bold;color: goldenrod;"> Ohnepixel</p>
                                 <!-- HTML !-->
-                <button class="button-73" role="button" style="height: auto;width: 25%;">Start Game</button>
+                <button id="start_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="start_game()">Start Game</button>
             </div>
         <script>
+
+            function start_game(){
+         
+                document.getElementById("selection_screen").style.display = "none"
+                document.getElementById("game").style.display = "block"
+                skin_count = getSelectedSkinsUrlsMode().length
+                document.getElementById("difficulty_value").innerText= determineDifficulty()
+
+            }
+            function getTypeSelectColoursMode(gun_type){
+    
+                smgs = JSON.parse(document.getElementById(gun_type).textContent)
+                type_select_colours = []
+            
+                for (let i = 0; i < smgs.length; i++){
+                
+                    if(smgs[i] != ""){
+                        gunColours =JSON.parse(document.getElementById(smgs[i]).textContent)
+                        if(include_coverts == true){
+                            for (x in gunColours["red"]){
+                                type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/red\\"+gunColours["red"][x]+".png")
+                            }
+                        }   
+                        if(include_classifieds == true){
+                        
+                            for (x in gunColours["pink"]){
+                                type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/pink\\"+gunColours["pink"][x]+".png")
+                            }
+                        }
+                        if(include_restricted == true){
+                            for (x in gunColours["purple"]){
+                                type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/purple\\"+gunColours["purple"][x]+".png")
+                            }
+                        }
+                        if(include_mil_spec == true){
+                            for (x in gunColours["blue"]){
+                                type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/blue\\"+gunColours["blue"][x]+".png")
+                            }
+                        }
+                        if(include_industrial_grade== true){
+                            for (x in gunColours["light_blue"]){
+                                type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/light_blue\\"+gunColours["light_blue"][x]+".png")
+                            }
+                        }
+                        if(include_consumer_grade == true){
+                            for (x in gunColours["grey"]){
+                                type_select_colours.push("./static/skins/"+gun_type+"/"+smgs[i]+"/grey\\"+gunColours["grey"][x]+".png")
+                            }
+                        }
+                        
+                    }
+                
+                }
+                return type_select_colours
+            }
+
+            function getSelectedSkinsUrlsMode(){
+                
+                skins = []
+                if (include_pistols == true) {
+                    for (i in getTypeSelectColoursMode("pistols") ){
+                        skins.push(getTypeSelectColoursMode("pistols")[i])
+                    }  
+                } 
+                if(include_machineguns== true) {
+                    for (i in getTypeSelectColoursMode("machineguns")){
+                        skins.push(getTypeSelectColoursMode("machineguns")[i])
+                    }
+                }
+                if(include_smgs== true) {
+                    for (i in getTypeSelectColoursMode("smgs")){
+                        skins.push(getTypeSelectColoursMode("smgs")[i])
+                    }
+                } 
+                if(include_rifles== true) {
+                    for (i in getTypeSelectColoursMode("rifles") ){
+                        skins.push(getTypeSelectColoursMode("rifles")[i])
+                    }
+                } 
+                if(include_shotguns == true) {
+                    for (i in getTypeSelectColoursMode("shotguns")){
+                        skins.push(getTypeSelectColoursMode("shotguns")[i])
+                    }
+                }
+                //alert(skins)
+                return skins
+            }
+
+
+            var skins = []
             function selectDifficulty(){
                 difficulty = "Ohnepixel"
                 document.getElementById("rightbox").style.display = "none"
                 document.getElementById("rightbox2").style.display = "none"
+                document.getElementById("rightboxtitle").style.display = "none"
+                document.getElementById("start_button").style.display = "inline"
                 if (document.getElementById("easy-checkbox").checked == true) {
                     difficulty = "Easy"
+                    include_shotguns = false
+                    include_smgs = true
+                    include_rifles = true
+                    include_pistols = true
+                    include_machineguns = false
+                
+                    include_coverts = true
+                    include_classifieds = true
+                    include_restricted = true
+                    include_mil_spec = false
+                    include_industrial_grade = false
+                    include_consumer_grade = false
+                    skins =  getSelectedSkinsUrlsMode()
                 } 
                 else if(document.getElementById("medium-checkbox").checked== true) {
                     difficulty = "Medium"
+                    include_shotguns = true
+                    include_smgs = true
+                    include_rifles = true
+                    include_pistols = false
+                    include_machineguns = false
+                
+                    include_coverts = true
+                    include_classifieds = true
+                    include_restricted = true
+                    include_mil_spec = true
+                    include_industrial_grade = false
+                    include_consumer_grade = false
+                    skins =  getSelectedSkinsUrlsMode()
                 }
                 else if(document.getElementById("hard-checkbox").checked== true) {
                     difficulty = "Hard"
+                    include_shotguns = false
+                    include_smgs = true
+                    include_rifles = true
+                    include_pistols = true
+                    include_machineguns = false
+                
+                    include_coverts = true
+                    include_classifieds = true
+                    include_restricted = true
+                    include_mil_spec = true
+                    include_industrial_grade = false
+                    include_consumer_grade = false
+                    skins =  getSelectedSkinsUrlsMode()
                 } 
                 else if(document.getElementById("expert-checkbox").checked== true) {
                     difficulty = "Expert"
+                    include_shotguns = true
+                    include_smgs = true
+                    include_rifles = true
+                    include_pistols = true
+                    include_machineguns = true
+                
+                    include_coverts = true
+                    include_classifieds = true
+                    include_restricted = true
+                    include_mil_spec = true
+                    include_industrial_grade = false
+                    include_consumer_grade = false
+                    skins =  getSelectedSkinsUrlsMode()
                 } 
                 else if(document.getElementById("Ohnepixel-checkbox").checked == true) {
                     difficulty = "Ohnepixel"
+                    include_shotguns = true
+                    include_smgs = true
+                    include_rifles = true
+                    include_pistols = true
+                    include_machineguns = true
+                
+                    include_coverts = true
+                    include_classifieds = true
+                    include_restricted = true
+                    include_mil_spec = true
+                    include_industrial_grade = true
+                    include_consumer_grade = true
+                    skins =  getSelectedSkinsUrlsMode()
                 }
                 else if(document.getElementById("custom-checkbox").checked == true) {
                     document.getElementById("rightbox").style.display = "block"
                     document.getElementById("rightbox2").style.display = "block"
+                    document.getElementById("rightboxtitle").style.display = "block"
+                    
                     skin_count_temp = getSelectedSkinsUrls().length
-                    alert(skin_count_temp)
+                    skins =  getSelectedSkinsUrls()
                     if (skin_count_temp > 1000) {
                         difficulty_temp = "Ohnepixel"
                     }
@@ -328,8 +487,9 @@
                         difficulty_temp = "Easy"
                     }
                     else{
-                        alert("Please select more options")
-                        document.getElementById("start_buttom").style.display = "none"
+                        
+                        difficulty_temp = "None - Please select more options"
+                        document.getElementById("start_button").style.display = "none"
                     }
                     difficulty = "Custom: " +  difficulty_temp 
                 }
@@ -366,7 +526,7 @@
             <div id="column10"></div>
             <div id="column11"></div>
             </main>
-            <div style="background-color: rgb(25, 51, 7);height: 50px;text-align: center;vertical-align: middle;color: white;font-size: 30px;font-weight: bold;" id="practise_game" onclick="practiseGame()">Click to Start
+            <div style="background-color: rgb(25, 51, 7);height: 50px;text-align: center;vertical-align: middle;color: white;font-size: 30px;font-weight: bold;" id="practise_game" onclick="survivalGame()">Click to Start
                 <!DOCTYPE html>   </div>
          
 
@@ -395,35 +555,33 @@
              
                     <div class="center" id = "middlebox" style="border: 0;" >
                         <div  class="center" style="display: flex;width: 415px;border: 0;">
-                     
-                            <label class="form-control" style="background-color: #421317;margin: 8px; width: 50px;text-align: center;">
-                                <input type="radio" name="colour_checkbox" value="red" unchecked />
-                                    
-                                </label>
-                                <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 50px;text-align: center;">
-                                <input type="radio" name="colour_checkbox" unchecked  value="pink"/>
+                            <input type="radio" name="colour_checkbox" value="red" unchecked style="accent-color: #421317;" />
+                                
+                            </label>
+                            <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 50px;text-align: center;">
+                            <input type="radio" name="colour_checkbox" unchecked  value="pink" style="accent-color: #5c1153;" />
+                    
+                            </label>
+            
+                            <label class="form-control" style="background-color: #241a3b;margin: 8px;width: 50px;text-align: center;">
+                            <input type="radio" name="colour_checkbox" value="purple" style="accent-color: #241a3b;" />
                         
-                                </label>
-                
-                                <label class="form-control" style="background-color: #241a3b;margin: 8px;width: 50px;text-align: center;">
-                                <input type="radio" name="colour_checkbox" value="purple" />
-                            
-                                </label>
-                
-                                <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 50px;text-align: center;">
-                                <input type="radio" name="colour_checkbox" unchecked value="blue" />
-                        
-                                </label>
-                
-                                <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 50px;text-align: center;">
-                                <input type="radio" name="colour_checkbox" unchecked value="light_blue" />
-                        
-                                </label>
-    
-                                <label class="form-control" style="background-color: grey;margin: 8px;width: 50px;text-align: center;">
-                                <input type="radio" name="colour_checkbox" unchecked value="grey" />
-                        
-                                </label>
+                            </label>
+            
+                            <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 50px;text-align: center;">
+                            <input type="radio" name="colour_checkbox" unchecked value="blue"  style="accent-color: #0b1666;" />
+                    
+                            </label>
+            
+                            <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 50px;text-align: center;">
+                            <input type="radio" name="colour_checkbox" unchecked value="light_blue" style="accent-color: #1a606e;" />
+                    
+                            </label>
+
+                            <label class="form-control" style="background-color: grey;margin: 8px;width: 50px;text-align: center;">
+                            <input type="radio" name="colour_checkbox" unchecked value="grey" style="accent-color: grey;" />
+                    
+                            </label>
                            
                         </div>
                         <div>
@@ -438,59 +596,12 @@
                      
                     <div id = "rightbox">   
                         <div style="float: left;">
-                            <label class="form-control" style="background-color: #4e4e4e;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="smgs-checkbox" type="checkbox" name="smgs-checkbox" value="smgs" checked />
-                                Smgs
-                              </label>
-                              <label class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="rifles-checkbox" type="checkbox" name="rifles-checkbox" value="rifles" checked />
-                                Rifles
-                              </label>
-                              <label class="form-control" style="background-color: #4e4e4e;;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="pistols-checkbox" type="checkbox" name="pistols-checkbox" value="pistols" checked />
-                                Pistols
-                              </label>
-                              <label  class="form-control" style="background-color: #7b7b80;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="shotguns-checkbox" name="shotguns-checkbox" type="checkbox" value="shotguns"  checked  />
-                                Shotguns
-                              </label>
-                              <label class="form-control" style="background-color: #4e4e4e;;margin: 8px; width: 190px;vertical-align: middle;text-align: center;">
-                                <input id="machineguns-checkbox" type="checkbox" name="machineguns-checkbox" value="machineguns" checked />
-                                Machineguns
-                              </label>
+                   
                         </div>
                     </div>
                     <div id="rightbox2">
                         <div style="float: right;">
-                            <label class="form-control" style="background-color: #421317;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="covert-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Covert 
-                              </label>
                             
-                              <label class="form-control" style="background-color: #5c1153;margin: 8px; width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="classified-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Classified   
-                              </label>
-                
-                              <label  class="form-control" style="background-color: #241a3b;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="restricted-checkbox" type="checkbox" name="checkbox-checked" checked />
-                               Restricted  
-                              </label>
-                
-                              <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 150px;vertical-align: middle;text-align: center;">
-                                <input id="mil-mpec-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Mil-spec 
-                              </label>
-                
-                              <label class="form-control" style="background-color: #1a606e;margin: 8px;width: 220px;vertical-align: middle;text-align: center;">
-                                <input id="industrial-grade-checkbox" type="checkbox" name="checkbox-checked" checked />
-                                Industrial Grade
-                              </label>
-    
-                              <label class="form-control" style="background-color: grey;margin: 8px;width: 210px;vertical-align: middle;text-align: center;">
-                                <input id="consumer-grade-checkbox" type="checkbox" name="checkbox-checked" checked  />
-                                Consumer Grade
-                              </label>
                         </div>
                     </div>
                 </div>

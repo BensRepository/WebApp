@@ -605,21 +605,24 @@ function test2(){
 function determineDifficulty(){
   
   difficulty = "test"
-
+  
   if (skin_count > 1000) {
     difficulty = "Ohnepixel"
   }
   else  if (skin_count > 850 ) {
     difficulty = "Expert"
   }
-  else  if (skin_count >  600 ) {
+  else  if (skin_count >  650 ) {
     difficulty = "Hard"
   }
-  else if (skin_count >  400) {
+  else if (skin_count >  500) {
     difficulty = "Medium"
   }
-  else {
+  else if (skin_count >  400) {
     difficulty = "Easy"
+  }
+  else{
+    difficulty = "Select more options for a rating"
   }
   return difficulty
 }

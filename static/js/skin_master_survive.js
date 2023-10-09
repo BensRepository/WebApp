@@ -360,27 +360,24 @@ function play_button(){
       var currentPractiseColour = ""
       
 
-      function practiseGame(){   
+      function survivalGame(){   
         document.getElementById("practise_game").style.display = "none"
         randomType = ""
         randomGun =""
         randomColour=""
         randomSkin = "" 
-        skin_count = getSelectedSkinsUrls().length
-  
+        skin_count = skins.length
+        
      
-        try{
-          document.getElementById("difficulty_value").innerText= determineDifficulty()
-        }
-        catch{
-          document.getElementById("difficulty_value").innerText= "Start Game First"
-        }
+        
+        document.getElementById("difficulty_value").innerText= determineDifficulty()
+    
         
         if( skin_count < 40){
             alert("Please include more skins in your customisation")
         }
         else{
-          all_guns_urls = getSelectedSkinsUrls()
+          all_guns_urls = skins
       
         
           randomSkinUrl = all_guns_urls[getRandomInt(all_guns_urls.length)]
@@ -601,7 +598,7 @@ function play_button(){
       document.getElementById("Skin_name_results").innerText = String((Math.round((skin_name_correct/(skin_name_wrong+skin_name_correct)) * 100) / 100)*100)+"%"
     }
     
-    practiseGame()
+    survivalGame()
   }
   
   function determineDifficulty(){
@@ -614,14 +611,17 @@ function play_button(){
     else  if (skin_count > 850 ) {
       difficulty = "Expert"
     }
-    else  if (skin_count >  600 ) {
+    else  if (skin_count >  650 ) {
       difficulty = "Hard"
     }
-    else if (skin_count >  400) {
+    else if (skin_count >  500) {
       difficulty = "Medium"
     }
-    else {
+    else if (skin_count >  400) {
       difficulty = "Easy"
+    }
+    else{
+      difficulty = "Select more options for a difficulty rating"
     }
     return difficulty
   }
