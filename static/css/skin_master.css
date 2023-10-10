@@ -188,7 +188,10 @@ p{
     clear: both;
     width: 100%;
 }
-
+#main_menu_redirect:hover{
+  opacity: 50%;
+  cursor: pointer;
+}
 #column1 {
     background-color: #4e4e4e;
     float: left;

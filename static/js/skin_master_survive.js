@@ -21,7 +21,7 @@ function play_button(){
     function survival_button(){
       window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Survival/");
     }
-  
+   
     function makeImages(gun,colour,type,skin){
     
       var img = document.createElement("IMG");
