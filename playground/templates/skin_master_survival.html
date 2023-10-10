@@ -156,7 +156,7 @@
           
             <div style="align-items: center;text-align: center;">
                 <p1> Select Difficulty</p1><br>
-                <p2>Please adjust the settings to adjust difficulty - These can not be changed during the game</p2><br>
+                <p2>The higher difficulty you select, the more types of skins you'll see - This can not be changed during the game.</p2><br>
                 <div style="height: 10px;">
 
                     <div id = "leftboxtitle" >
@@ -282,7 +282,7 @@
                <br><br><br><br>
             
             <div>
-                <p1> Selected</p1>
+                <p1> Selected:</p1>
                 <p id="selected_difficulty" style="font-size: 30px;font-weight: bold;color: goldenrod;"> Ohnepixel</p>
                                 <!-- HTML !-->
                 <button id="start_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="start_game()">Start Game</button>
@@ -379,7 +379,7 @@
 
             var skins = []
             function selectDifficulty(){
-                difficulty = "Ohnepixel"
+                difficulty = ""
                 document.getElementById("rightbox").style.display = "none"
                 document.getElementById("rightbox2").style.display = "none"
                 document.getElementById("rightboxtitle").style.display = "none"
@@ -471,6 +471,7 @@
                     
                     skin_count_temp = getSelectedSkinsUrls().length
                     skins =  getSelectedSkinsUrls()
+
                     if (skin_count_temp > 1000) {
                         difficulty_temp = "Ohnepixel"
                     }
@@ -555,6 +556,7 @@
              
                     <div class="center" id = "middlebox" style="border: 0;" >
                         <div  class="center" style="display: flex;width: 415px;border: 0;">
+                            <label class="form-control" style="background-color: #421317;margin: 8px; width: 50px;text-align: center;">
                             <input type="radio" name="colour_checkbox" value="red" unchecked style="accent-color: #421317;" />
                                 
                             </label>
