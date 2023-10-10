@@ -290,10 +290,15 @@
         <script>
 
             function start_game(){
-         
+                if(document.getElementById("custom-checkbox").checked){
+                    skin_count = getSelectedSkinsUrls().length
+                }
+                else{
+                    skin_count = getSelectedSkinsUrlsMode().length
+                }
                 document.getElementById("selection_screen").style.display = "none"
                 document.getElementById("game").style.display = "block"
-                skin_count = getSelectedSkinsUrlsMode().length
+                
                 document.getElementById("difficulty_value").innerText= determineDifficulty()
 
             }

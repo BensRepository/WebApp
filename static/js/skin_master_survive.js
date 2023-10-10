@@ -361,14 +361,12 @@ function play_button(){
       
 
       function survivalGame(){   
+        skin_count = skins.length
         document.getElementById("practise_game").style.display = "none"
         randomType = ""
         randomGun =""
         randomColour=""
         randomSkin = "" 
-        skin_count = skins.length
-        
-     
         
         document.getElementById("difficulty_value").innerText= determineDifficulty()
     
