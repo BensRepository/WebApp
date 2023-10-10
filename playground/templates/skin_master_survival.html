@@ -290,6 +290,92 @@
         <script>
 
             function start_game(){
+                document.getElementById("practise_game").style.display = "block"
+                try{
+                    document.getElementById(column1[3]).remove();
+                    column1= ""
+                    document.getElementById("column1").style.backgroundColor = "#4e4e4e"
+                    document.getElementById("column1").style.borderColor = "black"
+                }catch{
+                    
+                }
+                try {
+                    document.getElementById(column2[3]).remove();
+                    column2= ""
+                    document.getElementById("column2").style.backgroundColor = "#7b7b80"
+                    document.getElementById("column2").style.borderColor = "black"
+                } catch{
+
+                }
+                try {
+                    document.getElementById(column3[3]).remove();
+                    column3 = ""
+                    document.getElementById("column3").style.backgroundColor = "#4e4e4e"
+                    document.getElementById("column3").style.borderColor = "black"
+                } catch {
+                    
+                }
+                try {
+                    document.getElementById(column4[3]).remove();
+                    column4 = ""
+                    document.getElementById("column4").style.backgroundColor = "#7b7b80"
+                    document.getElementById("column4").style.borderColor = "black"
+                } catch {
+                    
+                }
+                try {
+                    document.getElementById(column5[3]).remove();
+                    column5 = ""
+                    document.getElementById("column5").style.backgroundColor = "#4e4e4e"
+                    document.getElementById("column5").style.borderColor = "black"
+                } catch {
+                    
+                }
+                try {
+                    document.getElementById(column6[3]).remove();
+                    column6 = ""
+                    document.getElementById("column6").style.backgroundColor = "#7b7b80"
+                    document.getElementById("column6").style.borderColor = "black"
+                    } catch {
+                    
+                }
+                try {
+                    document.getElementById(column7[3]).remove();
+                    column7 = ""
+                    document.getElementById("column7").style.backgroundColor = "#4e4e4e"
+                    document.getElementById("column7").style.borderColor = "black"
+                } catch {
+                    
+                }
+                try {
+                    document.getElementById(column8[3]).remove();
+                    column8 = ""
+                    document.getElementById("column8").style.backgroundColor = "#7b7b80"
+                    document.getElementById("column8").style.borderColor = "black"
+
+                } catch {
+                 
+                }
+                try {
+                    document.getElementById(column9[3]).remove();
+                    column9 = ""
+                    document.getElementById("column9").style.backgroundColor = "#4e4e4e"
+                    document.getElementById("column9").style.borderColor = "black"
+
+                } catch {
+                    
+                }
+                try {
+                    document.getElementById(column10[3]).remove();
+                    column10 = ""
+                    document.getElementById("column10").style.backgroundColor = "#7b7b80"
+                    document.getElementById("column10").style.borderColor = "black"
+                } catch {
+                    
+                }
+
+                
+                document.getElementById("game_over_screen").style.display = "none"
                 if(document.getElementById("custom-checkbox").checked){
                     skin_count = getSelectedSkinsUrls().length
                 }
@@ -542,19 +628,9 @@
 
                     <div id = "leftbox" >
                         <div id="middle_left">
-                            <p style="font-size: 25px;font-weight: bold;"> Stats </p>
-                            <p id="Correct" style=" display:inline-block;font-weight: bold;"> Correct:</p>   <p style=" display:inline-block;" id="Correct_value"> 0</p>
-                            <p style=" display:inline-block;font-weight: bold;" id="Wrong"> Wrong:</p>    <p style=" display:inline-block;" id="Wrong_value"> 0</p><br>
-                            <p style=" display:inline-block;font-weight: bold;" id="Success Rate"> Success Rate:</p>   <p style=" display:inline-block;" id="success_rate_value"> 100%</p><br>
-
-                            <p id="Correct" style=" display:inline-block;font-weight: bold;"> Colours</p>   <p style=" display:inline-block;" id="Colours_results"> 100%</p>
-                            <p style=" display:inline-block;font-weight: bold;" id="Wrong"> Skin Name:</p>    <p style=" display:inline-block;" id="Skin_name_results"> 100%</p><br>
-                            <p style=" display:inline-block;font-weight: bold;" id="streak Text;"> Streak:</p>   <p style=" display:inline-block;" id="streak"> 0</p>
-                            <p style=" display:inline-block;font-weight: bold;" id="streak Text;"> Best Streak:</p>   <p style=" display:inline-block;" id="best_streak"> 0</p><br>
-                            <p style=" display:inline-block;font-weight: bold;" id="Estimated Rank"> Estimated Rank: </p>   <p style=" display:inline-block;" id="rank_value"> Pending games played </p><br>
+                            <p style="font-size: 25px;font-weight: bold;"> Game information </p>
+                            <p style=" display:inline-block;font-weight: bold;" id="streak Text;font-size:50px"> Streak:</p>   <p style=" display:inline-block;" id="streak"> 0</p><br>
                             <p style=" display:inline-block;font-weight: bold;" id="Estimated Rank"> Difficulty: </p>   <p style=" display:inline-block;" id="difficulty_value"> Pending game start </p><br>
-                            
-                
                               
                         </div>
                     </div> 
@@ -597,6 +673,8 @@
                             </div>
                                 <input id="submit_button" type="submit" onclick="test2()">
                         </div>
+
+                        
                        
                       
                     </div>
@@ -612,13 +690,23 @@
                         </div>
                     </div>
                 </div>
-            
+
              <!-- Skin look up 
             Need a way to navigate via gun and rarity colour to look up 
             need a practise game that has no score attached
             -->
-
+         
         </section>
+        <section style="text-align: center;">
+            <div id="game_over_screen" style="display: none;">
+                <p1 style="color: white;">Game Over</p1>
+                <p id="answer"></p>
+                <p> You scored </p><p id="score"> </p>
+                <button id="start_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="start_game()">Play Again</button>
+            </div>
+           
+        </section>
+     
         <!-- Footer-->
         <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);position: fixed;text-align: center;bottom: 0px;width: 100%; "><p class="m-0 text-center text-white">Copyright &copy; CSTools 2023</p></div>
         <!-- Bootstrap core JS-->

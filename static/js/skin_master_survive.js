@@ -58,16 +58,9 @@ function play_button(){
     var column8 = ""
     var column9 = ""
     var column10 = ""
-    var streak = ""
-    var colours_correct =0
-    var skin_name_correct = 0
-    var colours_wrong =0
-    var skin_name_wrong = 0
+    var streak = 0
     var resultColour = "goldenrod";
     var last_column = "column1"
-    var correct = 0
-    var wrong = 0
-    var success_rate = 0
     var estimated_rank = "Wood"
     var skin_count = "" 
     var include_shotguns = true
@@ -504,47 +497,40 @@ function play_button(){
       });
       }
       autocomplete(document.getElementById("myInput"), countries);
-  
+  var pickedColour = "None"
   var best_streak = 0
+
   function test2(){
-  
-  
      roundsPLayed +=1
     // Name Answer
     var nameValue = document.getElementById("myInput").value;
+
     if(nameValue === currentPractiseskin){
-      correct += 1
       estimated_rank = "Wood"
       document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
       document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "green"
       resultColour = "green"
       streak +=1
-      skin_name_correct +=1
+  
       
     }
     else{
-      wrong += 1
       resultColour = "red"
       document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
       document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "red"
-      streak = 0
-      skin_name_wrong +=1
+      resultColour = "red"
+      pickedColour = colourChoice() 
+      document.getElementById("game").style.display = "none"
+      document.getElementById("game_over_screen").style.display = "inline"
+      document.getElementById("score").innerText = streak
+      document.getElementById("answer").innerText = "You put: " + pickedColour +" "+nameValue +" "+ "But the answer was " + currentPractiseColour + " " + currentPractiseskin
+      
+    }
   
-    }
-    success_rate = correct/wrong
-    document.getElementById("Correct_value").innerText = correct
-    document.getElementById("Wrong_value").innerText = wrong
-    if(wrong ==0){
-      document.getElementById("success_rate_value").innerText = String((correct/1)*100)+"%"
-    }
-    else{
-      document.getElementById("success_rate_value").innerText = String((Math.round((correct/(wrong+correct)) * 100) / 100)*100)+"%"
-    }
-   
     // Rarity Answer
     if (colourChoice() == currentPractiseColour) {
+  
       resultColour = "green"
-      colours_correct +=1
       if(last_column == "column10"){
       
       }
@@ -553,8 +539,13 @@ function play_button(){
       }
       
     } else {
-      colours_wrong +=1
       resultColour = "red"
+      pickedColour = colourChoice() 
+      document.getElementById("game").style.display = "none"
+      document.getElementById("game_over_screen").style.display = "inline"
+      document.getElementById("score").innerText = streak
+      document.getElementById("answer").innerText = "You put: " + pickedColour +" "+nameValue +" "+ "But the answer was " + currentPractiseColour + " " + currentPractiseskin
+      
       if(last_column == "column10"){
       
       }
@@ -568,32 +559,14 @@ function play_button(){
   
    // Update Stats
   
-  
-    if(streak > best_streak){
-      best_streak = streak
-  
-      document.getElementById("best_streak").innerText = best_streak
-    }
+
     document.getElementById("streak").innerText = streak
-    document.getElementById("rank_value").innerText =  determineRank()
+  
     try{
       document.getElementById("difficulty_value").innerText= determineDifficulty()
     }
     catch{
       document.getElementById("difficulty_value").innerText= "Start Game First"
-    }
-  
-    if(colours_wrong ==0){
-      document.getElementById("Colours_results").innerText = String((Math.round((colours_correct/1) * 100) / 100))+"%"
-    }
-    else{
-      document.getElementById("Colours_results").innerText = String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%"
-    }
-    if(skin_name_wrong ==0){
-      document.getElementById("Skin_name_results").innerText = String((Math.round((skin_name_correct/1) * 100) / 100)*100)+"%" 
-    }
-    else{
-      document.getElementById("Skin_name_results").innerText = String((Math.round((skin_name_correct/(skin_name_wrong+skin_name_correct)) * 100) / 100)*100)+"%"
     }
     
     survivalGame()

@@ -383,7 +383,7 @@ all_guns_urls = ['./static/skins/machineguns/m249/grey\\Contrast Spray.png',
     var smgs_urls = []
     var machineguns_urls = []
     var pistols_urls = []
-    
+ 
     function colourChoice(){
         var ele = document.getElementsByName('colour_checkbox');
         output = "test"
