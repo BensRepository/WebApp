@@ -652,7 +652,7 @@
                             </label>
             
                             <label class="form-control" style="background-color: #0b1666;margin: 8px;width: 50px;text-align: center;">
-                            <input type="radio" name="colour_checkbox" unchecked value="blue"  style="accent-color: #0b1666;" />
+                            <input type="radio" name="colour_checkbox" checked value="blue"  style="accent-color: #0b1666;" />
                     
                             </label>
             
@@ -671,7 +671,8 @@
                             <div class="autocomplete" style="width:300px;">
                                 <input id="myInput" type="text" placeholder="Enter Answer">
                             </div>
-                                <input id="submit_button" type="submit" onclick="test2()">
+                                <input id="submit_button" type="submit" onclick="testInputs()">
+                                <p id="missing_field_prompt" style="color: red;"></p>
                         </div>
 
                         
@@ -699,7 +700,7 @@
         </section>
         <section style="text-align: center;">
             <div id="game_over_screen" style="display: none;">
-                <p1 style="color: white;">Game Over</p1>
+                <p1 style="color: white;">Game Over!</p1>
                 <p id="answer"></p>
                 <p> You scored </p><p id="score"> </p>
                 <button id="start_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="start_game()">Play Again</button>

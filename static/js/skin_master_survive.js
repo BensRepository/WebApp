@@ -499,7 +499,16 @@ function play_button(){
       autocomplete(document.getElementById("myInput"), countries);
   var pickedColour = "None"
   var best_streak = 0
-
+function testInputs(){
+  if(document.getElementById("myInput").value == ""){
+    
+    document.getElementById("missing_field_prompt").innerText = "Enter skin name"
+  }
+  else{
+    document.getElementById("missing_field_prompt").innerText = ""
+    test2()
+  }
+}
   function test2(){
      roundsPLayed +=1
     // Name Answer
