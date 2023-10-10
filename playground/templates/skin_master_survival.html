@@ -155,7 +155,7 @@
         <section id="selection_screen">
           
             <div style="align-items: center;text-align: center;">
-                <p1> Select Difficulty</p1><br>
+                <p1 style="font-size: 55px;"> Select Difficulty</p1><br>
                 <p2>The higher difficulty you select, the more types of skins you'll see - This can not be changed during the game.</p2><br>
                 <div style="height: 10px;">
 
@@ -282,7 +282,7 @@
                <br><br><br><br>
             
             <div>
-                <p1> Selected:</p1>
+                <p1 style="font-size: 55px;"> Selected:</p1>
                 <p id="selected_difficulty" style="font-size: 30px;font-weight: bold;color: goldenrod;"> Ohnepixel</p>
                                 <!-- HTML !-->
                 <button id="start_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="start_game()">Start Game</button>
@@ -600,7 +600,7 @@
         </script>
         </section>
         <section id="game" style="align-items: center;text-align: center;display: none;"> 
-            <p1>Survival</p1><br>
+            <p1 style="font-size: 55px;">Survival</p1><br>
              <!--<div style="width: 100%;float: left;background-color: aqua;height: 300px;" id="test" onclick=" updateGuns('awp','blue','rifles')">
                 CLick for images</div><br> -->
             </div>
@@ -628,9 +628,9 @@
 
                     <div id = "leftbox" >
                         <div id="middle_left">
-                            <p style="font-size: 25px;font-weight: bold;"> Game information </p>
-                            <p style=" display:inline-block;font-weight: bold;" id="streak Text;font-size:50px"> Streak:</p>   <p style=" display:inline-block;" id="streak"> 0</p><br>
-                            <p style=" display:inline-block;font-weight: bold;" id="Estimated Rank"> Difficulty: </p>   <p style=" display:inline-block;" id="difficulty_value"> Pending game start </p><br>
+                            <p style="font-size: 35px;font-weight: bold;"> Game information </p>
+                            <p style="font-size: 25px;display:inline-block;font-weight: bold;" id="streak Text;font-size:50px"> Streak:</p>   <p style="font-size: 25px; display:inline-block;" id="streak"> 0</p><br>
+                            <p style="font-size: 25px; display:inline-block;font-weight: bold;" id="Estimated Rank"> Difficulty: </p>   <p style="font-size: 25px; display:inline-block;" id="difficulty_value"> Pending game start </p><br>
                               
                         </div>
                     </div> 
@@ -700,10 +700,20 @@
         </section>
         <section style="text-align: center;">
             <div id="game_over_screen" style="display: none;">
-                <p1 style="color: white;">Game Over!</p1>
-                <p id="answer"></p>
-                <p> You scored </p><p id="score"> </p>
-                <button id="start_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="start_game()">Play Again</button>
+                <p1 style="color: white;font-size: 100px;">Game Over!</p1>
+                <div>
+                    <p style="font-size: 20px;display:inline-block; ">You put </p>
+                    <p style="font-size: 20px;display:inline-block;"  id="selectedColour"></p>
+                    <p style="font-size: 20px;display:inline-block;font-weight: bold; " id="selectedSkin"></p>
+                    <p style="font-size: 20px;display:inline-block; "> but the answer was</p>
+                    <p style="font-size: 20px;display:inline-block;"  id="answerColour"></p>
+                    <p style="font-size: 20px;display:inline-block;font-weight: bold; " id="answerSkin"></p>
+                </div>
+            
+           
+                <p style="font-size: 20px;"> You scored </p>
+                <p style="font-size: 25px;" id="score"> </p>
+                <button id="start_button" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="start_game()">Play Again</button>
             </div>
            
         </section>

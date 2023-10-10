@@ -527,12 +527,22 @@ function testInputs(){
       resultColour = "red"
       document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
       document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "red"
-      resultColour = "red"
       pickedColour = colourChoice() 
       document.getElementById("game").style.display = "none"
       document.getElementById("game_over_screen").style.display = "inline"
       document.getElementById("score").innerText = streak
-      document.getElementById("answer").innerText = "You put: " + pickedColour +" "+nameValue +" "+ "But the answer was " + currentPractiseColour + " " + currentPractiseskin
+     
+      document.getElementById("answerSkin").innerText = currentPractiseskin
+      document.getElementById("selectedSkin").innerText = nameValue
+
+
+      rarity_remap = {"grey":"Consumer Grade","light_blue":"Industrial grade","blue":"Mil-Spec","purple":"Restricted","pink":"Classified","red":"Covert"}
+      document.getElementById("selectedColour").innerText = rarity_remap[pickedColour]
+      document.getElementById("answerColour").innerText = rarity_remap[currentPractiseColour]
+
+      colours_remap = {"grey":"grey","light_blue":"#1a606e","blue":"blue","purple":"purple","pink":"#eb35d5","red":"red"}
+      document.getElementById("answerColour").style.color = colours_remap[currentPractiseColour]
+      document.getElementById("selectedColour").style.color = colours_remap[pickedColour]
       
     }
   
@@ -553,7 +563,17 @@ function testInputs(){
       document.getElementById("game").style.display = "none"
       document.getElementById("game_over_screen").style.display = "inline"
       document.getElementById("score").innerText = streak
-      document.getElementById("answer").innerText = "You put: " + pickedColour +" "+nameValue +" "+ "But the answer was " + currentPractiseColour + " " + currentPractiseskin
+     
+      document.getElementById("answerSkin").innerText = currentPractiseskin
+      document.getElementById("selectedSkin").innerText = nameValue
+
+      rarity_remap = {"grey":"Consumer Grade","light_blue":"Industrial grade","blue":"Mil-Spec","purple":"Restricted","pink":"Classified","red":"Covert"}
+      document.getElementById("selectedColour").innerText = rarity_remap[pickedColour]
+      document.getElementById("answerColour").innerText = rarity_remap[currentPractiseColour]
+
+      colours_remap = {"grey":"grey","light_blue":"#1a606e","blue":"blue","purple":"purple","pink":"#eb35d5","red":"red"}
+      document.getElementById("answerColour").style.color = colours_remap[currentPractiseColour]
+      document.getElementById("selectedColour").style.color = colours_remap[pickedColour]
       
       if(last_column == "column10"){
       
