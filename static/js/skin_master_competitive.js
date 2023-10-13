@@ -77,14 +77,14 @@ function play_button(){
     var include_rifles = true
     var include_pistols = true
     var include_machineguns = true
-  
+    var rate = 0
     var include_coverts = true
     var include_classifieds = true
     var include_restricted = true
     var include_mil_spec = true
     var include_industrial_grade = true
     var include_consumer_grade = true
-  
+    var roundsPLayed = 30
   
     function makeImagesBoxes(gun,colour,type,skin){
   
@@ -365,9 +365,15 @@ function play_button(){
       function competitiveGame(){   
         
        if (roundsPLayed == game_rounds) {
-        document.getElementById("game").style.display = "none"
+        alert(rate)
         document.getElementById("game_over_screen").style.display = "block"
-        document.getElementById("score").innerText = rate
+        document.getElementById("score").innerText = Math.round(rate * 100) / 100
+
+        document.getElementById("rank_value").innerText =  determineRankInput(rate)
+        document.getElementById("game").style.display = "none"
+   
+
+       
        } else {
         skin_count = skins.length
         document.getElementById("practise_game").style.display = "none"
@@ -540,6 +546,8 @@ function test2(){
      streak +=1
      skin_name_correct +=1
      
+     
+     
    }
    else{
      wrong += 1
@@ -551,14 +559,13 @@ function test2(){
  
    }
    success_rate = correct/wrong
-   //document.getElementById("Correct_value").innerText = correct
-   //document.getElementById("Wrong_value").innerText = wrong
-   if(wrong ==0){
-     document.getElementById("success_rate_value").innerText = String((correct/1)*100)+"%"
-   }
-   else{
-     //document.getElementById("success_rate_value").innerText = String((Math.round((correct/(wrong+correct)) * 100) / 100)*100)+"%"
-   }
+  
+  //  if(wrong ==0){
+  //    document.getElementById("success_rate_value").innerText = String((correct/1)*100)+"%"
+  //  }
+  //  else{
+  //    //document.getElementById("success_rate_value").innerText = String((Math.round((correct/(wrong+correct)) * 100) / 100)*100)+"%"
+  //  }
   
    // Rarity Answer
    if (colourChoice() == currentPractiseColour) {
@@ -581,7 +588,7 @@ function test2(){
        document.getElementById(last_column).style.borderColor = resultColour
      }
    }
-  
+   document.getElementById("streak").innerText = streak
  
  
  
@@ -593,7 +600,7 @@ function test2(){
  
 //      document.getElementById("best_streak").innerText = best_streak
 //    }
-//    document.getElementById("streak").innerText = streak
+
 //    document.getElementById("rank_value").innerText =  determineRank()
 //    try{
 //      document.getElementById("difficulty_value").innerText= determineDifficulty()
@@ -614,11 +621,50 @@ function test2(){
 //    else{
 //      document.getElementById("Skin_name_results").innerText = String((Math.round((skin_name_correct/(skin_name_wrong+skin_name_correct)) * 100) / 100)*100)+"%"
 //    }
-   
+   rank =  determineRank()
+  
    competitiveGame()
 }
-var roundsPLayed = 0
-var rate = 0
+
+function determineRankInput(rate){
+
+    if (rate > 65) {
+    rank = "Global Elite"
+    } else  if (rate > 55) {
+    rank = "Supreme"
+    }
+    else  if (rate > 50) {
+    rank = "LEM"
+    }
+    else  if (rate > 45) {
+    rank = "LE"
+    }
+    else  if (rate > 40) {
+    rank = "DMG"
+    }
+    else  if (rate > 35) {
+    rank = "MGE"
+    }
+    else  if (rate > 30) {
+    rank = "MG2"
+    }
+    else  if (rate > 25) {
+    rank = "MG"
+    }
+    else  if (rate > 20) {
+    rank = "NOVA"
+    }
+    else  if (rate > 15) {
+    rank = "Silver"
+    }
+    else if(rate < 10){
+    rank = "Shit"
+    }
+    else{
+        rank = "Something went wrong - Please Report this bug in the main menu :)"
+    }
+    return rank
+}
 function determineRank(){
 
     rate =   ((colours_correct*0.55+skin_name_correct*1.45)/(skin_name_wrong*1.45+colours_wrong*0.55+colours_correct*0.55+skin_name_correct*1.45))*100
@@ -658,7 +704,7 @@ function determineRank(){
         rank = "Shit"
         }
     } else{
-        rank = "Unranked - Play more! " + String(30 - roundsPLayed) + " more"
+        rank = "Unranked - Play more! " + String(game_rounds - roundsPLayed) + " more"
     }
     return rank
 }
