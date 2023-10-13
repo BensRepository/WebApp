@@ -168,7 +168,7 @@
                 Short - 30 rounds
             </label>
             <br><br><br><br>
-            <button id="start_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="nextButton()">Next</button>
+            <button id="next_button" class="button-73" role="button" style="height: auto;width: 25%;" onclick="nextButton()">Next</button>
         </section>
         <section id="selection_screen" style="display: none;">
           
@@ -520,6 +520,7 @@
                     include_industrial_grade = false
                     include_consumer_grade = false
                     skins =  getSelectedSkinsUrlsMode()
+                 
                 } 
                 else if(document.getElementById("medium-checkbox").checked== true) {
                     difficulty = "Medium"
@@ -592,7 +593,7 @@
                     
                     skin_count_temp = getSelectedSkinsUrls().length
                     skins =  getSelectedSkinsUrls()
-
+       
                     if (skin_count_temp > 1000) {
                         difficulty_temp = "Ohnepixel"
                     }
@@ -737,9 +738,15 @@
                     <p style="font-size: 20px;display:inline-block; ">You ranked: </p> <p style="font-size: 25px;" id="rank_value"> </p>
                 </div>
 
-      
-                <button id="start_button" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="start_game()">Play Again</button>
-                <button id="start_button" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;">Submit to Leaderboard</button>
+                <div style="padding-right: 50px;display: inline-block;">
+                    <button id="play_again" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="start_game()">Play Again</button>
+                </div>
+                <div style="display: inline-block;"> 
+                    <button id="submit_leaderboards" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;">Submit to Leaderboard</button>
+                </div>
+               
+
+               
                 <br><br><br><p id="main_menu_redirect" onclick="play_button()">Main Menu</p>
             </div>
            
