@@ -47,6 +47,7 @@ function play_button(){
     document.getElementById(skin + "d").appendChild(p);
     
   }
+  var rate = 0
   var column1 = ""
   var column2 = ""
   var column3 = ""

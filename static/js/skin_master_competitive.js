@@ -48,8 +48,8 @@ function play_button(){
       document.getElementById(skin + "d").appendChild(p);
       
     }
-    var game_length = 0
-    var game_rounds = 0
+    var game_length = "Short"
+    var game_rounds = 30
     var column1 = ""
     var column2 = ""
     var column3 = ""
@@ -360,13 +360,14 @@ function play_button(){
   
       var currentPractiseskin = ""
       var currentPractiseColour = ""
-      
+  
 
       function competitiveGame(){   
-
+        
        if (roundsPLayed == game_rounds) {
         document.getElementById("game").style.display = "none"
         document.getElementById("game_over_screen").style.display = "block"
+        document.getElementById("score").innerText = rate
        } else {
         skin_count = skins.length
         document.getElementById("practise_game").style.display = "none"
@@ -616,8 +617,8 @@ function test2(){
    
    competitiveGame()
 }
-  var roundsPLayed = 0
-  
+var roundsPLayed = 0
+var rate = 0
 function determineRank(){
 
     rate =   ((colours_correct*0.55+skin_name_correct*1.45)/(skin_name_wrong*1.45+colours_wrong*0.55+colours_correct*0.55+skin_name_correct*1.45))*100
@@ -673,14 +674,20 @@ function selectGameLength(){
     }else if(document.getElementById("Long-checkbox").checked  == true) {
         game_length = "Long"
         game_rounds = 50
+    }else{
+      game_length = "Short"
+      game_rounds = 30 //testing needs to be set to 30
     }
 
     return game_length
 }
 
 function nextButton(){
-    document.getElementById("selection_screen").style.display = "inline"
-    document.getElementById("game_length_screen").style.display = "none"
+
+  document.getElementById("selection_screen").style.display = "inline"
+
+  document.getElementById("game_length_screen").style.display = "none"
+  document.getElementById("selected_difficulty").innerText = document.getElementById("selected_difficulty").innerText +" - "+ game_rounds + " Rounds"
 }
 function determineDifficulty(){
   

@@ -308,6 +308,7 @@
         <script>
 
             function start_game(){
+                roundsPLayed = 0
                 document.getElementById("practise_game").style.display = "block"
                 try{
                     document.getElementById(column1[3]).remove();
@@ -402,9 +403,18 @@
                 }
                 document.getElementById("selection_screen").style.display = "none"
                 document.getElementById("game").style.display = "block"
-                
+        
                 document.getElementById("difficulty_value").innerText= determineDifficulty()
-
+                if (game_length == "Short") {
+                
+                    game_rounds = 30
+                } else if(game_length == "Medium") {
+                    game_rounds = 40
+                }else if(game_length == "Long") {
+                    game_rounds = 50
+                }
+                game_rounds = 30
+                test2()
             }
             function getTypeSelectColoursMode(gun_type){
     
@@ -603,7 +613,8 @@
                     }
                     difficulty = "Custom: " +  difficulty_temp 
                 }
-                document.getElementById("selected_difficulty").innerText = difficulty
+                document.getElementById("selected_difficulty").innerText = difficulty +" - "+ game_rounds + " Rounds"
+           
                
     
   
@@ -721,7 +732,7 @@
                 <p1 style="color: white;font-size: 100px;">Game Finished!</p1>
                 <div>
                     <p style="font-size: 20px;display:inline-block; ">You score x Points </p> <p style="font-size: 25px;" id="score"> </p>
-                    <p style="font-size: 20px;display:inline-block; ">You ranked: </p> <p style="font-size: 25px;" id="rank"> </p>
+                    <p style="font-size: 20px;display:inline-block; ">You ranked: </p> <p style="font-size: 25px;" id="rank_value"> </p>
                 </div>
 
       
