@@ -343,8 +343,7 @@ function play_button(){
         catch{
   
           makeImagesBoxes(gun,colour,type,skin)
-          column10temp = document.getElementById("column9")
-          column10temp.getElementById(skin).remove();
+          document.getElementById("column9").getElementById(skin).remove();
           document.getElementById("column10").style.backgroundColor = changeColours(colour)
         }
        
@@ -365,11 +364,40 @@ function play_button(){
       function competitiveGame(){   
         
        if (roundsPLayed == game_rounds) {
-        alert(rate)
+        var nameValue = document.getElementById("myInput").value;
+        if(nameValue === currentPractiseskin){
+          skin_name_correct=1
+        }
+        else{
+          skin_name_wrong +=1
+        }
+        
+        if (colourChoice() == currentPractiseColour) {
+          colours_correct +=1
+        }
+        else{
+          colours_wrong+=1
+        }
+       
         document.getElementById("game_over_screen").style.display = "block"
         document.getElementById("score").innerText = Math.round(rate * 100) / 100
 
         document.getElementById("rank_value").innerText =  determineRankInput(rate)
+        var elem = document.createElement("img");
+        rank_name = {"Silver1" : "/static/ranks/silver1.png","Silver2":"/static/ranks/silver2.png","Silver3":"/static/ranks/silver3.png","SilverElite":"/static/ranks/silver4.png","SilverEliteMaster":"/static/ranks/silver5.png","Nova1":"/static/ranks/nova1.png","Nova2":"/static/ranks/nova2.png","Nova3":"/static/ranks/nova3.png","NovaMaster":"/static/ranks/nova4.png","MG":"/static/ranks/mg.png","MG2":"/static/ranks/mg2.png","MGE":"/static/ranks/mge.png","DMG":"/static/ranks/dmg.png","LE":"/static/ranks/le.png","LEM":"/static/ranks/lem.png","Supreme":"/static/ranks/supreme.png","Global Elite":"/static/ranks/theglobalelite.png"}
+        elem.src = rank_name[determineRankInput(rate)]
+        alert( rank_name[determineRankInput(rate)])
+        //elem.setAttribute("height", "768");
+        //elem.setAttribute("width", "1024");
+        elem.setAttribute("alt", "rank");
+        const myNode = document.getElementById("rank_picture");
+        while (myNode.firstChild) {
+          myNode.removeChild(myNode.lastChild);
+        }
+        document.getElementById("rank_picture").appendChild(elem);
+        document.getElementById("success_rate_skins").innerText =  Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%"
+        document.getElementById("success_rate_colours").innerText =  Math.round((colours_correct/(colours_correct+colours_wrong))*100) + "%"
+        
         document.getElementById("game").style.display = "none"
    
 
@@ -645,20 +673,38 @@ function determineRankInput(rate){
     else  if (rate > 35) {
     rank = "MGE"
     }
-    else  if (rate > 30) {
-    rank = "MG2"
-    }
-    else  if (rate > 25) {
+    else  if (rate > 32) {
+      rank = "MG2"
+      }
+    else  if (rate > 28) {
     rank = "MG"
     }
+    else  if (rate > 26) {
+      rank = "NovaMaster"
+      }
+    else  if (rate > 24) {
+      rank = "Nova3"
+      }
+    else  if (rate > 22) {
+    rank = "Nova2"
+    }
     else  if (rate > 20) {
-    rank = "NOVA"
+      rank = "Nova1"
+      }
+    else  if (rate > 18) {
+    rank = "SilverEliteMaster"
     }
-    else  if (rate > 15) {
-    rank = "Silver"
+    else  if (rate > 16) {
+      rank = "SilverElite"
+      }
+    else  if (rate > 14) {
+    rank = "Silver3"
     }
+    else  if (rate > 12) {
+      rank = "Silver2"
+      }
     else if(rate < 10){
-    rank = "Shit"
+    rank = "Silver1"
     }
     else{
         rank = "Something went wrong - Please Report this bug in the main menu :)"
@@ -671,7 +717,7 @@ function determineRank(){
 
     if (roundsPLayed > 30) {
 
-        if (rate > 65) {
+      if (rate > 65) {
         rank = "Global Elite"
         } else  if (rate > 55) {
         rank = "Supreme"
@@ -688,20 +734,38 @@ function determineRank(){
         else  if (rate > 35) {
         rank = "MGE"
         }
-        else  if (rate > 30) {
-        rank = "MG2"
-        }
-        else  if (rate > 25) {
+        else  if (rate > 32) {
+          rank = "MG2"
+          }
+        else  if (rate > 28) {
         rank = "MG"
         }
+        else  if (rate > 26) {
+          rank = "NovaMaster"
+          }
+        else  if (rate > 24) {
+          rank = "Nova3"
+          }
+        else  if (rate > 22) {
+        rank = "Nova2"
+        }
         else  if (rate > 20) {
-        rank = "NOVA"
+          rank = "Nova1"
+          }
+        else  if (rate > 18) {
+        rank = "SilverEliteMaster"
         }
-        else  if (rate > 15) {
-        rank = "Silver"
+        else  if (rate > 16) {
+          rank = "SilverElite"
+          }
+        else  if (rate > 14) {
+        rank = "Silver3"
         }
+        else  if (rate > 12) {
+          rank = "Silver2"
+          }
         else if(rate < 10){
-        rank = "Shit"
+        rank = "Silver1"
         }
     } else{
         rank = "Unranked - Play more! " + String(game_rounds - roundsPLayed) + " more"

@@ -341,8 +341,7 @@ function play_button(){
       catch{
 
         makeImagesBoxes(gun,colour,type,skin)
-        column10temp = document.getElementById("column9")
-        column10temp.getElementById(skin).remove();
+        document.getElementById("column9").getElementById(skin).remove();
         document.getElementById("column10").style.backgroundColor = changeColours(colour)
       }
      
