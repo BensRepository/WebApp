@@ -382,11 +382,13 @@ function play_button(){
         document.getElementById("game_over_screen").style.display = "block"
         document.getElementById("score").innerText = Math.round(rate * 100) / 100
 
-        document.getElementById("rank_value").innerText =  determineRankInput(rate)
+  
         var elem = document.createElement("img");
-        rank_name = {"Silver1" : "/static/ranks/silver1.png","Silver2":"/static/ranks/silver2.png","Silver3":"/static/ranks/silver3.png","SilverElite":"/static/ranks/silver4.png","SilverEliteMaster":"/static/ranks/silver5.png","Nova1":"/static/ranks/nova1.png","Nova2":"/static/ranks/nova2.png","Nova3":"/static/ranks/nova3.png","NovaMaster":"/static/ranks/nova4.png","MG":"/static/ranks/mg.png","MG2":"/static/ranks/mg2.png","MGE":"/static/ranks/mge.png","DMG":"/static/ranks/dmg.png","LE":"/static/ranks/le.png","LEM":"/static/ranks/lem.png","Supreme":"/static/ranks/supreme.png","Global Elite":"/static/ranks/theglobalelite.png"}
-        elem.src = rank_name[determineRankInput(rate)]
-        alert( rank_name[determineRankInput(rate)])
+        rank_src = {"Silver1" : "/static/ranks/silver1.png","Silver2":"/static/ranks/silver2.png","Silver3":"/static/ranks/silver3.png","SilverElite":"/static/ranks/silver4.png","SilverEliteMaster":"/static/ranks/silver5.png","Nova1":"/static/ranks/nova1.png","Nova2":"/static/ranks/nova2.png","Nova3":"/static/ranks/nova3.png","NovaMaster":"/static/ranks/nova4.png","MG":"/static/ranks/mg.png","MG2":"/static/ranks/mg2.png","MGE":"/static/ranks/mge.png","DMG":"/static/ranks/dmg.png","LE":"/static/ranks/le.png","LEM":"/static/ranks/lem.png","Supreme":"/static/ranks/supreme.png","Global Elite":"/static/ranks/theglobalelite.png"}
+        rank_name = {"Silver1" : "Silver I","Silver2":"Silver II","Silver3":"Silver III","SilverElite":"Silver Elite","SilverEliteMaster":"Silver Elite Master","Nova1":"Nova I","Nova2":"Nova II","Nova3":"Nova III","NovaMaster":"Nova Master","MG":"Master Guardian","MG2":"Master Guardian 2","MGE":"Master Guardian Elite","DMG":"Distinguished Master Guardian","LE":"Legendary Eagle","LEM":"Legendary Eagle Master","Supreme":"Supreme","Global Elite":"The Global Elite"}
+        document.getElementById("rank_value").innerText =  rank_name[determineRankInput(rate)]
+        
+        elem.src = rank_src[determineRankInput(rate)]
         //elem.setAttribute("height", "768");
         //elem.setAttribute("width", "1024");
         elem.setAttribute("alt", "rank");
