@@ -51,6 +51,10 @@ function CountDownTimer(dtList, id)
 }
 
 function timeZoneButton(){
-    
+
     window.open("https://savvytime.com/converter/bst-to-est", '_blank');
+}
+
+function steamButton(){
+    window.open("https://steamcommunity.com/groups/wwwCSToolscouk", '_blank');
 }

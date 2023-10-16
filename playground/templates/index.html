@@ -84,9 +84,9 @@
         }
     </style>
     <div class="p-5 mb-4 bg-light rounded-3" style="background-color: white;box-shadow: inset 0 0 0 15px #c46800;">
-      <div class="container-fluid py-5 video-container">
-        <video autoplay muted loop>
-            <source src="/static/videos/CaseAnimation/CaseAnimation.mp4" type="video/mp4" />
+      <div class="container-fluid py-5 video-container"style="padding: 0px;margin: 0px;" >
+        <video autoplay muted loop style="padding: 0px;margin: 0px;display: block;object-fit: cover">
+            <source src="/static/videos/CaseAnimation/CaseAnimation.mp4" type="video/mp4"style="padding: 0px;margin: 0px;" style="display: block" />
           </video>
         <h1 class="display-5 fw-bold caption">Weekly Care Package Drop Reset</h1>
         <div class="caption" id="countdown" style="font-size: 35px;"></div>
@@ -100,17 +100,33 @@
         <div class="h-100 p-5 text-white bg-dark rounded-3" style="position: relative;">
           <h2>Connect with us on Steam</h2>
 
-          <p> If you enjoy using these tools, consider joining the CSTools Steam Group. A great place to suggest any new ideas, report bugs or talk to other players.</p>
-          <button class="btn btn-outline-light" type="button" >Join Group</button>
+          <p> If you enjoy using CSTools, consider joining the CSTools Steam Group. A great place to suggest any new ideas, report bugs or talk to other players.</p>
+          <button class="btn btn-outline-light" type="button" onclick="steamButton()" >Join Group!</button>
           <img src="/static/images/Steam-Logo.png"  width="500" height="auto" class="me-2" alt="Steam Logo" style="opacity: 50%;">
 
         </div>
-      </div>
+      </div> 
       <div class="col-md-6">
         <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>About</h2>
-          <p>This is a personal project being developed for fun. This site doesn.</p>
-          <button class="btn btn-outline-secondary" type="button">Example button</button>
+          <h2>What is CSTools?</h2>
+          <p>This website is a personal project being developed for fun to combine my intrests in Video Games and Computer Science. I have created several tools for Counter-Strike which you can use for free and with no ads.
+            </p><br>
+            <p>
+                CSTools began development 24th of April 2023 and continues to receive regular updates to increase functionality and implement new features.
+                While being a solo project, any ideas or suggestions are much appreiated.
+            </p>
+            <p><i>
+              <b>  Patch Notes 16/10/2023:</b><br>
+                1. Updated Timer values<br>
+                2. Redesigned Homepage<br>
+                3. Released Skin Master Feature<br>
+                &nbsp&nbsp&nbsp - Practise Mode<br>
+                &nbsp&nbsp&nbsp - Survival Mode<br>
+                &nbsp&nbsp&nbsp - Cometitve Mode<br>
+                4. Minor changes to Bind Generator styling<br>
+                5. Changed Domain from 'csgotools' to 'cstools' </i>
+            </p>
+          <button onclick = "window.location.href='/SkinMaster/';" class="btn btn-outline-secondary" type="button">Newest Feature!</button>
         </div>
       </div>
     </div>
