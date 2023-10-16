@@ -1,5 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
+        <div class="container px-lg-5">    
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'calculator' %}">Case Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sticker' %}">Sticker Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'roulette' %}">Strat Roulette</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'bind' %}">Bind Generator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'skin_master' %}">Skin Master</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://steamcommunity.com/tradeoffer/new/?partner=127649164&token=AG79v66Q">DONATE (Trade Link)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>🛠️CSTools</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>d
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    
+<main style="background-color: rgb(68, 67, 65);">
+  <div class="container py-4" >
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img href="{% url 'index' %}" src="/static/images/tools.png" width="40" height="auto" class="me-2" alt="tool emoji" style="display: block;">
+        <span style="color: white;" class="fs-4">CSTools</span>
+      </a>
+    </header>
+    <style>
+        .video-container {
+
+        overflow: hidden;
+        position: relative;
+        }
+
+        .video-container video {
+        width: 1000px;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        }
+
+        /* Just styling the content of the div, the *magic* in the previous rules */
+        .video-container .caption {
+        z-index: 1;
+        position: relative;
+        padding: 10px;
+        }
+    </style>
+    <div class="p-5 mb-4 bg-light rounded-3" style="background-color: white;box-shadow: inset 0 0 0 15px #c46800;">
+      <div class="container-fluid py-5 video-container">
+        <video autoplay muted loop>
+            <source src="/static/videos/CaseAnimation/CaseAnimation.mp4" type="video/mp4" />
+          </video>
+        <h1 class="display-5 fw-bold caption">Weekly Care Package Drop Reset</h1>
+        <div class="caption" id="countdown" style="font-size: 35px;"></div>
+        <p class="col-md-8 fs-4 caption">Time remaining until you can recive another Care Package on your next xp level up. This happens every week on Tuesday at 1AM (BST)</p>
+        <button style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);" onclick="timeZoneButton()" class="caption btn btn-primary btn-lg timezonehover" type="button">Another Timezone</button>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3" style="position: relative;">
+          <h2>Connect with us on Steam</h2>
+
+          <p> If you enjoy using these tools, consider joining the CSTools Steam Group. A great place to suggest any new ideas, report bugs or talk to other players.</p>
+          <button class="btn btn-outline-light" type="button" >Join Group</button>
+          <img src="/static/images/Steam-Logo.png"  width="500" height="auto" class="me-2" alt="Steam Logo" style="opacity: 50%;">
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>About</h2>
+          <p>This is a personal project being developed for fun. This site doesn.</p>
+          <button class="btn btn-outline-secondary" type="button">Example button</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      &copy; 🛠️CSTools 2023
+    </footer>
+  </div>
+</main>
+    
+  </body>
+
 
 {% load static %}
 
@@ -16,79 +139,12 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
     </head>
-    <style>
-        body {
-            background: url("/static/images/background.jpg") no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
+
     <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
-            <div class="container px-lg-5">
-                <a class="navbar-brand" href="{% url 'index' %}">CSTools</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'calculator' %}">Case Calculator</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'sticker' %}">Sticker Search</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'roulette' %}">Strat Roulette</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'bind' %}">Bind Generator</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'skin_master' %}">Skin Master</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://steamcommunity.com/tradeoffer/new/?partner=127649164&token=AG79v66Q">DONATE (Trade Link)</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <style>
-            .moveText{
-                margin-left: 85px;       
-            }
-            .moveText2{
-                margin-left: 145px;       
-            }
-        </style>
-        <!-- Page Content-->
-        <section>
         
-            <div class="container px-4 px-lg-5" style=" color: aliceblue;">    
-                <div class="col-lg-6" style="float: right;">
-                    <h1 class="mt-5">Case Calculator</h1>
-                    <p>Streamline your case opening hobby with our tool that eliminates the tedium of constantly fluctuating prices. 
-                            Easily determine how many cases you can afford without having to painstakingly
-                             research each individual type. Simulate your case opening to foresee potential outcomes and discover the extent to which GabeN will deplete your wallet with ease</p>
-
-                    <h1 class="mt-5 moveText">Sticker Search</h1>
-                    <p class="moveText"> Discovering desirable items on the Steam Market can often be a 
-                       challenging ordeal using Steam's sub-optimal search conditons. This tool 
-                      provides a user-friendly graphical interface that simplifies this process and 
-                       easily allows you to locate weapons featuring precise sticker combinations. 
-                    </p>
-
-                    <h1 class="mt-5 moveText2"> Strat Roulette</h1>
-                    <p class="moveText2">  Looking to spice up your Matchmaking with some silly strats? 
-                            Is the game too easy? Randomly pick from dozens of strats with
-                     varying levels of complexity to make your matchmaking experience more enjoyable and win every round  ;).
-                    </p>
-
-                    <h1 class="mt-5 moveText2">Coming Soon...</h1>
-                    <p class="moveText2" style="margin-bottom: 40px;">   Features and functionality will continue to be updated. If you 
-                        encounter any bugs or have specific requests,  kindly leave a 
-                       comment on my <a style="color: antiquewhite;" href="https://steamcommunity.com/id/SteamArtillery/">Steam profile</a>. Thank you :)
-                    </p>
-                </div>
-            </div>
-        <div style="position: fixed; bottom: 10px; display: inline;padding-left: 0px;"class="container">
-            <p style="color: aliceblue;background-color:  rgba(27, 27, 27, 0.5); margin-bottom: 0px;width: 210px;font-weight: bold; padding-left: 5px;"> Time Till Drop Cap Reset </p>
-            <p style="float: left; color: aliceblue;background-color:  rgba(27, 27, 27, 0.5);width: 300px;padding-left: 5px;" id="countdown"></p>
-        </div>
-        </section>
-        
-        <!-- Footer-->
-        <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);position: fixed;text-align: center;bottom: 0px;width: 100%; "><p class="m-0 text-center text-white">Copyright &copy; CSTools 2023</p></div>
-        <!-- Bootstrap core JS-->
+      
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{% static 'js/index.js' %}"></script>
     </body>
 </html>
-<div id="countdown"></div>
+

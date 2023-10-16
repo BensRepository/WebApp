@@ -50,3 +50,7 @@ function CountDownTimer(dtList, id)
     timer = setInterval(showRemaining, 1000);
 }
 
+function timeZoneButton(){
+    
+    window.open("https://savvytime.com/converter/bst-to-est", '_blank');
+}
