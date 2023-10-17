@@ -68,7 +68,6 @@
         }
 
         .video-container video {
-        width: 1000px;
         height: auto;
         position: absolute;
         top: 50%;
@@ -80,19 +79,56 @@
         .video-container .caption {
         z-index: 1;
         position: relative;
-        padding: 10px;
+        padding-bottom: 10px;
+        
+        }
+        .video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+ 
+        }
+        .rcorners3 {
+            border-radius: 15px;
+            border: solid;
+            padding: 20px;
+            border-color: #c46800;
+            border-width: 20px;
+            border-image: url(rounded-edge.png) 25% repeat;
+            
+        }
+        .rounded {
+            padding: 0px 20px 0px 20px;
+                background: white;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+
+            -webkit-border-top-left-radius: 50px;
+            -webkit-border-top-right-radius: 50px;
+            -webkit-border-bottom-left-radius: 50px;
+            -webkit-border-bottom-right-radius: 50px;
+
+            -moz-border-top-left-radius: 50px;
+            -moz-border-top-right-radius: 50px;
+            -moz-border-bottom-left-radius: 50px;
+            -moz-border-bottom-right-radius: 50px;
         }
     </style>
-    <div class="p-5 mb-4 bg-light rounded-3" style="background-color: white;box-shadow: inset 0 0 0 15px #c46800;">
-      <div class="container-fluid py-5 video-container"style="padding: 0px;margin: 0px;" >
-        <video autoplay muted loop style="padding: 0px;margin: 0px;display: block;object-fit: cover">
-            <source src="/static/videos/CaseAnimation/CaseAnimation.mp4" type="video/mp4"style="padding: 0px;margin: 0px;" style="display: block" />
+    <div class="rcorners3  mb-4 " style="background-color: white;box-shadow: inset 0 0 0 15px #c46800;padding: 0%;">
+
+        <div class="rounded container-fluid py-5 video-container"style="background-color:white;" >
+            <video autoplay muted loop  width="100%" style="float: right;" class="video">
+                <source src="/static/videos/CaseAnimation/CaseAnimation.mp4" type="video/mp4"style="padding: 0px;margin: 0px;" style="display: block" />
           </video>
-        <h1 class="display-5 fw-bold caption">Weekly Care Package Drop Reset</h1>
-        <div class="caption" id="countdown" style="font-size: 35px;"></div>
-        <p class="col-md-8 fs-4 caption">Time remaining until you can recive another Care Package on your next xp level up. This happens every week on Tuesday at 1AM (BST)</p>
-        <button style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);" onclick="timeZoneButton()" class="caption btn btn-primary btn-lg timezonehover" type="button">Another Timezone</button>
-      </div>
+        <div style = "position:relative; left:80px; top:2px;">
+            <h1 class="display-5 fw-bold caption">Weekly Care Package Drop Reset</h1>
+            <div class="caption" id="countdown" style="font-size: 35px;"></div>
+            <p class="col-md-8 fs-4 caption">Time remaining until you can recive another Care Package on your next xp level up. This happens every week on Tuesday at 1AM (BST)</p>
+            <button style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);" onclick="timeZoneButton()" class="caption btn btn-primary btn-lg timezonehover" type="button">Another Timezone</button>
+        </div>
+    </div>
     </div>
 
     <div class="row align-items-md-stretch">
