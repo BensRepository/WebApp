@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="{% url 'index' %}">CSTools</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" >
                         <li class="nav-item"><a class="nav-link" href="{% url 'calculator' %}">Case Calculator</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'sticker' %}">Sticker Search</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'roulette' %}">Strat Roulette</a></li>
@@ -39,9 +39,9 @@
         </nav>
         <!-- Content -->
   
-        <section >
-            <div>
-              <video autoplay loop muted plays-inline class="back-video">
+        <section style="padding: 0px;margin: 0px;" >
+            <div width="100%">
+              <video autoplay loop muted plays-inline class="back-video" width="100%">
                 <source src="/static/videos/TEST.mp4">
               </video>
                 <p1 style="font-size: 100px;">
@@ -52,7 +52,7 @@
                 </p2>
                 <br>
        
-                <nav role="skinmaster">
+                <nav role="skinmaster" >
                     <ul>
                       <li onclick="play_button()">
                         Play

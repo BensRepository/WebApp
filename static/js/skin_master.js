@@ -8,7 +8,7 @@ function play_button(){
     window.location.replace("http://127.0.0.1:8000/SkinMaster/About/");
   }
   function report_bug_screen_button(){
-    window.location.replace("http://127.0.0.1:8000/SkinMaster/ReportBug/");
+    window.open("https://steamcommunity.com/groups/wwwCSToolscouk/discussions/0/3873717500279476558/");
   }
 
   function practise_button(){
@@ -365,7 +365,7 @@ function play_button(){
       randomColour=""
       randomSkin = "" 
       skin_count = getSelectedSkinsUrls().length
-
+  
    
       try{
         document.getElementById("difficulty_value").innerText= determineDifficulty()

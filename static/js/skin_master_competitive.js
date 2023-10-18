@@ -376,7 +376,7 @@ function play_button(){
           colours_correct +=1
         }
         else{
-          colours_wrong+=1
+          
         }
        
         document.getElementById("game_over_screen").style.display = "block"
@@ -399,7 +399,7 @@ function play_button(){
         document.getElementById("rank_picture").appendChild(elem);
         document.getElementById("success_rate_skins").innerText =  Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%"
         
-        document.getElementById("success_rate_colours").innerText =  Math.round((colours_correct/(colours_correct+colours_wrong))*100) + "%"
+        document.getElementById("success_rate_colours").innerText =  String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%"
         
         document.getElementById("game").style.display = "none"
    
