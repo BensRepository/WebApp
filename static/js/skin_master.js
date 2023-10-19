@@ -365,7 +365,7 @@ function play_button(){
       randomColour=""
       randomSkin = "" 
       skin_count = getSelectedSkinsUrls().length
-  
+    
    
       try{
         document.getElementById("difficulty_value").innerText= determineDifficulty()
