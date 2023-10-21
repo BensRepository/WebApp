@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Skin Master Leaderboard</title>
+        <title>Skin Master</title>
         <!-- tab bar icon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'skins/pistols/deserteagle/purple/Blaze.png'%}" />>
+        <link rel="icon" type="image/x-icon" href="{% static 'skins/pistols/deserteagle/purple/Blaze.png'%}" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -18,11 +18,11 @@
         <link href="{% static 'css/skin_master.css'%}" rel="stylesheet" />
     </head>
 
-    <body>
+    <body  style="background-color: black;">
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
             <div class="container px-lg-5">
-                <img href="{% url 'index' %}" src="/static/images/tools.png" width="20" height="auto" class="me-2" alt="tool emoji" style="display: block;">
+              <img href="{% url 'index' %}" src="/static/images/tools.png" width="20" height="auto" class="me-2" alt="tool emoji" style="display: block;">
                 <a class="navbar-brand" href="{% url 'index' %}">CSTools</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,14 +38,112 @@
             </div>
         </nav>
         <!-- Content -->
-  
-        <section> 
-            <p1>leaderboard</p1><br>
+       
+        <section style="margin: auto;padding: auto;text-align: center;align-items: center;width: 100%;"> 
+            <div style="text-align: center;align-items: center;width: 100%;" >
+                <p1 style="font-size: 70px;color: goldenrod;"><b>Competitive Leaderboard</b></p1><br>
+            </div>
+            <div>
+                <style> 
+                    table { 
+                        border-collapse: collapse; 
+                        width: 100%; 
+                    } 
+                      
+                    th, td { 
+                        text-align: left; 
+                        font-size: 30px;
+                        padding: 8px; 
+                        color: white;
+                        height: 56px;
+                        
+                    } 
+                    .blackborder{
+                        background-color: black;
+                        text-align: left; 
+                        font-size: 30px;
+                        
+                        color: white;
+                        height: 15px;
+                    }
+                    tr{
+                        background-color: rgb(197, 177, 62);
+        
+
+                   
+                    }
+                    tr:nth-child(even) { 
+                        background-color: rgb(138, 118, 6); 
+                    } 
+                </style> 
+            </head> 
+              
+        
+                <div style="padding: 5%;padding-top: 0%;">
+                    <table>
+                        <tr style="background-color: rgb(138, 118, 6)"> 
+                            <td>Player ID</td> 
+                            <td>Name</td> 
+                            <td>Streak</td> 
+                            <td>Rank</td>
+                            <td>Score</td>
+                        </tr> 
+                        <tr > 
+                            <td class="blackborder" ></td> 
+                            <td class="blackborder"></td> 
+                            <td class="blackborder"></td> 
+                            <td class="blackborder"></td>
+                            <td class="blackborder"></td>
+                        </tr> 
+                        <tr> 
+                            <td>Steve</td> 
+                            <td>Manager</td> 
+                            <td>1,00,000</td> 
+                            <td>1,00,000</td>
+                            <td>1,00,000</td>
+                        </tr> 
+                          
+                        <tr> 
+                            <td>SURAJ</td> 
+                            <td>Assistant Manager</td> 
+                            <td>50,000</td> 
+                            <td>1,00,000</td>
+                            <td>1,00,000</td>
+                        </tr> 
+                          
+                        <tr> 
+                            <td>Khushboo</td> 
+                            <td>Analysist</td> 
+                            <td>65,000</td> 
+                            <td>1,00,000</td>
+                            <td>1,00,000</td>
+                        </tr> 
+                          
+                        <tr> 
+                            <td>Kartik</td> 
+                            <td>Worker</td> 
+                            <td>20,000</td> 
+                            <td>1,00,000</td>
+                            <td>1,00,000</td>
+                        </tr> 
+                          
+                        <tr> 
+                            <td>Saksham</td> 
+                            <td>Worker</td> 
+                            <td>20,000</td> 
+                            <td>1,00,000</td>
+                            <td>1,00,000</td>
+                        </tr> 
+                    </table> 
+                </div>
+               
+         
+            </div>
              <!-- Skin look up 
             Need a way to navigate via gun and rarity colour to look up 
             need a practise game that has no score attached
             -->
-
+        <!-- Footer-->
         </section>
         <!-- Footer-->
         <div style="height: 26px;background-color:  rgba(27, 27, 27, 0.9);position: fixed;text-align: center;bottom: 0px;width: 100%; "><p class="m-0 text-center text-white">Copyright &copy; CSTools 2023</p></div>

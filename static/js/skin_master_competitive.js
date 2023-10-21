@@ -398,7 +398,7 @@ function play_button(){
         }
         document.getElementById("rank_picture").appendChild(elem);
         document.getElementById("success_rate_skins").innerText =  Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%"
-        alert(colours_wrong)
+      
         document.getElementById("success_rate_colours").innerText =  String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%"
         colours_correct =0
         colours_wrong = 0
