@@ -376,7 +376,7 @@ function play_button(){
           colours_correct +=1
         }
         else{
-          
+          colours_wrong +=1
         }
        
         document.getElementById("game_over_screen").style.display = "block"
@@ -398,9 +398,10 @@ function play_button(){
         }
         document.getElementById("rank_picture").appendChild(elem);
         document.getElementById("success_rate_skins").innerText =  Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%"
-        
+        alert(colours_wrong)
         document.getElementById("success_rate_colours").innerText =  String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%"
-        
+        colours_correct =0
+        colours_wrong = 0
         document.getElementById("game").style.display = "none"
    
 
@@ -706,11 +707,12 @@ function determineRankInput(rate){
     else  if (rate > 12) {
       rank = "Silver2"
       }
-    else if(rate < 10){
+    else if(rate < 12){
     rank = "Silver1"
     }
     else{
-        rank = "Something went wrong - Please Report this bug in the main menu :)"
+      alert("fuck")
+      rank = "Something went wrong - Please Report this bug in the main menu :)"
     }
     return rank
 }
@@ -767,7 +769,7 @@ function determineRank(){
         else  if (rate > 12) {
           rank = "Silver2"
           }
-        else if(rate < 10){
+        else if(rate < 12){
         rank = "Silver1"
         }
     } else{
