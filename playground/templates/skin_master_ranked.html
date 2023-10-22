@@ -641,9 +641,21 @@
                 //custom option enables and disables right buttons
             }
             function submitLeaderboards(){
-
-                if(skin_name_correct => 2){
-                    window.location.replace("http://127.0.0.1:8000/SkinMaster/Submit/")
+               alert(difficulty)
+                if(skin_name_correct => 1){
+                    if (difficulty == "Easy") {
+                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Easy/")
+                    } else if(difficulty == "Medium") {
+                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Medium/")
+                    }else if(difficulty == "Hard") {
+                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Hard/")
+                    }else if(difficulty == "Expert") {
+                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Expert/")
+                    }
+                    else if(difficulty == "Ohnepixel") {
+                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Ohnepixel/")
+                    }
+                   
                 }
                 else{
                     document.getElementById("leaderboard_prompt").innerText = "Eligibility Error -  Requires TWO correct skin names to submit to Leaderboard"

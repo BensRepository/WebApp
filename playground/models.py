@@ -25,3 +25,41 @@ class LeaderboardCompetitiveEasyMode(models.Model):
 
     def __str__(self):
         return self.name
+class LeaderboardCompetitiveMediumMode(models.Model):
+    playerID = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20)
+    streak = models.IntegerField()
+    rank = models.CharField(max_length=22)
+    score = models.FloatField()
+
+    def __str__(self):
+        return self.name
+class LeaderboardCompetitiveHardMode(models.Model):
+    playerID = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20)
+    streak = models.IntegerField()
+    rank = models.CharField(max_length=22)
+    score = models.FloatField()
+
+    def __str__(self):
+        return self.name
+
+class LeaderboardCompetitiveExpertMode(models.Model):
+    playerID = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20)
+    streak = models.IntegerField()
+    rank = models.CharField(max_length=22)
+    score = models.FloatField()
+
+    def __str__(self):
+        return self.name
+
+class LeaderboardCompetitiveOhnepixelMode(models.Model):
+    playerID = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20)
+    streak = models.IntegerField()
+    rank = models.CharField(max_length=22)
+    score = models.FloatField()
+
+    def __str__(self):
+        return self.name

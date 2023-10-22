@@ -5,7 +5,15 @@ import json
 from .models import Case
 from .models import Rate
 from .models import LeaderboardCompetitiveEasyMode
-from .forms import PostForm
+from .models import LeaderboardCompetitiveMediumMode
+from .models import LeaderboardCompetitiveHardMode
+from .models import LeaderboardCompetitiveExpertMode
+from .models import LeaderboardCompetitiveOhnepixelMode
+from .forms import PostFormEasy
+from .forms import PostFormMedium
+from .forms import PostFormHard
+from .forms import PostFormExpert
+from .forms import PostFormOhnepixel
 from rest_framework import viewsets
 import glob
 from WebApp.settings import STATIC_URL
@@ -293,7 +301,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         context['filenames']=filenames
         return render(request, "skin_master_play.html",context=context)    
     
-    def skin_master_leaderboard(request):
+    def skin_master_leaderboard_competitive_easy(request):
         context= {}
         leaderboard_data=[]
         for x in LeaderboardCompetitiveEasyMode.objects.all().values():
@@ -301,8 +309,47 @@ class WebAppViewset(viewsets.ModelViewSet):
      
         context['leaderboard_data'] = leaderboard_data
       
-        return render(request, "skin_master_leaderboard.html",context=context)    
+        return render(request, "skin_master_leaderboard_competitive_easy.html",context=context)    
+    
+    def skin_master_leaderboard_competitive_medium(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardCompetitiveMediumMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_competitive_medium.html",context=context)    
+    
+    def skin_master_leaderboard_competitive_hard(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardCompetitiveHardMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_competitive_hard.html",context=context)    
+    
 
+    def skin_master_leaderboard_competitive_expert(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardCompetitiveExpertMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_competitive_expert.html",context=context)    
+    def skin_master_leaderboard_competitive_ohnepixel(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardCompetitiveOhnepixelMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_competitive_ohnepixel.html",context=context)    
     def skin_master_about(request):
         types = glob.glob("."+STATIC_URL+"loadout/*")
         filenames = {}
@@ -322,11 +369,48 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request, "skin_master_report_bug.html",context=context)    
     
 
-    def new(request):
+    def easy_leaderboard_competitive(request):
         if request.method == "POST":
-            form = PostForm(request.POST)
+            form = PostFormEasy(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/")
+            return redirect("/SkinMaster/Leaderboard/Easy/")
         else:
-            form = PostForm()
-        return render(request,"new.html", {"form": form})
+            form = PostFormEasy()
+        return render(request,"easy_leaderboard_competitive.html", {"form": form})
+    
+    def medium_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormMedium(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Medium/")
+        else:
+            form = PostFormMedium()
+        return render(request,"medium_leaderboard_competitive.html", {"form": form})
+    
+    def hard_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormHard(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Hard/")
+        else:
+            form = PostFormHard()
+        return render(request,"hard_leaderboard_competitive.html", {"form": form})
+    
+    def expert_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormExpert(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Expert/")
+        else:
+            form = PostFormExpert()
+        return render(request,"expert_leaderboard_competitive.html", {"form": form})
+    
+
+    def ohnepixel_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormOhnepixel(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Medium/")
+        else:
+            form = PostFormOhnepixel()
+        return render(request,"ohnepixel_leaderboard_competitive.html", {"form": form})

@@ -41,7 +41,16 @@
         {{ leaderboard_data|json_script:"leaderboard_data"}}
         <section style="margin: auto;padding: auto;text-align: center;align-items: center;width: 100%;"> 
             <div style="text-align: center;align-items: center;width: 100%;" >
-                <p1 style="font-size: 70px;color: goldenrod;"><b>Competitive Leaderboard</b></p1><br>
+                <p1 style="font-size: 70px;color: goldenrod;"><b>Competitive Leaderboard - Expert</b></p1><br>
+                <div class="dropdown">
+                    <button class="dropbtn"><b>Change Difficulty</b></button>
+                    <div class="dropdown-content">
+                      <a href="{% url 'skin_master_leaderboard_competitive_easy' %}">Easy</a>
+                      <a href="{% url 'skin_master_leaderboard_competitive_medium' %}">Medium</a>
+                      <a href="{% url 'skin_master_leaderboard_competitive_hard' %}">Hard</a>
+                      <a href="{% url 'skin_master_leaderboard_competitive_expert' %}">Expert</a>
+                      <a href="{% url 'skin_master_leaderboard_competitive_ohnepixel' %}">OhnePixel</a>
+                    </div>
             </div>
             <div>
                 <style> 
@@ -139,12 +148,8 @@
                             rank.innerText = data[i].rank
                             score.innerText =  data[i].score
 
-                   
-
-                         
                         }
                      
-
                     }
              
                 </script>
