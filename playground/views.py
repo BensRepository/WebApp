@@ -410,7 +410,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         if request.method == "POST":
             form = PostFormOhnepixel(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Medium/")
+            return redirect("/SkinMaster/Leaderboard/Ohnepixel/")
         else:
             form = PostFormOhnepixel()
         return render(request,"ohnepixel_leaderboard_competitive.html", {"form": form})

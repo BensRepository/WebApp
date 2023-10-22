@@ -317,7 +317,7 @@
                 colours_correct = 0
                 colours_wrong =0
                 skin_name_correct = 0
-         
+                document.getElementById('leaderboard_prompt').innerText = ""
                 skin_name_wrong = 0
                 correct = 0
                 wrong = 0
@@ -641,8 +641,8 @@
                 //custom option enables and disables right buttons
             }
             function submitLeaderboards(){
-               alert(difficulty)
-                if(skin_name_correct => 1){
+                
+                if(skin_name_correct > 2){
                     if (difficulty == "Easy") {
                         window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Easy/")
                     } else if(difficulty == "Medium") {
