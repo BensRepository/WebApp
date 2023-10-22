@@ -4,6 +4,8 @@ import requests
 import json
 from .models import Case
 from .models import Rate
+from .models import LeaderboardCompetitiveEasyMode
+
 from rest_framework import viewsets
 import glob
 from WebApp.settings import STATIC_URL
@@ -292,12 +294,13 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request, "skin_master_play.html",context=context)    
     
     def skin_master_leaderboard(request):
-        types = glob.glob("."+STATIC_URL+"loadout/*")
-        filenames = {}
-        context = {}
-        for i in types:
-            filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
-        context['filenames']=filenames
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardCompetitiveEasyMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
         return render(request, "skin_master_leaderboard.html",context=context)    
 
     def skin_master_about(request):

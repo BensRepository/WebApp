@@ -38,7 +38,7 @@
             </div>
         </nav>
         <!-- Content -->
-       
+        {{ leaderboard_data|json_script:"leaderboard_data"}}
         <section style="margin: auto;padding: auto;text-align: center;align-items: center;width: 100%;"> 
             <div style="text-align: center;align-items: center;width: 100%;" >
                 <p1 style="font-size: 70px;color: goldenrod;"><b>Competitive Leaderboard</b></p1><br>
@@ -77,45 +77,106 @@
                     } 
                 </style> 
             </head> 
-              
-        
+            <script>
+                function sortTable() {
+                  var table, rows, switching, i, x, y, shouldSwitch;
+                  table = document.getElementById("leaderboard_table");
+                  switching = true;
+                  /*Make a loop that will continue until
+                  no switching has been done:*/
+                  while (switching) {
+                    //start by saying: no switching is done:
+                    switching = false;
+                    rows = table.rows;
+                    /*Loop through all table rows (except the
+                    first, which contains table headers):*/
+                    for (i = 1; i < (rows.length - 1); i++) {
+                      //start by saying there should be no switching:
+                      shouldSwitch = false;
+                      /*Get the two elements you want to compare,
+                      one from current row and one from the next:*/
+                      x = rows[i].getElementsByTagName("TD")[4];
+                    
+                 
+                      y = rows[i + 1].getElementsByTagName("TD")[4];
+                   
+                      //check if the two rows should switch place:
+                      if (Number(x.innerHTML) < Number(y.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                      }
+                    }
+                    if (shouldSwitch) {
+                      /*If a switch has been marked, make the switch
+                      and mark that a switch has been done:*/
+                      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                      switching = true;
+                    }
+                  }
+                }
+
+                    function populateLeaderboard(){
+                        
+                        data = JSON.parse(document.getElementById("leaderboard_data").textContent)
+                        
+                        for (let i = 0; i < data.length; i++){
+                            table = document.getElementById("leaderboard_table");
+                            row = table.insertRow(-1);
+                            // Create table cells
+                            let playerID = row.insertCell(0);
+                            let name = row.insertCell(1);
+                            let streak = row.insertCell(2);
+                            let rank = row.insertCell(3);
+                            let score = row.insertCell(4);
+  
+                        
+                            // Add data to c1 and c2
+                            playerID.innerText = data[i].playerID
+                            name.innerText = data[i].name
+                            streak.innerText = data[i].streak
+                            rank.innerText = data[i].rank
+                            score.innerText =  data[i].score
+
+                   
+
+                         
+                        }
+                     
+
+                    }
+             
+                </script>
+          
                 <div style="padding: 5%;padding-top: 0%;">
-                    <table>
+                    <table id="leaderboard_table">
                         <tr style="background-color: rgb(138, 118, 6)"> 
-                            <td>Player ID</td> 
-                            <td>Name</td> 
-                            <td>Streak</td> 
-                            <td>Rank</td>
-                            <td>Score</td>
+                            <td><b>Player ID</b></td> 
+                            <td><b>Name</b></td> 
+                            <td><b>Streak</b></td> 
+                            <td><b>Rank</b></td>
+                            <td><b>Score</b></td>
                         </tr> 
                         <tr > 
                             <td class="blackborder" ></td> 
                             <td class="blackborder"></td> 
                             <td class="blackborder"></td> 
                             <td class="blackborder"></td>
-                            <td class="blackborder"></td>
+                            <td class="blackborder" style="color: black;font-size: 3px;">999</td>
                         </tr> 
-                        <tr> 
-                            <td>#1</td> 
-                            <td>Artillery</td> 
-                            <td>30</td> 
-                            <td>Global Elite</td>
-                            <td>100</td>
-                        </tr> 
-                          
-                        <tr> 
-                            <td>#2</td> 
-                            <td>Gabe</td> 
-                            <td>2</td> 
-                            <td>Silver I</td>
-                            <td>10</td>
-                        </tr> 
+              
                           
                  
                     </table> 
                 </div>
                
-         
+                <script>
+                
+                    populateLeaderboard()
+                    sortTable()
+        
+                </script>
+                
             </div>
              <!-- Skin look up 
             Need a way to navigate via gun and rarity colour to look up 
