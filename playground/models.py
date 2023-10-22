@@ -18,9 +18,9 @@ class Rate(models.Model):
     
 class LeaderboardCompetitiveEasyMode(models.Model):
     playerID = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=12)
+    name = models.CharField(max_length=20)
     streak = models.IntegerField()
-    rank = models.CharField(max_length=12)
+    rank = models.CharField(max_length=22)
     score = models.FloatField()
 
     def __str__(self):

@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import requests
 import json
 from .models import Case
 from .models import Rate
 from .models import LeaderboardCompetitiveEasyMode
-
+from .forms import PostForm
 from rest_framework import viewsets
 import glob
 from WebApp.settings import STATIC_URL
@@ -320,3 +320,13 @@ class WebAppViewset(viewsets.ModelViewSet):
             filenames[i[17:]] = glob.glob("."+STATIC_URL+"loadout/"+i[17:]+"/*")
         context['filenames']=filenames
         return render(request, "skin_master_report_bug.html",context=context)    
+    
+
+    def new(request):
+        if request.method == "POST":
+            form = PostForm(request.POST)
+            form.save()
+            return redirect("/")
+        else:
+            form = PostForm()
+        return render(request,"new.html", {"form": form})

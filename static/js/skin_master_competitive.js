@@ -378,7 +378,8 @@ function play_button(){
         else{
           colours_wrong +=1
         }
-       
+ 
+
         document.getElementById("game_over_screen").style.display = "block"
         document.getElementById("score").innerText = Math.round(rate * 100) / 100
 
@@ -391,6 +392,13 @@ function play_button(){
         elem.src = rank_src[determineRankInput(rate)]
         //elem.setAttribute("height", "768");
         //elem.setAttribute("width", "1024");
+
+        localStorage.setItem("streak", streak);
+        localStorage.setItem("rank", rank_name[determineRankInput(rate)]);
+        localStorage.setItem("score", Math.round(rate * 100) / 100);
+
+
+
         elem.setAttribute("alt", "rank");
         const myNode = document.getElementById("rank_picture");
         while (myNode.firstChild) {

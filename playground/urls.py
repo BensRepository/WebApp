@@ -21,4 +21,5 @@ urlpatterns =[
     path("SkinMaster/Leaderboard/",WebAppViewset.skin_master_leaderboard, name='skin_master_leaderboard'),  
     path("SkinMaster/About/",WebAppViewset.skin_master_about, name='skin_master_about'), 
     path("SkinMaster/ReportBug/",WebAppViewset.skin_master_report_bug, name='skin_master_report_bug'), 
+    path('SkinMaster/Submit/',WebAppViewset.new,name='skin_master_submit')
             ]

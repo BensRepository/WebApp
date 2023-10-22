@@ -639,6 +639,12 @@
                 //detect preset change - on click send value and run new function to change custom preset to match difficulty
                 //custom option enables and disables right buttons
             }
+            function submitLeaderboards(){
+
+                window.location.replace("http://127.0.0.1:8000/SkinMaster/Submit/")
+
+
+            }
         </script>
         </section>
         <section id="game" style="align-items: center;text-align: center;display: none;"> 
@@ -757,7 +763,7 @@
                     <button id="play_again" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="start_game()">Play Again</button>
                 </div>
                 <div style="display: inline-block;"> 
-                    <button id="submit_leaderboards" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;">Submit to Leaderboard</button>
+                    <button id="submit_leaderboards" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="submitLeaderboards()">Submit to Leaderboard</button>
                 </div>
                
 
