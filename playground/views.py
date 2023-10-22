@@ -326,7 +326,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         if request.method == "POST":
             form = PostForm(request.POST)
             form.save()
-            return redirect("/")
+            return redirect("/SkinMaster/Leaderboard/")
         else:
             form = PostForm()
         return render(request,"new.html", {"form": form})

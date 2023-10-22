@@ -2,6 +2,7 @@
 <html lang="en">
 
 {% load static %}
+
     <script>
         var countries = ['Steel Disruption', 'Bamboo Shadow', 'Shallow Grave', 'Surveillance', 'Fairy Tale', 'Scavenger', 'Orange Crash', 'Fowl Play', 'Prime Conspiracy', 'Grassland Leaves', 'Detour',
     'Dezastre', 'CAUTION!', 'Nostalgia', 'Prototype', 'Moss Quartz', 'Quick Sand', 'Watchdog', 'Asiimov', 'Rust Leaf', 'Insomnia', 'Ventilators', 'Melondrama', 'POP AWP', 'Ocean Drive', 'Re.built',
@@ -641,11 +642,16 @@
             }
             function submitLeaderboards(){
 
-                window.location.replace("http://127.0.0.1:8000/SkinMaster/Submit/")
-
+                if(skin_name_correct => 2){
+                    window.location.replace("http://127.0.0.1:8000/SkinMaster/Submit/")
+                }
+                else{
+                    document.getElementById("leaderboard_prompt").innerText = "Eligibility Error -  Requires TWO correct skin names to submit to Leaderboard"
+                }
 
             }
         </script>
+
         </section>
         <section id="game" style="align-items: center;text-align: center;display: none;"> 
             <p1 style="font-size: 55px;">Competitive</p1><br>
@@ -757,11 +763,13 @@
                     </div>
                     <p style="font-size: 20px;display:inline-block; ">You ranked: </p> <p style="font-size: 25px;" id="rank_value"> </p>
                     <div id="rank_picture" style="padding-bottom: 10px;"></div>
+                    <p id="leaderboard_prompt" style="color: red;"></p>
                 </div>
 
                 <div style="padding-right: 50px;display: inline-block;">
                     <button id="play_again" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="start_game()">Play Again</button>
                 </div>
+     
                 <div style="display: inline-block;"> 
                     <button id="submit_leaderboards" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="submitLeaderboards()">Submit to Leaderboard</button>
                 </div>

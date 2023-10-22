@@ -85,6 +85,7 @@ function play_button(){
     var include_industrial_grade = true
     var include_consumer_grade = true
     var roundsPLayed = 30
+    var best_streak = 0
   
     function makeImagesBoxes(gun,colour,type,skin){
   
@@ -384,19 +385,20 @@ function play_button(){
         document.getElementById("score").innerText = Math.round(rate * 100) / 100
 
   
-        var elem = document.createElement("img");
+    
         rank_src = {"Silver1" : "/static/ranks/silver1.png","Silver2":"/static/ranks/silver2.png","Silver3":"/static/ranks/silver3.png","SilverElite":"/static/ranks/silver4.png","SilverEliteMaster":"/static/ranks/silver5.png","Nova1":"/static/ranks/nova1.png","Nova2":"/static/ranks/nova2.png","Nova3":"/static/ranks/nova3.png","NovaMaster":"/static/ranks/nova4.png","MG":"/static/ranks/mg.png","MG2":"/static/ranks/mg2.png","MGE":"/static/ranks/mge.png","DMG":"/static/ranks/dmg.png","LE":"/static/ranks/le.png","LEM":"/static/ranks/lem.png","Supreme":"/static/ranks/supreme.png","Global Elite":"/static/ranks/theglobalelite.png"}
         rank_name = {"Silver1" : "Silver I","Silver2":"Silver II","Silver3":"Silver III","SilverElite":"Silver Elite","SilverEliteMaster":"Silver Elite Master","Nova1":"Nova I","Nova2":"Nova II","Nova3":"Nova III","NovaMaster":"Nova Master","MG":"Master Guardian","MG2":"Master Guardian 2","MGE":"Master Guardian Elite","DMG":"Distinguished Master Guardian","LE":"Legendary Eagle","LEM":"Legendary Eagle Master","Supreme":"Supreme","Global Elite":"The Global Elite"}
         document.getElementById("rank_value").innerText =  rank_name[determineRankInput(rate)]
-        
+        var elem = document.createElement("img");
         elem.src = rank_src[determineRankInput(rate)]
         //elem.setAttribute("height", "768");
         //elem.setAttribute("width", "1024");
 
-        localStorage.setItem("streak", streak);
+        localStorage.setItem("streak", best_streak);
         localStorage.setItem("rank", rank_name[determineRankInput(rate)]);
         localStorage.setItem("score", Math.round(rate * 100) / 100);
-
+        localStorage.setItem("rate_colours", String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%");
+        localStorage.setItem("rate_skins", Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%");
 
 
         elem.setAttribute("alt", "rank");
@@ -630,16 +632,9 @@ function test2(){
    }
    document.getElementById("streak").innerText = streak
  
- 
- 
-  // Update Stats
- 
- 
-//    if(streak > best_streak){
-//      best_streak = streak
- 
-//      document.getElementById("best_streak").innerText = best_streak
-//    }
+   if(streak > best_streak){
+     best_streak = streak
+   }
 
 //    document.getElementById("rank_value").innerText =  determineRank()
 //    try{

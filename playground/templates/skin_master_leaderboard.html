@@ -123,6 +123,7 @@
                         for (let i = 0; i < data.length; i++){
                             table = document.getElementById("leaderboard_table");
                             row = table.insertRow(-1);
+                            row.id =data[i].playerID
                             // Create table cells
                             let playerID = row.insertCell(0);
                             let name = row.insertCell(1);
