@@ -399,6 +399,7 @@ function play_button(){
         localStorage.setItem("score", Math.round(rate * 100) / 100);
         localStorage.setItem("rate_colours", String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%");
         localStorage.setItem("rate_skins", Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%");
+        localStorage.setItem("length", game_length);
 
 
         elem.setAttribute("alt", "rank");

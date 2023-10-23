@@ -290,6 +290,12 @@ class WebAppViewset(viewsets.ModelViewSet):
                 for j in  red:
                     skinname = j.split("\\")[2]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
+
+
+        leaderboard_data=[]
+        for x in LeaderboardCompetitiveEasyMode.objects.all().values():
+            leaderboard_data.append(x)
+        filenames['top '] = leaderboard_data
         return render(request, "skin_master_ranked.html",context=filenames)    
     
     def skin_master_play(request):
@@ -414,3 +420,110 @@ class WebAppViewset(viewsets.ModelViewSet):
         else:
             form = PostFormOhnepixel()
         return render(request,"ohnepixel_leaderboard_competitive.html", {"form": form})
+    
+
+
+
+
+
+
+
+
+    def skin_master_leaderboard_survival_easy(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardSurvivalEasyMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_survival_easy.html",context=context)    
+    
+    def skin_master_leaderboard_survival_medium(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardSurvivalMediumMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_survival_medium.html",context=context)    
+    
+    def skin_master_leaderboard_survival_hard(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardSurvivalHardMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_survival_hard.html",context=context)    
+    
+
+    def skin_master_leaderboard_survival_expert(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardSurvivalExpertMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_survival_expert.html",context=context)    
+    def skin_master_leaderboard_survival_ohnepixel(request):
+        context= {}
+        leaderboard_data=[]
+        for x in LeaderboardSurvivalOhnepixelMode.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+      
+        return render(request, "skin_master_leaderboard_survival_ohnepixel.html",context=context)    
+    
+    #FIX FROM HERE
+
+    def easy_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormEasy(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Easy/")
+        else:
+            form = PostFormEasy()
+        return render(request,"easy_leaderboard_survival.html", {"form": form})
+    
+    def medium_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormMedium(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Medium/")
+        else:
+            form = PostFormMedium()
+        return render(request,"medium_leaderboard_competitive.html", {"form": form})
+    
+    def hard_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormHard(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Hard/")
+        else:
+            form = PostFormHard()
+        return render(request,"hard_leaderboard_competitive.html", {"form": form})
+    
+    def expert_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormExpert(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Expert/")
+        else:
+            form = PostFormExpert()
+        return render(request,"expert_leaderboard_competitive.html", {"form": form})
+    
+
+    def ohnepixel_leaderboard_competitive(request):
+        if request.method == "POST":
+            form = PostFormOhnepixel(request.POST)
+            form.save()
+            return redirect("/SkinMaster/Leaderboard/Ohnepixel/")
+        else:
+            form = PostFormOhnepixel()
+        return render(request,"ohnepixel_leaderboard_competitive.html", {"form": form})
+    
