@@ -1,25 +1,60 @@
 
 function play_button(){
+  try {
     window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/")
+  } catch (error) {
+    window.location.replace("http://cstools.co.uk/SkinMaster/Play/")
+  }
     }
+
     function leaderboard_button(){
-      window.location.replace("http://127.0.0.1:8000/SkinMaster/Leaderboard/");
+      try {
+        window.location.replace("http://127.0.0.1:8000/SkinMaster/Leaderboard/");
+      } catch (error) {
+        window.location.replace("http://cstools.co.uk/SkinMaster/Leaderboard/");
+      }
+
     }
     function about_button(){
-      window.location.replace("http://127.0.0.1:8000/SkinMaster/About/");
+      try {
+        window.location.replace("http://127.0.0.1:8000/SkinMaster/About/");
+      } catch (error) {
+        window.location.replace("http://cstools.co.uk/SkinMaster/About/");
+      }
+    
     }
     function report_bug_screen_button(){
-      window.location.replace("http://127.0.0.1:8000/SkinMaster/ReportBug/");
+      try {
+        window.location.replace("http://127.0.0.1:8000/SkinMaster/ReportBug/");
+      } catch (error) {
+        window.location.replace("http://cstools.co.uk/SkinMaster/ReportBug/");
+      }
+  
     }
   
     function practise_button(){
-      window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Practise/");
+      try {
+        window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Practise/");
+      } catch (error) {
+        window.location.replace("http://cstools.co.uk/SkinMaster/Play/Practise/");
+      }
+
     }
     function ranked_button(){
-      window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Ranked/");
+      try {
+        window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Ranked/");
+      } catch (error) {
+        window.location.replace("http://cstools.co.uk/SkinMaster/Play/Ranked/");
+      }
+
     }
     function survival_button(){
-      window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Survival/");
+      try {
+        window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Survival/");
+      } catch (error) {
+        window.location.replace("http://cstools.co.uk/SkinMaster/Play/Survival/");
+      }
+    
     }
    
     function makeImages(gun,colour,type,skin){
@@ -561,11 +596,13 @@ function testInputs(){
       pickedColour = colourChoice() 
       document.getElementById("game").style.display = "none"
       document.getElementById("game_over_screen").style.display = "inline"
+      
+    
       document.getElementById("score").innerText = streak
      
       document.getElementById("answerSkin").innerText = currentPractiseskin
       document.getElementById("selectedSkin").innerText = nameValue
-
+      localStorage.setItem("streak", streak);
       rarity_remap = {"grey":"Consumer Grade","light_blue":"Industrial grade","blue":"Mil-Spec","purple":"Restricted","pink":"Classified","red":"Covert"}
       document.getElementById("selectedColour").innerText = rarity_remap[pickedColour]
       document.getElementById("answerColour").innerText = rarity_remap[currentPractiseColour]

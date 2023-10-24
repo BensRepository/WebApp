@@ -9,11 +9,23 @@ from .models import LeaderboardCompetitiveMediumMode
 from .models import LeaderboardCompetitiveHardMode
 from .models import LeaderboardCompetitiveExpertMode
 from .models import LeaderboardCompetitiveOhnepixelMode
+from .models import LeaderboardSurvivalEasyMode
+from .models import LeaderboardSurvivalMediumMode
+from .models import LeaderboardSurvivalHardMode
+from .models import LeaderboardSurvivalExpertMode
+from .models import LeaderboardSurvivalOhnepixelMode
 from .forms import PostFormEasy
 from .forms import PostFormMedium
 from .forms import PostFormHard
 from .forms import PostFormExpert
 from .forms import PostFormOhnepixel
+
+from .forms import PostFormEasySurvival
+from .forms import PostFormMediumSurvival
+from .forms import PostFormHardSurvival
+from .forms import PostFormExpertSurvival
+from .forms import PostFormOhnepixelSurvival
+
 from rest_framework import viewsets
 import glob
 from WebApp.settings import STATIC_URL
@@ -379,7 +391,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         if request.method == "POST":
             form = PostFormEasy(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Easy/")
+            return redirect("/SkinMaster/Leaderboard/Competitive/Easy/")
         else:
             form = PostFormEasy()
         return render(request,"easy_leaderboard_competitive.html", {"form": form})
@@ -388,7 +400,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         if request.method == "POST":
             form = PostFormMedium(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Medium/")
+            return redirect("/SkinMaster/Leaderboard/Competitive/Medium/")
         else:
             form = PostFormMedium()
         return render(request,"medium_leaderboard_competitive.html", {"form": form})
@@ -397,7 +409,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         if request.method == "POST":
             form = PostFormHard(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Hard/")
+            return redirect("/SkinMaster/Leaderboard/Competitive/Hard/")
         else:
             form = PostFormHard()
         return render(request,"hard_leaderboard_competitive.html", {"form": form})
@@ -406,7 +418,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         if request.method == "POST":
             form = PostFormExpert(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Expert/")
+            return redirect("/SkinMaster/Leaderboard/Competitive/Expert/")
         else:
             form = PostFormExpert()
         return render(request,"expert_leaderboard_competitive.html", {"form": form})
@@ -416,7 +428,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         if request.method == "POST":
             form = PostFormOhnepixel(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Ohnepixel/")
+            return redirect("/SkinMaster/Leaderboard/Competitive/Ohnepixel/")
         else:
             form = PostFormOhnepixel()
         return render(request,"ohnepixel_leaderboard_competitive.html", {"form": form})
@@ -481,49 +493,49 @@ class WebAppViewset(viewsets.ModelViewSet):
     
     #FIX FROM HERE
 
-    def easy_leaderboard_competitive(request):
+    def easy_leaderboard_survival(request):
         if request.method == "POST":
-            form = PostFormEasy(request.POST)
+            form = PostFormEasySurvival(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Easy/")
+            return redirect("/SkinMaster/Leaderboard/Survival/Easy/")
         else:
             form = PostFormEasy()
         return render(request,"easy_leaderboard_survival.html", {"form": form})
     
-    def medium_leaderboard_competitive(request):
+    def medium_leaderboard_survival(request):
         if request.method == "POST":
-            form = PostFormMedium(request.POST)
+            form = PostFormMediumSurvival(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Medium/")
+            return redirect("/SkinMaster/Leaderboard/Survival/Medium/")
         else:
-            form = PostFormMedium()
-        return render(request,"medium_leaderboard_competitive.html", {"form": form})
+            form = PostFormMediumSurvival()
+        return render(request,"medium_leaderboard_survival.html", {"form": form})
     
-    def hard_leaderboard_competitive(request):
+    def hard_leaderboard_survival(request):
         if request.method == "POST":
-            form = PostFormHard(request.POST)
+            form = PostFormHardSurvival(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Hard/")
+            return redirect("/SkinMaster/Leaderboard/Survival/Hard/")
         else:
-            form = PostFormHard()
-        return render(request,"hard_leaderboard_competitive.html", {"form": form})
+            form = PostFormHardSurvival()
+        return render(request,"hard_leaderboard_survival.html", {"form": form})
     
-    def expert_leaderboard_competitive(request):
+    def expert_leaderboard_survival(request):
         if request.method == "POST":
-            form = PostFormExpert(request.POST)
+            form = PostFormExpertSurvival(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Expert/")
+            return redirect("/SkinMaster/Leaderboard/Survival/Expert/")
         else:
-            form = PostFormExpert()
-        return render(request,"expert_leaderboard_competitive.html", {"form": form})
+            form = PostFormExpertSurvival()
+        return render(request,"expert_leaderboard_survival.html", {"form": form})
     
 
-    def ohnepixel_leaderboard_competitive(request):
+    def ohnepixel_leaderboard_survival(request):
         if request.method == "POST":
-            form = PostFormOhnepixel(request.POST)
+            form = PostFormOhnepixelSurvival(request.POST)
             form.save()
-            return redirect("/SkinMaster/Leaderboard/Ohnepixel/")
+            return redirect("/SkinMaster/Leaderboard/Survival/Ohnepixel/")
         else:
             form = PostFormOhnepixel()
-        return render(request,"ohnepixel_leaderboard_competitive.html", {"form": form})
+        return render(request,"ohnepixel_leaderboard_survival.html", {"form": form})
     

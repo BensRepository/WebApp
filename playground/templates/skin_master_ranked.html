@@ -654,16 +654,40 @@
                 
                 if(skin_name_correct > 2){
                     if (difficulty == "Easy") {
-                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Easy/")
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Easy/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Easy/")
+                        }
+              
                     } else if(difficulty == "Medium") {
-                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Medium/")
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Medium/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Medium/")
+                        }
+                
                     }else if(difficulty == "Hard") {
-                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Hard/")
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Hard/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Hard/")
+                        }
+                       
                     }else if(difficulty == "Expert") {
-                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Expert/")
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Expert/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Ohnepixel/")
+                        }
+             
                     }
                     else if(difficulty == "Ohnepixel") {
+                       try {
                         window.location.replace("http://127.0.0.1:8000/SkinMaster/Competitive/Ohnepixel/")
+                       } catch (error) {
+                        window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Ohnepixel/")
+                       }
                     }
                    
                 }

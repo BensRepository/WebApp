@@ -42,7 +42,7 @@
 
         <section style="text-align: center;align-items: center;">
             <div style="text-align: center;align-items: center;">
-                <p1 style="color: goldenrod;font-size: 75px;font-weight: bold;">Easy Leaderboard Submission</p1>
+                <p1 style="color: goldenrod;font-size: 75px;font-weight: bold;">Survival Leaderboard Submission</p1>
                 {% block content %}
                 <div style="align-items: center;text-align: center;margin: auto;">
                     <form id="leaderboard_form" method="post" style="align-items: center;text-align: center;display: inline-block;  margin-bottom: 30px;">
@@ -162,7 +162,6 @@
                     document.getElementById("score").innerText  = localStorage.getItem("score")
                     document.getElementById("success_rate_skins").innerText  = localStorage.getItem("rate_skins")
                     document.getElementById("rank_value").innerText =  localStorage.getItem("rank")
-                    alert(localStorage.getItem("length"))
                     var elem = document.createElement("img");
                     elem.src = rank_src[determineRankInput(localStorage.getItem("score"))]
                     document.getElementById("rank_picture").appendChild(elem);

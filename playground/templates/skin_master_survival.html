@@ -86,7 +86,53 @@
         <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
         <link href="{% static 'css/skin_master.css'%}" rel="stylesheet" />
     </head>
+    <script>
+                    function submitLeaderboards(){
+                        
+ 
+                    if (difficulty == "Easy") {
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Easy/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Easy/")
+                        }
+              
+                    } else if(difficulty == "Medium") {
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Medium/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Medium/")
+                        }
+                
+                    }else if(difficulty == "Hard") {
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Hard/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Hard/")
+                        }
+                       
+                    }else if(difficulty == "Expert") {
+                        try {
+                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Expert/")
+                        } catch (error) {
+                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Ohnepixel/")
+                        }
+             
+                    }
+                    else if(difficulty == "Ohnepixel") {
+                       try {
+                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Ohnepixel/")
+                       } catch (error) {
+                        window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Ohnepixel/")
+                       }
+                    }
+                   
+                }
+          
 
+            
+        </script>
+    </script>
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
@@ -712,14 +758,14 @@
                     <p style="font-size: 20px;display:inline-block;font-weight: bold; " id="answerSkin"></p>
                 </div>
             
-           
+                
                 <p style="font-size: 20px;"> You scored: </p>
                 <p style="font-size: 25px;" id="score"> </p>
                 <div style="padding-right: 50px;display: inline-block;">
                     <button id="start_button" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;" onclick="start_game()">Play Again</button>
                 </div>
                 <div style="display: inline-block;"> 
-                    <button id="start_button" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;">Submit to Leaderboard</button>
+                    <button onclick="submitLeaderboards()" id="start_button" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;">Submit to Leaderboard</button>
                 </div>
                
               

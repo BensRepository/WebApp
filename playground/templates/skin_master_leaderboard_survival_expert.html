@@ -42,16 +42,16 @@
         {{ leaderboard_data|json_script:"leaderboard_data"}}
         <section style="margin: auto;padding: auto;text-align: center;align-items: center;width: 100%;"> 
             <div style="text-align: center;align-items: center;width: 100%;" >
-                <p1 style="font-size: 70px;color: goldenrod;"><b>Competitive Leaderboard - Easy</b></p1><br>
+                <p1 style="font-size: 70px;color: goldenrod;"><b>Survival Leaderboard - Expert</b></p1><br>
                 <div class="dropdown">
                     <button class="dropbtn"><b>Change Difficulty</b></button>
 
                     <div class="dropdown-content">
-                      <a href="{% url 'skin_master_leaderboard_competitive_easy' %}">Easy</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_medium' %}">Medium</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_hard' %}">Hard</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_expert' %}">Expert</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_ohnepixel' %}">OhnePixel</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_easy' %}">Easy</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_medium' %}">Medium</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_hard' %}">Hard</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_expert' %}">Expert</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_ohnepixel' %}">OhnePixel</a>
                     </div>
             </div>
             <div>
@@ -78,13 +78,13 @@
                         height: 15px;
                     }
                     tr{
-                        background-color: rgb(197, 177, 62);
+                        background-color: rgb(60, 40, 31);
         
 
                    
                     }
                     tr:nth-child(even) { 
-                        background-color: rgb(138, 118, 6); 
+                        background-color: rgb(209, 40, 27); 
                     } 
                 </style> 
             </head> 
@@ -138,19 +138,15 @@
                             // Create table cells
                             let playerID = row.insertCell(0);
                             let name = row.insertCell(1);
-                            let length = row.insertCell(2);
-                            let streak = row.insertCell(3);
-                            let rank = row.insertCell(4);
-                            let score = row.insertCell(5);
+                            let streak = row.insertCell(2);
+
                     
                         
                             // Add data to c1 and c2
                             playerID.innerText = data[i].playerID
                             name.innerText = data[i].name
-                            length.innerText =  data[i].length
                             streak.innerText = data[i].streak
-                            rank.innerText = data[i].rank
-                            score.innerText =  data[i].score
+           
                   
 
                         }
@@ -164,16 +160,13 @@
                         <tr style="background-color: rgb(138, 118, 6)"> 
                             <td><b>Player ID</b></td> 
                             <td><b>Name</b></td> 
-                            <td><b>Length</b></td>
+
                             <td><b>Streak</b></td> 
-                            <td><b>Rank</b></td>
-                            <td><b>Score</b></td>
+
                        
                         </tr> 
                         <tr > 
-                            <td class="blackborder" ></td> 
-                            <td class="blackborder"></td> 
-                            <td class="blackborder"></td> 
+
                             <td class="blackborder"></td>
                             <td class="blackborder" style="color: black;font-size: 3px;">999</td>
                             <td class="blackborder"></td>
