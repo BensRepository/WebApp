@@ -388,6 +388,7 @@ function play_button(){
       
 
       function survivalGame(){   
+        document.getElementById("leaderboard_prompt").innerText = ""
         skin_count = skins.length
         document.getElementById("practise_game").style.display = "none"
         randomType = ""
@@ -553,7 +554,7 @@ function testInputs(){
       document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
       document.getElementById(currentPractiseskin+"_text").style.backgroundColor = "green"
       resultColour = "green"
-      streak +=1
+ 
   
       
     }
@@ -565,7 +566,7 @@ function testInputs(){
       document.getElementById("game").style.display = "none"
       document.getElementById("game_over_screen").style.display = "inline"
       document.getElementById("score").innerText = streak
-     
+      
       document.getElementById("answerSkin").innerText = currentPractiseskin
       document.getElementById("selectedSkin").innerText = nameValue
 
@@ -618,7 +619,12 @@ function testInputs(){
         document.getElementById(last_column).style.borderColor = resultColour
       }
     }
-   
+   if((nameValue === currentPractiseskin)&&(colourChoice() == currentPractiseColour)){
+    streak +=1
+   }
+   else{
+    
+   }
   
   
   

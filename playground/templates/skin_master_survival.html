@@ -89,45 +89,47 @@
     <script>
                     function submitLeaderboards(){
                         //add validation here
- 
-                    if (difficulty == "Easy") {
-                        try {
-                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Easy/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Easy/")
-                        }
-              
-                    } else if(difficulty == "Medium") {
-                        try {
-                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Medium/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Medium/")
-                        }
-                
-                    }else if(difficulty == "Hard") {
-                        try {
-                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Hard/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Hard/")
-                        }
-                       
-                    }else if(difficulty == "Expert") {
-                        try {
-                            window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Expert/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Ohnepixel/")
-                        }
-             
+                        if(streak > 1){
+                            if (difficulty == "Easy") {
+                                try {
+                                    window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Easy/")
+                                } catch (error) {
+                                    window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Easy/")
+                                }
+                    
+                            } else if(difficulty == "Medium") {
+                                try {
+                                    window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Medium/")
+                                } catch (error) {
+                                    window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Medium/")
+                                }
+                        
+                            }else if(difficulty == "Hard") {
+                                try {
+                                    window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Hard/")
+                                } catch (error) {
+                                    window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Hard/")
+                                }
+                            
+                            }else if(difficulty == "Expert") {
+                                try {
+                                    window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Expert/")
+                                } catch (error) {
+                                    window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Ohnepixel/")
+                                }
+                    
+                            }
+                            else if(difficulty == "Ohnepixel") {
+                            try {
+                                window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Ohnepixel/")
+                            } catch (error) {
+                                window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Ohnepixel/")
+                            }
+                            }}
+                    else{
+                        document.getElementById("leaderboard_prompt").innerText = "Eligibility Error -  Requires TWO correct skin names to submit to Leaderboard"
                     }
-                    else if(difficulty == "Ohnepixel") {
-                       try {
-                        window.location.replace("http://127.0.0.1:8000/SkinMaster/Survival/Ohnepixel/")
-                       } catch (error) {
-                        window.location.replace("http://cstools.co.uk/SkinMaster/Survival/Ohnepixel/")
-                       }
-                    }
-                   
-                }
+                        }
           
 
             
@@ -338,6 +340,7 @@
         <script>
 
             function start_game(){
+                streak = 0
                 document.getElementById("practise_game").style.display = "block"
                 try{
                     document.getElementById(column1[3]).remove();
@@ -767,10 +770,10 @@
                 <div style="display: inline-block;"> 
                     <button onclick="submitLeaderboards()" id="start_button" class="button-73" role="button" style="height: auto;width: 400px;height: 100px;">Submit to Leaderboard</button>
                 </div>
-               
+                <p id="leaderboard_prompt" style="color: red;"></p>
               
           
-                <br><br><br><p id="main_menu_redirect" onclick="play_button()">Main Menu</p>
+                <p id="main_menu_redirect" onclick="play_button()">Main Menu</p>
             </div>
            
         </section>
