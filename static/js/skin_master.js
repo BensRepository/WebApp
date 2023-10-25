@@ -8,9 +8,9 @@ function play_button(){
 
     function leaderboard_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/Leaderboard/");
+        window.location.replace("http://127.0.0.1:8000/SkinMaster/Leaderboard/Competitive/Ohnepixel/");
       } catch (error) {
-        window.location.replace("http://cstools.co.uk/SkinMaster/Leaderboard/");
+        window.location.replace("http://cstools.co.uk/SkinMaster/Leaderboard/Competitive/Ohnepixel/");
       }
 
     }
