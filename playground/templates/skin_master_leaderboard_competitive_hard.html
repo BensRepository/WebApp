@@ -37,6 +37,7 @@
                 </div>
             </div>
         </nav>
+
         <!-- Content -->
         {{ leaderboard_data|json_script:"leaderboard_data"}}
         <section style="margin: auto;padding: auto;text-align: center;align-items: center;width: 100%;"> 
@@ -44,6 +45,75 @@
                 <p1 style="font-size: 70px;color: goldenrod;"><b>Competitive Leaderboard - Hard</b></p1><br>
                 <div class="dropdown">
                     <button class="dropbtn"><b>Change Difficulty</b></button>
+
+                      <style>
+                        .radio-button-container {
+                            display: flex;
+                            align-items: center;
+                            gap: 24px;
+                            }
+
+                            .radio-button {
+                            display: inline-block;
+                            position: relative;
+                            cursor: pointer;
+                            padding-left: 10px;
+                            }
+
+                            .radio-button__input {
+                            position: absolute;
+                            opacity: 0;
+                            width: 0;
+                            height: 0;
+                            }
+
+                            .radio-button__label {
+                            display: inline-block;
+                            padding-left: 30px;
+                            margin-bottom: 10px;
+                            position: relative;
+                            font-size: 15px;
+                            color: #f2f2f2;
+                            font-weight: 600;
+                            cursor: pointer;
+                            text-transform: uppercase;
+                            transition: all 0.3s ease;
+                            }
+
+                            .radio-button__custom {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            border: 2px solid #555;
+                            transition: all 0.3s ease;
+                            }
+
+                            .radio-button__input:checked + .radio-button__label .radio-button__custom {
+                            background-color: goldenrod;
+                            border-color: transparent;
+                            transform: scale(0.8);
+                            box-shadow: 0 0 20px #c3b85680;
+                            }
+
+                            .radio-button__input:checked + .radio-button__label {
+                            color: #4c8bf5;
+                            }
+
+                            .radio-button__label:hover .radio-button__custom {
+                            transform: scale(1.2);
+                            border-color: #4c8bf5;
+                            box-shadow: 0 0 20px #4c8bf580;
+                            }
+
+
+
+
+
+
+                      </style>
                     <div class="dropdown-content">
                       <a href="{% url 'skin_master_leaderboard_competitive_easy' %}">Easy</a>
                       <a href="{% url 'skin_master_leaderboard_competitive_medium' %}">Medium</a>
@@ -51,7 +121,49 @@
                       <a href="{% url 'skin_master_leaderboard_competitive_expert' %}">Expert</a>
                       <a href="{% url 'skin_master_leaderboard_competitive_ohnepixel' %}">OhnePixel</a>
                     </div>
+
+                   
             </div>
+            <div>
+                <div class="radio-button-container">
+                    <div class="radio-button">
+                    <input  type="radio" class="radio-button__input" id="radio1" name="radio-group" onclick="change_screen()" checked>
+                    <label class="radio-button__label" for="radio1" >
+                      <span class="radio-button__custom"></span>
+                  
+                    </label>
+                  </div>
+                  <div class="radio-button">
+                    <input type="radio" class="radio-button__input" id="radio2" name="radio-group"onclick="change_screen()">
+                    <label class="radio-button__label" for="radio2">
+                      <span class="radio-button__custom"></span>
+          
+                    </label>
+                  </div>
+                  
+                  </div>
+            </div>
+          
+            <script>
+                function change_screen(){
+                    url = window.location.href.split("/")
+                    if(document.getElementById('radio2').checked){
+                        if(window.location.href.split("/")[5] == "Competitive"){
+                           url[5] = "Survival"
+                        
+                           window.location.replace(String(url).replace(/,/g,"/"))
+                    
+                        }
+                        else{
+
+                        }
+                        
+                    }
+                    else{
+                   
+                    }
+                }
+            </script>
             <div>
                 <style> 
                     table { 
@@ -124,7 +236,7 @@
                     }
                   }
                 }
-
+                   
                     function populateLeaderboard(){
                         
                         data = JSON.parse(document.getElementById("leaderboard_data").textContent)
@@ -166,6 +278,7 @@
                             <td><b>Streak</b></td> 
                             <td><b>Rank</b></td>
                             <td><b>Score</b></td>
+                       
                         </tr> 
                         <tr > 
                             <td class="blackborder" ></td> 
@@ -173,13 +286,14 @@
                             <td class="blackborder"></td> 
                             <td class="blackborder"></td>
                             <td class="blackborder" style="color: black;font-size: 3px;">999</td>
+                            <td class="blackborder"></td>
                         </tr> 
               
                           
                  
                     </table> 
                 </div>
-               
+
                 <script>
                 
                     populateLeaderboard()

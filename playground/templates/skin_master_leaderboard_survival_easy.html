@@ -115,11 +115,11 @@
 
                       </style>
                     <div class="dropdown-content">
-                      <a href="{% url 'skin_master_leaderboard_competitive_easy' %}">Easy</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_medium' %}">Medium</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_hard' %}">Hard</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_expert' %}">Expert</a>
-                      <a href="{% url 'skin_master_leaderboard_competitive_ohnepixel' %}">OhnePixel</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_easy' %}">Easy</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_medium' %}">Medium</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_hard' %}">Hard</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_expert' %}">Expert</a>
+                      <a href="{% url 'skin_master_leaderboard_survival_ohnepixel' %}">OhnePixel</a>
                     </div>
 
                    
@@ -150,7 +150,7 @@
                     if(document.getElementById('radio1').checked){
                         if(window.location.href.split("/")[5] == "Survival"){
                            url[5] = "Competitive"
-                           alert(String(url).replace(/,/g,"/"))
+                      
                            window.location.replace(String(url).replace(/,/g,"/"))
                     
                         }
@@ -214,10 +214,10 @@
                       shouldSwitch = false;
                       /*Get the two elements you want to compare,
                       one from current row and one from the next:*/
-                      x = rows[i].getElementsByTagName("TD")[4];
+                      x = rows[i].getElementsByTagName("TD")[2];
                     
                  
-                      y = rows[i + 1].getElementsByTagName("TD")[4];
+                      y = rows[i + 1].getElementsByTagName("TD")[2];
                    
                       //check if the two rows should switch place:
                       if (Number(x.innerHTML) < Number(y.innerHTML)) {
