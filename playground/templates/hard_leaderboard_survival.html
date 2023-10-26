@@ -130,7 +130,11 @@
                       // Update the value of the hidden field
                       hiddenFieldStreak.value = localStorage.getItem("streak");
 
-     
+                      if (document.getElementById("id_name").value == "") {
+                        document.getElementById("id_name").value = "Player Name"
+                      } else {
+                        
+                      }
                       
                       // Optionally, you can submit the form to send the updated value to the server
                       document.getElementById("leaderboard_form").submit();

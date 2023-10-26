@@ -134,7 +134,11 @@
                       hiddenFieldRank.value = localStorage.getItem("rank");
                       hiddenFieldScore.value = localStorage.getItem("score");
                       hiddenFieldLength.value = localStorage.getItem("length");
-     
+                      if (document.getElementById("id_name").value == "") {
+                        document.getElementById("id_name").value = "Player Name"
+                      } else {
+                        
+                      }
                       
                       // Optionally, you can submit the form to send the updated value to the server
                       document.getElementById("leaderboard_form").submit();
@@ -162,7 +166,7 @@
                     document.getElementById("score").innerText  = localStorage.getItem("score")
                     document.getElementById("success_rate_skins").innerText  = localStorage.getItem("rate_skins")
                     document.getElementById("rank_value").innerText =  localStorage.getItem("rank")
-                    alert(localStorage.getItem("length"))
+           
                     var elem = document.createElement("img");
                     elem.src = rank_src[determineRankInput(localStorage.getItem("score"))]
                     document.getElementById("rank_picture").appendChild(elem);

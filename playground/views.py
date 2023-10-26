@@ -304,10 +304,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
 
 
-        leaderboard_data=[]
-        for x in LeaderboardCompetitiveEasyMode.objects.all().values():
-            leaderboard_data.append(x)
-        filenames['top '] = leaderboard_data
         return render(request, "skin_master_ranked.html",context=filenames)    
     
     def skin_master_play(request):
@@ -496,6 +492,7 @@ class WebAppViewset(viewsets.ModelViewSet):
     def easy_leaderboard_survival(request):
         if request.method == "POST":
             form = PostFormEasySurvival(request.POST)
+     
             form.save()
             return redirect("/SkinMaster/Leaderboard/Survival/Easy/")
         else:
