@@ -24,9 +24,9 @@ function play_button(){
     }
     function report_bug_screen_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/ReportBug/");
+        window.location.replace("https://steamcommunity.com/groups/wwwCSToolscouk/discussions/0/3873717500279476558/");
       } catch (error) {
-        window.location.replace("http://cstools.co.uk/SkinMaster/ReportBug/");
+        window.location.replace("https://steamcommunity.com/groups/wwwCSToolscouk/discussions/0/3873717500279476558/");
       }
   
     }
