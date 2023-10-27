@@ -22,8 +22,8 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
             <div class="container px-lg-5">
-              <img href="{% url 'index' %}" src="/static/images/tools.png" width="20" height="auto" class="me-2" alt="tool emoji" style="display: block;">
-                <a class="navbar-brand" href="{% url 'index' %}">CSTools</a>
+              <img href="{% url 'index' %}" src="{% static 'images/tools.png'%}" width="20" height="auto" class="me-2" alt="tool emoji" style="display: block;">
+                <a class="navbar-brand" href="{% url 'index' %}">CSTools</a> 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0" >
@@ -38,14 +38,11 @@
             </div>
         </nav>
         <!-- Content -->
-        <script>
-          let mySound = new Audio("/static/videos/SkinMasterBackground.mp4")
-          mySound.play()
-        </script>
+
         <section style="padding: 0px;margin: 0px;" >
             <div width="100%">
               <video autoplay loop muted plays-inline class="back-video" width="100%">
-                <source src="/static/videos/SkinMasterBackground.mp4">
+                <source src="{% static 'videos/SkinMasterBackground.mp4'%}">
               </video>
                 <p1 style="font-size: 100px;">
                  Skin Master

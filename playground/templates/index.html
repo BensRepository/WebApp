@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(68, 67, 65);">
-  <link rel="icon" type="image/x-icon" href="/static/images/tools.png">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/tools.png'%}">
     <!-- Responsive navbar-->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
@@ -60,7 +60,7 @@
   <div class="container py-4" >
     <header class="pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <img href="{% url 'index' %}" src="/static/images/tools.png" width="40" height="auto" class="me-2" alt="tool emoji" style="display: block;">
+        <img href="{% url 'index' %}" src="{% static 'images/tools.png'%}" width="40" height="auto" class="me-2" alt="tool emoji" style="display: block;">
         <span style="color: white;" class="fs-4">CSTools</span>
       </a>
     </header>
@@ -130,7 +130,7 @@
         <div class="rounded container-fluid py-5 video-container"style="background-color:white;" >
             
             <video autoplay muted loop  width="100%" style="float: right;" class="video">
-                <source src="/static/videos/CaseAnimation/CaseAnimationExtended.mp4" type="video/mp4"style="padding: 0px;margin: 0px;" style="display: block" />
+                <source src="{% static 'videos/CaseAnimation/CaseAnimationExtended.mp4'%}" type="video/mp4"style="padding: 0px;margin: 0px;" style="display: block" />
           </video>
         <div style = "position:relative; left:80px; top:2px;">
          
@@ -150,7 +150,7 @@
 
           <p> If you enjoy using CSTools, consider joining the CSTools Steam Group. A great place to suggest any new ideas, report bugs or make conversations with fellow players.</p>
           <button class="btn btn-outline-light" type="button" onclick="steamButton()" >Join Group!</button>
-          <img src="/static/images/Steam-Logo.png"  width="570" height="auto" class="me-2" alt="Steam Logo" style="opacity: 50%;">
+          <img src="{% static 'images/Steam-Logo.png'%}"  width="570" height="auto" class="me-2" alt="Steam Logo" style="opacity: 50%;">
 
         </div>
       </div> 
