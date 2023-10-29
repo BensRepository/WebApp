@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "THISisACommitAndNotRealPassword"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #False
+DEBUG = False #False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["18.170.78.22"]
 #"13.40.85.183","www.csgotools.co.uk","csgotools.co.uk","cstools.co.uk","www.cstools.co.uk"
 
 
