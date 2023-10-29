@@ -11552,3 +11552,76 @@ textarea.form-control-lg {
 .timezonehover:hover{
   opacity: 80%;
 }
+
+.video-container {
+
+  overflow: hidden;
+  position: relative;
+  }
+
+  .video-container video {
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  }
+
+  /* Just styling the content of the div, the *magic* in the previous rules */
+  .video-container .caption {
+  z-index: 1;
+  position: relative;
+  padding-bottom: 10px;
+  
+  }
+  .video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+  }
+  .rcorners3 {
+      border-radius: 15px;
+      border: solid;
+      padding: 20px;
+      border-color: #c46800;
+      border-width: 20px;
+
+      
+  }
+  .rounded {
+      padding: 0px 20px 0px 20px;
+          background: white;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+
+      -webkit-border-top-left-radius: 50px;
+      -webkit-border-top-right-radius: 50px;
+      -webkit-border-bottom-left-radius: 50px;
+      -webkit-border-bottom-right-radius: 50px;
+
+      -moz-border-top-left-radius: 50px;
+      -moz-border-top-right-radius: 50px;
+      -moz-border-bottom-left-radius: 50px;
+      -moz-border-bottom-right-radius: 50px;
+  }
+  .testing{
+      background-image: url('./static/images/Steam-Logo-full.png');
+    
+      width: 100%;
+  }
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
