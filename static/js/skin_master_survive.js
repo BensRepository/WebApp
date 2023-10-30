@@ -1,7 +1,7 @@
 
 function play_button(){
   try {
-    window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/")
+    window.location.replace("https://18.170.78.22/SkinMaster/Play/")
   } catch (error) {
     window.location.replace("http://cstools.co.uk/SkinMaster/Play/")
   }
@@ -9,7 +9,7 @@ function play_button(){
 
     function leaderboard_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/Leaderboard/");
+        window.location.replace("https://18.170.78.22/SkinMaster/Leaderboard/");
       } catch (error) {
         window.location.replace("http://cstools.co.uk/SkinMaster/Leaderboard/");
       }
@@ -17,7 +17,7 @@ function play_button(){
     }
     function about_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/About/");
+        window.location.replace("https://18.170.78.22/SkinMaster/About/");
       } catch (error) {
         window.location.replace("http://cstools.co.uk/SkinMaster/About/");
       }
@@ -25,7 +25,7 @@ function play_button(){
     }
     function report_bug_screen_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/ReportBug/");
+        window.location.replace("https://18.170.78.22/SkinMaster/ReportBug/");
       } catch (error) {
         window.location.replace("http://cstools.co.uk/SkinMaster/ReportBug/");
       }
@@ -34,7 +34,7 @@ function play_button(){
   
     function practise_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Practise/");
+        window.location.replace("https://18.170.78.22/SkinMaster/Play/Practise/");
       } catch (error) {
         window.location.replace("http://cstools.co.uk/SkinMaster/Play/Practise/");
       }
@@ -42,7 +42,7 @@ function play_button(){
     }
     function ranked_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Ranked/");
+        window.location.replace("https://18.170.78.22/SkinMaster/Play/Ranked/");
       } catch (error) {
         window.location.replace("http://cstools.co.uk/SkinMaster/Play/Ranked/");
       }
@@ -50,7 +50,7 @@ function play_button(){
     }
     function survival_button(){
       try {
-        window.location.replace("http://127.0.0.1:8000/SkinMaster/Play/Survival/");
+        window.location.replace("http://18.170.78.22/SkinMaster/Play/Survival/");
       } catch (error) {
         window.location.replace("http://cstools.co.uk/SkinMaster/Play/Survival/");
       }
