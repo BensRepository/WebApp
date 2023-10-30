@@ -14,10 +14,10 @@ urlpatterns =[
     path("StratRoulette/",WebAppViewset.load_roulette, name='roulette'),
     path("BindGenerator/",WebAppViewset.load_bind, name='bind'),
     path("SkinMaster/",WebAppViewset.skin_master, name='skin_master'),
+    path("SkinMaster/Play/",WebAppViewset.skin_master_play, name='skin_master_play'),  
     path("SkinMaster/Play/Practise/",WebAppViewset.skin_master_practise, name='skin_master_practise'),
     path("SkinMaster/Play/Survival/",WebAppViewset.skin_master_survival, name='skin_master_survival'),
     path("SkinMaster/Play/Ranked/",WebAppViewset.skin_master_ranked, name='skin_master_ranked'),  
-    path("SkinMaster/Play/",WebAppViewset.skin_master_play, name='skin_master_play'),  
 
     path("SkinMaster/Leaderboard/Competitive/Easy/",WebAppViewset.skin_master_leaderboard_competitive_easy, name='skin_master_leaderboard_competitive_easy'),  
     path("SkinMaster/Leaderboard/Competitive/Medium/",WebAppViewset.skin_master_leaderboard_competitive_medium, name='skin_master_leaderboard_competitive_medium'),  
