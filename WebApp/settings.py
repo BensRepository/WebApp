@@ -15,7 +15,9 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 # Quick-start development settings - unsuitable for productionND
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -26,8 +28,8 @@ SECRET_KEY = "THISisACommitAndNotRealPassword2"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #False
 
-ALLOWED_HOSTS = []
-#""18.170.78.22"","www.csgotools.co.uk","csgotools.co.uk","cstools.co.uk","www.cstools.co.uk"
+ALLOWED_HOSTS = ["18.170.78.22"]
+#"18.170.78.22","www.csgotools.co.uk","csgotools.co.uk","cstools.co.uk","www.cstools.co.uk"
 
 
 # Application definition
