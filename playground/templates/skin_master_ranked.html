@@ -651,43 +651,33 @@
                 //custom option enables and disables right buttons
             }
             function submitLeaderboards(){
-                
+                domain = "127.0.0.1:8000" //cstools.co.uk
                 if(skin_name_correct > 1){
                     if (difficulty == "Easy") {
-                        try {
-                            window.location.replace("http://18.170.78.22/SkinMaster/Competitive/Easy/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Easy/")
-                        }
+
+                            window.location.replace("http://"+domain+"/SkinMaster/Competitive/Easy/")
+                        
               
                     } else if(difficulty == "Medium") {
-                        try {
-                            window.location.replace("http://18.170.78.22/SkinMaster/Competitive/Medium/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Medium/")
-                        }
+
+                            window.location.replace("http://"+domain+"/SkinMaster/Competitive/Medium/")
+                        
                 
                     }else if(difficulty == "Hard") {
-                        try {
-                            window.location.replace("http://18.170.78.22/SkinMaster/Competitive/Hard/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Hard/")
-                        }
+
+                            window.location.replace("http://"+domain+"/SkinMaster/Competitive/Hard/")
+                        
                        
                     }else if(difficulty == "Expert") {
-                        try {
-                            window.location.replace("http://18.170.78.22/SkinMaster/Competitive/Expert/")
-                        } catch (error) {
-                            window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Ohnepixel/")
-                        }
+
+                            window.location.replace("http://"+domain+"/SkinMaster/Competitive/Ohnepixel/")
+                        
              
                     }
                     else if(difficulty == "Ohnepixel") {
-                       try {
-                        window.location.replace("http://18.170.78.22/SkinMaster/Competitive/Ohnepixel/")
-                       } catch (error) {
-                        window.location.replace("http://cstools.co.uk/SkinMaster/Competitive/Ohnepixel/")
-                       }
+
+                        window.location.replace("http://"+domain+"/SkinMaster/Competitive/Ohnepixel/")
+                       
                     }
                    
                 }

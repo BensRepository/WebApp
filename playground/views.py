@@ -151,7 +151,7 @@ class WebAppViewset(viewsets.ModelViewSet):
     
     def skin_master_practise(request):
 
-        types = ["machineguns","shotguns","smgs","pistols","rifles"]
+        types = ["machineguns","shotguns","smgs","pistols","pifles"]
         weapons = {"machineguns":[],"shotguns":[],"smgs":[],"pistols":[],"rifles":[]}
         filenames = {}
         filenames['types'] = types
@@ -160,6 +160,7 @@ class WebAppViewset(viewsets.ModelViewSet):
             weapons[t] = glob.glob("."+STATIC_URL+"skins/"+t+"/*")
             filenames[t] = []
             for j in weapons[t]:
+               
                 filenames[t].append(j.split("\\")[1])
         for t in types:
             for w in weapons[t]:
@@ -180,6 +181,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                     filenames[weapon_name]["light_blue"].append(skinname[0:len(skinname)-4])
                 for j in  blue:
                     skinname = j.split("\\")[2]
+            
                     filenames[weapon_name]["blue"].append(skinname[0:len(skinname)-4])
                 for j in  purple:
                     skinname = j.split("\\")[2]
@@ -271,8 +273,10 @@ class WebAppViewset(viewsets.ModelViewSet):
         for t in types:
             weapons[t] = glob.glob("."+STATIC_URL+"skins/"+t+"/*")
             filenames[t] = []
+           
             for j in weapons[t]:
-                filenames[t].append(j.split("\\")[1])
+                filenames[t].append(j.split("\\")[1]) 
+        print(weapons[t])
         for t in types:
             for w in weapons[t]:
                 grey = glob.glob(w+"/grey/*") 

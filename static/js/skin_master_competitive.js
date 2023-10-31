@@ -1,61 +1,48 @@
-
+domain = "127.0.0.1:8000"
 function play_button(){
-  try {
-    window.location.replace("http://18.170.78.22/SkinMaster/Play/")
-  } catch (error) {
-    window.location.replace("http://cstools.co.uk/SkinMaster/Play/")
+    
+  window.location.replace("http://"+domain+"/SkinMaster/Play/")
+
   }
-    }
 
-    function leaderboard_button(){
-      try {
-        window.location.replace("http://18.170.78.22/SkinMaster/Leaderboard/");
-      } catch (error) {
-        window.location.replace("http://cstools.co.uk/SkinMaster/Leaderboard/");
-      }
+  function leaderboard_button(){
 
-    }
-    function about_button(){
-      try {
-        window.location.replace("http://18.170.78.22/SkinMaster/About/");
-      } catch (error) {
-        window.location.replace("http://18.170.78.22/SkinMaster/About/");
-      }
+      window.location.replace("http://"+domain+"/SkinMaster/Leaderboard/Competitive/Ohnepixel/");
     
-    }
-    function report_bug_screen_button(){
-      try {
-        window.location.replace("http://18.170.78.22/SkinMaster/ReportBug/");
-      } catch (error) {
-        window.location.replace("http://cstools.co.uk/SkinMaster/ReportBug/");
-      }
-  
-    }
-  
-    function practise_button(){
-      try {
-        window.location.replace("http://18.170.78.22/SkinMaster/Play/Practise/");
-      } catch (error) {
-        window.location.replace("http://cstools.co.uk/SkinMaster/Play/Practise/");
-      }
 
-    }
-    function ranked_button(){
-      try {
-        window.location.replace("http://18.170.78.22/SkinMaster/Play/Ranked/");
-      } catch (error) {
-        window.location.replace("http://cstools.co.uk/SkinMaster/Play/Ranked/");
-      }
+  }
+  function about_button(){
 
-    }
-    function survival_button(){
-      try {
-        window.location.replace("http://18.170.78.22/SkinMaster/Play/Survival/");
-      } catch (error) {
-        window.location.replace("http://cstools.co.uk/SkinMaster/Play/Survival/");
-      }
+      window.location.replace("http://"+domain+"/SkinMaster/About/");
     
-    }
+  
+  }
+  function report_bug_screen_button(){
+
+      window.location.replace("http://"+domain+"/SkinMaster/ReportBug/");
+    
+
+  }
+
+  function practise_button(){
+
+      window.location.replace("http://"+domain+"/SkinMaster/Play/Practise/");
+    
+
+  }
+  function ranked_button(){
+
+      window.location.replace("http://"+domain+"/SkinMaster/Play/Ranked/");
+    
+
+  }
+  function survival_button(){
+
+      window.location.replace("http://"+domain+"/SkinMaster/Play/Survival/");
+    
+  
+  }
+    
    
     function makeImages(gun,colour,type,skin){
     
