@@ -129,6 +129,8 @@
                       //var hiddenFieldScore = document.getElementById("length");
                       // Update the value of the hidden field
                       hiddenFieldStreak.value = localStorage.getItem("streak");
+                                  
+                     
                       if (document.getElementById("id_name").value == "") {
                         document.getElementById("id_name").value = "Player Name"
                       } else {
@@ -139,18 +141,18 @@
                       document.getElementById("leaderboard_form").submit();
                    
                     });
+                    
                     </script>
                 <div>
-                    <p style="font-size: 20px;display:inline-block; ">You scored:</p> <p style="font-size: 25px;" id="score"> </p>
+                    <p style="font-size: 20px;display:inline-block; ">You scored:</p>
+                     <p style="font-size: 25px;" id="score"></p>
                     <div style="display: inline;">
+                    <script>
+                        document.getElementById("score").innerHTML  = localStorage.getItem("streak")
+                    </script>
                 </div>
 
-                <script>
-                   
-                    document.getElementById("score").innerText  = localStorage.getItem("streak")
-                   
-                </script>
-               
+       
 
                
                 <p id="main_menu_redirect" onclick="play_button()">Main Menu</p>

@@ -1,6 +1,6 @@
 
 
-CountDownTimer(['10/17/2023 01:00 AM','10/24/2023 01:00 AM','10/31/2023 01:00 AM'], 'countdown');
+CountDownTimer(['11/01/2023 01:00 AM','11/08/2023 01:00 AM','11/15/2023 01:00 AM','11/22/2023 01:00 AM'], 'countdown'); 
 
 function CountDownTimer(dtList, id)
 {

@@ -88,8 +88,9 @@
     </head>
     <script>
         function submitLeaderboards(){
-            domain = "127.0.0.1:8000" //cstools.co.uk
-            if(skin_name_correct > 1){
+            domain = "127.0.0.1:8000" 
+            if(streak > 1){
+               
                 if (difficulty == "Easy") {
 
                         window.location.replace("http://"+domain+"/SkinMaster/Survival/Easy/")
@@ -123,11 +124,10 @@
             }
 
         }
-        
 
-            
+        
         </script>
-    </script>
+  
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
@@ -335,6 +335,7 @@
             function start_game(){
                 streak = 0
                 document.getElementById("practise_game").style.display = "block"
+                document.getElementById('streak').innerText = "0"
                 try{
                     document.getElementById(column1[3]).remove();
                     column1= ""

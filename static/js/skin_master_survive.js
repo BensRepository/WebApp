@@ -569,12 +569,13 @@ function testInputs(){
   
     // Rarity Answer
     if (colourChoice() == currentPractiseColour) {
-  
+      localStorage.setItem("streak", streak);
       resultColour = "green"
       if(last_column == "column10"){
       
       }
       else{
+        localStorage.setItem("streak", streak);
         document.getElementById(last_column).style.borderColor = resultColour
       }
       
