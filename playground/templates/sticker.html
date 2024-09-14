@@ -39,6 +39,12 @@
         </nav>
    
     <section>
+        {{ Copenhagen24.filespaper|json_script:"Copenhagen24_filespaper" }}
+        {{ Copenhagen24.filesholo|json_script:"Copenhagen24_filesholo" }}
+        {{ Copenhagen24.filesfoil|json_script:"Copenhagen24_filesfoil" }}
+        {{ Copenhagen24.filesgold|json_script:"Copenhagen24_filesgold" }}
+
+
         {{ ClujNapoca2015.filespaper|json_script:"ClujNapoca2015_filespaper" }}
         {{ ClujNapoca2015.filesholo|json_script:"ClujNapoca2015_filesholo" }}
         {{ ClujNapoca2015.filesfoil|json_script:"ClujNapoca2015_filesfoil" }}
@@ -175,6 +181,7 @@
             <select class="tag_tournament" id="tournamentSelector" onchange="updateStickers(value)"style="background-color: #212121; color: white;border-radius: 5px;border: 2px solid #6c757d;height:  30px;" >
                 <option value="ESLKatowice14">Select Tournament</option>
                 <option disabled="disabled">──────────</option>
+                <option value="Copenhagen24">Copenhagen'24</option>
                 <option value="Paris23">Paris'23</option>
                 <option value="IntelRio22">Intel Rio'22</option>
                 <option value="PGLAntwerp22">PGL Antwerp'22</option>

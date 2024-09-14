@@ -13,6 +13,12 @@ urlpatterns =[
     path("StickerSearch/",WebAppViewset.load_sticker, name='sticker'),
     path("StratRoulette/",WebAppViewset.load_roulette, name='roulette'),
     path("BindGenerator/",WebAppViewset.load_bind, name='bind'),
+
+    path("RSTools/",WebAppViewset.load_rstools, name='rstools'),
+    path("StatLookUp/",WebAppViewset.load_statlookup, name='statlookup'),
+    path("LootSimulator/",WebAppViewset.load_lootsimulator, name='lootsimulator'),
+    path("XpLeaderboard/",WebAppViewset.load_xpleaderboard, name='xpleaderboard'),
+
     path("SkinMaster/",WebAppViewset.skin_master, name='skin_master'),
     path("SkinMaster/Play/",WebAppViewset.skin_master_play, name='skin_master_play'),  
     path("SkinMaster/Play/Practise/",WebAppViewset.skin_master_practise, name='skin_master_practise'),

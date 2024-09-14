@@ -21,7 +21,8 @@ function searchMarketIgnore(){
                 "PGLKrakow17":"Krakow 2017",
                 "ESLCologne15":"Cologne 2015",
                 "Misc":"",
-                "Paris23": "Paris 2023"}
+                "Paris23": "Paris 2023",
+                "Copenhagen24":"Copenhagen 2024"}
     var weaponSearch = document.getElementById("weaponSelector").value;
     var typeSearch = document.getElementById("typeSelector").value;
 

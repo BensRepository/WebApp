@@ -385,11 +385,11 @@ function play_button(){
   
 
       function competitiveGame(){   
-        
+   
        if (roundsPLayed == game_rounds) {
         var nameValue = document.getElementById("myInput").value;
-        if(nameValue === currentPractiseskin){
-          skin_name_correct=1
+        if(nameValue == currentPractiseskin){
+          skin_name_correct+=1
         }
         else{
           skin_name_wrong +=1
@@ -420,7 +420,7 @@ function play_button(){
         localStorage.setItem("rank", rank_name[determineRankInput(rate)]);
         localStorage.setItem("score", Math.round(rate * 100) / 100);
         localStorage.setItem("rate_colours", String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%");
-        localStorage.setItem("rate_skins", Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%");
+        localStorage.setItem("rate_skins", String((Math.round((skin_name_correct/(skin_name_correct +skin_name_wrong)) * 100) / 100)*100)+"%");
         localStorage.setItem("length", game_length);
 
 
@@ -430,7 +430,8 @@ function play_button(){
           myNode.removeChild(myNode.lastChild);
         }
         document.getElementById("rank_picture").appendChild(elem);
-        document.getElementById("success_rate_skins").innerText =  Math.round((skin_name_correct/(skin_name_correct+skin_name_wrong))*100) + "%"
+        alert("skin correct "+skin_name_correct+" "+ " colour correct " +colours_correct + " " + "skin wrong "+skin_name_wrong+" "+ " colour wrong " +colours_wrong)
+        document.getElementById("success_rate_skins").innerText =  String((Math.round((skin_name_correct/(skin_name_correct +skin_name_wrong)) * 100) / 100)*100)+"%"
       
         document.getElementById("success_rate_colours").innerText =  String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%"
         colours_correct =0
@@ -596,13 +597,22 @@ function testInputs(){
     test2()
   }
 }
+
+function test() {
+  roundsPLayed = 30
+  skin_name_correct = 3 
+  skin_name_wrong =  30-skin_name_correct
+  colours_correct = 15
+  colours_wrong = 29 - colours_correct
+}
+
 function test2(){
 
 
     roundsPLayed +=1
    // Name Answer
    var nameValue = document.getElementById("myInput").value;
-   if(nameValue === currentPractiseskin){
+   if(nameValue == currentPractiseskin){
      correct += 1
      estimated_rank = "Wood"
      document.getElementById(currentPractiseskin+"_text").textContent = currentPractiseskin
@@ -742,6 +752,10 @@ function determineRankInput(rate){
     }
     return rank
 }
+
+
+
+
 function determineRank(){
 
     rate =   ((colours_correct*0.55+skin_name_correct*1.45)/(skin_name_wrong*1.45+colours_wrong*0.55+colours_correct*0.55+skin_name_correct*1.45))*100
