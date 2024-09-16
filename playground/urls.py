@@ -16,7 +16,14 @@ urlpatterns =[
 
     path("RSTools/",WebAppViewset.load_rstools, name='rstools'),
     path("StatLookUp/",WebAppViewset.load_statlookup, name='statlookup'),
+
     path("LootSimulator/",WebAppViewset.load_lootsimulator, name='lootsimulator'),
+    path("LootSimulator/Raids/",WebAppViewset.load_raids, name='raids'),
+    path("LootSimulator/Raids/TOA/",WebAppViewset.load_toa, name='tob'),
+    path("LootSimulator/Raids/COX/",WebAppViewset.load_cox, name='cox'),
+    path("LootSimulator/Raids/TOB/",WebAppViewset.load_tob, name='tob'),
+    
+
     path("XpLeaderboard/",WebAppViewset.load_xpleaderboard, name='xpleaderboard'),
 
     path("SkinMaster/",WebAppViewset.skin_master, name='skin_master'),

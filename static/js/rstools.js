@@ -209,3 +209,19 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+var domain = "127.0.0.1:8000";
+function navigateStatLookup(){
+ window.location.replace("http://"+domain+"/StatLookUp/")
+}
+
+function navigateXpLeaderBoard(){
+  window.location.replace("http://"+domain+"/XpLeaderboard/")
+ }
+
+ function navigateLootSimulator(){
+  window.location.replace("http://"+domain+"/LootSimulator/")
+ }
+
+ function navigateRaids(){
+  window.location.replace("http://"+domain+"/LootSimulator/Raids/")
+ }

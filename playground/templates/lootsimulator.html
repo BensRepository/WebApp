@@ -45,23 +45,12 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="#hero" class="logo d-flex align-items-center me-auto me-lg-0">
+      <a href="{% url 'rstools' %}" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">RSTools</h1>
         <span>.</span>
       </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#patchnotes">Patch Notes</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="https://www.youtube.com/watch?v=q-Y0bnx6Ndw">Secret Button</a>
 
     </div>
   </header>
@@ -71,217 +60,49 @@
     <!-- Background photo -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="{% static 'images/rstoolsimg/hero-bg.jpg'%}" alt="" data-aos="fade-in">
+      <img src="{% static 'images/rstoolsimg/loot-sim-bg.png'%}" alt="" data-aos="fade-in">
       
       <div class="container">
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
-            <h2>Old School Runescape Tools<span>.</span></h2>
-            <p>"The best website for OSRS" - Woox</p>
+            <h2>Loot Simulator<span>.</span></h2>
+            <p>What type of activity would you like to simulate?</p>
           </div>
         </div>
 
         <div  class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
           <div href="{% url 'statlookup' %}"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <i class="bi bi-binoculars"></i>
-              <h3><a  href="{% url 'statlookup' %}">Stat Lookup</a></h3>
+              <i><img   style="position: relative;width: 100px;" src="{% static 'images/rstoolsimg/loot-simulator-icons/godwars/god-icons.png'%}" alt=""></i>
+              <h3><a>God Wars Bosses</a></h3>
             </div>
           </div>
-          <!-- <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
+          <div onclick="navigateRaids()" style="cursor: pointer;" class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
             <div class="icon-box">
-              <i class="bi bi-bullseye"></i>
-              <h3><a href="">Dolor Sitema</a></h3>
-            </div>
-          </div> -->
-          <!-- <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon-box">
-              <i class="bi bi-fullscreen-exit"></i>
-              <h3><a href="">Sedare Perspiciatis</a></h3>
-            </div>
-          </div> -->
-          <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon-box">
-              <i class="bi bi-card-list"></i>
-              <h3><a href="{% url 'xpleaderboard' %}" >Xp Leaderboard</a></h3>
+              <i><img   style="position: relative; width: 100px;" src="{% static 'images/rstoolsimg/loot-simulator-icons/raids/raidrewards.png'%}" alt=""></i>
+              <h3><a href="{% url 'raids' %}" >Raid Rewards</a></h3>
             </div>
           </div>
+
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="icon-box">
-              <i class="bi bi-gem"></i>
-              <h3><a href="{% url 'lootsimulator' %}" >Loot Simulator</a></h3>
+              <i><img   style="object-fit: none;position: relative;" src="{% static 'images/rstoolsimg/skills/Slayer.png'%}" alt=""></i>
+              <h3><a>Slayer Bosses</a></h3>
             </div>
           </div>
-        </div>
 
-      </div>
+          <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
+            <div class="icon-box">
+                <i><img   style="object-fit: none;position: relative;" src="{% static 'images/rstoolsimg/skills/Construction.webp'%}" alt=""></i>
+              <h3><a >Other <br>(Coming soon)</a></h3>
+            </div>
+          </div>
+   
+        </div>
+     
 
     </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-          <div class="col-lg-6 order-1 order-lg-2">
-            <img src="{% static 'images/rstoolsimg/about.jpg'%}" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 order-2 order-lg-1 content">
-            <h3>About RSTools</h3>
-            <p class="fst-italic">
-                This website is a personal project being developed for fun to combine my intrests in Video Games
-                 and Computer Science. After maxing my main account ArtilleryRS I got bored... 
-            <ul>
-              <li><i class="bi bi-check2-all"></i> <span>101% free to use.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Devoid of any intrusive advertisements.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Continues to receive regular updates to improve functionality and 
-                implement new features.</span></li>
-            </ul>
-            <p class="fst-italic">
-                RSTools began development 12th of September 2024. As a one-person initiative, I warmly welcome any insights or recommendations you might wish 
-                to share, for they are genuinely appretiated and actively sought.
-                If you like the site, consider checking out my other project CSTools.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Clients Section -->
-    <section id="clients" class="clients section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 2,
-                  "spaceBetween": 40
-                },
-                "480": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 60
-                },
-                "640": {
-                  "slidesPerView": 4,
-                  "spaceBetween": 80
-                },
-                "992": {
-                  "slidesPerView": 6,
-                  "spaceBetween": 120
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Farming.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Agility.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Hitpoints.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Hunter.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Runecraft.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Prayer.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Woodcutting.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Magic.png'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Attack.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Construction.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Cooking.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Crafting.png'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Defence.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Firemaking.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Fishing.png'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Fletching.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Herblore.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Mining.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Ranged.png'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Slayer.png'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Smithing.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Strength.webp'%}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'images/rstoolsimg/skills/Thieving.webp'%}" class="img-fluid" alt=""></div>
-
-          </div>
-         
-        </div>
-
-      </div>
-
-    </section><!-- /Clients Section -->
-
-    <!-- Patch Notes Section -->
-    <section id="patchnotes" class="features section">
-
-      <div class="container">
-     
-        <div class="row gy-4">
-          <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100"><img src="{% static 'images/rstoolsimg/features-bg.jpg'%}" alt=""></div>
-          <div class="col-lg-6">
-            <h3> <b>Patch Notes</b></h3>
-            <div class="features-item d-flex ps-0 ps-lg-3 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-archive flex-shrink-0"></i>
-              <div>
-                <h4>XX/XX/XXXX</h4><br>
-                <p>Site went live</p>
-              </div>
-            </div><!-- End Features Item-->
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-basket flex-shrink-0"></i>
-              <div>
-                <h4>XX/XX/XXX</h4>
-                <p>-Created Landing Page</p>
-              </div>
-            </div><!-- End Features Item-->
-
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-broadcast flex-shrink-0"></i>
-              <div>
-                <h4>14/09/2024</h4>
-                <p>-Designed and Implemented Landing page</p>
-              </div>
-            </div><!-- End Features Item-->
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-broadcast flex-shrink-0"></i>
-                <div>
-                  <h4>12/09/2024</h4>
-                  <p>-RSTools Began Development</p>
-                </div>
-              </div><!-- End Features Item-->
-
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Features Section -->
-
-   
-<br><br><br><br><br><br>
-    <div class="copyright">
-      <div class="container text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">RSTools</strong> <span>All Rights Reserved</span></p>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        </div>
-      </div>
-    </div>
 
   </footer>
 

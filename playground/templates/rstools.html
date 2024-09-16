@@ -83,34 +83,31 @@
         </div>
 
         <div  class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
-          <div href="{% url 'statlookup' %}"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
+
+          <div   style="cursor: pointer;" onclick="navigateStatLookup()"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <i class="bi bi-binoculars"></i>
+              <i><img   style="position: relative;height: 60px;" src="{% static 'images/rstoolsimg/stats.webp'%}" alt=""></i>
               <h3><a  href="{% url 'statlookup' %}">Stat Lookup</a></h3>
             </div>
           </div>
-          <!-- <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon-box">
-              <i class="bi bi-bullseye"></i>
-              <h3><a href="">Dolor Sitema</a></h3>
-            </div>
-          </div> -->
-          <!-- <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon-box">
-              <i class="bi bi-fullscreen-exit"></i>
-              <h3><a href="">Sedare Perspiciatis</a></h3>
-            </div>
-          </div> -->
-          <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
+           
+          <div style="cursor: pointer;" onclick="navigateXpLeaderBoard()"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
             <div class="icon-box">
               <i class="bi bi-card-list"></i>
               <h3><a href="{% url 'xpleaderboard' %}" >Xp Leaderboard</a></h3>
             </div>
           </div>
+          <div style="cursor: pointer;" onclick="navigateLootSimulator()" class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
+            <div class="icon-box">
+              <i><img   style="position: relative;height: 50px;" src="{% static 'images/rstoolsimg/loot.png'%}" alt=""></i>
+              <h3><a href="{% url 'lootsimulator' %}" >Loot Simulator</a></h3>
+            </div>
+          </div>
+
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="icon-box">
-              <i class="bi bi-gem"></i>
-              <h3><a href="{% url 'lootsimulator' %}" >Loot Simulator</a></h3>
+              <i><img   style="position: relative;height: 50px;" src="{% static 'images/rstoolsimg/clue.webp'%}" alt=""></i>
+              <h3><a >Clue Simulator</a></h3>
             </div>
           </div>
         </div>
@@ -142,7 +139,7 @@
             <p class="fst-italic">
                 RSTools began development 12th of September 2024. As a one-person initiative, I warmly welcome any insights or recommendations you might wish 
                 to share, for they are genuinely appretiated and actively sought.
-                If you like the site, consider checking out my other project CSTools.
+                If you like the site, consider checking out my other project <a style="color: black;" href="{% url 'rstools' %}"><b>CSTools</b></a>.
             </p>
           </div>
         </div>

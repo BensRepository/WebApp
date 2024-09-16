@@ -41,6 +41,15 @@ class WebAppViewset(viewsets.ModelViewSet):
     def load_rstools(request):
         return render(request,'rstools.html')
     
+    def load_raids(request):
+        return render(request,'Raids/raids.html')
+    def load_cox(request):
+        return render(request,'Raids/cox.html')
+    def load_tob(request):
+        return render(request,'Raids/tob.html')
+    def load_toa(request):
+        return render(request,'Raids/toa.html')
+    
     def load_lootsimulator(request):
         return render(request,'lootsimulator.html')
     def load_xpleaderboard(request):
