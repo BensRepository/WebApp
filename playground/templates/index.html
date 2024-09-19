@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: rgb(68, 67, 65);">
+  <link rel="icon" type="image/x-icon" href="/static/images/tools.png">
+    <!-- Responsive navbar-->
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black;">
+        <div class="container px-lg-5">    
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'calculator' %}">Case Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sticker' %}">Sticker Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'roulette' %}">Strat Roulette</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'bind' %}">Bind Generator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'skin_master' %}">Skin Master</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://steamcommunity.com/tradeoffer/new/?partner=127649164&token=AG79v66Q">DONATE (Trade Link)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  <head>
+    <div class="popup-overlay overlay" id="popupOverlay" style="display: none;">
+
+      <div class="popup" id="popup">
+  
+          <span class="close" id="closePopup">&times;</span>
+  
+          <div class="popup-content">
+            <b>  Patch Notes 13/09/2024:</b><br>
+            1. Added Mobile Compatibility Disclaimer <br>
+            2. Made Drop Countdown Programmatic <br>
+            3. Added Update Log <br> <br>
+            <b>  Patch Notes 16/10/2023:</b><br>
+            1. Added Weekly Drop Timer<br>
+            2. Redesigned Homepage<br>
+            3. Released Skin Master Feature<br>
+            &nbsp&nbsp&nbsp - Practise Mode<br>
+            &nbsp&nbsp&nbsp - Survival Mode<br>
+            &nbsp&nbsp&nbsp - Competitive Mode<br>
+            4. Minor changes to Bind Generator styling<br>
+            5. Changed Domain from 'csgotools' to 'cstools' </i><br><br>
+            <b>  Patch Notes 28/06/2023:</b><br>
+            Implemented Bind Generator<br><br>
+
+            <b>  Patch Notes 19/05/2023:</b><br>
+            Added Case Budget Calculator<br><br>
+
+            <b>  Patch Notes 17/05/2023:</b><br>
+            Added Strat Roulette<br><br>
+
+            <b>  Patch Notes 15/05/2023:</b><br>
+            1. www.CSGOTOOLS.com was launched<br>
+            2. Added Case Calculator<br>
+            3. Added Sticker Search<br>
+  
+          </div>
+  
+      </div>
+  
+  </div>
+       <!-- Favicon-->
+   <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico'%" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>CSTools</title>
+
+
+    
+    
+    <script>
+      //Mobile Disclaimer
+      if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+      alert("Please note this website was note designed for Mobile Devices, Please consider viewing on a Desktop or Laptop for the best experience.😊")
+    } else {
+     
+    }
+    </script>
+
+
+
+
+
+    
+  </head>
+<body id="the-body" >
+
+
+<script src="script.js"></script>
+<main style="background-color: rgb(68, 67, 65);">
+  <div class="container py-4" >
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img href="{% url 'index' %}" src="/static/images/tools.png" width="40" height="auto" class="me-2" alt="tool emoji" style="display: block;">
+        <span style="color: white;" class="fs-4">CSTools</span>
+      </a>
+    </header>
+
+    <div class="rcorners3   mb-4 " style="background-color: white;box-shadow: inset 0 0 0 15px #c46800;padding: 0%; position: relative;">
+
+        <div class="rounded container-fluid py-5 video-container"style="background-color:white;" >
+            
+            <video autoplay muted loop  width="100%" style="float: right;" class="video" >
+                <source src="/static/videos/CaseAnimation/CaseAnimationExtended.mp4" type="video/mp4"style="padding: 0px;margin: 0px;" style="display: block;" />
+          </video>
+        <div style = "position:relative; left:80px; top:2px;">
+         
+            <h1 class="display-5 fw-bold caption">Weekly Care Package Drop Reset</h1>
+            <div class="caption" style="font-size: 35px;display: flex;margin-bottom: 2px;padding-bottom: 2px;">
+              <p id="days" style="padding-right: 10px;"></p>
+              <p style="padding-right: 10px;">Days  </p>
+              <p style="padding-right: 10px;" id="hours"></p>
+              <p style="padding-right: 10px;">Hours  </p>
+              <p style="padding-right: 10px;" id="minutes"></p>
+              <p style="padding-right: 10px;">Minutes  </p>
+              <p  style="padding-right: 10px;" id="seconds"></p>
+              <p style="padding-right: 10px;" >Seconds  </p>
+            </div>
+            <p class="col-md-8 fs-4 caption">Time remaining until you can receive another Care Package on your next XP level up. This happens every week on Wednesday at 1AM (BST)</p>
+            <button style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);" onclick="caseSimulatorNavigation()" class="caption btn btn-primary btn-lg timezonehover" type="button">Open Cases!</button>
+        </div>
+    </div> 
+    </div>
+    
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+       
+          <h2>Connect with us on Steam</h2>
+
+          <p> If you enjoy using CSTools, consider joining the CSTools Steam Group. A great place to suggest any new ideas, report bugs or make conversations with fellow players.</p>
+          <button class="btn btn-outline-light" type="button" onclick="steamButton()" >Join Group!</button>
+          <img src="/static/images/Steam-Logo.png"  width="570" height="auto"  alt="Steam Logo">
+
+        </div>
+      </div> 
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>What is CSTools?</h2>
+          <p>This website is a personal project being developed for fun to combine my intrests in Video Games and Computer Science. I have created several tools
+             for Counter-Strike which you can use at absolutely no cost and devoid of any intrusive advertisements.
+            </p>
+            <p>
+                CSTools began development 24th of April 2023 and continues to receive regular updates to improve functionality and implement new features.
+                As a one-person initiative, I warmly welcome any insights or recommendations you might wish to share, for they are genuinely appretiated and actively sought.
+                <br>
+                If you like the site, consider checking out my other project <a style="color: black;" href="{% url 'rstools' %}"><b>RSTools</b></a> for a collection of Old School Runescape tools.
+            <p><i>
+                <b>  Latest Patch Notes XX/XX/XXXX:</b><br>
+                1. Added Kilowatt Case to Case Calculator<br>
+                2. Added Kilowatt Skins to Skin Master<br>
+                3. Added Copenhagen Team 2024 to Sticker Search<br>
+                4. Updated Steam Group link<br>
+
+                <!-- Programmatic Timer - in progress -->
+                <!-- Compatibility Disclaimer - in progress -->
+
+                Revised Bind Generator for CS2<br><!-- Not started -->
+                Added Case Open Button<br><!-- Not started -->
+                Added Domain RSTools<br><!-- In progress -->
+                &nbsp&nbsp&nbsp - Implemented Loot Simulator<br><!-- Not started -->
+                <!-- Best drop of the week? -->
+                &nbsp&nbsp&nbsp - Added Xp Leaderboard <br><!-- Not started -->
+                &nbsp&nbsp&nbsp - Added Stat Lookup <br><!-- Not started -->
+                <!-- Most xp gained? -->
+                &nbsp&nbsp&nbsp Further updates to RSTools will not be tracked here<br>
+            </p>
+          <button onclick = "navigateUpdateLog()" class="btn btn-outline-secondary" type="button">Update Log</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      &copy; 🛠️CSTools 2023
+    </footer>
+  </div>
+</main>
+    
+</body>
+
+
+{% load static %}
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>CSTools</title>
+        <!-- tab bar icon-->
+
+
+        <!-- Bootstrap icons-->
+       
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
+    </head>
+
+    <body>
+        
+      
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'js/index.js' %}"></script>
+    </body>
+</html>
+
