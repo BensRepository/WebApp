@@ -66,8 +66,8 @@ class WebAppViewset(viewsets.ModelViewSet):
             url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name
             api_request = requests.get(url)
             api_request.raise_for_status() 
-            print(api_request.content)  
-            context = {"player_data":api_request.content}
+            print(str(api_request.content))  
+            context = {"player_data":str(api_request.content),"rsn":name}
             return render(request,'statlookup_results.html',context=context)
         except:
             print("no data returned")
