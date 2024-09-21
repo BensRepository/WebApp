@@ -128,16 +128,114 @@ class PlayerData {
 
   }
 
-
+  const minigameNames = [
+    "League Points",
+    "Deadman Points",
+    "Bounty Hunter - Hunter",
+    "Bounty Hunter - Rogue",
+    "Bounty Hunter (Legacy) - Hunter",
+    "Bounty Hunter (Legacy) - Rogue",
+    "Clue Scrolls (all)",
+    "Clue Scrolls (beginner)",
+    "Clue Scrolls (easy)",
+    "Clue Scrolls (medium)",
+    "Clue Scrolls (hard)",
+    "Clue Scrolls (elite)",
+    "Clue Scrolls (master)",
+    "LMS - Rank",
+    "PvP Arena - Rank",
+    "Soul Wars Zeal",
+    "Rifts closed",
+    "Colosseum Glory",
+    "Abyssal Sire",
+    "Alchemical Hydra",
+    "Araxxor",
+    "Artio",
+    "Barrows Chests",
+    "Bryophyta",
+    "Callisto",
+    "Cal'varion",
+    "Cerberus",
+    "Chambers of Xeric",
+    "Chambers of Xeric Challenge Mode",
+    "Chaos Elemental",
+    "Chaos Fanatic",
+    "Commander Zilyana",
+    "Corporeal Beast",
+    "Crazy Archaeologist",
+    "Dagannoth Prime",
+    "Dagannoth Rex",
+    "Dagannoth Supreme",
+    "Deranged Archaeologist",
+    "Duke Sucellus",
+    "General Graardor",
+    "Giant Mole",
+    "Grotesque Guardians",
+    "Hespori",
+    "Kalphite Queen",
+    "King Black Dragon",
+    "Kraken",
+    "Kree'Arra",
+    "K'ril Tsutsaroth",
+    "Lunar Chests",
+    "Mimic",
+    "Nex",
+    "Nightmare",
+    "Phosani's Nightmare",
+    "Obor",
+    "Phantom Muspah",
+    "Sarachnis",
+    "Scorpia",
+    "Scurrius",
+    "Skotizo",
+    "Sol Heredit",
+    "Spindel",
+    "Tempoross",
+    "The Gauntlet",
+    "The Corrupted Gauntlet",
+    "The Leviathan",
+    "The Whisperer",
+    "Theatre of Blood",
+    "Theatre of Blood Hard Mode",
+    "Thermonuclear Smoke Devil",
+    "Tombs of Amascut",
+    "Tombs of Amascut Expert Mode",
+    "TzKal-Zuk",
+    "TzTok-Jad",
+    "Vardorvis",
+    "Venenatis",
+    "Vet'ion",
+    "Vorkath",
+    "Wintertodt",
+    "Zalcano",
+    "Zulrah"
+  ];
   function test(){
     data = JSON.parse(document.getElementById('player_data').textContent);
     const PlayerInformation = new PlayerData(data);
 
+    data = JSON.parse(document.getElementById('player_data').textContent);
+    player_data_split = data.split('\\')
+    player_data_split = player_data_split.splice(24, player_data_split.length - 1);
 
-    
-    alert(PlayerInformation.ClueScrollMaster.rank)
-  }
 
+
+    var arrayLength = player_data_split.length;
+    minigameNamesSorted = []
+    playerDataSorted = []
+    for (var i = 0; i < arrayLength; i++) {
+        if(player_data_split[i] !='n-1,-1'){
+      
+            minigameNamesSorted.push(minigameNames[i])
+            playerDataSorted.push(player_data_split[i])
+        }
+        else{
+        
+        }
+        //Do something
+    }
+    alert(minigameNamesSorted)
+    }
   function cleanSkillData(data){
     data_split = data.split(',')
     rank = data_split[0]
@@ -167,6 +265,8 @@ class PlayerData {
     // creates a <table> element and a <tbody> element
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
+    tbl.style.color ="black"
+    tblBody.style.color ="black"
     const title = document.createElement("tr");
 
     const imageText = document.createElement("th");
@@ -203,8 +303,7 @@ class PlayerData {
         url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
         img.src = url;
         img.style.position = "relative";
-        img.style.width = "50%";
-        img.style.marginLeft= "auto";
+        img.style.width = "45%";
         img.style.marginRight = "auto";
         img.style.display = "block";
         row.appendChild(img);
@@ -241,16 +340,31 @@ class PlayerData {
 
   function generateTableMingames() {
     // clean data
+
     data = JSON.parse(document.getElementById('player_data').textContent);
-    var player_data_split = data.split('\\')
-    var player_data_sorted = player_data_split.filter(function (index) {
-        return index !== 'n-1,-1';
-    });
+    player_data_split = data.split('\\')
+    player_data_split = player_data_split.splice(24, player_data_split.length - 1);
 
 
+
+    var arrayLength = player_data_split.length;
+    minigameNamesSorted = []
+    playerDataSorted = []
+    for (var i = 0; i < arrayLength; i++) {
+        if(player_data_split[i] !='n-1,-1'){
+      
+            minigameNamesSorted.push(minigameNames[i])
+            playerDataSorted.push(player_data_split[i])
+        }
+        else{
+        
+        }
+    }
     // creates a <table> element and a <tbody> element
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
+    tbl.style.color ="black"
+    tblBody.style.color ="black"
     const title = document.createElement("tr");
 
     const imageText = document.createElement("th");
@@ -264,34 +378,31 @@ class PlayerData {
     const scorecellText = document.createTextNode("Score");
 
 
+
     imageText.appendChild(imageTextcellText);
     title.appendChild(imageText);
 
+    minigame.appendChild(minigamecellText);
+    title.appendChild(minigame);
+
     rank.appendChild(rankcellText);
     title.appendChild(rank);
-
-    rank.appendChild(minigamecellText);
-    title.appendChild(rank);
-
-    minigame.appendChild(scorecellText);
-    score.appendChild(minigame);
+    score.appendChild(scorecellText);
+    title.appendChild(score);
     
     tbl.appendChild(title);
     // creating all cells
-    for (let i = 0; i < 24; i++) {
-        SkillNames = ["Clue Scrolls (all)", "Clue Scrolls (beginner)", "Clue Scrolls (easy)", "	Clue Scrolls (medium)", "Clue Scrolls (hard)",
-            "Clue Scrolls (elite)", "Clue Scrolls (master)", "Rifts closed", "Abyssal Sire", "Alchemical Hydra", "Barrows Chests", "Bryophyta", "Callisto",
-             "Cerberus", "Chambers of Xeric", "Chaos Elemental", "Chaos Fanatic", "Commander Zilyana", "Corporeal Beast", "Crazy Archaeologist", "Dagannoth Prime",
-             "Dagannoth Rex", "Dagannoth Supreme", "Deranged Archaeologist", "General Graardor", "Giant Mole", "Grotesque Guardians", "Hespori", "Kalphite Queen",
-              "King Black Dragon","Kraken","Kree'arra", "Mimic", "Nightmare", "Obor","Sarachnis", "Scorpia", "Skotizo", "Spindel","Tempoross","Thermonuclear Smoke Devil"
-              ,"The Gauntlet","Theatre of Blood","TzKal-Zuk","TzTok-Jad","Venenatis","Vet'ion","Vorkath","Wintertodt","Zalcano","Zulrah"]
+    for (let i = 0; i < minigameNamesSorted.length -1; i++) {
+       
+        
       // creates a table row
       row = document.createElement("tr");
       var img = document.createElement("IMG");
-        url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
+        url = "/static/images/rstoolsimg/minigame/"+minigameNamesSorted[i]+".png"
         img.src = url;
         img.style.position = "relative";
-        img.style.width = "50%";
+        img.style.width = "26px";
+        img.style.height = "100%";
         img.style.marginLeft= "auto";
         img.style.marginRight = "auto";
         img.style.display = "block";
@@ -300,16 +411,16 @@ class PlayerData {
       const cell = document.createElement("td");
      
 
-      const cellText = document.createTextNode(SkillNames[i]);
+      const cellText = document.createTextNode(minigameNamesSorted[i]);
       cell.appendChild(cellText);
       row.appendChild(cell);
-      for (let j = 0; j < 3; j++) {
+      for (let j = 0; j < 2; j++) {
 
         // Create a <td> element and a text node, make the text
         // node the contents of the <td>, and put the <td> at
         // the end of the table row
         const cell = document.createElement("td");
-        const cellText = document.createTextNode(cleanSkillData(player_data_sorted[i])[j]);
+        const cellText = document.createTextNode(cleanSkillData(playerDataSorted[i])[j]);
         cell.appendChild(cellText);
         row.appendChild(cell);
       }
