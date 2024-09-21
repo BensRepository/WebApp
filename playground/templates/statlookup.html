@@ -71,11 +71,18 @@
           </div>
         </div>
         <div  class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
-          <div href="{% url 'statlookup' %}"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div   class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
              
               <h3>Enter your RSN</h3>
-              <button onclick="test()">Submit</button>
+              <form  action= "{% url 'statlookupresult' %}" method="POST">
+                {% csrf_token %}
+                
+                <input  name="text" value="{{ name.id }}">
+                <br>
+                <button type="submit" class="align-content-lg-center">Search</button>
+   
+            </form>
              
             </div>
           </div>
@@ -109,7 +116,7 @@
   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
   <!-- Main JS File -->
   <script src="{% static 'js/rstools.js' %}"></script>
-  <script type="module" src="{% static 'js/statlookup.js' %}"></script>
+  <script src="{% static 'js/statlookup.js' %}"></script>
 
 
 </body>

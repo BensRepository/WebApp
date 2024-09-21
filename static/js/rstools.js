@@ -225,3 +225,16 @@ function navigateXpLeaderBoard(){
  function navigateRaids(){
   window.location.replace("http://"+domain+"/LootSimulator/Raids/")
  }
+
+ function navigateCOX(){
+  window.location.replace("http://"+domain+"/LootSimulator/Raids/COX/")
+ }
+ 
+ function navigateTOA(){
+   window.location.replace("http://"+domain+"/LootSimulator/Raids/TOA/")
+  }
+ 
+  function navigateTOB(){
+   window.location.replace("http://"+domain+"/LootSimulator/Raids/TOB/")
+  }
+ 

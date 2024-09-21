@@ -1,9 +1,0 @@
-{
-	"extends": "../tsconfig.json",
-	"compilerOptions": {
-		"sourceMap": false,
-		"types": ["node"],
-		"esModuleInterop": true,
-		"noEmit": true
-	}
-}

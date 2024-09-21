@@ -56,7 +56,22 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'xpleaderboard.html')
     
     def load_statlookup(request):
-        return render(request,'statlookup.html')
+
+            return render(request,'statlookup.html')
+
+    def load_statlookupresult(request):
+        try:
+            name = request.POST.get('text')
+    
+            url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name
+            api_request = requests.get(url)
+            api_request.raise_for_status() 
+            print(str(api_request.content))  
+            context = {"player_data":str(api_request.content),"rsn":name}
+            return render(request,'statlookup_results.html',context=context)
+        except:
+            print("no data returned")
+            return render(request,'statlookup.html')
     
     def load_bind(request):
     

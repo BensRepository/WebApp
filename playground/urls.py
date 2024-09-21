@@ -16,6 +16,7 @@ urlpatterns =[
 
     path("RSTools/",WebAppViewset.load_rstools, name='rstools'),
     path("StatLookUp/",WebAppViewset.load_statlookup, name='statlookup'),
+    path("StatLookUp/Result/",WebAppViewset.load_statlookupresult, name='statlookupresult'),
 
     path("LootSimulator/",WebAppViewset.load_lootsimulator, name='lootsimulator'),
     path("LootSimulator/Raids/",WebAppViewset.load_raids, name='raids'),

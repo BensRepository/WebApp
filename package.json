@@ -19,6 +19,7 @@
 		"test:lint": "biome check --diagnostic-level=error"
 	},
 	"dependencies": {
+		"cors": "^2.8.5",
 		"e": "^0.2.33",
 		"node-fetch": "2.6.7"
 	},
