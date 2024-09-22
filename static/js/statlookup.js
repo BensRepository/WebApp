@@ -435,11 +435,13 @@ class PlayerData {
         url = "/static/images/rstoolsimg/minigame/"+minigameNamesSorted[i]+".png"
         img.src = url;
         img.style.position = "relative";
-        img.style.width = "13%";
+        img.style.width = "12%";
         img.style.textAlign = "center";
         img.style.paddingRight = "5px";
         img.style.display = "inline";
         row.style.textAlign = "left";
+        row.style.whiteSpace = "nowrap";
+        row.style.overflow = "hidden";
 
         const cell = document.createElement("td");
      
@@ -470,7 +472,7 @@ class PlayerData {
     // appends <table> into <body>
     document.getElementById("table_location").appendChild(tbl);
     // sets the border attribute of tbl to '2'
-    tbl.setAttribute("border", "2");
+
   }  
 
 

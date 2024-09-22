@@ -67,18 +67,17 @@
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
             <h2>Stat Lookup<span>.</span></h2>
-            <p>Find out the current stats of any player!</p>
+            <p>Find out the stats of any player!</p>
           </div>
         </div>
         <div  class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
           <div   class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon-box">
+            <div  style="border: none;">
              
               <h3>Enter your RSN</h3>
               <form  action= "{% url 'statlookupresult' %}" method="POST">
                 {% csrf_token %}
-                
-                <input  name="text" value="{{ name.id }}">
+                <input class="StatlookupInput"  name="text" value="{{ name.id }}"placeholder="RSN">
                 <br>
                 <button type="submit" class="align-content-lg-center">Search</button>
    
