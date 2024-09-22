@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
     {% load static %}
-<head>
+<head >
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>RSTools</title>
@@ -40,7 +40,7 @@
   ======================================================== -->
 </head>
 
-<body class="index-page">
+<body class="index-page" style="overflow: none;">
 
 
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -56,10 +56,10 @@
     </div>
   </header>
 
-  <main class="main" style="zoom: 81%;">
+  <main class="main" >
 
     <!-- Background photo -->
-    <section id="hero" class="hero section dark-background" style="padding-top: 45px;padding-bottom: 0px;">
+    <section id="hero" class="hero section dark-background" style="padding-top: 45px;padding-bottom: 0px;zoom: 81%;">
 
       <img src="{% static 'images/rstoolsimg/statlookup.jpg'%}" alt="" data-aos="fade-in">
       
@@ -73,6 +73,7 @@
               window.onload = function() {
                 generateTableSkills();
                 generateTableMingames();
+                test5();
               };
           </script>
           </div>

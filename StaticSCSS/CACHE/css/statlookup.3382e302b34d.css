@@ -1,0 +1,138 @@
+/* line 7, static/css/statlookup.scss */
+body {
+  font-size: 10px;
+  font-family: Roboto, sans-serif;
+  background-color: #ff7b73;
+  margin: 0;
+  display: grid;
+  height: 100vh;
+  place-items: center; }
+
+/* line 18, static/css/statlookup.scss */
+.c-checkbox {
+  display: none; }
+  /* line 22, static/css/statlookup.scss */
+  .c-checkbox:checked + .c-formContainer .c-form {
+    width: 37.5em; }
+  /* line 26, static/css/statlookup.scss */
+  .c-checkbox:checked + .c-formContainer .c-form__toggle {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.7); }
+  /* line 32, static/css/statlookup.scss */
+  .c-checkbox:checked + .c-formContainer .c-form__input,
+  .c-checkbox:checked + .c-formContainer .c-form__buttonLabel {
+    transition: 0.2s 0.1s;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1); }
+  /* line 43, static/css/statlookup.scss */
+  .c-checkbox:not(:checked) + .c-formContainer .c-form__input:required:valid ~ .c-form__toggle::before, .c-checkbox:checked + .c-formContainer .c-form__input:required:valid ~ .c-form__toggle::before {
+    content: 'Thank You! \1F60A'; }
+  /* line 49, static/css/statlookup.scss */
+  .c-checkbox:not(:checked) + .c-formContainer .c-form__input:required:valid ~ .c-form__toggle {
+    pointer-events: none;
+    cursor: default; }
+
+/* line 56, static/css/statlookup.scss */
+.c-formContainer,
+.c-form,
+.c-form__toggle {
+  width: 20em;
+  height: 6.25em; }
+
+/* line 63, static/css/statlookup.scss */
+.c-formContainer {
+  position: relative;
+  font-weight: 700; }
+
+/* line 68, static/css/statlookup.scss */
+.c-form,
+.c-form__toggle {
+  position: absolute;
+  border-radius: 6.25em;
+  background-color: #ffffff;
+  transition: 0.2s; }
+
+/* line 76, static/css/statlookup.scss */
+.c-form {
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.625em;
+  box-sizing: border-box;
+  box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center; }
+
+/* line 88, static/css/statlookup.scss */
+.c-form__toggle {
+  color: #ff7b73;
+  top: 0;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  /* line 99, static/css/statlookup.scss */
+  .c-form__toggle::before {
+    font-size: 1.75em;
+    content: attr(data-title); }
+
+/* line 105, static/css/statlookup.scss */
+.c-form__input,
+.c-form__button {
+  font: inherit;
+  border: 0;
+  outline: 0;
+  border-radius: 5em;
+  box-sizing: border-box; }
+
+/* line 114, static/css/statlookup.scss */
+.c-form__input,
+.c-form__buttonLabel {
+  font-size: 1.75em;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.7);
+  transition: 0s; }
+
+/* line 123, static/css/statlookup.scss */
+.c-form__input {
+  color: #ffcccc;
+  height: 100%;
+  width: 100%;
+  padding: 0 0.714em; }
+  /* line 129, static/css/statlookup.scss */
+  .c-form__input::placeholder {
+    color: currentColor; }
+  /* line 133, static/css/statlookup.scss */
+  .c-form__input:required:valid {
+    color: #ff7b73; }
+    /* line 136, static/css/statlookup.scss */
+    .c-form__input:required:valid + .c-form__buttonLabel {
+      color: #ffffff; }
+      /* line 139, static/css/statlookup.scss */
+      .c-form__input:required:valid + .c-form__buttonLabel::before {
+        pointer-events: initial; }
+
+/* line 146, static/css/statlookup.scss */
+.c-form__buttonLabel {
+  color: #ffaea9;
+  height: 100%;
+  width: auto; }
+  /* line 152, static/css/statlookup.scss */
+  .c-form__buttonLabel::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    cursor: pointer; }
+
+/* line 162, static/css/statlookup.scss */
+.c-form__button {
+  color: inherit;
+  padding: 0;
+  height: 100%;
+  width: 5em;
+  background-color: #ff7b73; }

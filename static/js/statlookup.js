@@ -310,6 +310,7 @@ class PlayerData {
         SkillNames = ["Overall", "Attack", "Defence", "Strength", "HitPoints",
             "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking",
              "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction"]
+        
       // creates a table row
       row = document.createElement("tr");
       var img = document.createElement("IMG");
@@ -331,6 +332,7 @@ class PlayerData {
      
       cell.appendChild(cellText);
       row.appendChild(cell);
+      var trained = true;
       for (let j = 0; j < 3; j++) {
 
         // Create a <td> element and a text node, make the text
@@ -345,18 +347,19 @@ class PlayerData {
         if (formatted == "NaN") {
             formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted[i].substring(1, player_data_sorted[i].length - 1))[j]))
         }
-        
+        if (formatted == "-1") {
+            trained = false
+        }
         const cellText = document.createTextNode(formatted);
-      
             cell.appendChild(cellText);
             row.appendChild(cell);
-        
-  
-        
       }
 
       // add the row to the end of the table body
-      tblBody.appendChild(row);
+      if (trained == true) {
+        tblBody.appendChild(row);
+      }
+    
     }
   
     // put the <tbody> in the <table>
@@ -397,8 +400,6 @@ class PlayerData {
     tbl.style.color ="black"
     tblBody.style.color ="black"
     const title = document.createElement("tr");
-
-
     const minigame = document.createElement("th");
     const rank = document.createElement("th");
     const score = document.createElement("th");
@@ -435,7 +436,7 @@ class PlayerData {
         url = "/static/images/rstoolsimg/minigame/"+minigameNamesSorted[i]+".png"
         img.src = url;
         img.style.position = "relative";
-        img.style.width = "12%";
+        img.style.width = "30px";
         img.style.textAlign = "center";
         img.style.paddingRight = "5px";
         img.style.display = "inline";

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
+    {% load compress  %}
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -29,8 +30,9 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'css/rstools.css'%}" rel="stylesheet" />
- 
-
+  {% compress css %}
+  <link type="text/x-scss" href="{% static 'css/statlookup.scss'%}" rel="stylesheet" />
+  {% endcompress %}
   <!-- =======================================================
   * Template Name: Gp
   * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -54,7 +56,53 @@
 
     </div>
   </header>
+  <style>
 
+
+/* CSS */
+.button-73 {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #444343;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-73:hover {
+  background-color: #FFC229;
+  box-shadow: #FF6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+.button-73:active {
+  transform: scale(1.025);
+}
+
+@media (min-width: 768px) {
+  .button-73 {
+    font-size: 1.3rem;
+    padding: .75rem 2rem;
+  }
+}
+  </style>
   <main class="main">
 
     <!-- Background photo -->
@@ -65,27 +113,32 @@
       <div class="container">
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-xl-6 col-lg-8">
-            <h2>Stat Lookup<span>.</span></h2>
-            <p>Find out the stats of any player!</p>
+          <div class="col-xl-6 col-lg-8" style="padding-bottom: 20px;">
+            <h2 class="test" style="font-size: 80px;">Stat Lookup<span>.</span></h2>
+            <h5 style="color: rgb(219, 216, 216);">Find out the stats of any player!</h5>
           </div>
-        </div>
-        <div  class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
-          <div   class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div  style="border: none;">
-             
-              <h3>Enter your RSN</h3>
+  
+
+            <div  style="border: none;padding-top: 20px;">
               <form  action= "{% url 'statlookupresult' %}" method="POST">
                 {% csrf_token %}
-                <input class="StatlookupInput"  name="text" value="{{ name.id }}"placeholder="RSN">
-                <br>
-                <button type="submit" class="align-content-lg-center">Search</button>
-   
-            </form>
+              <span class="input" >
+                <input type="text" placeholder="RSN" name="text" value="{{ name.id }}"placeholder="RSN" style="text-align: center;">
              
-            </div>
-          </div>
+         
+                <span></span>	
+              </span>
+              <div style="padding-top: 10px;">
+                <button type="submit" class="button-73" role="button">Generate Scroll</button>
+              </div>
 
+            </form>
+            </p>
+            
+            <p>
+            
+            
+      
           
           </div>
         </div>
