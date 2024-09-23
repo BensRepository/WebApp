@@ -317,7 +317,7 @@ class PlayerData {
         url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
         img.src = url;
         img.style.position = "relative";
-        img.style.width = "17%";
+        img.style.width = "14%";
         img.style.textAlign = "center";
         img.style.paddingRight = "5px";
         img.style.display = "inline";
@@ -361,7 +361,29 @@ class PlayerData {
       }
     
     }
-  
+    row = document.createElement("tr");
+    var cell = document.createElement("td");
+    var cellText2 = document.createTextNode("image");
+    cell.appendChild(cellText2);
+    cell.style.textAlign = "left"
+    row.appendChild(cell);
+
+    row = document.createElement("tr");
+    var cell = document.createElement("td");
+    var cellText2 = document.createTextNode("Tombs of Amascutus padd");
+    cell.appendChild(cellText2);
+    cell.style.textAlign = "left"
+    row.appendChild(cell);
+    row.style.visibility = "hidden"
+   
+    for (let index = 0; index < 2; index++) {
+      var cell = document.createElement("td");
+      var cellText2 = document.createTextNode("");
+      cell.appendChild(cellText2);
+      cell.style.textAlign = "right"
+      row.appendChild(cell);
+    }
+    tblBody.appendChild(row)
     // put the <tbody> in the <table>
     tbl.appendChild(tblBody);
     // appends <table> into <body>
@@ -428,7 +450,6 @@ class PlayerData {
     tbl.appendChild(title);
     // creating all cells
     for (let i = 0; i < minigameNamesSorted.length -1; i++) {
-       
         
       // creates a table row
       row = document.createElement("tr");
@@ -466,8 +487,36 @@ class PlayerData {
   
       // add the row to the end of the table body
       tblBody.appendChild(row);
+      
+      row = document.createElement("tr");
+      tblBody.appendChild(row);
+
     }
-  
+    row = document.createElement("tr");
+    var cell = document.createElement("td");
+    var cellText2 = document.createTextNode("image");
+    cell.appendChild(cellText2);
+    cell.style.textAlign = "left"
+    row.appendChild(cell);
+
+    row = document.createElement("tr");
+    var cell = document.createElement("td");
+    var cellText2 = document.createTextNode("Tombs of Amascut Expert Modeeeee");
+    cell.appendChild(cellText2);
+    cell.style.textAlign = "left"
+    row.appendChild(cell);
+    row.style.visibility = "hidden"
+
+    for (let index = 0; index < 2; index++) {
+      var cell = document.createElement("td");
+      var cellText2 = document.createTextNode("ttttt66ttttt");
+      cell.appendChild(cellText2);
+      cell.style.textAlign = "right"
+      row.appendChild(cell);
+    }
+    tblBody.appendChild(row)
+
+   
     // put the <tbody> in the <table>
     tbl.appendChild(tblBody);
     // appends <table> into <body>
