@@ -59,15 +59,33 @@
   <main class="main" >
     <style>
       .backgroundImage{
-        background-image: url("{% static 'images/rstoolsimg/statlookupscroll.jpg'%}");;
-        background-size:100%;
+        background-image: url("{% static 'images/rstoolsimg/statlookupscroll.jpg'%}");
+      
         background-repeat: no-repeat;
         background-attachment: fixed;
         object-fit: cover;
         width: 100%;
         height: 100%;
-        margin: 0;
 
+        background-size:  110% 110%;
+        background-position: center center;
+        animation: shrink 71s;
+        animation: shrink 1.0s forwards;0
+    }
+
+    .shrink{
+    animation: shrink 6s;
+    }
+    .dark-background {
+    background-color: rgba(0, 0, 0, 0.5);
+    }
+    @keyframes shrink{
+    0% {
+      background-size: 100% 100%;
+    }  
+    100% {
+      background-size: 140% 140%;
+    }
     }
     </style>
     <!-- Background photo -->
@@ -98,7 +116,7 @@
          
               margin-left: auto;
               margin-right: auto;
-              width: '100%';
+      
               background-repeat: no-repeat;
               background-position: top; 
          
