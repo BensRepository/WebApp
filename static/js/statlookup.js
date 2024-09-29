@@ -129,8 +129,6 @@ class PlayerData {
   }
 
   const minigameNames = [
-    "League Points",
-    "Deadman Points",
     "Bounty Hunter - Hunter",
     "Bounty Hunter - Rogue",
     "Bounty Hunter (Legacy) - Hunter",
@@ -149,6 +147,7 @@ class PlayerData {
     "Colosseum Glory",
     "Abyssal Sire",
     "Alchemical Hydra",
+    "Amoxliatl",
     "Araxxor",
     "Artio",
     "Barrows Chests",
@@ -193,6 +192,7 @@ class PlayerData {
     "Tempoross",
     "The Gauntlet",
     "The Corrupted Gauntlet",
+    "The Hueycoatl",
     "The Leviathan",
     "The Whisperer",
     "Theatre of Blood",
@@ -209,32 +209,11 @@ class PlayerData {
     "Wintertodt",
     "Zalcano",
     "Zulrah"
-  ];
+
+  ]
+
   function test(){
-    data = JSON.parse(document.getElementById('player_data').textContent);
-    const PlayerInformation = new PlayerData(data);
 
-    data = JSON.parse(document.getElementById('player_data').textContent);
-    player_data_split = data.split('\\')
-    player_data_split = player_data_split.splice(24, player_data_split.length - 1);
-
-
-
-    var arrayLength = player_data_split.length;
-    minigameNamesSorted = []
-    playerDataSorted = []
-    for (var i = 0; i < arrayLength; i++) {
-        if(player_data_split[i] !='n-1,-1'){
-      
-            minigameNamesSorted.push(minigameNames[i])
-            playerDataSorted.push(player_data_split[i])
-        }
-        else{
-        
-        }
-        //Do something
-    }
-    alert(minigameNamesSorted)
     }
   function cleanSkillData(data){
     data_split = data.split(',')
@@ -244,19 +223,12 @@ class PlayerData {
     return [rank.substring(1,rank.length),level,xp]
   }
 
-  function cleanMinigameData(data){
-
-    minigame = data.split(',')
-    rank = minigame[0]
-    score = minigame[1]
-
-    return [rank.substring(1,rank.length),score]
-  }
 
   function generateTableSkills() {
     // clean data
     data = JSON.parse(document.getElementById('player_data').textContent);
     var player_data_split = data.split('\\')
+
     var player_data_sorted = player_data_split.filter(function (index) {
         return index !== 'n-1,-1';
     });
@@ -392,136 +364,136 @@ class PlayerData {
     tbl.setAttribute("border", "2");
   }  
 
+  function cleanMinigameData(data){
+
+    minigame = data.split(',')
+    rank = minigame[0]
+    score = minigame[1]
+
+    return [rank.substring(1,rank.length),score]
+  }
 
   function generateTableMingames() {
-    // clean data
+     // clean data
+     data = JSON.parse(document.getElementById('player_data').textContent);
+     var player_data_split = data.split('\\')
+     var player_data_sorted = player_data_split.splice(26, player_data_split.length - 1);
 
-    data = JSON.parse(document.getElementById('player_data').textContent);
-    player_data_split = data.split('\\')
-    player_data_split = player_data_split.splice(24, player_data_split.length - 1);
+     const tbl = document.createElement("table");
+     tbl.style.border = "none"
+     const tblBody = document.createElement("tbody");
+     tbl.style.color ="black"
+     tblBody.style.color ="black"
+     const title = document.createElement("tr");
+ 
+     const minigame = document.createElement("th");
+     const rank = document.createElement("th");
+     const score = document.createElement("th");
 
+     minigame.style.textAlign = "left" 
+     rank.style.textAlign = "right" 
+     score.style.textAlign = "right"  
+ 
+     minigame.style.padding = "7px"
+     rank.style.padding = "7px"
+     score.style.padding = "7px"
 
+     const skillcellText = document.createTextNode("Minigame");
+     const rankcellText = document.createTextNode("Rank");
+     const levelcellText = document.createTextNode("Score");
 
-    var arrayLength = player_data_split.length;
-    minigameNamesSorted = []
-    playerDataSorted = []
-    for (var i = 0; i < arrayLength; i++) {
-        if(player_data_split[i] !='n-1,-1'){
-       
-            minigameNamesSorted.push(minigameNames[i])
-            playerDataSorted.push(player_data_split[i])
-        }
-        else{
+     minigame.appendChild(skillcellText);
+     title.appendChild(minigame);
+     rank.appendChild(rankcellText);
+     title.appendChild(rank);
+     score.appendChild(levelcellText);
+     title.appendChild(score);
+
+     tbl.appendChild(title);
+     // creating all cells
+     for (let i = 0; i < minigameNames.length -1; i++) {
         
-        }
-    }
-    // creates a <table> element and a <tbody> element
-    const tbl = document.createElement("table");
-    tbl.style.border = "none"
-    const tblBody = document.createElement("tbody");
-    tbl.style.color ="black"
-    tblBody.style.color ="black"
-    const title = document.createElement("tr");
-    const minigame = document.createElement("th");
-    const rank = document.createElement("th");
-    const score = document.createElement("th");
-
-    minigame.style.textAlign = "left" 
-    rank.style.textAlign = "right" 
-    score.style.textAlign = "right"  
-
-    minigame.style.padding = "7px"
-    rank.style.padding = "7px"
-    score.style.padding = "7px"
-
-    
-    const minigamecellText = document.createTextNode("Minigame");
-    const rankcellText = document.createTextNode("Rank");
-    const scorecellText = document.createTextNode("Score");
-
-    minigame.appendChild(minigamecellText);
-    title.appendChild(minigame);
-
-    rank.appendChild(rankcellText);
-    title.appendChild(rank);
-    score.appendChild(scorecellText);
-    title.appendChild(score);
-    
-    tbl.appendChild(title);
-    // creating all cells
-    for (let i = 0; i < minigameNamesSorted.length -1; i++) {
-        
-      // creates a table row
-      row = document.createElement("tr");
-      var img = document.createElement("IMG");
-        url = "/static/images/rstoolsimg/minigame/"+minigameNamesSorted[i]+".png"
-        img.src = url;
-        img.style.position = "relative";
-        img.style.width = "30px";
-        img.style.textAlign = "center";
-        img.style.paddingRight = "5px";
-        img.style.display = "inline";
-        row.style.textAlign = "left";
-        row.style.whiteSpace = "nowrap";
-        row.style.overflow = "hidden";
-
-        const cell = document.createElement("td");
-     
-
-      const cellText = document.createTextNode(minigameNamesSorted[i]);
-      cell.appendChild(img);
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-      for (let j = 0; j < 2; j++) {
-
-        // Create a <td> element and a text node, make the text
-        // node the contents of the <td>, and put the <td> at
-        // the end of the table row
-        const cell = document.createElement("td");
-        cell.style.textAlign = "right"
-        cell.style.padding = "7px"
-        const cellText = document.createTextNode(numberWithCommas(Number(cleanSkillData(playerDataSorted[i])[j])));
-        cell.appendChild(cellText);
-        row.appendChild(cell);
-      }
-  
-      // add the row to the end of the table body
-      tblBody.appendChild(row);
+       // creates a table row
+       row = document.createElement("tr");
+       var img = document.createElement("IMG");
+         url = "/static/images/rstoolsimg/minigame/"+minigameNames[i]+".png"
+         img.src = url;
+         img.style.position = "relative";
+         img.style.width = "27px";
+         img.style.textAlign = "center";
+         img.style.paddingRight = "5px";
+         img.style.display = "inline";
+         row.style.textAlign = "left";
+         row.style.whiteSpace = "nowrap";
+         row.style.overflow = "hidden";
+ 
+ 
+       const cell = document.createElement("td");
+       cell.style.display = "inline";
+ 
+       const cellText = document.createTextNode(minigameNames[i]);
+       cell.appendChild(img);
       
-      row = document.createElement("tr");
-      tblBody.appendChild(row);
-
-    }
-    row = document.createElement("tr");
-    var cell = document.createElement("td");
-    var cellText2 = document.createTextNode("image");
-    cell.appendChild(cellText2);
-    cell.style.textAlign = "left"
-    row.appendChild(cell);
-
-    row = document.createElement("tr");
-    var cell = document.createElement("td");
-    var cellText2 = document.createTextNode("Tombs of Amascut Expert Modeeeee");
-    cell.appendChild(cellText2);
-    cell.style.textAlign = "left"
-    row.appendChild(cell);
-    row.style.visibility = "hidden"
-
-    for (let index = 0; index < 2; index++) {
-      var cell = document.createElement("td");
-      var cellText2 = document.createTextNode("ttttt66ttttt");
-      cell.appendChild(cellText2);
-      cell.style.textAlign = "right"
-      row.appendChild(cell);
-    }
-    tblBody.appendChild(row)
-
+       cell.appendChild(cellText);
+       row.appendChild(cell);
+       var trained = true;
+       for (let j = 0; j < 2; j++) {
+ 
+         // Create a <td> element and a text node, make the text
+         // node the contents of the <td>, and put the <td> at
+         // the end of the table row
+         const cell = document.createElement("td");
+         cell.style.textAlign = "right"
+         cell.style.padding = "7px"
    
-    // put the <tbody> in the <table>
-    tbl.appendChild(tblBody);
-    // appends <table> into <body>
-    document.getElementById("table_location").appendChild(tbl);
-    // sets the border attribute of tbl to '2'
+ 
+         formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i])[j]))
+         if (formatted == "NaN") {
+             formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i].substring(1, player_data_sorted[i].length - 1))[j]))
+         }
+         if (formatted == "-1") {
+             trained = false
+         }
+         const cellText = document.createTextNode(formatted);
+             cell.appendChild(cellText);
+             row.appendChild(cell);
+       }
+ 
+       // add the row to the end of the table body
+       if (trained == true) {
+         tblBody.appendChild(row);
+       }
+     
+     }
+     row = document.createElement("tr");
+     var cell = document.createElement("td");
+     var cellText2 = document.createTextNode("image");
+     cell.appendChild(cellText2);
+     cell.style.textAlign = "left"
+     row.appendChild(cell);
+ 
+     row = document.createElement("tr");
+     var cell = document.createElement("td");
+     var cellText2 = document.createTextNode("Tombs of AmaDDDDdddscutuds psssd");
+     cell.appendChild(cellText2);
+     cell.style.textAlign = "left"
+     row.appendChild(cell);
+     row.style.visibility = "hidden"
+    
+     for (let index = 0; index < 2; index++) {
+       var cell = document.createElement("td");
+       var cellText2 = document.createTextNode("");
+       cell.appendChild(cellText2);
+       cell.style.textAlign = "right"
+       row.appendChild(cell);
+     }
+     tblBody.appendChild(row)
+     // put the <tbody> in the <table>
+     tbl.appendChild(tblBody);
+     // appends <table> into <body>
+     document.getElementById("table_location").appendChild(tbl);
+     // sets the border attribute of tbl to '2'
+     tbl.setAttribute("border", "2");
 
   }  
 

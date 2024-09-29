@@ -62,8 +62,16 @@ class WebAppViewset(viewsets.ModelViewSet):
     def load_statlookupresult(request):
         try:
             name = request.POST.get('text')
-    
+            # account_type = "IM"
+            # if account_type == "HCRM":
+            #     url = "https://secure.runescape.com/m=hiscore_hardcore_ironman/index_lite.ws?player=" +name
+            # elif account_type == "UIM":
+            #     url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" +name
+            # elif account_type == "IM":
+            #     url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" +name
+            # else: 
             url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name
+            
             api_request = requests.get(url)
             api_request.raise_for_status() 
             print(str(api_request.content))  
