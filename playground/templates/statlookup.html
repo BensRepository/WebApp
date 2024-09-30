@@ -79,7 +79,7 @@
               <form  action= "{% url 'statlookupresult' %}" method="POST">
                 {% csrf_token %}
               <span class="input" >
-                <input type="text" placeholder="RSN" name="text" value="{{ name.id }}"placeholder="RSN" style="text-align: center;">
+                <input type="text" placeholder="RSN" name="text" value="{{ name.id }}"placeholder="RSN" style="text-align: center;" required>
              
          
                 <span></span>	
@@ -91,13 +91,9 @@
               
             </form>
             </p>
-            
             <p>
-            
-            
-      
-          
-          </div>
+
+            </div>
         </div>
 
       </div>

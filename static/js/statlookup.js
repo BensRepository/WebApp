@@ -211,7 +211,89 @@ class PlayerData {
     "Zulrah"
 
   ]
+  const minigameLinks = [
+    "Bounty_Hunter",
+    "Bounty_Hunter",
+    "Bounty_Hunter",
+    "Bounty_Hunter",
+    "Treasure_Trails",
+    "Clue_scroll_(beginner)",
+    "Clue_scroll_(easy)",
+    "Clue_scroll_(medium)",
+    "Clue_scroll_(hard)",
+    "Clue_scroll_(elite)",
+    "Clue_scroll_(master)",
+    "Last_Man_Standing",
+    "Emir%27s_Arena",
+    "Soul_Wars",
+    "Guardians_of_the_Rift",
+    "Fortis_Colosseum",
+    "Abyssal Sire",
+    "Alchemical Hydra",
+    "Amoxliatl",
+    "Araxxor",
+    "Artio",
+    "Barrows",
+    "Bryophyta",
+    "Callisto",
+    "Calvar'ion",
+    "Cerberus",
+    "Chambers of Xeric",
+    "Chambers_of_Xeric/Challenge_Mode",
+    "Chaos Elemental",
+    "Chaos Fanatic",
+    "Commander Zilyana",
+    "Corporeal Beast",
+    "Crazy Archaeologist",
+    "Dagannoth Prime",
+    "Dagannoth Rex",
+    "Dagannoth Supreme",
+    "Deranged Archaeologist",
+    "Duke Sucellus",
+    "General Graardor",
+    "Giant Mole",
+    "Grotesque Guardians",
+    "Hespori",
+    "Kalphite Queen",
+    "King Black Dragon",
+    "Kraken",
+    "Kree'Arra",
+    "K'ril Tsutsaroth",
+    "Lunar_Chest",
+    "Mimic",
+    "Nex",
+    "Nightmare",
+    "Phosani's Nightmare",
+    "Obor",
+    "Phantom Muspah",
+    "Sarachnis",
+    "Scorpia",
+    "Scurrius",
+    "Skotizo",
+    "Sol Heredit",
+    "Spindel",
+    "Tempoross",
+    "The Gauntlet",
+    "The Corrupted Gauntlet",
+    "The Hueycoatl",
+    "The Leviathan",
+    "The Whisperer",
+    "Theatre of Blood",
+    "Theatre_of_Blood#Hard_Mode",
+    "Thermonuclear Smoke Devil",
+    "Tombs_of_Amascut",
+    "Tombs_of_Amascut",
+    "TzKal-Zuk",
+    "TzTok-Jad",
+    "Vardorvis",
+    "Venenatis",
+    "Vet'ion",
+    "Vorkath",
+    "Wintertodt",
+    "Zalcano",
+    "Zulrah"
 
+  ]
   function test(){
 
     }
@@ -279,10 +361,10 @@ class PlayerData {
     tbl.appendChild(title);
     // creating all cells
     for (let i = 0; i < 24; i++) {
-        SkillNames = ["Overall", "Attack", "Defence", "Strength", "HitPoints",
+        SkillNames = ["Overall", "Attack", "Defence", "Strength", "Hitpoints",
             "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking",
              "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction"]
-        
+
       // creates a table row
       row = document.createElement("tr");
       var img = document.createElement("IMG");
@@ -300,9 +382,17 @@ class PlayerData {
       cell.style.display = "inline";
 
       const cellText = document.createTextNode(SkillNames[i]);
+      var link = document.createElement('a');
+
+      link.setAttribute('href', "https://oldschool.runescape.wiki/w/"+SkillNames[i]);
+      link.setAttribute('html', SkillNames[i]);
+      link.setAttribute('target', "_blank");
+      link.className = "linkhover"
+      link.appendChild(cellText);
+
       cell.appendChild(img);
-     
-      cell.appendChild(cellText);
+      cell.appendChild(link);
+
       row.appendChild(cell);
       var trained = true;
       for (let j = 0; j < 3; j++) {
@@ -378,7 +468,9 @@ class PlayerData {
      data = JSON.parse(document.getElementById('player_data').textContent);
      var player_data_split = data.split('\\')
      var player_data_sorted = player_data_split.splice(26, player_data_split.length - 1);
-
+    // if (player_data_sorted.length != minigameNames.length){
+    //   alert("New minigame detected. Page is being updated.")
+    // }
      const tbl = document.createElement("table");
      tbl.style.border = "none"
      const tblBody = document.createElement("tbody");
@@ -411,7 +503,7 @@ class PlayerData {
 
      tbl.appendChild(title);
      // creating all cells
-     for (let i = 0; i < minigameNames.length -1; i++) {
+     for (let i = 0; i < minigameNames.length; i++) {
         
        // creates a table row
        row = document.createElement("tr");
@@ -419,7 +511,7 @@ class PlayerData {
          url = "/static/images/rstoolsimg/minigame/"+minigameNames[i]+".png"
          img.src = url;
          img.style.position = "relative";
-         img.style.width = "27px";
+         img.style.width = "30px";
          img.style.textAlign = "center";
          img.style.paddingRight = "5px";
          img.style.display = "inline";
@@ -434,7 +526,19 @@ class PlayerData {
        const cellText = document.createTextNode(minigameNames[i]);
        cell.appendChild(img);
       
-       cell.appendChild(cellText);
+
+    
+       var link = document.createElement('a');
+
+       link.setAttribute('href', "https://oldschool.runescape.wiki/w/"+minigameLinks[i]);
+       link.setAttribute('html', minigameNames);
+       link.setAttribute('target', "_blank");
+       link.className = "linkhover"
+       link.appendChild(cellText);
+ 
+       cell.appendChild(img);
+       cell.appendChild(link);
+
        row.appendChild(cell);
        var trained = true;
        for (let j = 0; j < 2; j++) {
@@ -474,7 +578,7 @@ class PlayerData {
  
      row = document.createElement("tr");
      var cell = document.createElement("td");
-     var cellText2 = document.createTextNode("Tombs of AmaDDDDdddscutuds psssd");
+     var cellText2 = document.createTextNode("Tombs of AmaDDddddsdddutuds psssd");
      cell.appendChild(cellText2);
      cell.style.textAlign = "left"
      row.appendChild(cell);

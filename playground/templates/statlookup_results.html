@@ -72,7 +72,14 @@
         animation: shrink 71s;
         animation: shrink 1.0s forwards;
     }
+    .linkhover {
+      color: black;
+    }
 
+    .linkhover:hover {
+      color: black;
+      text-decoration: underline;
+}
     .shrink{
     animation: shrink 6s;
     }
@@ -89,15 +96,15 @@
     }
     </style>
     <!-- Background photo -->
-    <section id="hero" class="hero section dark-background backgroundImage" style="padding-top: 45px;padding-bottom: 0px;">
-      
-   
+
+    <section id="hero" class="hero section dark-background backgroundImage" style="padding-top: 65px;padding-bottom: 0px;">
+
+
       
       <div class="container"alt="" data-aos="fade-in" style="zoom: 81%;">
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
-        
 
             <script>
               window.onload = function() {
@@ -107,7 +114,8 @@
               };
           </script>
           </div>
-        </div>
+          
+       
         <div  data-aos="fade-up" data-aos-delay="200">
             
           <style>
@@ -122,20 +130,165 @@
          
             }
           </style>
+          
           <div  class="div2" data-aos="fade-up" data-aos-delay="300" style="padding-top: 160px;">
             <h2 style="font-size:70px;color: black;text-align: center;font-family: Times New Roman;font-weight: normal;">{{ rsn }}<span>.</span></h2>
             <div id="table_location" class="icon-box" style="padding-bottom: 55px;border: none;padding-top: 8px;" >
-            
-            </div>
-          </div>
+              
 
+            </div>
+            
+          </div>
+          
           
           </div>
+
+
         </div>
 
       </div>
+      <style>
+        #flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px black solid;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+}
 
-    </section><!-- /Hero Section -->
+.flex-item {
+    width: 350px;
+    height: 200px;
+    border: 1px black solid;
+
+
+}
+.leaderboardType{
+  opacity: 0.65;
+
+}
+
+
+
+
+.leaderboardType:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.dropbtn {
+  padding: 0%;
+  margin: 0%;
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+
+  position: relative;
+  display: inline-block;
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #e6bf8d;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  
+  color: black;
+  padding: 6px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #da9f52;}
+
+.dropdown-content:hover .leaderboardType {
+  opacity: 1;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .leaderboardType {
+  opacity: 1;
+}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+      </style>
+
+      
+        <div class="container" style="top: 2%;position: absolute;zoom: 81%;display: inline-block;" >
+          <div id="flex-container" style="border: none;"  >
+            <div class="flex-item" data-aos="fade-in" data-aos-delay="1200" style="border: none;">
+      
+       
+                <form  action= "{% url 'statlookupresult' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="text" value="{{ rsn }}" name="text" value="{{ name.id }}"placeholder="RSN" style="text-align: center;"required>
+
+                  <div style="padding-top: 10px;">
+                    <button type="submit" class="button-73" role="button">Lookup</button>
+                  </div>
+                </form>
+              </p>
+              <p>
+      
+             
+            </div>
+            <div class="flex-item" style="align-items: center;text-align: center;position: relative;border: none;"data-aos="fade-in" data-aos-delay="800">
+              <p style="padding-top: 50px;padding-left: 40%;">
+               
+                <div class="dropdown">
+                  <button class="dropbtn"> 
+                    <img class="leaderboardType"  src="/static/images/rstoolsimg/stats.webp" alt="" style="width: 70px;height: auto;position: relative;">
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="#">All</a>
+                    <a href="#">Ironman</a>
+                    <a href="#">Ultimate Ironman</a>
+                    <a href="#">Hardcore Ironman</a>
+                  </div>
+                </div>
+              </p>
+            </div>
+            <div class="flex-item" style="align-items: center;text-align: center;border: none;" data-aos="fade-in" data-aos-delay="1200">
+       
+       
+              <form  action= "{% url 'statlookupresult' %}" method="POST">
+                {% csrf_token %}
+                <div style="padding-bottom: 5px;">
+                  <input type="text" name="text" value="{{ rsn }}" style="text-align: center;"required>
+                </div>
+                <div>
+                  <input type="text2" placeholder="RSN" name="text" value="{{ name.id }}"placeholder="RSN" style="text-align: center;" required>
+                </div>
+           
+              <div style="padding-top: 10px;">
+                <button type="submit" class="button-73" role="button">Compare</button>
+              </div>
+              
+            </form>
+
+            </div>
+          </div>
+      
+      
+        </div>
+</section><!-- /Hero Section -->
 
   </footer>
 
