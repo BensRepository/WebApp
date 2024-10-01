@@ -306,9 +306,9 @@ class PlayerData {
   }
 
 
-  function generateTableSkills() {
+  function generateTableSkills(data) {
     // clean data
-    data = JSON.parse(document.getElementById('player_data').textContent);
+
     var player_data_split = data.split('\\')
 
     var player_data_sorted = player_data_split.filter(function (index) {
@@ -359,6 +359,7 @@ class PlayerData {
     xp.appendChild(xpcellText); 
     title.appendChild(xp);
     tbl.appendChild(title);
+    tbl.id = "skillsTable"
     // creating all cells
     for (let i = 0; i < 24; i++) {
         SkillNames = ["Overall", "Attack", "Defence", "Strength", "Hitpoints",
@@ -463,9 +464,9 @@ class PlayerData {
     return [rank.substring(1,rank.length),score]
   }
 
-  function generateTableMingames() {
+  function generateTableMingames(data) {
      // clean data
-     data = JSON.parse(document.getElementById('player_data').textContent);
+
      var player_data_split = data.split('\\')
      var player_data_sorted = player_data_split.splice(26, player_data_split.length - 1);
     // if (player_data_sorted.length != minigameNames.length){
@@ -595,6 +596,7 @@ class PlayerData {
      // put the <tbody> in the <table>
      tbl.appendChild(tblBody);
      // appends <table> into <body>
+     tbl.id = "minigameTable"
      document.getElementById("table_location").appendChild(tbl);
      // sets the border attribute of tbl to '2'
      tbl.setAttribute("border", "2");
@@ -604,4 +606,55 @@ class PlayerData {
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function typeSelection(type){
+  if (type == "All"){
+    data = JSON.parse(document.getElementById('player_data').textContent);
+    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/stats.webp"
+    document.getElementById("minigameTable").remove()
+    document.getElementById("skillsTable").remove()
+    generateTableSkills(data)
+    generateTableMingames(data)
+  }
+  else if (type == "Ironman"){
+    data = JSON.parse(document.getElementById('player_dataIM').textContent);
+    if(data.substring(0,8) == "b'<!DOCT"){
+      alert("No data found")
+    }
+    else{
+      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/iron.webp"
+      document.getElementById("minigameTable").remove()
+      document.getElementById("skillsTable").remove()
+      generateTableSkills(data)
+      generateTableMingames(data)
+    }
+  }
+  else if (type == "Hardcore Ironman"){
+    data = JSON.parse(document.getElementById('player_dataHCIM').textContent);
+    if(data.substring(0,8) == "b'<!DOCT"){
+      alert("No data found")
+    }
+    else{
+      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.webp"
+      document.getElementById("minigameTable").remove()
+      document.getElementById("skillsTable").remove()
+      generateTableSkills(data)
+      generateTableMingames(data)
+    }
+  }
+  else if (type == "Ultimate Ironman"){
+    data = JSON.parse(document.getElementById('player_dataUIM').textContent);
+    if(data.substring(0,8) == "b'<!DOCT"){
+      alert("No data found")
+    }
+    else{
+      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/ultimate.webp"
+      document.getElementById("minigameTable").remove()
+      document.getElementById("skillsTable").remove()
+      generateTableSkills(data)
+      generateTableMingames(data)
+    }
+  }
+  return data
 }

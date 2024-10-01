@@ -12,6 +12,9 @@
 
   {{ rsn|json_script:"rsn" }}
   {{ player_data|json_script:"player_data" }}
+  {{ player_dataIM|json_script:"player_dataIM" }}
+  {{ player_dataHCIM|json_script:"player_dataHCIM" }}
+  {{ player_dataUIM|json_script:"player_dataUIM" }}
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -108,8 +111,9 @@
 
             <script>
               window.onload = function() {
-                generateTableSkills();
-                generateTableMingames()
+                data = JSON.parse(document.getElementById('player_data').textContent);
+                generateTableSkills(data);
+                generateTableMingames(data)
                
               };
           </script>
@@ -254,13 +258,13 @@
                
                 <div class="dropdown">
                   <button class="dropbtn"> 
-                    <img class="leaderboardType"  src="/static/images/rstoolsimg/stats.webp" alt="" style="width: 70px;height: auto;position: relative;">
+                    <img id="typeSelection" class="leaderboardType"  src="/static/images/rstoolsimg/stats.webp" alt="" style="width: 70px;height: auto;position: relative;">
                   </button>
-                  <div class="dropdown-content">
-                    <a href="#">All</a>
-                    <a href="#">Ironman</a>
-                    <a href="#">Ultimate Ironman</a>
-                    <a href="#">Hardcore Ironman</a>
+                  <div  class="dropdown-content">
+                    <a onclick="typeSelection('All')">All</a>
+                    <a onclick="typeSelection('Ironman')">Ironman</a>
+                    <a onclick="typeSelection('Ultimate Ironman')">Ultimate Ironman</a>
+                    <a onclick="typeSelection('Hardcore Ironman')">Hardcore Ironman</a>
                   </div>
                 </div>
               </p>
