@@ -12,9 +12,9 @@
 
   {{ rsn|json_script:"rsn" }}
   {{ player_data|json_script:"player_data" }}
-  {{ player_data_compare|json_script:"player_data_compare" }}
+  {{ compare|json_script:"compare" }}
   {{ type|json_script:"type" }}
-
+  {{ player_data_compare|json_script:"player_data_compare" }}
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -112,10 +112,12 @@
             <script>
               window.onload = function() {
                 data = JSON.parse(document.getElementById('player_data').textContent);
-              
+          
                 generateTableSkills(data);
-                generateTableMingames(data)
-                accountTypeSelection()
+                accountTypeSelection();
+                generateTableMingames(data);
+                CompareAccounts()
+            
           
               };
           </script>
@@ -137,6 +139,16 @@
             }
             .div2short{
               background-image: url("{% static 'images/rstoolsimg/nodatascroll.png'%}");
+         
+              margin-left: auto;
+              margin-right: auto;
+      
+              background-repeat: no-repeat;
+              background-position: top; 
+         
+            }
+            .div2big{
+              background-image: url("{% static 'images/rstoolsimg/scrollcompare.png'%}");
          
               margin-left: auto;
               margin-right: auto;
@@ -301,6 +313,7 @@
                         <form  action= "{% url 'statlookupresult' %}" method="POST">
                           {% csrf_token %}
                           <input type="hidden" name="text" value="{{ rsn }}" />
+                          <input type="hidden" name="compare" value="false" />
                           <button name="type" value="Ultimate Ironman" type="submit">Ultimate Ironman</button>
                         </form>
                       </a>
@@ -318,7 +331,8 @@
                   <input type="text" name="text" value="{{ rsn }}" style="text-align: center;"required>
                 </div>
                 <div>
-                  <input type="text2" placeholder="RSN" name="text2" value="{{ name.id }}"placeholder="RSN" style="text-align: center;" required>
+                  <input type="text2" placeholder="RSN" name="text2" placeholder="RSN" style="text-align: center;" required>
+                  <input type="hidden" name="compare" value="True" />
                 </div>
            
               <div style="padding-top: 10px;">

@@ -1,5 +1,6 @@
 
 
+
 class PlayerData {
     constructor(player_data) {
         var player_data_split = player_data.split('\\')
@@ -500,6 +501,7 @@ class PlayerData {
     // if (player_data_sorted.length != minigameNames.length){
     //   alert("New minigame detected. Page is being updated.")
     // }
+    var tableCreation = true
      const tbl = document.createElement("table");
      tbl.style.border = "none"
      const tblBody = document.createElement("tbody");
@@ -579,8 +581,16 @@ class PlayerData {
          cell.style.textAlign = "right"
          cell.style.padding = "7px"
    
- 
-         formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i])[j]))
+   
+        try {
+          formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i])[j])) 
+       }
+       catch (error) {
+          formatted = "-1"
+          tableCreation = false
+       }
+   
+         
          if (formatted == "NaN") {
              formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i].substring(1, player_data_sorted[i].length - 1))[j]))
          }
@@ -625,9 +635,11 @@ class PlayerData {
      tbl.appendChild(tblBody);
      // appends <table> into <body>
      tbl.id = "minigameTable"
-     document.getElementById("table_location").appendChild(tbl);
-     // sets the border attribute of tbl to '2'
-     tbl.setAttribute("border", "2");
+     if(tableCreation == true){
+      document.getElementById("table_location").appendChild(tbl);
+      tbl.setAttribute("border", "2");
+    }
+
 
   }  
 
@@ -638,18 +650,33 @@ class PlayerData {
 
 
 function accountTypeSelection(){
-  data = JSON.parse(document.getElementById('type').textContent);
-  if (data == "Ironman") {
+  data2 = JSON.parse(document.getElementById('type').textContent);
+  if (data2 == "Ironman") {
      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/iron.webp"
   }
-  else if (data == "Hardcore Ironman"){
+  else if (data2 == "Hardcore Ironman"){
      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.webp"
   }
-  else if (data == "Ultimate Ironman"){
-    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.webp"
+  else if (data2 == "Ultimate Ironman"){
+    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/Ultimate.webp"
+
  }
  else{
     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/stats.webp"
 
 }
+}
+function CompareAccounts(){
+  data2 = JSON.parse(document.getElementById('player_data_compare').textContent);
+  data = JSON.parse(document.getElementById('player_data').textContent);
+
+  if(data2 != ""){
+    document.getElementById("scroll").classList.remove("div2")
+    document.getElementById("scroll").classList.add("div2big")
+    document.getElementById("scrolldiv").style.margin = "0px"
+    document.getElementById("scrolldiv").width = "100px"
+  }
+
+
+
 }

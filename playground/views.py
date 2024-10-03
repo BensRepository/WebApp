@@ -62,17 +62,32 @@ class WebAppViewset(viewsets.ModelViewSet):
     def load_statlookupresult(request):
         name = request.POST.get('text')
         name2 = request.POST.get('text2')
+        compare = request.POST.get('compare')
         type = request.POST.get('type')
-        
+        api_request2 = ""
+        print(type)
         if(type == "Hardcore Ironman"):
             try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=" +name
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
                 print(str(api_request.content))  
+  
             except:
                 #api_requestHCIM = "no data returned"
                 print("no data returned")
+            if(compare == "True"):
+                
+                try:
+                    url = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=" +name2
+                    api_request2 = requests.get(url)
+                    api_request2.raise_for_status() 
+                    print(str(api_request2.content))  
+                    api_request2 = api_request2.content
+                except:
+                    #api_requestHCIM = "no data returned"
+                    print("no data returned")
+
         elif(type == "Ultimate Ironman"):
             try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" +name
@@ -82,6 +97,16 @@ class WebAppViewset(viewsets.ModelViewSet):
             except:
                 #api_requestUIM = "no data returned"
                 print("no data returned")
+            if(compare == "True"):
+                try:
+                    url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" +name2
+                    api_request2 = requests.get(url)
+                    api_request2.raise_for_status() 
+                    print(str(api_request2.content))  
+                    api_request2 = api_request2.content
+                except:
+                    #api_requestHCIM = "no data returned"
+                    print("no data returned")
         elif(type == "Ironman"):
             try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" +name
@@ -91,17 +116,41 @@ class WebAppViewset(viewsets.ModelViewSet):
             except:
                 #api_requestIM = "no data returned"
                 print("no data returned")
+            if(compare == "True"):
+                try:
+                    url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" +name2
+                    api_request2 = requests.get(url)
+                    api_request2.raise_for_status() 
+                    print(str(api_request.content2))  
+                    api_request2 = api_request2.content
+                except:
+                    #api_requestIM = "no data returned"
+                    print("no data returned")
         else:
             try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
-                print(str(api_request.content))  
+                print(str(api_request.content)) 
+                type = "All" 
             except:
                 print("no data returned")
+                type = "All"
                 return render(request,'statlookup.html')
+            if(compare == "True"):
+                try:
+                    url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name2
+                    api_request2 = requests.get(url)
+                    api_request2.raise_for_status() 
+                    api_request2 = api_request2.content
+                    print(str(api_request2.content)) 
+                except:
+                    print("no data returned")
+                    type = "All"
 
-        context = {"player_data":str(api_request.content),"rsn":name,"player_data_compare":"compare data","type":type}
+            
+
+        context = {"player_data":str(api_request.content),"rsn":name,"type":type, "compare":compare,"player_data_compare":str(api_request2)}
         return render(request,'statlookup_results.html',context=context)
 
     
