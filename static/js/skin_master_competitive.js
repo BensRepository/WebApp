@@ -430,7 +430,7 @@ function play_button(){
           myNode.removeChild(myNode.lastChild);
         }
         document.getElementById("rank_picture").appendChild(elem);
-        alert("skin correct "+skin_name_correct+" "+ " colour correct " +colours_correct + " " + "skin wrong "+skin_name_wrong+" "+ " colour wrong " +colours_wrong)
+        //alert("skin correct "+skin_name_correct+" "+ " colour correct " +colours_correct + " " + "skin wrong "+skin_name_wrong+" "+ " colour wrong " +colours_wrong)
         document.getElementById("success_rate_skins").innerText =  String((Math.round((skin_name_correct/(skin_name_correct +skin_name_wrong)) * 100) / 100)*100)+"%"
       
         document.getElementById("success_rate_colours").innerText =  String((Math.round((colours_correct/(colours_wrong +colours_correct)) * 100) / 100)*100)+"%"

@@ -47,7 +47,6 @@ urlpatterns =[
     path("SkinMaster/Leaderboard/Survival/Ohnepixel/",WebAppViewset.skin_master_leaderboard_survival_ohnepixel, name='skin_master_leaderboard_survival_ohnepixel'),  
 
     path("SkinMaster/About/",WebAppViewset.skin_master_about, name='skin_master_about'), 
-    path("SkinMaster/ReportBug/",WebAppViewset.skin_master_report_bug, name='skin_master_report_bug'), 
     path('SkinMaster/Competitive/Easy/',WebAppViewset.easy_leaderboard_competitive,name='skin_master_easy'),
     path('SkinMaster/Competitive/Medium/',WebAppViewset.medium_leaderboard_competitive,name='skin_master_medium'),
     path('SkinMaster/Competitive/Hard/',WebAppViewset.hard_leaderboard_competitive,name='skin_master_hard'),

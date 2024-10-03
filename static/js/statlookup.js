@@ -1,3 +1,5 @@
+
+
 class PlayerData {
     constructor(player_data) {
         var player_data_split = player_data.split('\\')
@@ -360,6 +362,7 @@ class PlayerData {
     title.appendChild(xp);
     tbl.appendChild(title);
     tbl.id = "skillsTable"
+    tableCreation = true;
     // creating all cells
     for (let i = 0; i < 24; i++) {
         SkillNames = ["Overall", "Attack", "Defence", "Strength", "Hitpoints",
@@ -405,14 +408,35 @@ class PlayerData {
         cell.style.textAlign = "right"
         cell.style.padding = "7px"
   
-  
         formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted[i])[j]))
         if (formatted == "NaN") {
             formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted[i].substring(1, player_data_sorted[i].length - 1))[j]))
         }
+        if (formatted == "NaN") {
+     
+          document.getElementById("table_location").innerHTML =""
+          const para = document.createElement("p");
+          no_data_notification = document.createTextNode("No data found for account type selection.")
+          para.appendChild(no_data_notification)
+          document.getElementById("table_location").appendChild(para)
+
+          document.getElementById("scroll").classList.remove("div2")
+          document.getElementById("scroll").classList.add("div2short")
+          tableCreation = false
+          for (let index = 0; index < 25; index++) {
+            var br = document.createElement("br");
+            document.getElementById("table_location").appendChild(br)
+          }
+   
+    
+  
+          break
+      }
         if (formatted == "-1") {
             trained = false
         }
+        
+
         const cellText = document.createTextNode(formatted);
             cell.appendChild(cellText);
             row.appendChild(cell);
@@ -450,9 +474,13 @@ class PlayerData {
     // put the <tbody> in the <table>
     tbl.appendChild(tblBody);
     // appends <table> into <body>
-    document.getElementById("table_location").appendChild(tbl);
+    if(tableCreation == true){
+      document.getElementById("table_location").appendChild(tbl);
+      tbl.setAttribute("border", "2");
+    }
+
     // sets the border attribute of tbl to '2'
-    tbl.setAttribute("border", "2");
+
   }  
 
   function cleanMinigameData(data){
@@ -608,53 +636,20 @@ class PlayerData {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function typeSelection(type){
-  if (type == "All"){
-    data = JSON.parse(document.getElementById('player_data').textContent);
+
+function accountTypeSelection(){
+  data = JSON.parse(document.getElementById('type').textContent);
+  if (data == "Ironman") {
+     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/iron.webp"
+  }
+  else if (data == "Hardcore Ironman"){
+     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.webp"
+  }
+  else if (data == "Ultimate Ironman"){
+    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.webp"
+ }
+ else{
     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/stats.webp"
-    document.getElementById("minigameTable").remove()
-    document.getElementById("skillsTable").remove()
-    generateTableSkills(data)
-    generateTableMingames(data)
-  }
-  else if (type == "Ironman"){
-    data = JSON.parse(document.getElementById('player_dataIM').textContent);
-    if(data.substring(0,8) == "b'<!DOCT"){
-      alert("No data found")
-    }
-    else{
-      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/iron.webp"
-      document.getElementById("minigameTable").remove()
-      document.getElementById("skillsTable").remove()
-      generateTableSkills(data)
-      generateTableMingames(data)
-    }
-  }
-  else if (type == "Hardcore Ironman"){
-    data = JSON.parse(document.getElementById('player_dataHCIM').textContent);
-    if(data.substring(0,8) == "b'<!DOCT"){
-      alert("No data found")
-    }
-    else{
-      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.webp"
-      document.getElementById("minigameTable").remove()
-      document.getElementById("skillsTable").remove()
-      generateTableSkills(data)
-      generateTableMingames(data)
-    }
-  }
-  else if (type == "Ultimate Ironman"){
-    data = JSON.parse(document.getElementById('player_dataUIM').textContent);
-    if(data.substring(0,8) == "b'<!DOCT"){
-      alert("No data found")
-    }
-    else{
-      document.getElementById("typeSelection").src = "/static/images/rstoolsimg/ultimate.webp"
-      document.getElementById("minigameTable").remove()
-      document.getElementById("skillsTable").remove()
-      generateTableSkills(data)
-      generateTableMingames(data)
-    }
-  }
-  return data
+
+}
 }

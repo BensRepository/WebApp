@@ -61,42 +61,49 @@ class WebAppViewset(viewsets.ModelViewSet):
 
     def load_statlookupresult(request):
         name = request.POST.get('text')
-        try:
-            url = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=" +name
-            api_requestHCIM = requests.get(url)
-            api_requestHCIM.raise_for_status() 
-            print(str(api_requestHCIM.content))  
-        except:
-            #api_requestHCIM = "no data returned"
-            print("no data returned")
-        try:
-            url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" +name
-            api_requestUIM = requests.get(url)
-            api_requestUIM.raise_for_status() 
-            print(str(api_requestUIM.content))  
-        except:
-            #api_requestUIM = "no data returned"
-            print("no data returned")
-        try:
-            url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" +name
-            api_requestIM = requests.get(url)
-            api_requestIM.raise_for_status() 
-            print(str(api_requestIM.content))  
-        except:
-            #api_requestIM = "no data returned"
-            print("no data returned")
-        try:
-            url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name
-            api_request = requests.get(url)
-            api_request.raise_for_status() 
-            print(str(api_request.content))  
+        name2 = request.POST.get('text2')
+        type = request.POST.get('type')
+        
+        if(type == "Hardcore Ironman"):
+            try:
+                url = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=" +name
+                api_request = requests.get(url)
+                api_request.raise_for_status() 
+                print(str(api_request.content))  
+            except:
+                #api_requestHCIM = "no data returned"
+                print("no data returned")
+        elif(type == "Ultimate Ironman"):
+            try:
+                url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" +name
+                api_request = requests.get(url)
+                api_request.raise_for_status() 
+                print(str(api_request.content))  
+            except:
+                #api_requestUIM = "no data returned"
+                print("no data returned")
+        elif(type == "Ironman"):
+            try:
+                url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" +name
+                api_request = requests.get(url)
+                api_request.raise_for_status() 
+                print(str(api_request.content))  
+            except:
+                #api_requestIM = "no data returned"
+                print("no data returned")
+        else:
+            try:
+                url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name
+                api_request = requests.get(url)
+                api_request.raise_for_status() 
+                print(str(api_request.content))  
+            except:
+                print("no data returned")
+                return render(request,'statlookup.html')
 
-            context = {"player_data":str(api_request.content),"rsn":name,"player_dataHCIM":str(api_requestHCIM.content),
-                       "player_dataUIM":str(api_requestUIM.content),"player_dataIM":str(api_requestIM.content)}
-            return render(request,'statlookup_results.html',context=context)
-        except:
-            print("no data returned")
-            return render(request,'statlookup.html')
+        context = {"player_data":str(api_request.content),"rsn":name,"player_data_compare":"compare data","type":type}
+        return render(request,'statlookup_results.html',context=context)
+
     
     def load_bind(request):
     

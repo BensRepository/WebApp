@@ -12,9 +12,9 @@
 
   {{ rsn|json_script:"rsn" }}
   {{ player_data|json_script:"player_data" }}
-  {{ player_dataIM|json_script:"player_dataIM" }}
-  {{ player_dataHCIM|json_script:"player_dataHCIM" }}
-  {{ player_dataUIM|json_script:"player_dataUIM" }}
+  {{ player_data_compare|json_script:"player_data_compare" }}
+  {{ type|json_script:"type" }}
+
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -104,7 +104,7 @@
 
 
       
-      <div class="container"alt="" data-aos="fade-in" style="zoom: 81%;">
+      <div id="scrolldiv" class="container"alt="" data-aos="fade-in" style="zoom: 81%;">
 
         <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-xl-6 col-lg-8">
@@ -112,9 +112,11 @@
             <script>
               window.onload = function() {
                 data = JSON.parse(document.getElementById('player_data').textContent);
+              
                 generateTableSkills(data);
                 generateTableMingames(data)
-               
+                accountTypeSelection()
+          
               };
           </script>
           </div>
@@ -133,9 +135,19 @@
               background-position: top; 
          
             }
+            .div2short{
+              background-image: url("{% static 'images/rstoolsimg/nodatascroll.png'%}");
+         
+              margin-left: auto;
+              margin-right: auto;
+      
+              background-repeat: no-repeat;
+              background-position: top; 
+         
+            }
           </style>
           
-          <div  class="div2" data-aos="fade-up" data-aos-delay="300" style="padding-top: 160px;">
+          <div id="scroll" class="div2" data-aos="fade-up" data-aos-delay="300" style="padding-top: 160px;">
             <h2 style="font-size:70px;color: black;text-align: center;font-family: Times New Roman;font-weight: normal;">{{ rsn }}<span>.</span></h2>
             <div id="table_location" class="icon-box" style="padding-bottom: 55px;border: none;padding-top: 8px;" >
               
@@ -261,10 +273,38 @@
                     <img id="typeSelection" class="leaderboardType"  src="/static/images/rstoolsimg/stats.webp" alt="" style="width: 70px;height: auto;position: relative;">
                   </button>
                   <div  class="dropdown-content">
-                    <a onclick="typeSelection('All')">All</a>
-                    <a onclick="typeSelection('Ironman')">Ironman</a>
-                    <a onclick="typeSelection('Ultimate Ironman')">Ultimate Ironman</a>
-                    <a onclick="typeSelection('Hardcore Ironman')">Hardcore Ironman</a>
+                    <a> 
+                    <form  action= "{% url 'statlookupresult' %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="text" value="{{ rsn }}" />
+                      <button name="type" value="All" type="submit">All</button>
+                    </form>
+                   </a>
+                    <a>
+                      <form  action= "{% url 'statlookupresult' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="text" value="{{ rsn }}" />
+                        <button name="type" value="Ironman" type="submit">Ironman</button>
+                      </form>
+                    </a>
+                    <a>
+                      <a>
+                        <form  action= "{% url 'statlookupresult' %}" method="POST">
+                          {% csrf_token %}
+                          <input type="hidden" name="text" value="{{ rsn }}" />
+                          <button name="type" value="Hardcore Ironman" type="submit">Hardcore Ironman</button>
+                        </form>
+                      </a>
+                    </a>
+                    <a>
+                      <a>
+                        <form  action= "{% url 'statlookupresult' %}" method="POST">
+                          {% csrf_token %}
+                          <input type="hidden" name="text" value="{{ rsn }}" />
+                          <button name="type" value="Ultimate Ironman" type="submit">Ultimate Ironman</button>
+                        </form>
+                      </a>
+                    </a>
                   </div>
                 </div>
               </p>
@@ -278,7 +318,7 @@
                   <input type="text" name="text" value="{{ rsn }}" style="text-align: center;"required>
                 </div>
                 <div>
-                  <input type="text2" placeholder="RSN" name="text" value="{{ name.id }}"placeholder="RSN" style="text-align: center;" required>
+                  <input type="text2" placeholder="RSN" name="text2" value="{{ name.id }}"placeholder="RSN" style="text-align: center;" required>
                 </div>
            
               <div style="padding-top: 10px;">
