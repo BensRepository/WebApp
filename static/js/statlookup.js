@@ -130,6 +130,9 @@ class PlayerData {
         }
 
   }
+  function getMinigameNames(){
+    return minigameNames.length
+  }
 
   const minigameNames = [
     "Bounty Hunter - Hunter",

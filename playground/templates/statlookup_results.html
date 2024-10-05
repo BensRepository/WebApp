@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
     {% load static %}
-<head >
+<head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>RSTools</title>
@@ -9,13 +9,9 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{% static 'images/rstoolsimg/stats.webp'%}" />
 
-  {{ rsn|json_script:"rsn" }}
-  {{ player_data|json_script:"player_data" }}
-  {{ compare|json_script:"compare" }}
-  {{ type|json_script:"type" }}
-  {{ player_data_compare|json_script:"player_data_compare" }}
-  {{ rsncompare|json_script:"rsncompare" }}
+
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -43,7 +39,12 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+{{ rsn|json_script:"rsn" }}
+{{ player_data|json_script:"player_data" }}
+{{ compare|json_script:"compare" }}
+{{ type|json_script:"type" }}
+{{ player_data_compare|json_script:"player_data_compare" }}
+{{ rsncompare|json_script:"rsncompare" }}
 <body class="index-page" style="overflow: none;">
 
 
@@ -108,7 +109,12 @@
         window.onload = function() {
           data = JSON.parse(document.getElementById('player_data').textContent);
           compare = JSON.parse(document.getElementById('compare').textContent);
-          if (compare != "True") {
+
+          if (data.split("\\").length >  getMinigameNames() +27) {
+            alert("Runescape has been updated! Please try using this feature again later.")
+            history.back()
+          } else {
+            if (compare != "True") {
             generateTableSkills(data);
             accountTypeSelection();
             generateTableMingames(data);
@@ -118,8 +124,10 @@
             CompareAccountsMinigames()
 
           }
-    
-      
+          }
+
+
+
     
         };
     </script>
