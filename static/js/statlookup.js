@@ -376,7 +376,7 @@ class PlayerData {
         url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
         img.src = url;
         img.style.position = "relative";
-        img.style.width = "14%";
+        img.style.width = "30px";
         img.style.textAlign = "center";
         img.style.paddingRight = "5px";
         img.style.display = "inline";
@@ -588,6 +588,7 @@ class PlayerData {
        catch (error) {
           formatted = "-1"
           tableCreation = false
+
        }
    
          
@@ -639,6 +640,7 @@ class PlayerData {
       document.getElementById("table_location").appendChild(tbl);
       tbl.setAttribute("border", "2");
     }
+
 
 
   }  
@@ -789,7 +791,7 @@ for (let i = 0; i < 24; i++) {
     url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
     img.src = url;
     img.style.position = "relative";
-    img.style.width = "14%";
+    img.style.width = "12.75%";
     img.style.textAlign = "center";
     img.style.paddingRight = "5px";
     img.style.display = "inline";
@@ -797,7 +799,6 @@ for (let i = 0; i < 24; i++) {
    
   const cell = document.createElement("td");
 
-  cell.style.display = "inline";
 
   const cellText = document.createTextNode(SkillNames[i]);
 
@@ -836,7 +837,7 @@ for (let i = 0; i < 24; i++) {
       document.getElementById("table_location").appendChild(para)
 
       document.getElementById("scroll").classList.remove("div2")
-      document.getElementById("scroll").classList.add("div2short")
+      document.getElementById("scroll").classList.add("div2shortcompare")
       tableCreation = false
       for (let index = 0; index < 30; index++) {
         var br = document.createElement("br");
@@ -857,7 +858,7 @@ for (let i = 0; i < 24; i++) {
     row.appendChild(cell);
   }
   //adding difference arrow
-
+try {
   const cellarrows = document.createElement("td");
   var difference = Number(cleanSkillData(player_data_sorted[i])[2]) - Number(cleanSkillData(player_data_sorted2[i])[2])
   var imgarrow = document.createElement("IMG");
@@ -877,6 +878,10 @@ for (let i = 0; i < 24; i++) {
 
   cellarrows.appendChild(imgarrow);
   row.appendChild(cellarrows);
+} catch (error) {
+  
+}
+
 
   const cell2 = document.createElement("td");
 //adding second skills list
@@ -910,7 +915,13 @@ for (let i = 0; i < 24; i++) {
     cell.style.padding = "7px"
     cell2.style.textAlign = "right"
     cell2.style.padding = "7px"
-    formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted2[i])[j]))
+    
+    try {
+      formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted2[i])[j]))
+    } catch (error) {
+      formatted = "-1"
+      
+    }
     if (formatted == "NaN") {
         formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted2[i].substring(1, player_data_sorted2[i].length - 1))[j]))
     }
@@ -919,11 +930,12 @@ for (let i = 0; i < 24; i++) {
       document.getElementById("table_location").innerHTML =""
       const para = document.createElement("p");
       no_data_notification = document.createTextNode("No data found for account type selection.")
+
       para.appendChild(no_data_notification)
       document.getElementById("table_location").appendChild(para)
 
-      document.getElementById("scroll").classList.remove("div2")
-      document.getElementById("scroll").classList.add("div2short")
+      document.getElementById("scroll").classList.remove("div2big")
+      document.getElementById("scroll").classList.add("div2shortcompare")
       tableCreation = false
       for (let index = 0; index < 30; index++) {
         var br = document.createElement("br");
@@ -958,8 +970,10 @@ row.appendChild(cell);
 
 row = document.createElement("tr");
 var cell = document.createElement("td");
-var cellText2 = document.createTextNode("Tombs of Amascutus padd");
+var cellText2 = document.createTextNode("Tombs of Amascutus pwdadd");
+
 cell.appendChild(cellText2);
+
 cell.style.textAlign = "left"
 row.appendChild(cell);
 row.style.visibility = "hidden"
@@ -978,6 +992,11 @@ tbl.appendChild(tblBody);
 if(tableCreation == true){
   document.getElementById("table_location").appendChild(tbl);
   tbl.setAttribute("border", "2");
+}
+else{
+
+  document.getElementById("scroll").classList.remove("divbig")
+  document.getElementById("scroll").classList.add("div2shortcompare")
 }
 
 // sets the border attribute of tbl to '2'
@@ -1104,7 +1123,7 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
     row.style.overflow = "hidden";
 
   const cell = document.createElement("td");
-  cell.style.paddingLeft = "1%";
+  cell.style.paddingLeft = "1.7%";
 
 
   const cellText = document.createTextNode(minigameNames[i]);
@@ -1134,7 +1153,7 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
       formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i])[j])) 
    }
    catch (error) {
-      formatted = "0"
+      formatted = "-133"
    }
   
     if (formatted == "NaN") {
@@ -1148,8 +1167,8 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
       para.appendChild(no_data_notification)
       document.getElementById("table_location").appendChild(para)
 
-      document.getElementById("scroll").classList.remove("div2")
-      document.getElementById("scroll").classList.add("div2short")
+      document.getElementById("scroll").classList.remove("div2big")
+      document.getElementById("scroll").classList.add("div2shortcompare")
       tableCreation = false
       for (let index = 0; index < 30; index++) {
         var br = document.createElement("br");
@@ -1172,13 +1191,13 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
   //adding difference arrow
 
   const cellarrows = document.createElement("td");
-  cellarrows.style.paddingLeft = "2.5%";
+  cellarrows.style.paddingLeft = "3%";
 
   try {
     var difference = Number(cleanMinigameData(player_data_sorted[i])[1]) - Number(cleanMinigameData(player_data_sorted2[i])[1])
  }
  catch (error) {
-    formatted = "0"
+  tableCreation = false
 
  }
  
@@ -1188,7 +1207,7 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
   imgarrow.style.paddingRight = "5px";
 
   imgarrow.style.display = "inline";
-  imgarrow.style.width = "136%";
+  imgarrow.style.width = "174%";
   if (difference > 0) {
     imgarrow.src = "/static/images/rstoolsimg/arrowup2.gif";
   } else if(difference == 0){
@@ -1210,7 +1229,7 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
     img2.style.width = "10.7%";
     img2.style.textAlign = "center";
     img2.style.paddingRight = "5px";
-    cell2.style.paddingLeft = "2%";
+    cell2.style.paddingLeft = "2.8%";
 
 
     img2.style.display = "inline";
@@ -1239,6 +1258,8 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
    }
    catch (error) {
       formatted = "0"
+      document.getElementById("scroll").classList.remove("div2big")
+      document.getElementById("scroll").classList.add("div2shortcompare")
    }
   
     if (formatted == "NaN") {
@@ -1252,8 +1273,8 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
       para.appendChild(no_data_notification)
       document.getElementById("table_location").appendChild(para)
 
-      document.getElementById("scroll").classList.remove("div2")
-      document.getElementById("scroll").classList.add("div2short")
+      document.getElementById("scroll").classList.remove("div2big")
+      document.getElementById("scroll").classList.add("div2shortcompare")
       tableCreation = false
       for (let index = 0; index < 30; index++) {
         var br = document.createElement("br");
@@ -1288,7 +1309,7 @@ row.appendChild(cell);
 
 row = document.createElement("tr");
 var cell = document.createElement("td");
-var cellText2 = document.createTextNode("Tombs of Amascutus padd");
+var cellText2 = document.createTextNode("Tombs of Amascutus dwawaddawdpadd");
 cell.appendChild(cellText2);
 cell.style.textAlign = "left"
 row.appendChild(cell);
@@ -1309,7 +1330,11 @@ if(tableCreation == true){
   document.getElementById("table_location").appendChild(tbl);
   tbl.setAttribute("border", "2");
 }
+else{
 
+  document.getElementById("scroll").classList.remove("divbig")
+  document.getElementById("scroll").classList.add("div2shortcompare")
+}
 // sets the border attribute of tbl to '2'
 
 

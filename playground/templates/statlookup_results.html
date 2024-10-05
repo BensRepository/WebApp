@@ -99,7 +99,7 @@
     }
     
     }
-    
+  
     </style>
     <!-- Background photo -->
 
@@ -116,6 +116,7 @@
             CompareAccountsSkills()
             accountTypeSelection();
             CompareAccountsMinigames()
+
           }
     
       
@@ -199,29 +200,24 @@
                   </form>
                 </a>
                 <a>
-                  <a>
-                    <form  action= "{% url 'statlookupresult' %}" method="POST">
-                      {% csrf_token %}
-                      <input type="hidden" name="text" value="{{ rsn }}" />
-                      <button name="type" value="Hardcore Ironman" type="submit">Hardcore Ironman</button>
-                      <input type="hidden" name="compare" value="{{compare}}" />
-                      <input type="hidden" name="text2" value="{{rsncompare}}" />
-                    </form>
-                  </a>
+                  <form  action= "{% url 'statlookupresult' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="text" value="{{ rsn }}" />
+                    <button name="type" value="Hardcore Ironman" type="submit">Hardcore Ironman</button>
+                    <input type="hidden" name="compare" value="{{compare}}" />
+                    <input type="hidden" name="text2" value="{{rsncompare}}" />
+                  </form>
                 </a>
-                <a>
                   <a>
                     <form  action= "{% url 'statlookupresult' %}" method="POST">
                       {% csrf_token %}
                       <input type="hidden" name="text" value="{{ rsn }}" />
-                      <input type="hidden" name="compare" value="false" />
                       <button name="type" value="Ultimate Ironman" type="submit">Ultimate Ironman</button>
                       <input type="hidden" name="compare" value="{{compare}}" />
                       <input type="hidden" name="text2" value="{{rsncompare}}" />
                     </form>
                   </a>
-                </a>
-             
+
               </div>
     
             </div>
@@ -253,6 +249,16 @@
               background-position: top; 
          
             }
+            .div2shortcompare{
+              background-image: url("{% static 'images/rstoolsimg/nodatascrollcompare.png'%}");
+         
+              margin-left: auto;
+              margin-right: auto;
+      
+              background-repeat: no-repeat;
+              background-position: top; 
+         
+            }
             .div2big{
               background-image: url("{% static 'images/rstoolsimg/scrollcompare.png'%}");
          
@@ -273,7 +279,9 @@
           </style>
           
           <div id="scroll" class="div2" data-aos="fade-up" data-aos-delay="300" style="padding-top: 160px;">
+            
             <div class='parent'>
+  
               <h2 class='child' id="rsntitle" style="font-size:70px;color: black;text-align: center;font-family: Times New Roman;font-weight: normal;"> {{rsn}}<span>.</span></h2>
               <h2 class='child' id="rsntitle2" style="font-size:70px;color: black;text-align: center;font-family: Times New Roman;font-weight: normal;display: none;"> <span>.</span></h2>
             </div>
