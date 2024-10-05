@@ -150,7 +150,7 @@ class WebAppViewset(viewsets.ModelViewSet):
 
             
 
-        context = {"player_data":str(api_request.content),"rsn":name,"type":type, "compare":compare,"player_data_compare":str(api_request2)}
+        context = {"player_data":str(api_request.content),"rsn":name,"type":type, "compare":compare,"player_data_compare":str(api_request2),"rsncompare":name2}
         return render(request,'statlookup_results.html',context=context)
 
     

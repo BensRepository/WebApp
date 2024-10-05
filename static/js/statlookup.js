@@ -424,7 +424,7 @@ class PlayerData {
           document.getElementById("scroll").classList.remove("div2")
           document.getElementById("scroll").classList.add("div2short")
           tableCreation = false
-          for (let index = 0; index < 25; index++) {
+          for (let index = 0; index < 30; index++) {
             var br = document.createElement("br");
             document.getElementById("table_location").appendChild(br)
           }
@@ -666,6 +666,16 @@ function accountTypeSelection(){
 
 }
 }
+
+function removeNullValue(data){
+  var player_data_split = data.split('\\')
+
+  var player_data_sorted = player_data_split.filter(function (index) {
+      return index !== 'n-1,-1';
+  });
+  return player_data_sorted
+}
+
 function CompareAccounts(){
   data2 = JSON.parse(document.getElementById('player_data_compare').textContent);
   data = JSON.parse(document.getElementById('player_data').textContent);
@@ -676,6 +686,301 @@ function CompareAccounts(){
     document.getElementById("scrolldiv").style.margin = "0px"
     document.getElementById("scrolldiv").width = "100px"
   }
+// clean data
+
+player_data_sorted = removeNullValue(data)
+player_data_sorted2 = removeNullValue(data2)
+
+// creates a <table> element and a <tbody> element
+const tbl = document.createElement("table");
+tbl.style.border = "none"
+const tblBody = document.createElement("tbody");
+tbl.style.color ="black"
+tblBody.style.color ="black"
+const title = document.createElement("tr");
+
+
+const skill = document.createElement("th");
+const rank = document.createElement("th");
+const level = document.createElement("th");
+const xp = document.createElement("th");
+const compare = document.createElement("th");
+
+const skill2 = document.createElement("th");
+const rank2 = document.createElement("th");
+const level2 = document.createElement("th");
+const xp2 = document.createElement("th");
+
+
+skill.style.textAlign = "left" 
+rank.style.textAlign = "right" 
+level.style.textAlign = "right"  
+xp.style.textAlign = "right"  
+compare.style.textAlign = "right"
+
+skill2.style.textAlign = "left" 
+rank2.style.textAlign = "right" 
+level2.style.textAlign = "right"  
+xp2.style.textAlign = "right"  
+
+
+skill.style.padding = "7px"
+rank.style.padding = "7px"
+level.style.padding = "7px"
+xp.style.padding = "7px"
+compare.style.padding = "22px"
+ 
+skill2.style.padding = "7px"
+rank2.style.padding = "7px"
+level2.style.padding = "7px"
+xp2.style.padding = "7px"
+
+const skillcellText = document.createTextNode("Skill");
+const rankcellText = document.createTextNode("Rank");
+const levelcellText = document.createTextNode("Level");
+const xpcellText = document.createTextNode("XP");
+const compareText = document.createTextNode("");
+
+const skillcellText2 = document.createTextNode("Skill");
+const rankcellText2 = document.createTextNode("Rank");
+const levelcellText2 = document.createTextNode("Level");
+const xpcellText2 = document.createTextNode("XP");
+
+skill.appendChild(skillcellText);
+title.appendChild(skill);
+
+rank.appendChild(rankcellText);
+title.appendChild(rank);
+
+level.appendChild(levelcellText);
+title.appendChild(level);
+
+xp.appendChild(xpcellText); 
+title.appendChild(xp);
+
+compare.appendChild(compareText); 
+title.appendChild(compare);
+
+skill2.appendChild(skillcellText2);
+title.appendChild(skill2);
+
+rank2.appendChild(rankcellText2);
+title.appendChild(rank2);
+
+level2.appendChild(levelcellText2);
+title.appendChild(level2);
+
+xp2.appendChild(xpcellText2); 
+title.appendChild(xp2);
+
+tbl.appendChild(title);
+
+tbl.id = "skillsTable"
+tableCreation = true;
+// creating all cells
+for (let i = 0; i < 24; i++) {
+    SkillNames = ["Overall", "Attack", "Defence", "Strength", "Hitpoints",
+        "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking",
+         "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction"]
+
+  // creates a table row
+  row = document.createElement("tr");
+  var img = document.createElement("IMG");
+    url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
+    img.src = url;
+    img.style.position = "relative";
+    img.style.width = "14%";
+    img.style.textAlign = "center";
+    img.style.paddingRight = "5px";
+    img.style.display = "inline";
+    row.style.textAlign = "left";
+   
+  const cell = document.createElement("td");
+
+  cell.style.display = "inline";
+
+  const cellText = document.createTextNode(SkillNames[i]);
+
+  var link = document.createElement('a');
+
+  link.setAttribute('href', "https://oldschool.runescape.wiki/w/"+SkillNames[i]);
+  link.setAttribute('html', SkillNames[i]);
+  link.setAttribute('target', "_blank");
+  link.className = "linkhover"
+  link.appendChild(cellText);
+
+  cell.appendChild(img);
+  cell.appendChild(link);
+  row.appendChild(cell);
+
+  var trained = true;
+  for (let j = 0; j < 3; j++) {
+
+    // Create a <td> element and a text node, make the text
+    // node the contents of the <td>, and put the <td> at
+    // the end of the table row
+    const cell = document.createElement("td");
+    cell.style.textAlign = "right"
+    cell.style.padding = "7px"
+
+    formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted[i])[j]))
+    if (formatted == "NaN") {
+        formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted[i].substring(1, player_data_sorted[i].length - 1))[j]))
+    }
+    if (formatted == "NaN") {
+ 
+      document.getElementById("table_location").innerHTML =""
+      const para = document.createElement("p");
+      no_data_notification = document.createTextNode("No data found for account type selection.")
+      para.appendChild(no_data_notification)
+      document.getElementById("table_location").appendChild(para)
+
+      document.getElementById("scroll").classList.remove("div2")
+      document.getElementById("scroll").classList.add("div2short")
+      tableCreation = false
+      for (let index = 0; index < 30; index++) {
+        var br = document.createElement("br");
+        document.getElementById("table_location").appendChild(br)
+      }
+
+
+
+      break
+  }
+    if (formatted == "-1") {
+        trained = false
+    }
+    
+
+    const cellText = document.createTextNode(formatted);
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+  }
+  //adding difference arrow
+
+  const cellarrows = document.createElement("td");
+  var difference = Number(cleanSkillData(player_data_sorted[i])[2]) - Number(cleanSkillData(player_data_sorted2[i])[2])
+  var imgarrow = document.createElement("IMG");
+  imgarrow.style.position = "relative";
+  imgarrow.style.textAlign = "center";
+  imgarrow.style.paddingRight = "5px";
+  imgarrow.style.display = "inline";
+  imgarrow.style.width = "70%";
+  if (difference > 0) {
+    imgarrow.src = "/static/images/rstoolsimg/arrowup2.gif";
+  } else if(difference == 0){
+    imgarrow.src = "/static/images/rstoolsimg/arrowequal.gif";
+  }
+  else {
+    imgarrow.src = "/static/images/rstoolsimg/arrowdown2.gif";
+  }
+
+  cellarrows.appendChild(imgarrow);
+  row.appendChild(cellarrows);
+
+  const cell2 = document.createElement("td");
+//adding second skills list
+  var img2 = document.createElement("IMG");
+    url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
+    img2.src = url;
+    img2.style.position = "relative";
+    img2.style.width = "18.55%";
+    img2.style.textAlign = "center";
+    img2.style.paddingRight = "5px";
+    img2.style.display = "inline";
+  var link = document.createElement('a');
+  const cellText2 = document.createTextNode(SkillNames[i]);
+  link.setAttribute('href', "https://oldschool.runescape.wiki/w/"+SkillNames[i]);
+  link.setAttribute('html', SkillNames[i]);
+  link.setAttribute('target', "_blank");
+  link.className = "linkhover"
+  link.appendChild(cellText2);
+  cell2.appendChild(img2);
+
+  cell2.appendChild(link);
+  row.appendChild(cell2);
+  for (let j = 0; j < 3; j++) {
+
+    // Create a <td> element and a text node, make the text
+    // node the contents of the <td>, and put the <td> at
+    // the end of the table row
+    const cell = document.createElement("td");
+    const cell2 = document.createElement("td");0
+    cell.style.textAlign = "right"
+    cell.style.padding = "7px"
+    cell2.style.textAlign = "right"
+    cell2.style.padding = "7px"
+    formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted2[i])[j]))
+    if (formatted == "NaN") {
+        formatted = numberWithCommas(Number(cleanSkillData(player_data_sorted2[i].substring(1, player_data_sorted2[i].length - 1))[j]))
+    }
+    if (formatted == "NaN") {
+ 
+      document.getElementById("table_location").innerHTML =""
+      const para = document.createElement("p");
+      no_data_notification = document.createTextNode("No data found for account type selection.")
+      para.appendChild(no_data_notification)
+      document.getElementById("table_location").appendChild(para)
+
+      document.getElementById("scroll").classList.remove("div2")
+      document.getElementById("scroll").classList.add("div2short")
+      tableCreation = false
+      for (let index = 0; index < 30; index++) {
+        var br = document.createElement("br");
+        document.getElementById("table_location").appendChild(br)
+      }
+
+
+
+      break
+  }
+    if (formatted == "-1") {
+        trained = false
+    }
+    
+
+    const cellText = document.createTextNode(formatted);
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+  }
+  // add the row to the end of the table body
+  if (trained == true) {
+    tblBody.appendChild(row);
+  }
+
+}
+row = document.createElement("tr");
+var cell = document.createElement("td");
+var cellText2 = document.createTextNode("image");
+cell.appendChild(cellText2);
+cell.style.textAlign = "left"
+row.appendChild(cell);
+
+row = document.createElement("tr");
+var cell = document.createElement("td");
+var cellText2 = document.createTextNode("Tombs of Amascutus padd");
+cell.appendChild(cellText2);
+cell.style.textAlign = "left"
+row.appendChild(cell);
+row.style.visibility = "hidden"
+
+for (let index = 0; index < 2; index++) {
+  var cell = document.createElement("td");
+  var cellText2 = document.createTextNode("");
+  cell.appendChild(cellText2);
+  cell.style.textAlign = "right"
+  row.appendChild(cell);
+}
+tblBody.appendChild(row)
+// put the <tbody> in the <table>
+tbl.appendChild(tblBody);
+// appends <table> into <body>
+if(tableCreation == true){
+  document.getElementById("table_location").appendChild(tbl);
+  tbl.setAttribute("border", "2");
+}
+
+// sets the border attribute of tbl to '2'
 
 
 
