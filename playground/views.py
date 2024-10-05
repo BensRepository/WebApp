@@ -66,12 +66,13 @@ class WebAppViewset(viewsets.ModelViewSet):
         type = request.POST.get('type')
         api_request2 = ""
         print(type)
+        print(compare)
         if(type == "Hardcore Ironman"):
             try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=" +name
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
-                print(str(api_request.content))  
+           
   
             except:
                 #api_requestHCIM = "no data returned"
@@ -82,18 +83,16 @@ class WebAppViewset(viewsets.ModelViewSet):
                     url = "https://secure.runescape.com/m=hiscore_oldschool_hardcore_ironman/index_lite.ws?player=" +name2
                     api_request2 = requests.get(url)
                     api_request2.raise_for_status() 
-                    print(str(api_request2.content))  
                     api_request2 = api_request2.content
                 except:
                     #api_requestHCIM = "no data returned"
-                    print("no data returned")
+                    print("no data returned hc")
 
         elif(type == "Ultimate Ironman"):
             try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" +name
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
-                print(str(api_request.content))  
             except:
                 #api_requestUIM = "no data returned"
                 print("no data returned")
@@ -102,7 +101,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                     url = "https://secure.runescape.com/m=hiscore_oldschool_ultimate/index_lite.ws?player=" +name2
                     api_request2 = requests.get(url)
                     api_request2.raise_for_status() 
-                    print(str(api_request2.content))  
                     api_request2 = api_request2.content
                 except:
                     #api_requestHCIM = "no data returned"
@@ -112,26 +110,23 @@ class WebAppViewset(viewsets.ModelViewSet):
                 url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" +name
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
-                print(str(api_request.content))  
             except:
                 #api_requestIM = "no data returned"
-                print("no data returned")
+                print("no data returned IM")
             if(compare == "True"):
                 try:
                     url = "https://secure.runescape.com/m=hiscore_oldschool_ironman/index_lite.ws?player=" +name2
                     api_request2 = requests.get(url)
                     api_request2.raise_for_status() 
-                    print(str(api_request.content2))  
                     api_request2 = api_request2.content
                 except:
                     #api_requestIM = "no data returned"
-                    print("no data returned")
+                    print("no data returned IM2")
         else:
             try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +name
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
-                print(str(api_request.content)) 
                 type = "All" 
             except:
                 print("no data returned")

@@ -676,7 +676,7 @@ function removeNullValue(data){
   return player_data_sorted
 }
 
-function CompareAccounts(){
+function CompareAccountsSkills(){
   data2 = JSON.parse(document.getElementById('player_data_compare').textContent);
   data = JSON.parse(document.getElementById('player_data').textContent);
 
@@ -848,7 +848,7 @@ for (let i = 0; i < 24; i++) {
       break
   }
     if (formatted == "-1") {
-        trained = false
+      formatted = "0"
     }
     
 
@@ -935,13 +935,343 @@ for (let i = 0; i < 24; i++) {
       break
   }
     if (formatted == "-1") {
-        trained = false
+      formatted = "-"
     }
     
 
     const cellText = document.createTextNode(formatted);
         cell.appendChild(cellText);
         row.appendChild(cell);
+  }
+  // add the row to the end of the table body
+  if (trained == true) {
+    tblBody.appendChild(row);
+  }
+
+}
+row = document.createElement("tr");
+var cell = document.createElement("td");
+var cellText2 = document.createTextNode("image");
+cell.appendChild(cellText2);
+cell.style.textAlign = "left"
+row.appendChild(cell);
+
+row = document.createElement("tr");
+var cell = document.createElement("td");
+var cellText2 = document.createTextNode("Tombs of Amascutus padd");
+cell.appendChild(cellText2);
+cell.style.textAlign = "left"
+row.appendChild(cell);
+row.style.visibility = "hidden"
+
+for (let index = 0; index < 2; index++) {
+  var cell = document.createElement("td");
+  var cellText2 = document.createTextNode("");
+  cell.appendChild(cellText2);
+  cell.style.textAlign = "right"
+  row.appendChild(cell);
+}
+tblBody.appendChild(row)
+// put the <tbody> in the <table>
+tbl.appendChild(tblBody);
+// appends <table> into <body>
+if(tableCreation == true){
+  document.getElementById("table_location").appendChild(tbl);
+  tbl.setAttribute("border", "2");
+}
+
+// sets the border attribute of tbl to '2'
+
+
+
+}
+
+function CompareAccountsMinigames(){
+  data2 = JSON.parse(document.getElementById('player_data_compare').textContent);
+  data = JSON.parse(document.getElementById('player_data').textContent);
+
+  if(data2 != ""){
+    document.getElementById("scroll").classList.remove("div2")
+    document.getElementById("scroll").classList.add("div2big")
+    document.getElementById("scrolldiv").style.margin = "0px"
+    document.getElementById("scrolldiv").width = "100px"
+  }
+// clean data
+var player_data_split = data.split('\\')
+var player_data_sorted = player_data_split.splice(26, player_data_split.length - 1);
+
+var player_data_split2 = data2.split('\\')
+var player_data_sorted2 = player_data_split2.splice(26, player_data_split2.length - 1);
+
+
+// creates a <table> element and a <tbody> element
+const tbl = document.createElement("table");
+tbl.style.tableLayout = "fixed"
+tbl.style.border = "none"
+const tblBody = document.createElement("tbody");
+tbl.style.color ="black"
+
+tblBody.style.color ="black"
+
+const title = document.createElement("tr");
+
+
+const skill = document.createElement("th");
+
+const rank = document.createElement("th");
+const score = document.createElement("th");
+const compare = document.createElement("th");
+
+const skill2 = document.createElement("th");
+const rank2 = document.createElement("th");
+const score2 = document.createElement("th");
+
+
+
+skill.style.textAlign = "left" 
+rank.style.textAlign = "right" 
+score.style.textAlign = "right"  
+compare.style.textAlign = "right"
+
+skill2.style.textAlign = "left" 
+rank2.style.textAlign = "right" 
+score2.style.textAlign = "right"  
+
+
+skill.style.padding = "7px"
+rank.style.padding = "7px"
+score.style.padding = "7px"
+compare.style.padding = "22px"
+ 
+skill2.style.padding = "7px"
+
+rank2.style.padding = "7px"
+score2.style.padding = "7px"
+
+
+const skillcellText = document.createTextNode("Minigame");
+const rankcellText = document.createTextNode("Rank");
+const scorecellText = document.createTextNode("Score");
+const compareText = document.createTextNode("");
+
+const skillcellText2 = document.createTextNode("Minigame");
+const rankcellText2 = document.createTextNode("Rank");
+const scorecellText2 = document.createTextNode("Score");
+
+skill.appendChild(skillcellText);
+title.appendChild(skill);
+
+rank.appendChild(rankcellText);
+title.appendChild(rank);
+
+score.appendChild(scorecellText);
+title.appendChild(score);
+
+
+compare.appendChild(compareText); 
+title.appendChild(compare);
+
+skill2.appendChild(skillcellText2);
+title.appendChild(skill2);
+
+rank2.appendChild(rankcellText2);
+title.appendChild(rank2);
+
+score2.appendChild(scorecellText2);
+title.appendChild(score2);
+
+tbl.appendChild(title);
+
+tbl.id = "minigameTable"
+tableCreation = true;
+// creating all cells
+for (let i = 0; i < player_data_sorted.length -1; i++) {
+
+
+  // creates a table row
+  row = document.createElement("tr");
+  var img = document.createElement("IMG");
+    url = "/static/images/rstoolsimg/minigame/"+minigameNames[i]+".png"
+    img.src = url;
+    img.style.position = "relative";
+    img.style.width = "10%";
+    img.style.textAlign = "center";
+    img.style.paddingRight = "5px";
+    
+    img.style.display = "inline";
+    row.style.textAlign = "left";
+    row.style.whiteSpace = "nowrap";
+    row.style.overflow = "hidden";
+
+  const cell = document.createElement("td");
+  cell.style.paddingLeft = "1%";
+
+
+  const cellText = document.createTextNode(minigameNames[i]);
+
+  var link = document.createElement('a');
+
+  link.setAttribute('href', "https://oldschool.runescape.wiki/w/"+minigameLinks[i]);
+  link.setAttribute('html', minigameNames[i]);
+  link.setAttribute('target', "_blank");
+  link.className = "linkhover"
+  link.appendChild(cellText);
+
+  cell.appendChild(img);
+  cell.appendChild(link);
+  row.appendChild(cell);
+
+  var trained = true;
+  for (let j = 0; j < 2; j++) {
+
+    // Create a <td> element and a text node, make the text
+    // node the contents of the <td>, and put the <td> at
+    // the end of the table row
+    const cell = document.createElement("td");
+    cell.style.textAlign = "right"
+    cell.style.padding = "7px"
+    try {
+      formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i])[j])) 
+   }
+   catch (error) {
+      formatted = "0"
+   }
+  
+    if (formatted == "NaN") {
+        formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i].substring(1, player_data_sorted[i].length - 1))[j]))
+    }
+    if (formatted == "NaN") {
+ 
+      document.getElementById("table_location").innerHTML =""
+      const para = document.createElement("p");
+      no_data_notification = document.createTextNode("No data found for account type selection.")
+      para.appendChild(no_data_notification)
+      document.getElementById("table_location").appendChild(para)
+
+      document.getElementById("scroll").classList.remove("div2")
+      document.getElementById("scroll").classList.add("div2short")
+      tableCreation = false
+      for (let index = 0; index < 30; index++) {
+        var br = document.createElement("br");
+        document.getElementById("table_location").appendChild(br)
+      }
+
+
+
+      break
+  }
+    if (formatted == "-1") {
+      formatted = "-"
+    }
+    
+
+    const cellText = document.createTextNode(formatted);
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+  }
+  //adding difference arrow
+
+  const cellarrows = document.createElement("td");
+  cellarrows.style.paddingLeft = "2.5%";
+
+  try {
+    var difference = Number(cleanMinigameData(player_data_sorted[i])[1]) - Number(cleanMinigameData(player_data_sorted2[i])[1])
+ }
+ catch (error) {
+    formatted = "0"
+
+ }
+ 
+  var imgarrow = document.createElement("IMG");
+  imgarrow.style.position = "relative";
+  imgarrow.style.textAlign = "center";
+  imgarrow.style.paddingRight = "5px";
+
+  imgarrow.style.display = "inline";
+  imgarrow.style.width = "136%";
+  if (difference > 0) {
+    imgarrow.src = "/static/images/rstoolsimg/arrowup2.gif";
+  } else if(difference == 0){
+    imgarrow.src = "/static/images/rstoolsimg/arrowequal.gif";
+  }
+  else {
+    imgarrow.src = "/static/images/rstoolsimg/arrowdown2.gif";
+  }
+
+  cellarrows.appendChild(imgarrow);
+  row.appendChild(cellarrows);
+
+  const cell2 = document.createElement("td");
+//adding second skills list
+  var img2 = document.createElement("IMG");
+    url = "/static/images/rstoolsimg/minigame/"+minigameNames[i]+".png"
+    img2.src = url;
+    img2.style.position = "relative";
+    img2.style.width = "10.7%";
+    img2.style.textAlign = "center";
+    img2.style.paddingRight = "5px";
+    cell2.style.paddingLeft = "2%";
+
+
+    img2.style.display = "inline";
+  var link = document.createElement('a');
+  const cellText2 = document.createTextNode(minigameNames[i]);
+  link.setAttribute('href', "https://oldschool.runescape.wiki/w/"+minigameNames[i]);
+  link.setAttribute('html', minigameNames[i]);
+  link.setAttribute('target', "_blank");
+  link.className = "linkhover"
+  link.appendChild(cellText2);
+  cell2.appendChild(img2);
+
+  cell2.appendChild(link);
+  row.appendChild(cell2);
+  for (let j = 0; j < 2; j++) {
+
+    // Create a <td> element and a text node, make the text
+    // node the contents of the <td>, and put the <td> at
+    // the end of the table row
+    const cell = document.createElement("td");
+    cell.style.textAlign = "right"
+    cell.style.padding = "7px"
+    try {
+  
+      formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted2[i])[j])) 
+   }
+   catch (error) {
+      formatted = "0"
+   }
+  
+    if (formatted == "NaN") {
+        formatted = numberWithCommas(Number(cleanMinigameData(player_data_sorted[i].substring(1, player_data_sorted[i].length - 1))[j]))
+    }
+    if (formatted == "NaN") {
+ 
+      document.getElementById("table_location").innerHTML =""
+      const para = document.createElement("p");
+      no_data_notification = document.createTextNode("No data found for account type selection.")
+      para.appendChild(no_data_notification)
+      document.getElementById("table_location").appendChild(para)
+
+      document.getElementById("scroll").classList.remove("div2")
+      document.getElementById("scroll").classList.add("div2short")
+      tableCreation = false
+      for (let index = 0; index < 30; index++) {
+        var br = document.createElement("br");
+        document.getElementById("table_location").appendChild(br)
+      }
+
+
+
+      break
+  }
+    if (formatted == "-1") {
+      formatted = "-"
+    }
+    
+
+    const cellText = document.createTextNode(formatted);
+    cell.appendChild(cellText);
+    row.appendChild(cell);
   }
   // add the row to the end of the table body
   if (trained == true) {

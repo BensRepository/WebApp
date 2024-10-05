@@ -113,8 +113,9 @@
             accountTypeSelection();
             generateTableMingames(data);
           } else {
+            CompareAccountsSkills()
             accountTypeSelection();
-            CompareAccounts()
+            CompareAccountsMinigames()
           }
     
       
@@ -153,8 +154,10 @@
                   <input type="text" name="text" value="{{ rsn }}" style="text-align: center;"required>
                 </div>
                 <div>
-                  <input type="text2" placeholder="RSN" name="text2" placeholder="RSN" style="text-align: center;" required>
+                 
+                  <input id="compareinput" type="text2" placeholder="RSN" name="text2" placeholder="RSN" style="text-align: center;" required>
                   <input type="hidden" name="compare" value="True" />
+          
                 </div>
            
               <div style="padding-top: 10px;">
@@ -162,7 +165,11 @@
               </div>
               
             </form>
-
+            <script>
+              if ("{{compare}}" == "True") {
+                document.getElementById("compareinput").value ="{{ rsncompare }}"
+              }
+            </script>
             </div>
           </div>
           <div style="width: 50px;top: 155%;margin-top: -50px;">
@@ -178,6 +185,8 @@
                   {% csrf_token %}
                   <input type="hidden" name="text" value="{{ rsn }}" />
                   <button name="type" value="All" type="submit">All</button>
+                  <input type="hidden" name="compare" value="{{compare}}" />
+                  <input type="hidden" name="text2" value="{{rsncompare}}" />
                 </form>
                </a>
                 <a>
@@ -185,6 +194,8 @@
                     {% csrf_token %}
                     <input type="hidden" name="text" value="{{ rsn }}" />
                     <button name="type" value="Ironman" type="submit">Ironman</button>
+                    <input type="hidden" name="compare" value="{{compare}}" />
+                    <input type="hidden" name="text2" value="{{rsncompare}}" />
                   </form>
                 </a>
                 <a>
@@ -193,6 +204,8 @@
                       {% csrf_token %}
                       <input type="hidden" name="text" value="{{ rsn }}" />
                       <button name="type" value="Hardcore Ironman" type="submit">Hardcore Ironman</button>
+                      <input type="hidden" name="compare" value="{{compare}}" />
+                      <input type="hidden" name="text2" value="{{rsncompare}}" />
                     </form>
                   </a>
                 </a>
@@ -203,6 +216,8 @@
                       <input type="hidden" name="text" value="{{ rsn }}" />
                       <input type="hidden" name="compare" value="false" />
                       <button name="type" value="Ultimate Ironman" type="submit">Ultimate Ironman</button>
+                      <input type="hidden" name="compare" value="{{compare}}" />
+                      <input type="hidden" name="text2" value="{{rsncompare}}" />
                     </form>
                   </a>
                 </a>
@@ -270,11 +285,15 @@
                 document.getElementById("rsntitle").innerHTML = "{{rsn}}"
                 }
                 else{
+                document.getElementById("scrolldiv").style.overflow = "hidden"
+                document.getElementById("hero").style.overflow = "hidden"
                 document.getElementById("rsntitle2").innerHTML  = "{{rsncompare}}" 
 
-                document.getElementById("rsntitle").style.float = "left" 
-                document.getElementById("rsntitle").style.paddingLeft = "21%" 
-                document.getElementById("rsntitle2").style.paddingRight = "11%" 
+      
+       
+                document.getElementById("rsntitle2").style.whiteSpace = "nowrap" 
+           
+                document.getElementById("rsntitle2").style.overflow = "none"
                 document.getElementById("rsntitle2").style.display = "inline"
                 }
               </script>
@@ -373,50 +392,6 @@
       </style>
 
       
-        <!-- <div class="container" style="top: 70px;position: absolute;zoom: 81%;display: inline-block;" >
-          <div id="flex-container" style="border: none;"  >
-            <div class="flex-item" data-aos="fade-in" data-aos-delay="1200" style="border: none;">
-      
-       
-                <form  action= "{% url 'statlookupresult' %}" method="POST">
-                  {% csrf_token %}
-                  <input type="text" value="{{ rsn }}" name="text" value="{{ name.id }}"placeholder="RSN" style="text-align: center;"required>
-
-                  <div style="padding-top: 10px;">
-                    <button type="submit" class="button-73" role="button">Lookup</button>
-                  </div>
-                </form>
-            
-      
-             
-            </div>
-            <div  style="align-items: center;text-align: center;position: relative;border: none;"data-aos="fade-in" data-aos-delay="800">
-         
-            </div>
-            <div class="flex-item" style="align-items: center;text-align: center;border: none;" data-aos="fade-in" data-aos-delay="1200">
-       
-       
-              <form  action= "{% url 'statlookupresult' %}" method="POST">
-                {% csrf_token %}
-                <div style="padding-bottom: 5px;">
-                  <input type="text" name="text" value="{{ rsn }}" style="text-align: center;"required>
-                </div>
-                <div>
-                  <input type="text2" placeholder="RSN" name="text2" placeholder="RSN" style="text-align: center;" required>
-                  <input type="hidden" name="compare" value="True" />
-                </div>
-           
-              <div style="padding-top: 10px;">
-                <button type="submit" class="button-73" role="button">Compare</button>
-              </div>
-              
-            </form>
-
-            </div>
-          </div>
-      
-      
-        </div> -->
 </section><!-- /Hero Section -->
 
   </footer>
