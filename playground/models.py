@@ -111,3 +111,18 @@ class LeaderboardSurvivalOhnepixelMode(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class RSLeaderboardEntry(models.Model):
+    id = models.AutoField(primary_key=True)
+    rsn = models.CharField(max_length=20)
+    weeklybosskillsstart = models.IntegerField()
+    weeklybosskillscurrent = models.IntegerField()
+    totalxpstart = models.IntegerField()
+    totalxpcurrent = models.IntegerField()
+    weeklyskillxpstart = models.IntegerField()
+    weeklyskillxpcurrent = models.IntegerField()
+    event = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.rsn

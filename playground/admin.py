@@ -12,7 +12,7 @@ from .models import LeaderboardSurvivalMediumMode
 from .models import LeaderboardSurvivalHardMode
 from .models import LeaderboardSurvivalExpertMode
 from .models import LeaderboardSurvivalOhnepixelMode
-
+from .models import RSLeaderboardEntry
 admin.site.register(Case)
 admin.site.register(Rate)
 admin.site.register(LeaderboardCompetitiveEasyMode)
@@ -26,3 +26,4 @@ admin.site.register(LeaderboardSurvivalMediumMode)
 admin.site.register(LeaderboardSurvivalHardMode)
 admin.site.register(LeaderboardSurvivalExpertMode)
 admin.site.register(LeaderboardSurvivalOhnepixelMode)
+admin.site.register(RSLeaderboardEntry)

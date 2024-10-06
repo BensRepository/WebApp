@@ -14,6 +14,10 @@ from .models import LeaderboardSurvivalMediumMode
 from .models import LeaderboardSurvivalHardMode
 from .models import LeaderboardSurvivalExpertMode
 from .models import LeaderboardSurvivalOhnepixelMode
+
+from .models import RSLeaderboardEntry
+
+
 from .forms import PostFormEasy
 from .forms import PostFormMedium
 from .forms import PostFormHard
@@ -52,8 +56,16 @@ class WebAppViewset(viewsets.ModelViewSet):
     
     def load_lootsimulator(request):
         return render(request,'lootsimulator.html')
+    
+
     def load_xpleaderboard(request):
-        return render(request,'xpleaderboard.html')
+        leaderboard_data=[]
+        context = {}
+        for x in RSLeaderboardEntry.objects.all().values():
+            leaderboard_data.append(x)
+     
+        context['leaderboard_data'] = leaderboard_data
+        return render(request,'xpleaderboard.html',context)
     
     def load_statlookup(request):
 
@@ -361,18 +373,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
             
       
-        # type = "rifles"
-        # gun2 = glob.glob("."+STATIC_URL+"skins/"+type+"/*")
-        # total = 0
-        # list = []
-        # for i in gun2:
-        #     gun = i.split("\\")[1]
-        #     for j in ["grey","light_blue","blue","purple","pink","red"]:
-        #         total += len(glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"))
-        #         for x in glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"):
-
-        #             list.append(x)
-        # print(filenames)
         return render(request, "skin_master_survival.html",context=filenames)    
     
     def skin_master_ranked(request):

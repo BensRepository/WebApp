@@ -58,7 +58,7 @@
 
     </div>
   </header>
-
+  {{ leaderboard_data|json_script:"leaderboard_data"}}
   <main class="main">
 
     <!-- Background photo -->
@@ -122,18 +122,22 @@
             <img  src="{% static 'images/rstoolsimg/skill.png'%}" alt="Generic placeholder image" width="140" height="140">
             <h2>Skill of the Week</h2>
             <h3><img  src="{% static 'images/rstoolsimg/skills/Crafting.webp'%}" alt="Generic placeholder image" style="width: 35px;"> Crafting</h3>
-            <b><p style="font-size: 20px;">#1 Artillery - 1,000,000 XP</p></b>
-            <p>#2 Jfrith - 600,000</p>
-            <p>#3 GalloRS - 1000</p>
+         
+              <b><p id="firstplaceskill" style="font-size: 20px;">#1 Artillery - 1,000,000 XP</p></b>
+              <p id="secondplaceskill">#2 Jfrith - 600,000</p>
+              <p id="thirdplaceskill">#3 GalloRS - 1000</p>
+              <div id="leaderboardskill">
+              </div>
+  
             <p><a class="btn btn-secondary" href="#" role="button">View all »</a></p>
 
           </div data-aos="fade-up" data-aos-delay="200"><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img  src="{% static 'images/rstoolsimg/overall.webp'%}" alt="Generic placeholder image" width="140" height="140">
             <h2>Total XP Gained</h2>
-             <b><p style="font-size: 20px;">#1 Artillery - 1,000,000 XP</p></b>
-            <p>#2 Jfrith - 600,000 XP</p>
-            <p>#3 GalloRS - 1000 XP</p>
+             <b><p style="font-size: 20px;" id="firstplaceoverall">#1 Artillery - 1,000,000 XP</p></b>
+            <p id="secondplaceoverall">#2 Jfrith - 600,000 XP</p>
+            <p id="thirdplaceoverall">#3 GalloRS - 1000 XP</p>
             
             <p><a class="btn btn-secondary" href="#" role="button">View all »</a></p>
           </div><!-- /.col-lg-4 -->
@@ -141,9 +145,9 @@
             <img  src="{% static 'images/rstoolsimg/boss.png'%}" alt="Generic placeholder image" width="140" height="140">
             <h2>Boss of the Week</h2>
             <h3><img  src="{% static 'images/rstoolsimg/minigame/Chambers of Xeric.png'%}" alt="Generic placeholder image" style="width: 35px;"> Chambers of Xeric</h3>
-            <b><p style="font-size: 20px;">#1 Artillery - 20 Kills</p></b>
-            <p>#2 Jfrith - 13 Kills</p>
-            <p>#3 GalloRS - 7 Kills</p>
+            <b><p style="font-size: 20px;"id="firstplaceboss">#1 Artillery - 20 Kills</p></b>
+            <p id="secondplaceboss">#2 Jfrith - 13 Kills</p>
+            <p id="thirdplaceboss">#3 GalloRS - 7 Kills</p>
             <p><a class="btn btn-secondary" href="#" role="button">View all »</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
@@ -163,18 +167,18 @@
             <img  src="{% static 'images/rstoolsimg/skillprevious.webp'%}" alt="Generic placeholder image" style="width: 131px; height:271px;">
             <h2>Skill of the Week</h2>
             <h3><img  src="{% static 'images/rstoolsimg/skills/Runecrafting.webp'%}" alt="Generic placeholder image" style="width: 35px;"> Runecrafting</h3>
-            <b><p style="font-size: 20px;">#1 Artillery - 1,000,000 XP</p></b>
-            <p>#2 Jfrith - 600,000 XP</p>
-            <p>#3 GalloRS - 1000 XP</p>
+            <b><p style="font-size: 20px;" id="firstplaceskillprevious">#1 Artillery - 1,000,000 XP</p></b>
+            <p id="secondplaceskillprevious">#2 Jfrith - 600,000 XP</p>
+            <p id="thirdplaceskillprevious">#3 GalloRS - 1000 XP</p>
             <div style="padding-bottom: 100px;"></div>
           </div><!-- /.col-lg-4 -->
 
           <div class="col-lg-4 bgskill"data-aos="fade-up" data-aos-delay="200" >
             <img  src="{% static 'images/rstoolsimg/overallprevious.webp'%}" alt="Generic placeholder image" style="padding-top: 35%;">
             <h2>Total XP Gained</h2>
-             <b><p style="font-size: 20px;">#1 Artillery - 1,000,000 XP</p></b>
-            <p>#2 Jfrith - 600,000 XP</p>
-            <p>#3 GalloRS - 1000 XP</p>
+             <b><p style="font-size: 20px;" id="firstplaceoverallprevious">#1 Artillery - 1,000,000 XP</p></b>
+            <p id="secondplaceoverallprevious">#2 Jfrith - 600,000 XP</p>
+            <p id="thirdplaceoverallprevious">#3 GalloRS - 1000 XP</p>
             <div style="padding-bottom: 100px;"></div>
 
           </div><!-- /.col-lg-4 -->
@@ -183,9 +187,9 @@
             <img  src="{% static 'images/rstoolsimg/bossprevious.webp'%}" alt="Generic placeholder image" style="width: 131px; height:271px;">
             <h2>Boss of the Week</h2>
             <h3><img  src="{% static 'images/rstoolsimg/GM.png'%}" alt="Generic placeholder image" style="width: 35px;"> Giant Mole</h3>
-            <b><p style="font-size: 20px;">#1 Artillery - 350 Kills</p></b>
-            <p>#2 Jfrith - 121 Kills</p>
-            <p>#3 GalloRS - 52 Kills</p>
+            <b><p style="font-size: 20px;" id="firstplacebossprevious">#1 Artillery - 350 Kills</p></b>
+            <p id="secondplacebossprevious">#2 Jfrith - 121 Kills</p>
+            <p id="thirdplacebossprevious">#3 GalloRS - 52 Kills</p>
             <div style="padding-bottom: 100px;"></div>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
@@ -193,7 +197,115 @@
       </div>
 
     </section><!-- /About Section -->
+    <script>
+      function sortFunction(a, b) {
+        if (a[1] === b[1]) {
+            return 0;
+        }
+        else {
+            return (a[1] > b[1]) ? -1 : 1;
+        }
+    }
+    function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+        data = JSON.parse(document.getElementById("leaderboard_data").textContent);
+        rsndatacurrent = []
+        rsndataprevious = []
+    
+          for (let i = 0; i < data.length; i++){
+              Weeklybosskillsstart = data[i].weeklybosskillsstart
+              Weeklybosskillscurrent = data[i].weeklybosskillscurrent
+              Totalxpstart = data[i].totalxpstart
+              Totalxpcurrent= data[i].totalxpcurrent
+              Weeklyskillxpstart= data[i].weeklyskillxpstart
+              Weeklyskillxpcurrent= data[i].weeklyskillxpcurrent
+              rsn= data[i].rsn
+              event= data[i].event
+              if (event == "current") {
+                rsndatacurrent.push([Weeklybosskillsstart,Weeklybosskillscurrent,Totalxpstart,Totalxpcurrent,Weeklyskillxpstart,Weeklyskillxpcurrent,rsn])
+              } else {
+                rsndataprevious.push([Weeklybosskillsstart,Weeklybosskillscurrent,Totalxpstart,Totalxpcurrent,Weeklyskillxpstart,Weeklyskillxpcurrent,rsn])
+              }
+              
+              }
 
+              weeklybossrankings = []
+              totalxprankings = []
+              weeklyskillrankings = []
+    
+              for (let i = 0; i < rsndatacurrent.length; i++){
+                Weeklybosskillsstart = rsndatacurrent[i][0]
+                Weeklybosskillscurrent = rsndatacurrent[i][1]
+    
+                weeklybossrankings.push([rsndatacurrent[i][6],Weeklybosskillscurrent-Weeklybosskillsstart])
+               
+                
+                Totalxpstart = rsndatacurrent[i][2]
+                Totalxpcurrent= rsndatacurrent[i][3]
+    
+                totalxprankings.push([rsndatacurrent[i][6],Totalxpcurrent-Totalxpstart])
+          
+    
+                Weeklyskillxpstart= rsndatacurrent[i][4]
+                Weeklyskillxpcurrent= rsndatacurrent[i][5]
+    
+                weeklyskillrankings.push([rsndatacurrent[i][6],Weeklyskillxpcurrent-Weeklyskillxpstart])
+                
+              }
+    
+
+              weeklybossrankingsprevious = []
+              totalxprankingsprevious = []
+              weeklyskillrankingsprevious = []
+    
+              for (let i = 0; i < rsndataprevious.length; i++){
+                Weeklybosskillsstart = rsndataprevious[i][0]
+                Weeklybosskillscurrent = rsndataprevious[i][1]
+    
+                weeklybossrankingsprevious.push([rsndatacurrent[i][6],Weeklybosskillscurrent-Weeklybosskillsstart])
+               
+                
+                Totalxpstart = rsndataprevious[i][2]
+                Totalxpcurrent= rsndataprevious[i][3]
+    
+                totalxprankingsprevious.push([rsndatacurrent[i][6],Totalxpcurrent-Totalxpstart])
+          
+    
+                Weeklyskillxpstart= rsndataprevious[i][4]
+                Weeklyskillxpcurrent= rsndataprevious[i][5]
+    
+                weeklyskillrankingsprevious.push([rsndatacurrent[i][6],Weeklyskillxpcurrent-Weeklyskillxpstart])
+                
+              }
+              weeklybossrankingsprevious = weeklybossrankingsprevious.sort(sortFunction);
+              weeklyskillrankingsprevious.sort(sortFunction);
+              totalxprankingsprevious = totalxprankingsprevious.sort(sortFunction);
+    
+              document.getElementById("firstplaceskillprevious").innerText =  "#1 "+ weeklyskillrankingsprevious[0][0] + " - " + numberWithCommas(weeklyskillrankingsprevious[0][1]) + " XP"
+              document.getElementById("secondplaceskillprevious").innerText =  "#2 "+ weeklyskillrankingsprevious[1][0] + " - " + numberWithCommas(weeklyskillrankingsprevious[1][1]) + " XP"
+              document.getElementById("thirdplaceskillprevious").innerText =  "#3 "+ weeklyskillrankingsprevious[2][0] + " - " + numberWithCommas(weeklyskillrankingsprevious[2][1]) + " XP"
+     
+              document.getElementById("firstplacebossprevious").innerText =  "#1 "+ weeklybossrankingsprevious[0][0] + " - " + numberWithCommas(weeklybossrankingsprevious[0][1]) + " Kills"
+              document.getElementById("secondplacebossprevious").innerText =  "#2 "+ weeklybossrankingsprevious[1][0] + " - " + numberWithCommas(weeklybossrankingsprevious[1][1]) + " Kills"
+              document.getElementById("thirdplacebossprevious").innerText =  "#3 "+ weeklybossrankingsprevious[2][0] + " - " + numberWithCommas(weeklybossrankingsprevious[2][1]) + " Kills"
+
+              document.getElementById("firstplaceoverallprevious").innerText =  "#1 "+ totalxprankingsprevious[0][0] + " - " + numberWithCommas(totalxprankingsprevious[0][1]) + " XP"
+              document.getElementById("secondplaceoverallprevious").innerText =  "#2 "+ totalxprankingsprevious[1][0] + " - " + numberWithCommas(totalxprankingsprevious[1][1]) + " XP"
+              document.getElementById("thirdplaceoverallprevious").innerText =  "#3 "+ totalxprankingsprevious[2][0] + " - " + numberWithCommas(totalxprankingsprevious[2][1]) + " XP"
+
+              document.getElementById("firstplaceskill").innerText =  "#1 "+ weeklyskillrankings[0][0] + " - " + numberWithCommas(weeklyskillrankings[0][1]) + " XP"
+              document.getElementById("secondplaceskill").innerText =  "#2 "+ weeklyskillrankings[1][0] + " - " + numberWithCommas(weeklyskillrankings[1][1]) + " XP"
+              document.getElementById("thirdplaceskill").innerText =  "#3 "+ weeklyskillrankings[2][0] + " - " + numberWithCommas(weeklyskillrankings[2][1]) + " XP"
+     
+              document.getElementById("firstplaceboss").innerText =  "#1 "+ weeklybossrankings[0][0] + " - " + numberWithCommas(weeklybossrankings[0][1]) + " Kills"
+              document.getElementById("secondplaceboss").innerText =  "#2 "+ weeklybossrankings[1][0] + " - " + numberWithCommas(weeklybossrankings[1][1]) + " Kills"
+              document.getElementById("thirdplaceboss").innerText =  "#3 "+ weeklybossrankings[2][0] + " - " + numberWithCommas(weeklybossrankings[2][1]) + " Kills"
+
+              document.getElementById("firstplaceoverall").innerText =  "#1 "+ totalxprankings[0][0] + " - " + numberWithCommas(totalxprankings[0][1]) + " XP"
+              document.getElementById("secondplaceoverall").innerText =  "#2 "+ totalxprankings[1][0] + " - " + numberWithCommas(totalxprankings[1][1]) + " XP"
+              document.getElementById("thirdplaceoverall").innerText =  "#3 "+ totalxprankings[2][0] + " - " + numberWithCommas(totalxprankings[2][1]) + " XP"
+    </script>
   </footer>
   </main>
   <!-- Scroll Top -->
