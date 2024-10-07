@@ -16,7 +16,7 @@ from .models import LeaderboardSurvivalExpertMode
 from .models import LeaderboardSurvivalOhnepixelMode
 
 from .models import RSLeaderboardEntry
-
+from .models import Weeklys
 
 from .forms import PostFormEasy
 from .forms import PostFormMedium
@@ -59,14 +59,37 @@ class WebAppViewset(viewsets.ModelViewSet):
     
 
     def load_xpleaderboard(request):
+        rsn = request.POST.get('rsn')
+        print(rsn)
+        try:
+                url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +rsn
+                api_request = requests.get(url)
+                api_request.raise_for_status() 
+                print(api_request.content)
+        except:
+            print("no data")
         leaderboard_data=[]
         context = {}
         for x in RSLeaderboardEntry.objects.all().values():
             leaderboard_data.append(x)
-     
+        
         context['leaderboard_data'] = leaderboard_data
+
         return render(request,'xpleaderboard.html',context)
     
+    def change_weekly(self):
+        weeklyObjects = Weeklys.objects.all()
+        try:
+            weekly = weeklyObjects.get(id=1)
+            weekly.boss = "COX"
+            weekly.skill = "CRAFTING"
+            weekly.save(update_fields=['boss','skill'])
+            print("saves model")
+        except:
+            print("Didn't save model")
+            pass
+
+
     def load_statlookup(request):
 
             return render(request,'statlookup.html')

@@ -126,3 +126,8 @@ class RSLeaderboardEntry(models.Model):
 
     def __str__(self):
         return self.rsn
+    
+class Weeklys(models.Model):
+    id = models.AutoField(primary_key=True)
+    skill = models.CharField(max_length=45)
+    boss = models.CharField(max_length=45)
