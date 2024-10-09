@@ -12,6 +12,7 @@ def start():
     scheduler.add_job(price.save_price_data,"interval",minutes=10,id="caseprice_001",replace_existing=True)
     scheduler.add_job(rates._save_conversion_rates,"interval",minutes=1440,id="currencyrates_001",replace_existing=True)
     scheduler.add_job(weekly.change_weekly, trigger='cron', day_of_week='tue',hour=19,minute=33)
-    scheduler.add_job(weekly.set_previous, trigger='cron', day_of_week='tue',hour=22,minute=39)
+    scheduler.add_job(weekly.set_previous, trigger='cron', day_of_week='wed',hour=16,minute=47)
+    scheduler.add_job(weekly.set_new_values, trigger='cron', day_of_week='wed',hour=18,minute=50)
     scheduler.start()
 

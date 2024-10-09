@@ -39,22 +39,22 @@ from WebApp.settings import STATIC_URL
 
 
 minigameNames = [
-            #"Bounty Hunter - Hunter",
-            #"Bounty Hunter - Rogue",
-            #"Bounty Hunter (Legacy) - Hunter",
-            #"Bounty Hunter (Legacy) - Rogue",
-            #"Clue Scrolls (all)",
-            #"Clue Scrolls (beginner)",
-            #"Clue Scrolls (easy)",
-            #"Clue Scrolls (medium)",
-            #"Clue Scrolls (hard)",
-            #"Clue Scrolls (elite)",
-            #"Clue Scrolls (master)",
-            #"LMS - Rank",
-            #"PvP Arena - Rank",
-            #"Soul Wars Zeal",
-            #"Rifts closed",
-            #"Colosseum Glory",
+            "Bounty Hunter - Hunter",
+            "Bounty Hunter - Rogue",
+            "Bounty Hunter (Legacy) - Hunter",
+            "Bounty Hunter (Legacy) - Rogue",
+            "Clue Scrolls (all)",
+            "Clue Scrolls (beginner)",
+            "Clue Scrolls (easy)",
+            "Clue Scrolls (medium)",
+            "Clue Scrolls (hard)",
+            "Clue Scrolls (elite)",
+            "Clue Scrolls (master)",
+            "LMS - Rank",
+            "PvP Arena - Rank",
+            "Soul Wars Zeal",
+            "Rifts closed",
+            "Colosseum Glory",
             "Abyssal Sire",
             "Alchemical Hydra",
             "Amoxliatl",
@@ -80,14 +80,14 @@ minigameNames = [
             "General Graardor",
             "Giant Mole",
             "Grotesque Guardians",
-            #"Hespori",
+            "Hespori",
             "Kalphite Queen",
             "King Black Dragon",
             "Kraken",
             "Kree'Arra",
             "K'ril Tsutsaroth",
             "Lunar Chests",
-            #"Mimic",
+            "Mimic",
             "Nex",
             "Nightmare",
             "Phosani's Nightmare",
@@ -121,9 +121,30 @@ minigameNames = [
             "Zulrah"
 
          ]
-SkillNames = ["Overall", "Attack", "Defence", "Strength", "Hitpoints",
-            "Ranged", "Prayer", "Magic", "Cooking", "Woodcutting", "Fletching", "Fishing", "Firemaking",
-             "Crafting", "Smithing", "Mining", "Herblore", "Agility", "Thieving", "Slayer", "Farming", "Runecrafting", "Hunter", "Construction"]
+SkillNames = ["Overall",
+            "Attack",
+            "Defence",
+            "Strength",
+            "Hitpoints",
+            "Ranged",
+            "Prayer",
+            "Magic",
+            "Cooking",
+            "Woodcutting",
+            "Fletching",
+            "Fishing",
+            "Firemaking",
+            "Crafting",
+            "Smithing",
+            "Mining",
+            "Herblore",
+            "Agility",
+            "Thieving",
+            "Slayer",
+            "Farming",
+            "Runecrafting",
+            "Hunter",
+            "Construction"]
 
 
 
@@ -174,7 +195,7 @@ class WebAppViewset(viewsets.ModelViewSet):
     
     def change_weekly(self):
         
-        boss_index = random.randint(0,len(minigameNames))
+        boss_index = random.randint(17,len(minigameNames))
         skill_index = random.randint(0,len(SkillNames))
 
         weeklyObjects = Weeklys.objects.all()
@@ -197,13 +218,52 @@ class WebAppViewset(viewsets.ModelViewSet):
                 if object.event == "previous":
                     object.delete() 
                 if object.event == "current":
+                    object.pk = None
+                    object.save()
                     object.event = "previous"
                     object.save()
         except:
             print("Didn't save model")
             pass
 
+    def set_new_values(self):
 
+        LeaderboardObjects = RSLeaderboardEntry.objects.all()
+        try:
+            for object in LeaderboardObjects:
+                if object.event == "current":
+                    try:
+                        url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +object.rsn
+                        api_request = requests.get(url)
+                        api_request.raise_for_status() 
+                        api_request = api_request.content
+                 
+                        weeklyObjects = Weeklys.objects.all()
+                        weekly = weeklyObjects.get(id=1)
+                        
+                        data = str(api_request).split('\\')
+                        if data[minigameNames.index(weekly.boss)+24] == "n-1,-1":
+                            object.weeklybosskillsstart = 0
+                            object.weeklybosskillscurrent = 0
+                        else:
+                            object.weeklybosskillsstart = data[minigameNames.index(weekly.boss)+24].split(',')[1]
+                            object.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+24].split(',')[1]
+                        print(SkillNames.index(weekly.skill))
+
+                      
+                        object.totalxpstart = data[2].split(',')[2]
+                        object.totalxpcurrent = data[2].split(',')[2]
+                     
+                        object.weeklyskillxpstart = data[SkillNames.index(weekly.skill)].split(',')[2]
+                        object.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
+                        object.save()
+                    except Exception as e:
+                        print(e)
+        
+                      
+        except:
+            print("Didn't save model")
+            pass
     def load_statlookup(request):
 
             return render(request,'statlookup.html')
