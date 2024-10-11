@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import requests
 import json
 import random
-
+import sys, os
 from .models import Case
 from .models import Rate
 from .models import LeaderboardCompetitiveEasyMode
@@ -66,7 +66,7 @@ minigameNames = [
             "Calvar'ion",
             "Cerberus",
             "Chambers of Xeric",
-            "Chambers of Xeric Challenge Mode",
+            "reroll",
             "Chaos Elemental",
             "Chaos Fanatic",
             "Commander Zilyana",
@@ -80,14 +80,14 @@ minigameNames = [
             "General Graardor",
             "Giant Mole",
             "Grotesque Guardians",
-            "Hespori",
+            "reroll",
             "Kalphite Queen",
             "King Black Dragon",
             "Kraken",
             "Kree'Arra",
             "K'ril Tsutsaroth",
-            "Lunar Chests",
-            "Mimic",
+            "reroll",
+            "reroll",
             "Nex",
             "Nightmare",
             "Phosani's Nightmare",
@@ -106,11 +106,11 @@ minigameNames = [
             "The Leviathan",
             "The Whisperer",
             "Theatre of Blood",
-            "Theatre of Blood Hard Mode",
+            "reroll",
             "Thermonuclear Smoke Devil",
             "Tombs of Amascut",
             "Tombs of Amascut Expert Mode",
-            "TzKal-Zuk",
+            "reroll",
             "TzTok-Jad",
             "Vardorvis",
             "Venenatis",
@@ -177,15 +177,91 @@ class WebAppViewset(viewsets.ModelViewSet):
     def load_xpleaderboard(request):
         rsn = request.POST.get('rsn')
         print(rsn)
-        try:
+        if(rsn != None):
+            try:
                 url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +rsn
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
-                print(api_request.content)
-        except:
-            print("no data")
+                api_request = api_request.content
+
+                weeklyObjects = Weeklys.objects.all()
+                weekly = weeklyObjects.get(id=1)
+                data = str(api_request).split('\\')
+                addDB = False
+                for x in RSLeaderboardEntry.objects.all():
+                    print(x.rsn.lower() +" "+str(rsn).lower())
+                    if(x.rsn.lower() == str(rsn).lower() and x.event == "current"):
+                        addDB = False
+                        DBObject = x
+                       
+                if(addDB == True):
+                    newEntry = RSLeaderboardEntry()
+                    newEntry.rsn = rsn
+                    if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
+                        newEntry.weeklybosskillsstart = 0
+                        newEntry.weeklybosskillscurrent = 0
+                    else:
+                        newEntry.weeklybosskillsstart = data[minigameNames.index(weekly.boss)+26].split(',')[1]
+                        newEntry.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+26].split(',')[1]
+    
+
+                    newEntry.totalxpstart = data[0].split(',')[2]
+                    newEntry.totalxpcurrent = data[0].split(',')[2]
+            
+                    newEntry.weeklyskillxpstart = data[SkillNames.index(weekly.skill)].split(',')[2]
+                    newEntry.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
+                    newEntry.event="current"
+                    newEntry.save()
+                    print("created new entry")
+                else:
+                    try:
+                        url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +rsn
+                        api_request = requests.get(url)
+                        api_request.raise_for_status() 
+                        api_request = api_request.content
+                    
+                        weeklyObjects = Weeklys.objects.all()
+                        weekly = weeklyObjects.get(id=1)
+                        data = str(api_request).split('\\')
+                        if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
+                            DBObject.weeklybosskillscurrent = 0
+                        else:
+                            print(str(int(data[minigameNames.index(weekly.boss)+26].split(',')[1])-int(DBObject.weeklybosskillscurrent))+" Kills gained")
+                            DBObject.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+26].split(',')[1]
+                        DBObject.totalxpcurrent = data[0].split(',')[2]
+                        if data[SkillNames.index(weekly.skill)] == "n-1,-1":
+                            DBObject.weeklyskillxpcurrent = 0
+                        else:
+                            DBObject.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
+
+                        weeklySkillXpGained = int(data[0].split(',')[2]) - int(DBObject.totalxpstart)
+
+                        DBObject.save()
+                        print(DBObject.rsn + " was Updated. " + str(weeklySkillXpGained) + " Weekly XP Gained")
+
+
+                    except Exception as e:
+                        exc_type, exc_obj, exc_tb = sys.exc_info()
+                        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+                        print(exc_type, fname, exc_tb.tb_lineno)
+
+
+            except Exception as e:
+                print(e)
+
+
+
         leaderboard_data=[]
         context = {}
+        weeklyObjects = Weeklys.objects.all()
+        weekly = weeklyObjects.get(id=1)
+        context['skill'] = weekly.skill
+        context['boss'] = weekly.boss
+
+        weeklyPrevious = weeklyObjects.get(id=2)
+        context['previous_skill'] = weeklyPrevious.skill
+        context['previous_boss'] = weeklyPrevious.boss
+        print(weeklyPrevious.skill)
         for x in RSLeaderboardEntry.objects.all().values():
             leaderboard_data.append(x)
         
@@ -194,19 +270,38 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'xpleaderboard.html',context)
     
     def change_weekly(self):
-        
-        boss_index = random.randint(17,len(minigameNames))
-        skill_index = random.randint(0,len(SkillNames))
+        try:
+            weeklyObjects = Weeklys.objects.all()
+            current = weeklyObjects.get(id=1)
+            previous = weeklyObjects.get(id=2)
+
+            previous.skill = current.skill
+            previous.boss = current.boss
+            previous.save()
+        except:
+            print("failed to set previous boss in change weekly")
+            pass
 
         weeklyObjects = Weeklys.objects.all()
+        weekly = weeklyObjects.get(id=1)
         try:
-            weekly = weeklyObjects.get(id=1)
+            boss_index = random.randint(15,len(minigameNames))
+            skill_index = random.randint(0,len(SkillNames))
             weekly.boss = minigameNames[boss_index]
             weekly.skill = SkillNames[skill_index]
+            print(weekly.boss +" New Boss")
+            print(weekly.skill+" New Skill")                        
+            while((weekly.boss == current.boss) or (current.skill == weekly.skill) or (weekly.boss =="reroll")):
+                print("Duplicate or Reroll")
+                boss_index = random.randint(17,len(minigameNames))
+                skill_index = random.randint(0,len(SkillNames))
+                weekly.boss = minigameNames[boss_index]
+                weekly.skill = SkillNames[skill_index]
+
             weekly.save(update_fields=['boss','skill'])
             print("saves model")
         except:
-            print("Didn't save model")
+            print("change weekly failed")
             pass
 
 
@@ -222,9 +317,45 @@ class WebAppViewset(viewsets.ModelViewSet):
                     object.save()
                     object.event = "previous"
                     object.save()
+            print("set_previous successful")
         except:
-            print("Didn't save model")
-            pass
+            print("set_previous failed")
+       
+
+    def periodically_update(self):
+
+        last_updated = RSLeaderboardEntry.objects.all().filter(event="current").order_by('date_modified').first()
+        try:
+            url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +last_updated.rsn
+            api_request = requests.get(url)
+            api_request.raise_for_status() 
+            api_request = api_request.content
+         
+            weeklyObjects = Weeklys.objects.all()
+            weekly = weeklyObjects.get(id=1)
+            data = str(api_request).split('\\')
+
+            if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
+                last_updated.weeklybosskillscurrent = 0
+            else:
+                last_updated.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+26].split(',')[1]
+            last_updated.totalxpcurrent = data[0].split(',')[2]
+            if data[SkillNames.index(weekly.skill)] == "n-1,-1":
+                last_updated.weeklyskillxpcurrent = 0
+            else:
+                last_updated.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
+
+            weeklySkillXpGained = int(data[0].split(',')[2]) - int(last_updated.totalxpstart)
+
+            last_updated.save()
+            print(last_updated.rsn + " was Updated. " + str(weeklySkillXpGained) + " Weekly XP Gained")
+
+
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            print(exc_type, fname, exc_tb.tb_lineno)
+
 
     def set_new_values(self):
 
@@ -242,23 +373,31 @@ class WebAppViewset(viewsets.ModelViewSet):
                         weekly = weeklyObjects.get(id=1)
                         
                         data = str(api_request).split('\\')
-                        if data[minigameNames.index(weekly.boss)+24] == "n-1,-1":
+                        if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
                             object.weeklybosskillsstart = 0
                             object.weeklybosskillscurrent = 0
                         else:
-                            object.weeklybosskillsstart = data[minigameNames.index(weekly.boss)+24].split(',')[1]
-                            object.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+24].split(',')[1]
-                        print(SkillNames.index(weekly.skill))
+                            object.weeklybosskillsstart = data[minigameNames.index(weekly.boss)+26].split(',')[1]
+                            object.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+26].split(',')[1]
+                        
 
-                      
-                        object.totalxpstart = data[2].split(',')[2]
-                        object.totalxpcurrent = data[2].split(',')[2]
-                     
-                        object.weeklyskillxpstart = data[SkillNames.index(weekly.skill)].split(',')[2]
-                        object.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
+                        if data[SkillNames.index(weekly.skill)] == "n-1,-1":
+                            object.weeklyskillxpstart = 0
+                            object.weeklyskillxpcurrent = 0
+                        else:
+                            object.weeklyskillxpstart = data[SkillNames.index(weekly.skill)].split(',')[2]
+                            object.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
+               
+                        object.totalxpstart = data[0].split(',')[2]
+                        object.totalxpcurrent = data[0].split(',')[2]
+
+                        
+ 
                         object.save()
+                        print("set_values successful")
                     except Exception as e:
                         print(e)
+                        print("unsuccessful")
         
                       
         except:
@@ -284,7 +423,6 @@ class WebAppViewset(viewsets.ModelViewSet):
            
   
             except:
-                #api_requestHCIM = "no data returned"
                 print("no data returned")
             if(compare == "True"):
                 
@@ -294,7 +432,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                     api_request2.raise_for_status() 
                     api_request2 = api_request2.content
                 except:
-                    #api_requestHCIM = "no data returned"
                     print("no data returned hc")
 
         elif(type == "Ultimate Ironman"):
@@ -303,7 +440,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
             except:
-                #api_requestUIM = "no data returned"
                 print("no data returned")
             if(compare == "True"):
                 try:
@@ -312,7 +448,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                     api_request2.raise_for_status() 
                     api_request2 = api_request2.content
                 except:
-                    #api_requestHCIM = "no data returned"
                     print("no data returned")
         elif(type == "Ironman"):
             try:
@@ -320,7 +455,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                 api_request = requests.get(url)
                 api_request.raise_for_status() 
             except:
-                #api_requestIM = "no data returned"
                 print("no data returned IM")
             if(compare == "True"):
                 try:
@@ -329,7 +463,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                     api_request2.raise_for_status() 
                     api_request2 = api_request2.content
                 except:
-                    #api_requestIM = "no data returned"
                     print("no data returned IM2")
         else:
             try:
