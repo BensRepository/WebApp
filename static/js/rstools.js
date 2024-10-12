@@ -215,7 +215,7 @@ function navigateStatLookup(){
 }
 
 function navigateXpLeaderBoard(){
-  window.location.replace("http://"+domain+"/XpLeaderboard/")
+  window.location.replace("http://"+domain+"/Leaderboard/")
  }
 
  function navigateLootSimulator(){

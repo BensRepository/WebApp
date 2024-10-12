@@ -174,7 +174,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'lootsimulator.html')
     
 
-    def load_xpleaderboard(request):
+    def load_leaderboard(request):
         rsn = request.POST.get('rsn')
         print(rsn)
         if(rsn != None):
@@ -267,7 +267,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         
         context['leaderboard_data'] = leaderboard_data
 
-        return render(request,'xpleaderboard.html',context)
+        return render(request,'leaderboard.html',context)
     
     def change_weekly(self):
         try:

@@ -122,7 +122,142 @@
               <p style="padding-right: 10px;" >Seconds  </p>
             </div>
             <p class="col-md-8 fs-4 caption">Time remaining until you can receive another Care Package on your next XP level up. This happens every week on Wednesday at 1AM (BST)</p>
-            <button style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);" onclick="caseSimulatorNavigation()" class="caption btn btn-primary btn-lg timezonehover" type="button">Open Cases!</button>
+            <div class="container-fluid">
+              <div class="row">
+                <button  type="button" id="openCase" class="btn btn-info copenbtn"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);" onclick="caseSimulatorNavigation()" class="caption btn btn-primary btn-lg timezonehover" type="button">Open Cases!</button>
+                <button type="button" id="openCase" class="btn btn-info copenbtn"> OPEN </button>
+                <script>
+                 
+                </script>
+                <style>
+                  
+                #openCase {
+                  float: none;
+                  margin: 0 auto;
+                  margin-top: 20px;
+                }
+
+                .copenbtn:focus, .copenbtn:active {
+                  outline: none !important;
+                  box-shadow: none !important;
+                }
+
+                .caseOpeningArea {
+                  margin-top: 20px;
+                }
+
+                .itemBoxAn {
+                  border-radius: 0px !important;
+                  border: none !important;
+                  margin-left: 3px;
+                  margin-top: 5px;
+                  width: 150px;
+                  height: 165px;
+                  background: cyan !important;
+                  position: relative;
+                }
+
+                .itemBoxAnW {
+                  border-radius: 0px !important;
+                  border: none !important;
+                  margin-left: 3px;
+                  margin-top: 5px;
+                  width: 150px;
+                  height: 165px;
+                  position: relative;
+                  background: black !important;
+                }
+
+                .animationAreaItems {
+                  width: 100%;
+                  min-height: 180px;
+                  max-height: 180px;
+                  height: 180px !important;
+                  position: relative;
+                  text-align: center;
+                  display: inline-block;
+                  overflow: hidden;
+                  white-space: nowrap;
+                  border: 2px solid red;
+                }
+
+                .animationAreaItems:before {
+                  content: "";
+                  position: absolute;
+                  z-index: 1;
+                  top: 0;
+                  bottom: 0;
+                  left: 48%;
+                  border-style: solid;
+                  border-width: 0 20px 20px 20px;
+                  border-color: transparent transparent #ff0000 transparent;
+                }
+
+                .animationAreaItems:after {
+                  content: "";
+                  position: absolute;
+                  z-index: 1;
+                  top: 0;
+                  bottom: 0;
+                  left: 48%;
+                  border-style: solid;
+                  border-width: 20px 20px 0 20px;
+                  border-color: #ff0000 transparent transparent transparent;
+                }
+
+                </style>
+                <div class="container-fluid caseOpeningArea">
+                  <div class="row">
+        
+                    <div  class="container animationAreaItems">
+                      <div class="row">
+                        <div class="row text-center flex-nowrap mx-auto">
+        
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn itemBoxAnW">    </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+                            <div class="itemBoxAn">  </div>
+        
+                        </div>
+                      </div>
+                    </div>
+        
+        
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+        
+           
         </div>
     </div> 
     </div>
@@ -152,20 +287,20 @@
                 If you like the site, consider checking out my other project <a style="color: black;" href="{% url 'rstools' %}"><b>RSTools</b></a> for a collection of Old School Runescape tools.
             <p><i>
                 <b>  Latest Patch Notes XX/XX/XXXX:</b><br>
-                1. Added Kilowatt Case to Case Calculator<br>
-                2. Added Kilowatt Skins to Skin Master<br>
+                1. Added Kilowatt and Gallery Case to Case Calculator<br>
+                2. Added Kilowatt and Gallery Skins to Skin Master<br>
                 3. Added Copenhagen Team 2024 to Sticker Search<br>
-                4. Updated Steam Group link<br>
+                4. Added some Elemental and Character Craft Stickers to Sticker Search <br>
+                5. Updated Steam Group link<br>
+                6. Removed broken CS2 Binds<br>
 
-                <!-- Programmatic Timer - in progress -->
+
                 <!-- Compatibility Disclaimer - in progress -->
-
-                Revised Bind Generator for CS2<br><!-- Not started -->
-                Added Case Open Button<br><!-- Not started -->
+                7. Added Case Open Button<br><!-- Not started -->
                 Added Domain RSTools<br><!-- In progress -->
-                &nbsp&nbsp&nbsp - Implemented Loot Simulator<br><!-- Not started -->
+                &nbsp&nbsp&nbsp - Implemented GE Higher or Lower <br><!-- Not started -->
                 <!-- Best drop of the week? -->
-                &nbsp&nbsp&nbsp - Added Xp Leaderboard <br><!-- Not started -->
+                &nbsp&nbsp&nbsp - Added Progress Leaderboard <br><!-- Not started -->
                 &nbsp&nbsp&nbsp - Added Stat Lookup <br><!-- Not started -->
                 <!-- Most xp gained? -->
                 &nbsp&nbsp&nbsp Further updates to RSTools will not be tracked here<br>
