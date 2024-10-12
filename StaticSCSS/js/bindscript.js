@@ -270,7 +270,7 @@ function configureBuyBind(gun){
     "decoy":"Grenades","flashbang":"Grenades","flashbang2":"Grenades","hegrenade":"Grenades","incgrenade":"Grenades","molitov":"Grenades","smokegrenade":"Grenades",
     "defuser":"Equipment","taser":"Equipment","vest":"Equipment","vesthelm":"Equipment"}
     
-    costs = {"ak47":2700,"aug":3300,"awp":4750,"famas":2050,"g3sg1":5000,"galilar":1800,"m4a1":2900,"m4a4":3100,"scar20":5000,"sg556":3000,"ssg08":1700,
+    costs = {"ak47":2700,"aug":3300,"awp":4750,"famas":2050,"g3sg1":5000,"galilar":1800,"m4a1":2900,"m4a4":3000,"scar20":5000,"sg556":3000,"ssg08":1700,
     "m249":5200,"mag-7":1300,"negev":1700,"nova":1050,"sawed-off":1100,"xm1014":2000,
     "bizon":1400,"mac10":1050,"mp5":1500,"mp7":1700,"mp9":1250,"p90":2350,"ump45":1200,
     "cz75-auto":500,"deagle":700,"elite":300,"fiveseven":500,"p250":300,"revolver":600,"tec9":500,

@@ -123,7 +123,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'StaticSCSS/')
 STATIC_URL = '/static/'
 STATICFILES_FINDERS =( 'django.contrib.staticfiles.finders.FileSystemFinder',  'django.contrib.staticfiles.finders.AppDirectoriesFinder',    'compressor.finders.CompressorFinder',
 ) 
-
+COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (    
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )

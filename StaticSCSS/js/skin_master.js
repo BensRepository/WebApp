@@ -19,7 +19,7 @@ function play_button(){
   }
   function report_bug_screen_button(){
 
-      window.location.replace("http://"+domain+"/SkinMaster/ReportBug/");
+      window.location.replace("https://steamcommunity.com/groups/wwwcstoolsuk/discussions/0/6655846162409486019/");
     
 
   }
