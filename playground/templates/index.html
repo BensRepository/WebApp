@@ -313,7 +313,7 @@
           </video>
         <div style = "position:relative; left:80px; top:2px;">
          
-            <h1 class="display-5 fw-bold caption">Weekly Care Package Drop Reset</h1>
+            <h1 class="display-5 fw-bold caption" >Weekly Care Package Drop Reset</h1>
             <div class="caption" style="font-size: 35px;display: flex;margin-bottom: 2px;padding-bottom: 2px;">
               <p id="days" style="padding-right: 10px;"></p>
               <p style="padding-right: 10px;">Days  </p>
@@ -324,18 +324,29 @@
               <p  style="padding-right: 10px;" id="seconds"></p>
               <p style="padding-right: 10px;" >Seconds  </p>
             </div>
-            <p class="col-md-8 fs-4 caption">Time remaining until you can receive another Care Package on your next XP level up. This happens every week on Wednesday at 1AM (BST)</p>
+            <p class="col-md-8 fs-4 caption">Time remaining until you can receive another Care Package on your next XP level up. This occurs every week on Wednesday at 1AM (BST)</p>
             <div class="container-fluid">
               
-              <div >
+              <div style="display: inline-block;" >
+                <div  style="display: inline-block;">
                 <div id="caseRow" style="width: 750px;">
 
                 </div>
-                <div id="selectedCase" style="align-items: center;text-align: center;">
 
+
+                <div style="display: inline-block;">
+                <div id="selectedCase" style="display: inline-block;">
+                  
                 </div>
                 <div>
-                <button  type="button" id="openCase"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);width: 200px;display: none;" onclick="startRoll();" class="caption btn btn-primary btn-lg timezonehover" type="button">Open</button>
+                  <p id="selectedCaseText"></p>
+                </div>
+                <p id="UnboxedMessage"></p>
+                <div id="unboxHistory"></div>
+              </div>
+            </div>
+                <div>
+                <button  type="button" id="openCase"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);width: 200px;display: none;" onclick="startRoll();" class="caption btn btn-primary btn-lg timezonehover" type="button">Open!</button>
                 <button  type="button" id="selectCase"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);width: 200px;" onclick="selectCase();" class="caption btn btn-primary btn-lg timezonehover" type="button">Open Cases!</button>
               </div>
               </div>
@@ -346,11 +357,13 @@
         </div>
     </div> 
     </div>
-
+   
       <div id="caseopener" class="container-fluid caseOpeningArea " style="display: none;">
+   
         <div class="row">
-
-          <div  class="container animationAreaItems">
+      
+          <div  class="container animationAreaItems" style="background-color: rgb(230, 221, 221);">
+      
             <div class="row">
               <div class="row text-center flex-nowrap mx-auto">
 
@@ -390,38 +403,42 @@
               </div>
             </div>
        
-
+            
 
         </div>
       </div>
     </div>
-    <style>
-      .case{
+ 
 
-      }
-    </style>
     <script>
+
+
       function caseSelected(cases){
+        var audio = document.getElementById("CaseSelectedaudio");
+        audio.play();
         document.getElementById("selectedCase").innerHTML = ""
         document.getElementById("selectedCase").value =cases
+       
         img = document.createElement('img')
         img.src = "./static/cases/" + cases+".png"
-    
         img.value
         img.value =cases
         document.getElementById("selectedCase").appendChild(img)
         document.getElementById("openCase").style.display="block"
         document.getElementById("selectCase").style.display="none"
-        
+         document.getElementById("selectedCaseText").innerText =cases.replaceAll("_"," ") + " Case"
       }
       function selectCase(){
         document.getElementById("caseRow").innerHTML = ""
+        document.getElementById("selectCase").innerHTML = "Pick a Case!"
+        document.getElementById("selectCase").classList.add("disabled")
         data = JSON.parse(document.getElementById("cases").textContent);
         for (var i = 0; i < data.length; i++) {
           img = document.createElement('img')
           img.style.width = "50px"  
           img.id = data[i]
           img.data =data[i]
+          img.classList.add("case");
           x= "test"
           img.onclick = (function(x) {
           return function() {
@@ -440,6 +457,8 @@
         pink_odds = 0.032;
         red_odds = 0.0064;
         yellow_odds =  0.0026
+        url =""
+        selectedSkin = ""
         num = Math.random();
           if (num >= 0 && num <= yellow_odds) {
             if(type == "filler"){
@@ -475,37 +494,43 @@
     
           data_selection_rarity =selectedCase + "_" +rarity
           data = JSON.parse(document.getElementById(data_selection_rarity).textContent);
-          document.getElementById(div_id).style.background = rarity
+          //document.getElementById(div_id).style.background = rarity
+
           document.getElementById(div_id).style.alignContent = "center"
           img = document.createElement('img')
           img.style.width = "150px"  
           img.style.paddingRight = "17px"  
 
+          img.classList.add(rarity)
           randomIndex = Math.floor(Math.random() * ((data.length-1) - 0 + 1)) + 0
   
           img.src = "./static/case_opener/"+selectedCase+"/"+rarity+"/"+data[randomIndex]   
 
           document.getElementById(div_id).textContent = ''
           document.getElementById(div_id).appendChild(img)
-        
-          document.getElementById(div_id).style.background = rarity
+
+
         }
         rarity_selected = getRaity("unboxed")
         data_selection_rarity =selectedCase + "_" +rarity_selected
         data = JSON.parse(document.getElementById(data_selection_rarity).textContent);
 
 
-        document.getElementById("boxItem").style.background = rarity_selected  
+        //document.getElementById("boxItem").style.background = rarity_selected  
         document.getElementById("boxItem").style.alignContent = "center"
         img = document.createElement('img')
         img.style.width = "150px"  
         img.style.paddingRight = "17px"  
+        img.classList.add(rarity)
+        img.id = "unboxedItem"
+        selectedSkin = data[randomIndex]  
         randomIndex = Math.floor(Math.random() * ((data.length-1) - 0 + 1)) + 0
-      
-        img.src = "./static/case_opener/"+selectedCase+"/"+rarity_selected+"/"+data[randomIndex]   
+        url = "./static/case_opener/"+selectedCase+"/"+rarity_selected+"/"
+        img.src = url+selectedSkin 
      
         document.getElementById("boxItem").textContent = ''
         document.getElementById("boxItem").appendChild(img)
+        return [url,selectedSkin,rarity_selected]
         }
      
    
@@ -598,9 +623,9 @@
       
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{% static 'js/index.js' %}"></script>
-
-   
-     
+        <audio id="audio" src="{% static 'audio/csrollingaudio.mp3' %}"></audio>
+        <audio id="CaseSelectedaudio" src="{% static 'audio/caseSelectionAudio.mp3' %}"></audio>
+       
     </body>
 </html>
 

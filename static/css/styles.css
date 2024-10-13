@@ -11780,3 +11780,40 @@ display: block;
   border-width: 20px 20px 0 20px;
   border-color: rgb(168, 115, 16) transparent transparent transparent;
 }
+.case{
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.case:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  filter: alpha(opacity=40);
+}
+.blue {
+width: 100%;
+margin: 0 auto;
+border-bottom: 5px solid #1c87cf;
+margin-top: 20px;
+;
+}
+.purple {
+width: 100%;
+margin: 0 auto;
+border-bottom: 5px solid #834d75;
+margin-top: 20px;
+;
+}
+.pink {
+width: 100%;
+margin: 0 auto;
+border-bottom: 5px solid #d045dd;
+margin-top: 20px;
+;
+}
+.red {
+width: 100%;
+margin: 0 auto;
+border-bottom: 5px solid #dd1616;
+margin-top: 20px;
+;
+}

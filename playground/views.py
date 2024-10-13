@@ -211,14 +211,16 @@ class WebAppViewset(viewsets.ModelViewSet):
                 weeklyObjects = Weeklys.objects.all()
                 weekly = weeklyObjects.get(id=1)
                 data = str(api_request).split('\\')
-                addDB = False
+                addDB = True
                 for x in RSLeaderboardEntry.objects.all():
                     print(x.rsn.lower() +" "+str(rsn).lower())
                     if(x.rsn.lower() == str(rsn).lower() and x.event == "current"):
+                        print("Do not add to DB")
                         addDB = False
                         DBObject = x
-                       
+                print(addDB)
                 if(addDB == True):
+                    print("Add to DB")
                     newEntry = RSLeaderboardEntry()
                     newEntry.rsn = rsn
                     if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
@@ -250,7 +252,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                         if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
                             DBObject.weeklybosskillscurrent = 0
                         else:
-                            print(str(int(data[minigameNames.index(weekly.boss)+26].split(',')[1])-int(DBObject.weeklybosskillscurrent))+" Kills gained")
+                            print(data[minigameNames.index(weekly.boss)+26])
                             DBObject.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+26].split(',')[1]
                         DBObject.totalxpcurrent = data[0].split(',')[2]
                         if data[SkillNames.index(weekly.skill)] == "n-1,-1":
@@ -265,9 +267,9 @@ class WebAppViewset(viewsets.ModelViewSet):
 
 
                     except Exception as e:
-                        exc_type, exc_obj, exc_tb = sys.exc_info()
-                        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-                        print(exc_type, fname, exc_tb.tb_lineno)
+                        # exc_type, exc_obj, exc_tb = sys.exc_info()
+                        # fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+                        print(e)
 
 
             except Exception as e:
