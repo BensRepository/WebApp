@@ -152,8 +152,32 @@ SkillNames = ["Overall",
 
 class WebAppViewset(viewsets.ModelViewSet):
     def load_index(request):
-        print(Case.objects.all().order_by('date_modified').last())
-        return render(request,'index.html')
+
+        filenames = {}
+
+        cases = glob.glob("."+STATIC_URL+"case_opener/*")
+
+        for i in cases:
+            case = i.split("\\")[1]
+            filenames[case] = {}
+            types = glob.glob("."+STATIC_URL+"case_opener/"+case +"/*")
+           
+            for type in types:
+                
+                rarity = type.split("\\")[1]
+                filenames[case][rarity] = []
+                skins = glob.glob("."+STATIC_URL+"case_opener/"+case +"/"+rarity+"/*")
+               
+                for skin in skins:
+                 
+                    filenames[case][rarity].append(skin.split("\\")[1])
+        
+        cases = glob.glob("."+STATIC_URL+"case_opener/*")
+        filenames['cases'] = []
+        for i in cases:
+            
+             filenames['cases'].append(i.split("\\")[1])
+        return render(request,'index.html',context=filenames)
     
     def load_roulette(request):
         return render(request,'roulette.html')
