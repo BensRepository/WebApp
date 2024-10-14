@@ -11817,3 +11817,8 @@ border-bottom: 5px solid #dd1616;
 margin-top: 20px;
 ;
 }
+
+.reducePadding {
+  padding-bottom : 0px;
+  margin-bottom : 0px;
+}

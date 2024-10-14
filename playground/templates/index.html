@@ -296,7 +296,7 @@
 <body id="the-body" >
 
 <main style="background-color: rgb(68, 67, 65);">
-  <div class="container py-4" >
+  <div href="caseOpenScroll" class="container py-4" >
     <header class="pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
         <img href="{% url 'index' %}" src="/static/images/tools.png" width="40" height="auto" class="me-2" alt="tool emoji" style="display: block;">
@@ -313,10 +313,10 @@
           </video>
         <div style = "position:relative; left:80px; top:2px;">
          
-            <h1 class="display-5 fw-bold caption" >Weekly Care Package Drop Reset</h1>
-            <div class="caption" style="font-size: 35px;display: flex;margin-bottom: 2px;padding-bottom: 2px;">
+            <h1 id="CaseTitle" class="display-5 fw-bold caption" >Weekly Care Package Drop Reset</h1>
+            <div id="CaseTimer" class="caption" style="font-size: 35px;display: flex;margin-bottom: 2px;padding-bottom: 2px;">
               <p id="days" style="padding-right: 10px;"></p>
-              <p style="padding-right: 10px;">Days  </p>
+              <p id="days_text" style="padding-right: 10px;">Days  </p>
               <p style="padding-right: 10px;" id="hours"></p>
               <p style="padding-right: 10px;">Hours  </p>
               <p style="padding-right: 10px;" id="minutes"></p>
@@ -324,30 +324,48 @@
               <p  style="padding-right: 10px;" id="seconds"></p>
               <p style="padding-right: 10px;" >Seconds  </p>
             </div>
-            <p class="col-md-8 fs-4 caption">Time remaining until you can receive another Care Package on your next XP level up. This occurs every week on Wednesday at 1AM (BST)</p>
+            <p style="display: inline-block;" id="CaseDescription" class="col-md-8 fs-4 ">Time remaining until you can receive another Care Package on your next XP level up. This occurs every week on Wednesday at 1AM (BST) <span id="test"> </span> </p>
+           
             <div class="container-fluid">
               
-              <div style="display: inline-block;" >
+              <div>
                 <div  style="display: inline-block;">
-                <div id="caseRow" style="width: 750px;">
+                  <div id="caseRow" style="width: 750px;">
 
-                </div>
+                  </div>
 
 
-                <div style="display: inline-block;">
-                <div id="selectedCase" style="display: inline-block;">
-                  
-                </div>
-                <div>
-                  <p id="selectedCaseText"></p>
-                </div>
-                <p id="UnboxedMessage"></p>
-                <div id="unboxHistory"></div>
-              </div>
+                  <div>
+
+                    <style>
+
+                      
+                    </style>
+                  <div id="caseDiv" style="display: flex; display: none;">
+                    <div style="display: inline-block;" id="selectedCase"></div>
+                    <div>
+                      <p style="font-size: 20px;font-weight: bold;padding-top: 56px;padding-left: 10px;" id="selectedCaseText"></p>
+                    </div>
+                  </div>
+                 
+                         
+                  </div>
+
+        
+
+                  <div id="unboxHistory" style="display: none;">
+                    <div style="display: inline-block;" id="unboxHistoryItem1"></div>
+                    <div style="display: inline-block;" id="unboxHistoryItem2"></div>
+                    <div  style="display: inline-block;" id="unboxHistoryItem3"></div>
+                    <div style="display: inline-block;" id="unboxHistoryItem4"></div>
+                    <div style="display: inline-block;" id="unboxHistoryItem5"></div>
+                  </div>
+                
             </div>
-                <div>
-                <button  type="button" id="openCase"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);width: 200px;display: none;" onclick="startRoll();" class="caption btn btn-primary btn-lg timezonehover" type="button">Open!</button>
-                <button  type="button" id="selectCase"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);width: 200px;" onclick="selectCase();" class="caption btn btn-primary btn-lg timezonehover" type="button">Open Cases!</button>
+
+                <div style="padding-top:11px;">
+                <button href="#caseOpenScroll" type="button" id="openCase"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);width: 200px;display: none;" onclick="startRoll();" class="caption btn btn-primary btn-lg timezonehover" type="button">Open!</button>
+                <button href="#caseOpenScroll"  type="button" id="selectCase"  style="background-color: rgb(146, 97, 7);border-color: rgb(168, 115, 16);width: 200px;" onclick="selectCase();" class="caption btn btn-primary btn-lg timezonehover" type="button">Open Cases!</button>
               </div>
               </div>
               
@@ -358,7 +376,7 @@
     </div> 
     </div>
    
-      <div id="caseopener" class="container-fluid caseOpeningArea " style="display: none;">
+      <div id="caseopener" class="container-fluid caseOpeningArea " style="display: none;padding-bottom: 30px;">
    
         <div class="row">
       
@@ -409,132 +427,6 @@
       </div>
     </div>
  
-
-    <script>
-
-
-      function caseSelected(cases){
-        var audio = document.getElementById("CaseSelectedaudio");
-        audio.play();
-        document.getElementById("selectedCase").innerHTML = ""
-        document.getElementById("selectedCase").value =cases
-       
-        img = document.createElement('img')
-        img.src = "./static/cases/" + cases+".png"
-        img.value
-        img.value =cases
-        document.getElementById("selectedCase").appendChild(img)
-        document.getElementById("openCase").style.display="block"
-        document.getElementById("selectCase").style.display="none"
-         document.getElementById("selectedCaseText").innerText =cases.replaceAll("_"," ") + " Case"
-      }
-      function selectCase(){
-        document.getElementById("caseRow").innerHTML = ""
-        document.getElementById("selectCase").innerHTML = "Pick a Case!"
-        document.getElementById("selectCase").classList.add("disabled")
-        data = JSON.parse(document.getElementById("cases").textContent);
-        for (var i = 0; i < data.length; i++) {
-          img = document.createElement('img')
-          img.style.width = "50px"  
-          img.id = data[i]
-          img.data =data[i]
-          img.classList.add("case");
-          x= "test"
-          img.onclick = (function(x) {
-          return function() {
-            caseSelected(x);
-          };
-      })(data[i]);
-          img.src = "./static/cases/" + data[i]+".png"
-          document.getElementById("caseRow").appendChild(img)
-          //Do something
-      }
-      
-      }
-      function getRaity(type){                 
-        blue_odds = 0.7992;
-        purple_odds = 0.1598;
-        pink_odds = 0.032;
-        red_odds = 0.0064;
-        yellow_odds =  0.0026
-        url =""
-        selectedSkin = ""
-        num = Math.random();
-          if (num >= 0 && num <= yellow_odds) {
-            if(type == "filler"){
-              unboxed = "red"
-            }
-            if(type == "unboxed"){
-              unboxed = "yellow"
-            }
-          }
-          else if (num >= (yellow_odds) && num <= yellow_odds+red_odds) {
-              unboxed = "red"
-          }
-          else if  (num >= (yellow_odds+red_odds) && num <= yellow_odds+red_odds+pink_odds) {
-                unboxed = "pink"
-          }
-          else if (num >= yellow_odds+red_odds+pink_odds&& num <= yellow_odds+red_odds+pink_odds+purple_odds) {
-                unboxed = "purple"
-          }
-          else if (num > yellow_odds+red_odds+pink_odds+purple_odds) {
-                unboxed = "blue"
-          }
-          return unboxed
-      }
-
-      function simulateloot(){     
-        unboxed = "Nothing"
-        cases = JSON.parse(document.getElementById("cases").textContent);
-        selectedCase = document.getElementById("selectedCase").value
-       
-        for (let i = 1; i < 31; i++) {
-          rarity = getRaity("filler")
-          div_id = "box"+String(i)
-    
-          data_selection_rarity =selectedCase + "_" +rarity
-          data = JSON.parse(document.getElementById(data_selection_rarity).textContent);
-          //document.getElementById(div_id).style.background = rarity
-
-          document.getElementById(div_id).style.alignContent = "center"
-          img = document.createElement('img')
-          img.style.width = "150px"  
-          img.style.paddingRight = "17px"  
-
-          img.classList.add(rarity)
-          randomIndex = Math.floor(Math.random() * ((data.length-1) - 0 + 1)) + 0
-  
-          img.src = "./static/case_opener/"+selectedCase+"/"+rarity+"/"+data[randomIndex]   
-
-          document.getElementById(div_id).textContent = ''
-          document.getElementById(div_id).appendChild(img)
-
-
-        }
-        rarity_selected = getRaity("unboxed")
-        data_selection_rarity =selectedCase + "_" +rarity_selected
-        data = JSON.parse(document.getElementById(data_selection_rarity).textContent);
-
-
-        //document.getElementById("boxItem").style.background = rarity_selected  
-        document.getElementById("boxItem").style.alignContent = "center"
-        img = document.createElement('img')
-        img.style.width = "150px"  
-        img.style.paddingRight = "17px"  
-        img.classList.add(rarity)
-        img.id = "unboxedItem"
-        selectedSkin = data[randomIndex]  
-        randomIndex = Math.floor(Math.random() * ((data.length-1) - 0 + 1)) + 0
-        url = "./static/case_opener/"+selectedCase+"/"+rarity_selected+"/"
-        img.src = url+selectedSkin 
-     
-        document.getElementById("boxItem").textContent = ''
-        document.getElementById("boxItem").appendChild(img)
-        return [url,selectedSkin,rarity_selected]
-        }
-     
-   
-    </script>
     <div class="row align-items-md-stretch">
       <div class="col-md-6">
         <div class="h-100 p-5 text-white bg-dark rounded-3">
