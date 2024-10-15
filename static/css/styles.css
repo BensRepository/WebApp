@@ -11817,7 +11817,13 @@ border-bottom: 5px solid #dd1616;
 margin-top: 20px;
 ;
 }
-
+.yellow {
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 5px solid #FEBE10;
+  margin-top: 20px;
+  ;
+  }
 .reducePadding {
   padding-bottom : 0px;
   margin-bottom : 0px;
