@@ -14,19 +14,6 @@ urlpatterns =[
     path("StratRoulette/",WebAppViewset.load_roulette, name='roulette'),
     path("BindGenerator/",WebAppViewset.load_bind, name='bind'),
 
-    path("RSTools/",WebAppViewset.load_rstools, name='rstools'),
-    path("StatLookUp/",WebAppViewset.load_statlookup, name='statlookup'),
-    path("StatLookUp/Result/",WebAppViewset.load_statlookupresult, name='statlookupresult'),
-
-    path("LootSimulator/",WebAppViewset.load_lootsimulator, name='lootsimulator'),
-    path("LootSimulator/Raids/",WebAppViewset.load_raids, name='raids'),
-    path("LootSimulator/Raids/TOA/",WebAppViewset.load_toa, name='tob'),
-    path("LootSimulator/Raids/COX/",WebAppViewset.load_cox, name='cox'),
-    path("LootSimulator/Raids/TOB/",WebAppViewset.load_tob, name='tob'),
-    
-
-    path("Leaderboard/",WebAppViewset.load_leaderboard, name='leaderboard'),
-
     path("SkinMaster/",WebAppViewset.skin_master, name='skin_master'),
     path("SkinMaster/Play/",WebAppViewset.skin_master_play, name='skin_master_play'),  
     path("SkinMaster/Play/Practise/",WebAppViewset.skin_master_practise, name='skin_master_practise'),
