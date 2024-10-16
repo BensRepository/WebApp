@@ -40,29 +40,34 @@ class WebAppViewset(viewsets.ModelViewSet):
     def load_index(request):
 
         filenames = {}
+        try:
+            cases = glob.glob("."+STATIC_URL+"case_opener/*")
 
-        cases = glob.glob("."+STATIC_URL+"case_opener/*")
-
-        for i in cases:
-            case = i.split("\\")[1]
-            filenames[case] = {}
-            types = glob.glob("."+STATIC_URL+"case_opener/"+case +"/*")
-           
-            for type in types:
-                
-                rarity = type.split("\\")[1]
-                filenames[case][rarity] = []
-                skins = glob.glob("."+STATIC_URL+"case_opener/"+case +"/"+rarity+"/*")
-               
-                for skin in skins:
-                 
-                    filenames[case][rarity].append(skin.split("\\")[1])
-        
-        cases = glob.glob("."+STATIC_URL+"case_opener/*")
-        filenames['cases'] = []
-        for i in cases:
+            for i in cases:
+                case = i.split("\\")[1]
+                filenames[case] = {}
+                types = glob.glob("."+STATIC_URL+"case_opener/"+case +"/*")
             
-             filenames['cases'].append(i.split("\\")[1])
+                for type in types:
+                    
+                    rarity = type.split("\\")[1]
+                    filenames[case][rarity] = []
+                    skins = glob.glob("."+STATIC_URL+"case_opener/"+case +"/"+rarity+"/*")
+                
+                    for skin in skins:
+                    
+                        filenames[case][rarity].append(skin.split("\\")[1])
+            
+            cases = glob.glob("."+STATIC_URL+"case_opener/*")
+            filenames['cases'] = []
+            for i in cases:
+                
+                filenames['cases'].append(i.split("\\")[1])
+            
+        except:
+                print("db corrpted")
+        
+        
         return render(request,'index.html',context=filenames)
     
     def load_roulette(request):
