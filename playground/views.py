@@ -42,12 +42,12 @@ class WebAppViewset(viewsets.ModelViewSet):
         filenames = {}
         try:
             cases = glob.glob("."+STATIC_URL+"case_opener/*")
-
+            filenames['url'] = []
             for i in cases:
                 case = i.split("\\")[1]
                 filenames[case] = {}
                 types = glob.glob("."+STATIC_URL+"case_opener/"+case +"/*")
-            
+             
                 for type in types:
                     
                     rarity = type.split("\\")[1]
@@ -58,12 +58,17 @@ class WebAppViewset(viewsets.ModelViewSet):
                     
                         filenames[case][rarity].append(skin.split("\\")[1])
             
-            cases = glob.glob("."+STATIC_URL+"case_opener/*")
+            cases = glob.glob("."+STATIC_URL+"case_open3er/*")
+            if(len(cases) == 0):
+               filenames['url'].append("no cases") 
+
             filenames['cases'] = []
+
             for i in cases:
                 
                 filenames['cases'].append(i.split("\\")[1])
-            
+               
+            filenames['url'].append(str(STATIC_URL))
         except:
                 print("db corrpted")
         
