@@ -220,6 +220,8 @@ var rarity_order= {}
     document.getElementById("selectCase").innerHTML = "Pick a Case!"
     document.getElementById("selectCase").classList.add("disabled")
     data = JSON.parse(document.getElementById("cases").textContent);
+    console.log(data[1])
+    alert(data)
     for (var i = 0; i < data.length; i++) {
       img = document.createElement('img')
       img.style.width = "50px"  

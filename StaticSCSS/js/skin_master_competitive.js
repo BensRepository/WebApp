@@ -1,4 +1,4 @@
-domain = "127.0.0.1:8000"
+domain = "www.cstools.co.uk"
 function play_button(){
     
   window.location.replace("http://"+domain+"/SkinMaster/Play/")
