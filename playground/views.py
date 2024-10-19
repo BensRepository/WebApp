@@ -159,6 +159,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                 weeklyObjects = Weeklys.objects.all()
                 weekly = weeklyObjects.get(id=1)
                 data = str(api_request).split('\\')
+            
                 addDB = True
                 for x in RSLeaderboardEntry.objects.all():
                     print(x.rsn.lower() +" "+str(rsn).lower())
@@ -166,7 +167,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                         print("Do not add to DB")
                         addDB = False
                         DBObject = x
-                print(addDB)
+  
                 if(addDB == True):
                     print("Add to DB")
                     newEntry = RSLeaderboardEntry()

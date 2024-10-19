@@ -25,8 +25,8 @@ SECRET_KEY = "THISisACommitAndNotRealPassword2"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #False
 
-ALLOWED_HOSTS = []
-#"18.170.78.22","www.csgotools.co.uk","csgotools.co.uk","cstools.co.uk","www.cstools.co.uk","www.rstools.uk","rstools.uk"
+ALLOWED_HOSTS = ["18.171.183.153","www.rstools.uk","rstools.uk"]
+#"18.171.183.153","www.rstools.uk","rstools.uk"
 
 
 # Application definition
