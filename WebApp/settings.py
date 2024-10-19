@@ -25,7 +25,7 @@ SECRET_KEY = "THISisACommitAndNotRealPassword2"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #False
 
-ALLOWED_HOSTS = ["18.171.183.153","www.rstools.uk","rstools.uk"]
+ALLOWED_HOSTS = []
 #"18.171.183.153","www.rstools.uk","rstools.uk"
 
 
