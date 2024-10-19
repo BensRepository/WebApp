@@ -209,7 +209,7 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
-var domain = "127.0.0.1:8000";
+var domain = "18.171.183.153";
 function navigateStatLookup(){
  window.location.replace("http://"+domain+"/StatLookUp/")
 }

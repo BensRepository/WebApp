@@ -56,7 +56,9 @@ function tick() {
 if (curday == 1) {
     document.getElementById("days_text").innerHTML = "Day"
 } 
-
+if (hours == 1) {
+  document.getElementById("hours_text").innerHTML = "Hour"
+} 
 
 }
 function sortFunction(a, b) {

@@ -238,6 +238,3 @@ function navigateXpLeaderBoard(){
    window.location.replace("http://"+domain+"/LootSimulator/Raids/TOB/")
   }
  
-  function cstoolsRedirect(){
-    window.location = "http://www.cstools.co.uk/"; 
-  }
