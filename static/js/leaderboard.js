@@ -178,7 +178,7 @@ function populateLeaderboard(){
     skill_of_the_week = document.getElementById("skill_current")
     skill_of_the_week.innerHTML = ""
     img = document.createElement("img");
-    img.src="/static/images/rstoolsimg/skills/"+skill+".webp"
+    img.src="/static/images/rstoolsimg/skills/"+skill+".png"
      img.style.width = "35px"
     skill_of_the_week.appendChild(img)
     text = document.createTextNode(skill)
@@ -199,7 +199,7 @@ function populateLeaderboard(){
     skill_of_the_week_previous = document.getElementById("previous_skill_div")
     skill_of_the_week_previous.innerHTML = ""
     img = document.createElement("img");
-    img.src="/static/images/rstoolsimg/skills/"+skill_previous+".webp"
+    img.src="/static/images/rstoolsimg/skills/"+skill_previous+".png"
     img.style.width = "35px"
     skill_of_the_week_previous.appendChild(img)
     text_previous = document.createTextNode(skill_previous)

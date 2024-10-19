@@ -376,7 +376,7 @@ class PlayerData {
       // creates a table row
       row = document.createElement("tr");
       var img = document.createElement("IMG");
-        url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
+        url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".png"
         img.src = url;
         img.style.position = "relative";
         img.style.width = "30px";
@@ -657,17 +657,17 @@ class PlayerData {
 function accountTypeSelection(){
   data2 = JSON.parse(document.getElementById('type').textContent);
   if (data2 == "Ironman") {
-     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/iron.webp"
+     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/iron.png"
   }
   else if (data2 == "Hardcore Ironman"){
-     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.webp"
+     document.getElementById("typeSelection").src = "/static/images/rstoolsimg/hardcore.png"
   }
   else if (data2 == "Ultimate Ironman"){
-    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/Ultimate.webp"
+    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/Ultimate.png"
 
  }
  else{
-    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/stats.webp"
+    document.getElementById("typeSelection").src = "/static/images/rstoolsimg/stats.png"
 
 }
 }
@@ -791,7 +791,7 @@ for (let i = 0; i < 24; i++) {
   // creates a table row
   row = document.createElement("tr");
   var img = document.createElement("IMG");
-    url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
+    url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".png"
     img.src = url;
     img.style.position = "relative";
     img.style.width = "12.75%";
@@ -889,7 +889,7 @@ try {
   const cell2 = document.createElement("td");
 //adding second skills list
   var img2 = document.createElement("IMG");
-    url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".webp"
+    url = "/static/images/rstoolsimg/skills/"+SkillNames[i]+".png"
     img2.src = url;
     img2.style.position = "relative";
     img2.style.width = "18.55%";
