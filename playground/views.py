@@ -196,8 +196,8 @@ class WebAppViewset(viewsets.ModelViewSet):
             weapons[t] = glob.glob("."+STATIC_URL+"skins/"+t+"/*")
             filenames[t] = []
             for j in weapons[t]:
-               
-                filenames[t].append(j.split("\\")[1])
+                mac10 = j[len("."+STATIC_URL+"skins/"+t+"/"):len(j)]
+                filenames[t].append(mac10)
         for t in types:
             for w in weapons[t]:
                 grey = glob.glob(w+"/grey/*") 
@@ -206,29 +206,28 @@ class WebAppViewset(viewsets.ModelViewSet):
                 purple = glob.glob(w+"/purple/*")
                 pink = glob.glob(w+"/pink/*")
                 red =  glob.glob(w+"/red/*")
-                weapon_name = w.split("\\")[1]
+                weapon_name = w[len("."+STATIC_URL+"skins/"+t+"/"):len(w)]
                 filenames[weapon_name] = {"grey":[],"light_blue":[],"blue":[],"purple":[],"pink":[],"red":[]}
         
                 for j in grey:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/grey/"):len(j)]
                     filenames[weapon_name]["grey"].append(skinname[0:len(skinname)-4])
                 for j in  light_blue:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/light_blue/"):len(j)]
                     filenames[weapon_name]["light_blue"].append(skinname[0:len(skinname)-4])
                 for j in  blue:
-                    skinname = j.split("\\")[2]
-            
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/blue/"):len(j)]
                     filenames[weapon_name]["blue"].append(skinname[0:len(skinname)-4])
                 for j in  purple:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/purple/"):len(j)]
                     filenames[weapon_name]["purple"].append(skinname[0:len(skinname)-4])
                 for j in  pink:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/pink/"):len(j)]
                     filenames[weapon_name]["pink"].append(skinname[0:len(skinname)-4])
                 for j in  red:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/red/"):len(j)]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
-            
+                    
 
         return render(request, "skin_master_practise.html",context=filenames)    
     
@@ -242,7 +241,8 @@ class WebAppViewset(viewsets.ModelViewSet):
             weapons[t] = glob.glob("."+STATIC_URL+"skins/"+t+"/*")
             filenames[t] = []
             for j in weapons[t]:
-                filenames[t].append(j.split("\\")[1])
+                mac10 = j[len("."+STATIC_URL+"skins/"+t+"/"):len(j)]
+                filenames[t].append(mac10)
         for t in types:
             for w in weapons[t]:
                 grey = glob.glob(w+"/grey/*") 
@@ -251,27 +251,28 @@ class WebAppViewset(viewsets.ModelViewSet):
                 purple = glob.glob(w+"/purple/*")
                 pink = glob.glob(w+"/pink/*")
                 red =  glob.glob(w+"/red/*")
-                weapon_name = w.split("\\")[1]
+                weapon_name = w[len("."+STATIC_URL+"skins/"+t+"/"):len(w)]
                 filenames[weapon_name] = {"grey":[],"light_blue":[],"blue":[],"purple":[],"pink":[],"red":[]}
         
                 for j in grey:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/grey/"):len(j)]
                     filenames[weapon_name]["grey"].append(skinname[0:len(skinname)-4])
                 for j in  light_blue:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/light_blue/"):len(j)]
                     filenames[weapon_name]["light_blue"].append(skinname[0:len(skinname)-4])
                 for j in  blue:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/blue/"):len(j)]
                     filenames[weapon_name]["blue"].append(skinname[0:len(skinname)-4])
                 for j in  purple:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/purple/"):len(j)]
                     filenames[weapon_name]["purple"].append(skinname[0:len(skinname)-4])
                 for j in  pink:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/pink/"):len(j)]
                     filenames[weapon_name]["pink"].append(skinname[0:len(skinname)-4])
                 for j in  red:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/red/"):len(j)]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
+                    
             
       
         return render(request, "skin_master_survival.html",context=filenames)    
@@ -285,10 +286,9 @@ class WebAppViewset(viewsets.ModelViewSet):
         for t in types:
             weapons[t] = glob.glob("."+STATIC_URL+"skins/"+t+"/*")
             filenames[t] = []
-           
             for j in weapons[t]:
-                filenames[t].append(j.split("\\")[1]) 
-        print(weapons[t])
+                mac10 = j[len("."+STATIC_URL+"skins/"+t+"/"):len(j)]
+                filenames[t].append(mac10)
         for t in types:
             for w in weapons[t]:
                 grey = glob.glob(w+"/grey/*") 
@@ -297,27 +297,28 @@ class WebAppViewset(viewsets.ModelViewSet):
                 purple = glob.glob(w+"/purple/*")
                 pink = glob.glob(w+"/pink/*")
                 red =  glob.glob(w+"/red/*")
-                weapon_name = w.split("\\")[1]
+                weapon_name = w[len("."+STATIC_URL+"skins/"+t+"/"):len(w)]
                 filenames[weapon_name] = {"grey":[],"light_blue":[],"blue":[],"purple":[],"pink":[],"red":[]}
         
                 for j in grey:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/grey/"):len(j)]
                     filenames[weapon_name]["grey"].append(skinname[0:len(skinname)-4])
                 for j in  light_blue:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/light_blue/"):len(j)]
                     filenames[weapon_name]["light_blue"].append(skinname[0:len(skinname)-4])
                 for j in  blue:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/blue/"):len(j)]
                     filenames[weapon_name]["blue"].append(skinname[0:len(skinname)-4])
                 for j in  purple:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/purple/"):len(j)]
                     filenames[weapon_name]["purple"].append(skinname[0:len(skinname)-4])
                 for j in  pink:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/pink/"):len(j)]
                     filenames[weapon_name]["pink"].append(skinname[0:len(skinname)-4])
                 for j in  red:
-                    skinname = j.split("\\")[2]
+                    skinname = j[len("."+STATIC_URL+"skins/"+t+"/"+weapon_name +"/red/"):len(j)]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
+                    
 
 
         return render(request, "skin_master_ranked.html",context=filenames)    
