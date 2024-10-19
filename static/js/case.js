@@ -1,15 +1,4 @@
-$(document).ready(function(){
-    $("#openCase").click(function(){
-  
-  
-      if ($(this).hasClass('disabled')) {
-          return false;
-      } else {
-           startRoll();
-      }
-  
-    });
-  });
+
   
   
   function startRoll(){
@@ -222,7 +211,7 @@ var rarity_order= {}
     data = JSON.parse(document.getElementById("cases").textContent);
     console.log(data)
     dataurl = JSON.parse(document.getElementById("url").textContent);
-    alert(dataurl)
+    console.log(dataurl)
     for (var i = 0; i < data.length; i++) {
       img = document.createElement('img')
       img.style.width = "50px"  

@@ -25,7 +25,7 @@ SECRET_KEY = "THISisACommitAndNotRealPassword2"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["18.170.78.22","cstools.co.uk","www.cstools.co.uk"]
 #"18.170.78.22","cstools.co.uk","www.cstools.co.uk"
 
 
@@ -34,14 +34,13 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'compressor',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'playground',
     'bootstrap5',
     'django.contrib.sites',
-    'django.contrib.sessions',
+    'django.contrib.sessions'
 ]
 
 MIDDLEWARE = [
@@ -116,26 +115,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-COMPRESS_OFFLINE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'StaticSCSS/')
+
 STATIC_URL = '/static/'
-STATICFILES_FINDERS =( 'django.contrib.staticfiles.finders.FileSystemFinder',  'django.contrib.staticfiles.finders.AppDirectoriesFinder',    'compressor.finders.CompressorFinder',
-) 
-COMPRESS_ENABLED = True
-COMPRESS_PRECOMPILERS = (    
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
-

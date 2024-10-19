@@ -44,34 +44,30 @@ class WebAppViewset(viewsets.ModelViewSet):
             cases = glob.glob("."+STATIC_URL+"case_opener/*")
             filenames['url'] = []
             for i in cases:
-                case = i.split("\\")[1]
+                case = i[21:len(i)]
                 filenames[case] = {}
                 types = glob.glob("."+STATIC_URL+"case_opener/"+case +"/*")
              
                 for type in types:
-                    
-                    rarity = type.split("\\")[1]
+                    rarity =   type[len("."+STATIC_URL+"case_opener/*" +case):len(type)]
                     filenames[case][rarity] = []
                     skins = glob.glob("."+STATIC_URL+"case_opener/"+case +"/"+rarity+"/*")
                 
                     for skin in skins:
-                    
-                        filenames[case][rarity].append(skin.split("\\")[1])
+                        caseskin = skin[len("."+STATIC_URL+"case_opener/"+case +"/"+rarity+"/"):len(skin)]
+                        filenames[case][rarity].append(caseskin)
             
-            cases = glob.glob("."+STATIC_URL+"case_open3er/*")
-            if(len(cases) == 0):
-               filenames['url'].append("no cases") 
+            cases = glob.glob("."+STATIC_URL+"case_opener/*")
 
             filenames['cases'] = []
 
             for i in cases:
                 
-                filenames['cases'].append(i.split("\\")[1])
+                filenames['cases'].append(i[21:len(i)])
                
-            filenames['url'].append(str(STATIC_URL))
+            
         except:
-                print("db corrpted")
-        
+            print("failed")
         
         return render(request,'index.html',context=filenames)
     
@@ -99,7 +95,7 @@ class WebAppViewset(viewsets.ModelViewSet):
 
     
         for i in tornamantNames:
-            filespaper = glob.glob("."+STATIC_URL+"stickers/Paper/"+i+"/*") 
+            filespaper = glob.glob("."+STATIC_URL+"stickers/Paper/"+i+"/*")  
             filesholo = glob.glob("."+STATIC_URL+"stickers/Holo/"+i+"/*")
             filesfoil = glob.glob("."+STATIC_URL+"stickers/Foil/"+i+"/*")
             filesgold = glob.glob("."+STATIC_URL+"stickers/Gold/"+i+"/*")
@@ -191,7 +187,7 @@ class WebAppViewset(viewsets.ModelViewSet):
     
     def skin_master_practise(request):
 
-        types = ["machineguns","shotguns","smgs","pistols","pifles"]
+        types = ["machineguns","shotguns","smgs","pistols","rifles"]
         weapons = {"machineguns":[],"shotguns":[],"smgs":[],"pistols":[],"rifles":[]}
         filenames = {}
         filenames['types'] = types
@@ -233,19 +229,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                     skinname = j.split("\\")[2]
                     filenames[weapon_name]["red"].append(skinname[0:len(skinname)-4])
             
-      
-        # type = "rifles"
-        # gun2 = glob.glob("."+STATIC_URL+"skins/"+type+"/*")
-        # total = 0
-        # list = []
-        # for i in gun2:
-        #     gun = i.split("\\")[1]
-        #     for j in ["grey","light_blue","blue","purple","pink","red"]:
-        #         total += len(glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"))
-        #         for x in glob.glob("."+STATIC_URL+"skins/"+type+"/"+gun+"/"+j+"/*"):
 
-        #             list.append(x)
-        # print(filenames)
         return render(request, "skin_master_practise.html",context=filenames)    
     
     def skin_master_survival(request):
