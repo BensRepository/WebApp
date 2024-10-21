@@ -1799,3 +1799,10 @@ section,
 
 }
 
+
+
+
+.redirect:hover {
+
+  cursor: pointer;
+}

@@ -209,7 +209,7 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
-var domain = "18.171.183.153";
+var domain = "rstools.uk";
 function navigateStatLookup(){
  window.location.replace("http://"+domain+"/StatLookUp/")
 }
@@ -238,3 +238,7 @@ function navigateXpLeaderBoard(){
    window.location.replace("http://"+domain+"/LootSimulator/Raids/TOB/")
   }
  
+function cstoolsRedirect(){
+  window.location.replace("http://www.cstools.co.uk")
+
+}
