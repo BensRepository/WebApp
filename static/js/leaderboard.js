@@ -84,14 +84,18 @@ function expandLeaderboard(type){
         for (let i = 0; i < rsndatacurrent.length; i++){
           Weeklybosskillsstart = rsndatacurrent[i][0]
           Weeklybosskillscurrent = rsndatacurrent[i][1]
-  
-          weeklybossrankingsviewmore.push([rsndatacurrent[i][6],Weeklybosskillscurrent-Weeklybosskillsstart])
+          Weeklybosskill = Weeklybosskillscurrent-Weeklybosskillsstart
+          if(Weeklybosskill < 0){
+            Weeklybosskill = 0
+          }
+          weeklybossrankingsviewmore.push([rsndatacurrent[i][6],Weeklybosskill])
+
           weeklybossrankingsviewmore = weeklybossrankingsviewmore.sort(sortFunction);
         }
         for (let i = 3; i < weeklybossrankingsviewmore.length; i++){
        
           var para = document.createElement("p");
-          var node = document.createTextNode("# "+(i+1)+" "+weeklybossrankingsviewmore[i][0] +" "+numberWithCommas(weeklybossrankingsviewmore[i][1])+ " - Kills" );
+          var node = document.createTextNode("# "+(i+1)+" "+weeklybossrankingsviewmore[i][0] +" - "+numberWithCommas(weeklybossrankingsviewmore[i][1])+ " Kills" );
           para.appendChild(node);
           document.getElementById("leaderboardboss").appendChild(para)
         }
@@ -111,14 +115,18 @@ function expandLeaderboard(type){
         for (let i = 0; i < rsndatacurrent.length; i++){
           Weeklyskillstart = rsndatacurrent[i][4]
           Weeklyskillscurrent = rsndatacurrent[i][5]
-  
-          weeklyskillrankingsviewmore.push([rsndatacurrent[i][6],Weeklyskillscurrent-Weeklyskillstart])
+
+          Weeklyskill = Weeklyskillscurrent-Weeklyskillstart
+          if(Weeklyskill < 0){
+            Weeklyskill = 0
+          }
+          weeklyskillrankingsviewmore.push([rsndatacurrent[i][6],Weeklyskill])
           weeklyskillrankingsviewmore = weeklyskillrankingsviewmore.sort(sortFunction);
         }
         for (let i = 3; i < weeklyskillrankingsviewmore.length; i++){
      
           var para = document.createElement("p");
-          var node = document.createTextNode("# "+(i+1)+" "+weeklyskillrankingsviewmore[i][0] +" "+numberWithCommas(weeklyskillrankingsviewmore[i][1])+ " - XP" );
+          var node = document.createTextNode("# "+(i+1)+" "+weeklyskillrankingsviewmore[i][0] +" - "+numberWithCommas(weeklyskillrankingsviewmore[i][1])+ " XP" );
           para.appendChild(node);
           document.getElementById("leaderboardskill").appendChild(para)
         }
@@ -137,16 +145,20 @@ function expandLeaderboard(type){
         document.getElementById("leaderboardoverall").innerHTML =""
   
         for (let i = 0; i < rsndatacurrent.length; i++){
-          Weeklybosskillsstart = rsndatacurrent[i][2]
-          Weeklybosskillscurrent = rsndatacurrent[i][3]
+          Weeklytotalxpstart = rsndatacurrent[i][2]
+          Weeklytotalxpcurrent = rsndatacurrent[i][3]
   
-          totalxprankingsviewmore.push([rsndatacurrent[i][6],Weeklybosskillscurrent-Weeklybosskillsstart])
+          Weeklytotalxp = Weeklytotalxpcurrent-Weeklytotalxpstart
+          if(Weeklytotalxp < 0){
+            Weeklytotalxp = 0
+          }
+          totalxprankingsviewmore.push([rsndatacurrent[i][6],Weeklytotalxp])
           totalxprankingsviewmore = totalxprankingsviewmore.sort(sortFunction);
         }
         for (let i = 3; i < totalxprankingsviewmore.length; i++){
          
           var para = document.createElement("p");
-          var node = document.createTextNode("# "+(i+1)+" "+totalxprankingsviewmore[i][0] +" "+numberWithCommas(totalxprankingsviewmore[i][1])+ " - XP" );
+          var node = document.createTextNode("# "+(i+1)+" "+totalxprankingsviewmore[i][0] +" - "+numberWithCommas(totalxprankingsviewmore[i][1])+ " XP" );
           para.appendChild(node);
           document.getElementById("leaderboardoverall").appendChild(para)
         }
@@ -243,19 +255,39 @@ function populateLeaderboard(){
             Weeklybosskillsstart = rsndatacurrent[i][0]
             Weeklybosskillscurrent = rsndatacurrent[i][1]
 
-            weeklybossrankings.push([rsndatacurrent[i][6],Weeklybosskillscurrent-Weeklybosskillsstart])
+
+            weeklybossKills = Weeklybosskillscurrent-Weeklybosskillsstart
+            if (weeklybossKills < 0) {
+              test = 0
+              weeklybossrankings.push([rsndatacurrent[i][6],test])
+            }
+            else{
+        
+              weeklybossrankings.push([rsndatacurrent[i][6],weeklybossKills])
+            }
+      
            
             
             Totalxpstart = rsndatacurrent[i][2]
             Totalxpcurrent= rsndatacurrent[i][3]
 
-            totalxprankings.push([rsndatacurrent[i][6],Totalxpcurrent-Totalxpstart])
+            totalxp = Totalxpcurrent-Totalxpstart
+            if (totalxp < 0) {
+              totalxp = 0
+            }
+            totalxprankings.push([rsndatacurrent[i][6],totalxp])
       
 
             Weeklyskillxpstart= rsndatacurrent[i][4]
             Weeklyskillxpcurrent= rsndatacurrent[i][5]
 
-            weeklyskillrankings.push([rsndatacurrent[i][6],Weeklyskillxpcurrent-Weeklyskillxpstart])
+            weeklyskillXp = Weeklyskillxpcurrent-Weeklyskillxpstart
+            if (weeklyskillXp < 0) {
+              weeklyskillXp = 0
+        
+            }
+          
+            weeklyskillrankings.push([rsndatacurrent[i][6],weeklyskillXp])
             
           }
        

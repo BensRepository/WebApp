@@ -86,27 +86,35 @@
 
           <div   style="cursor: pointer;" onclick="navigateStatLookup()"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <i><img   style="position: relative;height: 60px;" src="{% static 'images/rstoolsimg/stats.png'%}" alt=""></i>
+              <i><img   style="position: relative;height: 60px;width: 60px" src="{% static 'images/rstoolsimg/stats.png'%}" alt=""></i>
               <h3><a  href="{% url 'statlookup' %}">Stat Lookup</a></h3>
             </div>
           </div>
            
           <div style="cursor: pointer;" onclick="navigateXpLeaderBoard()"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
             <div class="icon-box">
-              <i><img   style="position: relative;height: 50px;" src="{% static 'images/rstoolsimg/third.png'%}" alt=""></i>
+              <i><img   style="position: relative;height: 50px;width: 50px" src="{% static 'images/rstoolsimg/third.png'%}" alt=""></i>
               <h3><a href="{% url 'leaderboard' %}" >Leaderboard</a></h3>
             </div>
           </div>
+
+          <div style="cursor: pointer;" onclick="navigateSkillWheel()"  class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon-box">
+              <i><img   style="position: relative;height: 50px;width: 50px" src="{% static 'images/rstoolsimg/maxcape.png'%}" alt=""></i>
+              <h3><a href="{% url 'skillwheel' %}" >Skill Wheel</a></h3>
+            </div>
+          </div>
+
           <div style="cursor: pointer;" onclick="navigateLootSimulator()" class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="icon-box">
-              <i><img   style="position: relative;height: 50px;" src="{% static 'images/rstoolsimg/loot.png'%}" alt=""></i>
+              <i><img   style="position: relative;height: 50px;width: 49.2px" src="{% static 'images/rstoolsimg/loot.png'%}" alt=""></i>
               <h3><a href="{% url 'lootsimulator' %}" >Loot Simulator</a><br><a style="color: gray;">(Coming soon)</a></h3>
             </div>
           </div>
 
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="icon-box">
-              <i><img   style="position: relative;height: 50px;" src="{% static 'images/rstoolsimg/clue.png'%}" alt=""></i>
+              <i><img   style="position: relative;height: 50px;width: 52.72px;" src="{% static 'images/rstoolsimg/clue.png'%}" alt=""></i>
               <h3><a >Clue Simulator</a><br><a style="color: gray;">(Coming soon)</a></h3>
             </div>
           </div>

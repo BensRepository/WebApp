@@ -19,6 +19,8 @@ urlpatterns =[
     path("LootSimulator/Raids/TOA/",WebAppViewset.load_toa, name='tob'),
     path("LootSimulator/Raids/COX/",WebAppViewset.load_cox, name='cox'),
     path("LootSimulator/Raids/TOB/",WebAppViewset.load_tob, name='tob'),
+
+    path("SkillWheel/",WebAppViewset.skill_wheel, name='skillwheel'),
     
 
     path("Leaderboard/",WebAppViewset.load_leaderboard, name='leaderboard'),

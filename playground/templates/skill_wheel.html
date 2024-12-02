@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    {% load compress  %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>RSTools</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="{% static 'images/rstoolsimg/Fire_rune.webp'%}" />
+
+  {% compress css %}
+  <link type="text/x-scss" href="{% static 'css/skillwheel.scss'%}" rel="stylesheet" />
+  {% endcompress %}
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+
+
+  <!-- Main CSS File -->
+  <link href="{% static 'css/rstools.css'%}" rel="stylesheet" />
+ 
+
+  <!-- =======================================================
+  * Template Name: Gp
+  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+  * Updated: Aug 15 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'rstools' %}" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">RSTools</h1>
+        <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="../../../StatLookUp">Stat Lookup</a></li>
+          <li><a href="../../../Leaderboard">Leaderboard</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a style="display: none;" class="btn-getstarted" href="https://www.youtube.com/watch?v=q-Y0bnx6Ndw">Secret Button</a>
+
+    </div>
+  </header>
+
+  <main class="main" style="width: 100%;"> 
+
+    <!-- Background photo -->
+    <section id="hero" class="hero section dark-background" style="padding-bottom: 10px;" >
+
+      <img src="{% static 'images/rstoolsimg/previouswinnersbg.png'%}" alt="" data-aos="fade-in" >
+      
+      <div class="container" style="margin: 1%;padding: 1%">
+
+        <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-xl-6 col-lg-8">
+            <h2>Skill Wheel<span>.</span></h2>
+            <p>Unsure on what to do next? Randomly select your next skill to train!</p>
+          </div>
+          
+        </div>
+        <div class="row">
+          <style>
+            @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+          </style>
+            <link href="{% static 'css/skillwheel.css'%}" rel="stylesheet" />
+
+          <div class="container" style="width: 1099px;"  data-aos="fade-in" data-aos-delay="100">
+            <ul class="ks-cboxtags">
+              <li><input type="checkbox" id="checkboxPrayer" value="Prayer" checked onchange="drawWheel()"><label for="checkboxPrayer" >Prayer</label></li>
+              <li><input type="checkbox" id="checkboxCooking" value="Cooking" checked onchange="drawWheel()"><label for="checkboxCooking">Cooking</label></li>
+              <li><input type="checkbox" id="checkboxWoodcutting" value="Woodcutting" checked onchange="drawWheel()"><label for="checkboxWoodcutting">Woodcutting</label></li>
+              <li><input type="checkbox" id="checkboxFletching" value="Fletching" checked onchange="drawWheel()"><label for="checkboxFletching">Fletching</label></li>
+              <li><input type="checkbox" id="checkboxFishing" value="Fishing" checked onchange="drawWheel()"> <label for="checkboxFishing">Fishing</label></li>
+              <li><input type="checkbox" id="checkboxFiremaking" value="Firemaking" checked onchange="drawWheel()"><label for="checkboxFiremaking">Firemaking</label></li>
+              <li><input type="checkbox" id="checkboxCrafting" value="Crafting" checked onchange="drawWheel()"><label for="checkboxCrafting">Crafting</label></li>
+              <li><input type="checkbox" id="checkboxSmithing" value="Smithing" checked onchange="drawWheel()"><label for="checkboxSmithing">Smithing</label></li>
+              <li><input type="checkbox" id="checkboxMining" value="Mining" checked onchange="drawWheel()"><label for="checkboxMining">Mining</label></li>
+              <li><input type="checkbox" id="checkboxHerblore" value="Herblore" checked onchange="drawWheel()"><label for="checkboxHerblore">Herblore</label></li>
+              <li><input type="checkbox" id="checkboxAgility" value="Agility" checked onchange="drawWheel()"><label for="checkboxAgility">Agility</label></li>
+              <li><input type="checkbox" id="checkboxThieving" value="Thieving" checked onchange="drawWheel()"><label for="checkboxThieving">Thieving</label></li>
+              <li><input type="checkbox" id="checkboxSlayer" value="Slayer" checked onchange="drawWheel()"><label for="checkboxSlayer">Slayer</label></li>
+              <li><input type="checkbox" id="checkboxFarming" value="Farming" checked onchange="drawWheel()"><label for="checkboxFarming">Farming</label></li>
+              <li><input type="checkbox" id="checkboxRunecrafting" value="Runecrafting" checked onchange="drawWheel()"><label for="checkboxRunecrafting">Runecrafting</label></li>
+              <li><input type="checkbox" id="checkboxHunter" value="Hunter" checked onchange="drawWheel()"><label for="checkboxHunter">Hunter</label></li>
+              <li><input type="checkbox" id="checkboxConstruction" value="Construction" checked onchange="drawWheel()"><label for="checkboxConstruction">Construction</label></li>
+            </ul>
+          
+          </div>
+            
+            
+        
+
+
+       
+          <div id="spin_the_wheel" class="col-lg-6 order-2 order-lg-1 content" style="position: relative" data-aos="fade-in" >
+            <canvas id="wheel" width="600px" height="600px" style="overflow: none;float: left;"></canvas>
+            <div style="position: relative;" id="spin" onclick="spin_sound()">SPIN</div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2" style="position: relative;display: inline-block;align-items: center;text-align: center;">
+            <div id="SelectedSkillDiv" style="display: none;" data-aos="fade-in"></div>
+            <h2 id="SelectedSkillText" style="display: none;" data-aos="fade-in"></h2>
+            <div id="SelectedSkillImg" style="display: none;"></div>
+ 
+          </div>
+
+          
+        </div>
+        </div>
+        
+        <script src="{% static 'js/skillwheel.js' %}"></script>
+   
+      </div>
+
+      
+    </section><!-- /Hero Section -->
+
+
+
+
+
+ 
+
+  
+
+    
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+
+
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <!-- Main JS File -->
+  <script src="{% static 'js/rstools.js' %}"></script>
+
+</body>
+
+</html>

@@ -56,7 +56,7 @@ minigameNames = [
             "Duke Sucellus",
             "General Graardor",
             "Giant Mole",
-            "Grotesque Guardians",
+            "reroll",
             "reroll",
             "Kalphite Queen",
             "King Black Dragon",
@@ -146,6 +146,9 @@ class WebAppViewset(viewsets.ModelViewSet):
         return render(request,'lootsimulator.html')
     
 
+    def skill_wheel(request):
+        return render(request,'skill_wheel.html')
+
     def load_leaderboard(request):
         rsn = request.POST.get('rsn')
         print(rsn)
@@ -174,7 +177,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                     newEntry.rsn = rsn
                     if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
                         newEntry.weeklybosskillsstart = 0
-                        newEntry.weeklybosskillscurrent = 0
+                        newEntry.weeklybosskillscurrent = 00
                     else:
                         newEntry.weeklybosskillsstart = data[minigameNames.index(weekly.boss)+26].split(',')[1]
                         newEntry.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+26].split(',')[1]
@@ -261,7 +264,7 @@ class WebAppViewset(viewsets.ModelViewSet):
         weekly = weeklyObjects.get(id=1)
         try:
             boss_index = random.randint(15,len(minigameNames))
-            skill_index = random.randint(0,len(SkillNames))
+            skill_index = random.randint(1,len(SkillNames))
             weekly.boss = minigameNames[boss_index]
             weekly.skill = SkillNames[skill_index]
             print(weekly.boss +" New Boss")
@@ -269,7 +272,7 @@ class WebAppViewset(viewsets.ModelViewSet):
             while((weekly.boss == current.boss) or (current.skill == weekly.skill) or (weekly.boss =="reroll")):
                 print("Duplicate or Reroll")
                 boss_index = random.randint(17,len(minigameNames))
-                skill_index = random.randint(0,len(SkillNames))
+                skill_index = random.randint(1,len(SkillNames))
                 weekly.boss = minigameNames[boss_index]
                 weekly.skill = SkillNames[skill_index]
 
@@ -290,6 +293,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                 if object.event == "current":
                     object.pk = None
                     object.save()
+                    
                     object.event = "previous"
                     object.save()
             print("set_previous successful")

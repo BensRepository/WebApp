@@ -34,7 +34,7 @@
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex justify-content-between">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="{% url 'rstools' %}" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -42,6 +42,18 @@
         <h1 class="sitename">RSTools</h1>
         <span>.</span>
       </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="../../../StatLookUp">Stat Lookup</a></li>
+          <li><a href="../../../Leaderboard">Leaderboard</a></li>
+          <li><a href="../../../SkillWheel">Skill Wheel</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a style="display: none;" class="btn-getstarted" href="https://www.youtube.com/watch?v=q-Y0bnx6Ndw">Secret Button</a>
 
     </div>
   </header>

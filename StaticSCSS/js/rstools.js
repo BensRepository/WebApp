@@ -209,7 +209,7 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
-var domain = "rstools.uk";
+var domain = "127.0.0.1:8000"; //rstools.uk
 function navigateStatLookup(){
  window.location.replace("http://"+domain+"/StatLookUp/")
 }
@@ -225,6 +225,11 @@ function navigateXpLeaderBoard(){
  function navigateRaids(){
   window.location.replace("http://"+domain+"/LootSimulator/Raids/")
  }
+
+ function navigateSkillWheel(){
+  window.location.replace("http://"+domain+"/SkillWheel/")
+ }
+
 
  function navigateCOX(){
   window.location.replace("http://"+domain+"/LootSimulator/Raids/COX/")
