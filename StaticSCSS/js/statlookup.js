@@ -135,86 +135,91 @@ class PlayerData {
   }
 
   const minigameNames = [
-    "Bounty Hunter - Hunter",
-    "Bounty Hunter - Rogue",
-    "Bounty Hunter (Legacy) - Hunter",
-    "Bounty Hunter (Legacy) - Rogue",
-    "Clue Scrolls (all)",
-    "Clue Scrolls (beginner)",
-    "Clue Scrolls (easy)",
-    "Clue Scrolls (medium)",
-    "Clue Scrolls (hard)",
-    "Clue Scrolls (elite)",
-    "Clue Scrolls (master)",
-    "LMS - Rank",
-    "PvP Arena - Rank",
-    "Soul Wars Zeal",
-    "Rifts closed",
-    "Colosseum Glory",
-    "Abyssal Sire",
-    "Alchemical Hydra",
-    "Amoxliatl",
-    "Araxxor",
-    "Artio",
-    "Barrows Chests",
-    "Bryophyta",
-    "Callisto",
-    "Calvar'ion",
-    "Cerberus",
-    "Chambers of Xeric",
-    "Chambers of Xeric Challenge Mode",
-    "Chaos Elemental",
-    "Chaos Fanatic",
-    "Commander Zilyana",
-    "Corporeal Beast",
-    "Crazy Archaeologist",
-    "Dagannoth Prime",
-    "Dagannoth Rex",
-    "Dagannoth Supreme",
-    "Deranged Archaeologist",
-    "Duke Sucellus",
-    "General Graardor",
-    "Giant Mole",
-    "Grotesque Guardians",
-    "Hespori",
-    "Kalphite Queen",
-    "King Black Dragon",
-    "Kraken",
-    "Kree'Arra",
-    "K'ril Tsutsaroth",
-    "Lunar Chests",
-    "Mimic",
-    "Nex",
-    "Nightmare",
-    "Phosani's Nightmare",
-    "Obor",
-    "Phantom Muspah",
-    "Sarachnis",
-    "Scorpia",
-    "Scurrius",
-    "Skotizo",
-    "Sol Heredit",
-    "Spindel",
-    "Tempoross",
-    "The Gauntlet",
-    "The Corrupted Gauntlet",
-    "The Hueycoatl",
-    "The Leviathan",
-    "The Whisperer",
-    "Theatre of Blood",
-    "Theatre of Blood Hard Mode",
-    "Thermonuclear Smoke Devil",
-    "Tombs of Amascut",
-    "Tombs of Amascut Expert Mode",
-    "TzKal-Zuk",
-    "TzTok-Jad",
-    "Vardorvis",
-    "Venenatis",
-    "Vet'ion",
-    "Vorkath",
-    "Wintertodt",
-    "Zalcano",
-    "Zulrah"
+    
+      "Bounty Hunter - Hunter",
+      "Bounty Hunter - Rogue",
+      "Bounty Hunter (Legacy) - Hunter",
+      "Bounty Hunter (Legacy) - Rogue",
+      "Clue Scrolls (all)",
+      "Clue Scrolls (beginner)",
+      "Clue Scrolls (easy)",
+      "Clue Scrolls (medium)",
+      "Clue Scrolls (hard)",
+      "Clue Scrolls (elite)",
+      "Clue Scrolls (master)",
+      "LMS - Rank",
+      "PvP Arena - Rank",
+      "Soul Wars Zeal",
+      "Rifts closed",
+      "Colosseum Glory",
+      "Collections Logged",
+      "Abyssal Sire",
+      "Alchemical Hydra",
+      "Amoxliatl",
+      "Araxxor",
+      "Artio",
+      "Barrows Chests",
+      "Bryophyta",
+      "Callisto",
+      "Cal'varion",
+      "Cerberus",
+      "Chambers of Xeric",
+      "Chambers of Xeric Challenge Mode",
+      "Chaos Elemental",
+      "Chaos Fanatic",
+      "Commander Zilyana",
+      "Corporeal Beast",
+      "Crazy Archaeologist",
+      "Dagannoth Prime",
+      "Dagannoth Rex",
+      "Dagannoth Supreme",
+      "Deranged Archaeologist",
+      "Doom of Mokhaiotl",
+      "Duke Sucellus",
+      "General Graardor",
+      "Giant Mole",
+      "Grotesque Guardians",
+      "Hespori",
+      "Kalphite Queen",
+      "King Black Dragon",
+      "Kraken",
+      "Kree'Arra",
+      "K'ril Tsutsaroth",
+      "Lunar Chests",
+      "Mimic",
+      "Nex",
+      "Nightmare",
+      "Phosani's Nightmare",
+      "Obor",
+      "Phantom Muspah",
+      "Sarachnis",
+      "Scorpia",
+      "Scurrius",
+      "Skotizo",
+      "Sol Heredit",
+      "Spindel",
+      "Tempoross",
+      "The Gauntlet",
+      "The Corrupted Gauntlet",
+      "The Hueycoatl",
+      "The Leviathan",
+      "The Royal Titans",
+      "The Whisperer",
+      "Theatre of Blood",
+      "Theatre of Blood Hard Mode",
+      "Thermonuclear Smoke Devil",
+      "Tombs of Amascut",
+      "Tombs of Amascut Expert Mode",
+      "TzKal-Zuk",
+      "TzTok-Jad",
+      "Vardorvis",
+      "Venenatis",
+      "Vet'ion",
+      "Vorkath",
+      "Wintertodt",
+      "Yama",
+      "Zalcano",
+      "Zulrah"
 
   ]
   const minigameLinks = [
@@ -233,6 +238,7 @@ class PlayerData {
     "Emir%27s_Arena",
     "Soul_Wars",
     "Guardians_of_the_Rift",
+    "Collection_log",
     "Fortis_Colosseum",
     "Abyssal Sire",
     "Alchemical Hydra",
@@ -255,6 +261,7 @@ class PlayerData {
     "Dagannoth Rex",
     "Dagannoth Supreme",
     "Deranged Archaeologist",
+    "Doom_of_Mokhaiotl",
     "Duke Sucellus",
     "General Graardor",
     "Giant Mole",
@@ -283,6 +290,7 @@ class PlayerData {
     "The Corrupted Gauntlet",
     "The Hueycoatl",
     "The Leviathan",
+    "Royal_Titans",
     "The Whisperer",
     "Theatre of Blood",
     "Theatre_of_Blood#Hard_Mode",
@@ -296,6 +304,7 @@ class PlayerData {
     "Vet'ion",
     "Vorkath",
     "Wintertodt",
+    "Yama",
     "Zalcano",
     "Zulrah"
 
@@ -612,6 +621,8 @@ class PlayerData {
        }
      
      }
+ 
+
      row = document.createElement("tr");
      var cell = document.createElement("td");
      var cellText2 = document.createTextNode("image");
@@ -861,6 +872,7 @@ for (let i = 0; i < 24; i++) {
     row.appendChild(cell);
   }
   //adding difference arrow
+  
 try {
   const cellarrows = document.createElement("td");
   var difference = Number(cleanSkillData(player_data_sorted[i])[2]) - Number(cleanSkillData(player_data_sorted2[i])[2])
@@ -1009,6 +1021,7 @@ else{
 }
 
 function CompareAccountsMinigames(){
+
   data2 = JSON.parse(document.getElementById('player_data_compare').textContent);
   data = JSON.parse(document.getElementById('player_data').textContent);
 
@@ -1198,6 +1211,7 @@ for (let i = 0; i < player_data_sorted.length -1; i++) {
 
   try {
     var difference = Number(cleanMinigameData(player_data_sorted[i])[1]) - Number(cleanMinigameData(player_data_sorted2[i])[1])
+
  }
  catch (error) {
   tableCreation = false
