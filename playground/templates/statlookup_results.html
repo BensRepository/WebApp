@@ -109,8 +109,10 @@
         window.onload = function() {
           data = JSON.parse(document.getElementById('player_data').textContent);
           compare = JSON.parse(document.getElementById('compare').textContent);
+          alert(getMinigameNames()+27 + " in Lists")
 
-          if (data.split("\\").length >  getMinigameNames() +27) {
+          alert(data.split("\\").length + "API")
+          if (data.split("\\").length > getMinigameNames() +27) {
             alert("Runescape has been updated! Please try using this feature again later.")
             history.back()
           } else {
@@ -118,11 +120,12 @@
             generateTableSkills(data);
             accountTypeSelection();
             generateTableMingames(data);
+    
           } else {
             CompareAccountsSkills()
             accountTypeSelection();
             CompareAccountsMinigames()
-
+         
           }
           }
 
