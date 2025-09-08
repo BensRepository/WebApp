@@ -170,6 +170,40 @@ function expandLeaderboard(type){
          document.getElementById("viewTotalXP").innerHTML = "View all »"
       }
     }
+
+    
+    if (type == "raid") {
+      if (OverallSelected == "False") {
+        raidrankingsviewmore = []
+        document.getElementById("leaderboardraid").innerHTML =""
+  
+        for (let i = 0; i < rsndatacurrent.length; i++){
+          Weeklytotalxpstart = rsndatacurrent[i][2]
+          Weeklytotalxpcurrent = rsndatacurrent[i][3]
+  
+          Weeklytotalxp = Weeklytotalxpcurrent-Weeklytotalxpstart
+          if(Weeklytotalxp < 0){
+            Weeklytotalxp = 0
+          }
+          raidrankingsviewmore.push([rsndatacurrent[i][6],Weeklytotalxp])
+          raidrankingsviewmore = raidrankingsviewmore.sort(sortFunction);
+        }
+        for (let i = 3; i < raidrankingsviewmore.length; i++){
+         
+          var para = document.createElement("p");
+          var node = document.createTextNode("# "+(i+1)+" "+raidrankingsviewmore[i][0] +" - "+numberWithCommas(raidrankingsviewmore[i][1])+ " Completions" );
+          para.appendChild(node);
+          document.getElementById("leaderboardraid").appendChild(para)
+        }
+        OverallSelected = "True"
+        document.getElementById("viewRaid").innerHTML = "View less »"
+      } else {
+        document.getElementById("leaderboardraid").innerHTML =""
+        OverallSelected = "False"
+         document.getElementById("viewRaid").innerHTML = "View all »"
+      }
+    }
+
 }
 function sortFunction(a, b) {
     if (a[1] === b[1]) {
@@ -207,6 +241,7 @@ function populateLeaderboard(){
    
     skill_previous = JSON.parse(document.getElementById("previous_skill").textContent);
     boss_previous = JSON.parse(document.getElementById("previous_boss").textContent);
+    raids = JSON.parse(document.getElementById("raids").textContent);
 
     skill_of_the_week_previous = document.getElementById("previous_skill_div")
     skill_of_the_week_previous.innerHTML = ""
@@ -235,13 +270,13 @@ function populateLeaderboard(){
           Totalxpstart = data[i].totalxpstart
           Totalxpcurrent= data[i].totalxpcurrent
           Weeklyskillxpstart= data[i].weeklyskillxpstart
-          Weeklyskillxpcurrent= data[i].weeklyskillxpcurrent
+          Weeklyskillxpcurrent= data[i].weeklyskillxpcurrentS
           rsn= data[i].rsn
-          event= data[i].event
+          events = data[i].event
     
-          if (event == "current") {
+          if (events == "current") {
             rsndatacurrent.push([Weeklybosskillsstart,Weeklybosskillscurrent,Totalxpstart,Totalxpcurrent,Weeklyskillxpstart,Weeklyskillxpcurrent,rsn])
-          } else if(event == "previous") {
+          } else if(events == "previous") {
             rsndataprevious.push([Weeklybosskillsstart,Weeklybosskillscurrent,Totalxpstart,Totalxpcurrent,Weeklyskillxpstart,Weeklyskillxpcurrent,rsn])
           }
           
@@ -350,6 +385,51 @@ function populateLeaderboard(){
           document.getElementById("firstplaceoverall").innerText =  "#1 "+ totalxprankings[0][0] + " - " + numberWithCommas(totalxprankings[0][1]) + " XP"
           document.getElementById("secondplaceoverall").innerText =  "#2 "+ totalxprankings[1][0] + " - " + numberWithCommas(totalxprankings[1][1]) + " XP"
           document.getElementById("thirdplaceoverall").innerText =  "#3 "+ totalxprankings[2][0] + " - " + numberWithCommas(totalxprankings[2][1]) + " XP"
+
+
+
+// Raiding Leaderboard
+
+          raidsdata = JSON.parse(document.getElementById("raids").textContent);
+          table = document.getElementById("raidsTable")
+            test = []
+             for (let i = 0; i < raidsdata.length; i++){
+              cox =   raidsdata[i].coxkccurrent -  raidsdata[i].coxkcstart
+              tob =  raidsdata[i].tobkccurrent -  raidsdata[i].tobkcstart
+              toa = raidsdata[i].toakccurrent -  raidsdata[i].toakcstart 
+              total = cox + tob +toa
+              test.push([raidsdata[i].rsn,cox,toa,tob,total])
+         
+              }
+              sorted = test.sort((a, b) => b[4] - a[4]);
+           
+           for (let i = 0; i < sorted.length; i++){
+
+              newRow = table.insertRow(-1);
+              RSNCell = newRow.insertCell(0)
+              COXCell = newRow.insertCell(1)
+              TOACell = newRow.insertCell(2)
+              TOBCell = newRow.insertCell(3)
+              TotalCell = newRow.insertCell(4)
+
+              RSNCell.textContent = sorted[i][0]
+              COXCell.textContent = sorted[i][1]
+              TOACell.textContent = sorted[i][2]
+              TOBCell.textContent = sorted[i][3]
+              TotalCell.textContent = sorted[i][4]
+  
+       }
+
+       let currentSortColumn = -1;
+      let sortDirection = 1; // 1 = ascending, -1 = descending
+
+
+
+
+
+
+
+
 
 
 }

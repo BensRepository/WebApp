@@ -8,6 +8,25 @@
     background-size: cover;
   }
 
+  .bg2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("../../static/images/rstoolsimg/2025background.jpg");
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-position: top; 
+    background-size:100% auto;
+    background-size: cover;
+  }
+  .bg3 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("../../static/images/rstoolsimg/cox.jpg");
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-position: top; 
+    background-size:100% auto;
+    background-size: cover;
+  }
+
   .bgskill {
     background-image: url("../../static/images/rstoolsimg/scrollevents.png");
     
@@ -22,3 +41,63 @@
     background-size: cover;
 
   }
+
+  
+  .bgskill2 {
+    background-image: url("../../static/images/rstoolsimg/scrollcompare.png");
+    
+    padding-bottom: 140px;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: '100%';
+    background-repeat: no-repeat;
+    background-position: top; 
+    background-size: auto 100%;
+    background-size: cover;
+
+  }
+  .bgskill3 {
+ 
+    background-color: azure;
+    padding-bottom: 140px;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: '100%';
+    background-repeat: no-repeat;
+    background-position: top; 
+    background-size: auto 100%;
+    background-size: cover;
+
+  }
+
+      table {
+      width: 60%;
+      border-collapse: collapse;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    td {
+      border: 1px solid #ffffff;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+
+       th {
+
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+
+    caption {
+      caption-side: top;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }

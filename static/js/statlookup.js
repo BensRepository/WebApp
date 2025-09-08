@@ -161,7 +161,7 @@ class PlayerData {
       "Barrows Chests",
       "Bryophyta",
       "Callisto",
-      "Cal'varion",
+      "Calvar'ion",
       "Cerberus",
       "Chambers of Xeric",
       "Chambers of Xeric Challenge Mode",

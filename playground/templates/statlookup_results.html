@@ -109,9 +109,7 @@
         window.onload = function() {
           data = JSON.parse(document.getElementById('player_data').textContent);
           compare = JSON.parse(document.getElementById('compare').textContent);
-          alert(getMinigameNames()+27 + " in Lists")
-
-          alert(data.split("\\").length + "API")
+          
           if (data.split("\\").length > getMinigameNames() +27) {
             alert("Runescape has been updated! Please try using this feature again later.")
             history.back()

@@ -19,3 +19,27 @@ class Weeklys(models.Model):
     id = models.AutoField(primary_key=True)
     skill = models.CharField(max_length=45)
     boss = models.CharField(max_length=45)
+
+class GainsLeaderboard(models.Model):
+    rsn = models.CharField(max_length=20,primary_key=True)
+    points = models.IntegerField()
+    date_modified = models.DateTimeField(auto_now=True)
+
+class RaidsLeaderboard(models.Model):
+    rsn = models.CharField(max_length=20,primary_key=True)
+    coxkcstart = models.IntegerField()
+    coxkccurrent = models.IntegerField()
+
+    toakcstart = models.IntegerField()
+    toakccurrent = models.IntegerField()
+
+    tobkcstart = models.IntegerField()
+    tobkccurrent = models.IntegerField()
+
+
+    date_modified = models.DateTimeField(auto_now=True)
+    # @property
+    # def sum(self):
+    #     self.sum = (self.coxkccurrent - self.coxkcstart) + (self.toakccurrent - self.toakcstart) + (self.tobkccurrent - self.tobkcstart)
+    #     return super(RaidsLeaderboard, self).save()
+

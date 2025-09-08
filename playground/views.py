@@ -8,7 +8,8 @@ import sys, os
 
 from .models import RSLeaderboardEntry
 from .models import Weeklys
-
+from .models import RaidsLeaderboard
+from .models import GainsLeaderboard
 from rest_framework import viewsets
 import glob
 from WebApp.settings import STATIC_URL
@@ -42,7 +43,7 @@ minigameNames = [
     "Barrows Chests",
     "Bryophyta",
     "Callisto",
-    "Cal'varion",
+    "Calvar'ion",
     "Cerberus",
     "Chambers of Xeric",
     "Chambers of Xeric Challenge Mode",
@@ -90,7 +91,7 @@ minigameNames = [
     "Theatre of Blood Hard Mode",
     "Thermonuclear Smoke Devil",
     "Tombs of Amascut",
-    "Tombs of Amascut Expert Mode",
+    "Tombs of Amascut Expert",
     "TzKal-Zuk",
     "TzTok-Jad",
     "Vardorvis",
@@ -167,7 +168,6 @@ class WebAppViewset(viewsets.ModelViewSet):
                 weeklyObjects = Weeklys.objects.all()
                 weekly = weeklyObjects.get(id=1)
                 data = str(api_request).split('\\')
-            
                 addDB = True
                 for x in RSLeaderboardEntry.objects.all():
                     print(x.rsn.lower() +" "+str(rsn).lower())
@@ -177,7 +177,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                         DBObject = x
   
                 if(addDB == True):
-                    print("Add to DB")
+                    print("Add to DB Main Leaderboard")
                     newEntry = RSLeaderboardEntry()
                     newEntry.rsn = rsn
                     if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
@@ -195,7 +195,85 @@ class WebAppViewset(viewsets.ModelViewSet):
                     newEntry.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
                     newEntry.event="current"
                     newEntry.save()
-                    print("created new entry")
+                    print("created new entry main leaderboard")
+
+
+
+                    newEntry = RaidsLeaderboard()
+                    newEntry.rsn = rsn
+                    cox = "Chambers of Xeric"
+                    coxcm = "Chambers of Xeric Challenge Mode"
+                    tob = "Theatre of Blood"
+                    tobh = "Theatre of Blood Hard Mode"
+                    toa = "Tombs of Amascut"
+                    toae = "Tombs of Amascut Expert"
+
+                    #Chambers of Xeric
+                    coxStart = 0
+                    coxCurrent = 0
+                    print(data)
+                    if data[minigameNames.index(cox)+26] == "n-1,-1":
+                        coxStart = 0
+                        coxCurrent = 0
+                    else:
+                        coxStart= int(data[minigameNames.index(cox)+26].split(',')[1])
+                        coxCurrent= int(data[minigameNames.index(cox)+26].split(',')[1])
+
+                    if data[minigameNames.index(coxcm)+26] == "n-1,-1":
+                        print("No CMs")
+                    else:
+                        coxStart += int(data[minigameNames.index(coxcm)+26].split(',')[1])
+                        coxCurrent += int(data[minigameNames.index(coxcm)+26].split(',')[1])
+
+
+                    #Tombs of Amascut
+                    toaStart = 0
+                    toaCurrent = 0
+                    if data[minigameNames.index(toa)+26] == "n-1,-1":
+                        toaStart = 0
+                        toaCurrent = 0
+                    else:
+                        toaStart = int(data[minigameNames.index(toa)+26].split(',')[1])
+                        toaCurrent = int(data[minigameNames.index(toa)+26].split(',')[1])
+
+                    if data[minigameNames.index(toae)+26] == "n-1,-1":
+                        print("No Experts")
+                    else:
+               
+                       toaStart += int(data[minigameNames.index(toae)+26].split(',')[1])
+                       toaCurrent += int(data[minigameNames.index(toae)+26].split(',')[1])
+
+                    newEntry.toakcstart = toaStart
+                    newEntry.toakccurrent = toaCurrent
+
+                    #Theatre of Blood
+                    tobStart = 0
+                    tobCurrent = 0
+                    if data[minigameNames.index(tob)+26] == "n-1,-1":
+                        tobStart = 0
+                        tobCurrent = 0
+                    else:
+                        tobStart = int(data[minigameNames.index(tob)+26].split(',')[1])
+                        tobCurrent = int(data[minigameNames.index(tob)+26].split(',')[1])
+
+                    if data[minigameNames.index(tobh)+26] == "n-1,-1":
+                        print("no hard kc")
+                    else:
+                        tobStart += int(data[minigameNames.index(tobh)+26].split(',')[1])
+                        tobCurrent += int(data[minigameNames.index(tobh)+26].split(',')[1])
+    
+                    newEntry.toakcstart = toaStart
+                    newEntry.toakccurrent = toaCurrent
+
+                    newEntry.coxkcstart = coxStart
+                    newEntry.coxkccurrent = coxCurrent
+
+                    newEntry.tobkcstart = tobStart
+                    newEntry.tobkccurrent = tobStart
+                    
+                    newEntry.save()
+                    print("created new entry main leaderboard")
+
                 else:
                     try:
                         url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +rsn
@@ -235,6 +313,7 @@ class WebAppViewset(viewsets.ModelViewSet):
 
 
         leaderboard_data=[]
+        raids_leaderboard_data=[]
         context = {}
         weeklyObjects = Weeklys.objects.all()
         weekly = weeklyObjects.get(id=1)
@@ -244,12 +323,17 @@ class WebAppViewset(viewsets.ModelViewSet):
         weeklyPrevious = weeklyObjects.get(id=2)
         context['previous_skill'] = weeklyPrevious.skill
         context['previous_boss'] = weeklyPrevious.boss
+
         print(weeklyPrevious.skill)
         for x in RSLeaderboardEntry.objects.all().values():
             leaderboard_data.append(x)
         
         context['leaderboard_data'] = leaderboard_data
 
+        for x in RaidsLeaderboard.objects.all().values():
+            raids_leaderboard_data.append(x)
+
+        context['raids'] = raids_leaderboard_data
         return render(request,'leaderboard.html',context)
     
     def change_weekly(self):
@@ -309,11 +393,13 @@ class WebAppViewset(viewsets.ModelViewSet):
     def periodically_update(self):
 
         last_updated = RSLeaderboardEntry.objects.all().filter(event="current").order_by('date_modified').first()
+        print(last_updated.rsn)
         try:
             url = "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +last_updated.rsn
             api_request = requests.get(url)
             api_request.raise_for_status() 
             api_request = api_request.content
+
          
             weeklyObjects = Weeklys.objects.all()
             weekly = weeklyObjects.get(id=1)
@@ -324,6 +410,8 @@ class WebAppViewset(viewsets.ModelViewSet):
             else:
                 last_updated.weeklybosskillscurrent = data[minigameNames.index(weekly.boss)+26].split(',')[1]
             last_updated.totalxpcurrent = data[0].split(',')[2]
+
+
             if data[SkillNames.index(weekly.skill)] == "n-1,-1":
                 last_updated.weeklyskillxpcurrent = 0
             else:
@@ -331,6 +419,53 @@ class WebAppViewset(viewsets.ModelViewSet):
 
             weeklySkillXpGained = int(data[0].split(',')[2]) - int(last_updated.totalxpstart)
 
+            last_updated_raids = RaidsLeaderboard.objects.all().order_by('date_modified').first()
+
+            #Raids updates
+            #COX
+            coxkc = 0
+            if data[minigameNames.index("Chambers of Xeric")+26] == "n-1,-1":
+                print("No cox kc")
+            else:
+                coxkc = int(data[minigameNames.index("Chambers of Xeric")+26].split(',')[1])
+                print("COX KC " +data[minigameNames.index("Chambers of Xeric")+26].split(',')[1])
+
+            if data[minigameNames.index("Chambers of Xeric Challenge Mode")+26] == "n-1,-1":
+                print("No CMs")
+            else:
+                coxkc += int(data[minigameNames.index("Chambers of Xeric Challenge Mode")+26].split(',')[1])
+                print("CM "+data[minigameNames.index("Chambers of Xeric Challenge Mode")+26].split(',')[1])
+    
+            last_updated_raids.coxkccurrent = coxkc
+            
+            #TOA
+            toakc = 0
+            if data[minigameNames.index("Tombs of Amascut")+26] == "n-1,-1":
+                print("No TOA kc")
+            else:
+                toakc = int(data[minigameNames.index("Tombs of Amascut")+26].split(',')[1])
+                print("TOA KC " +data[minigameNames.index("Tombs of Amascut")+26].split(',')[1])
+
+            if data[minigameNames.index("Tombs of Amascut Expert")+26] == "n-1,-1":
+                print("No TOA Expert")
+            else:
+                toakc += int(data[minigameNames.index("Tombs of Amascut Expert")+26].split(',')[1])
+                print("TOA Experts "+data[minigameNames.index("Tombs of Amascut Expert")+26].split(',')[1])
+            last_updated_raids.toakccurrent = toakc
+
+            #TOB
+            tobkc = 0
+            if data[minigameNames.index("Theatre of Blood")+26] == "n-1,-1":
+                print("No TOB")
+            else:
+                tobkc += int(data[minigameNames.index("Theatre of Blood")+26].split(',')[1])
+                print("TOB : "+ data[minigameNames.index("Theatre of Blood")+26].split(',')[1])
+            if data[minigameNames.index("Theatre of Blood Hard Mode")+26] == "n-1,-1":
+                print("No TOB Hard Mode")
+            else:
+                tobkc += int(data[minigameNames.index("Theatre of Blood Hard Mode")+26].split(',')[1])
+                print("TOB Hard: "+ data[minigameNames.index("Theatre of Blood Hard Mode")+26].split(',')[1])
+            last_updated_raids.toakccurrent = tobkc
             last_updated.save()
             print(last_updated.rsn + " was Updated. " + str(weeklySkillXpGained) + " Weekly XP Gained")
 
@@ -339,6 +474,7 @@ class WebAppViewset(viewsets.ModelViewSet):
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print(exc_type, fname, exc_tb.tb_lineno)
+            print("Unable to Update Leaderboard")
 
 
     def set_new_values(self):
