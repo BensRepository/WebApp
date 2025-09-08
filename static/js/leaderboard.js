@@ -270,7 +270,7 @@ function populateLeaderboard(){
           Totalxpstart = data[i].totalxpstart
           Totalxpcurrent= data[i].totalxpcurrent
           Weeklyskillxpstart= data[i].weeklyskillxpstart
-          Weeklyskillxpcurrent= data[i].weeklyskillxpcurrentS
+          Weeklyskillxpcurrent= data[i].weeklyskillxpcurrent
           rsn= data[i].rsn
           events = data[i].event
     
@@ -315,7 +315,7 @@ function populateLeaderboard(){
 
             Weeklyskillxpstart= rsndatacurrent[i][4]
             Weeklyskillxpcurrent= rsndatacurrent[i][5]
-
+         
             weeklyskillXp = Weeklyskillxpcurrent-Weeklyskillxpstart
             if (weeklyskillXp < 0) {
               weeklyskillXp = 0
@@ -354,14 +354,14 @@ function populateLeaderboard(){
           weeklybossrankingsprevious = weeklybossrankingsprevious.sort(sortFunction);
           weeklyskillrankingsprevious = weeklyskillrankingsprevious.sort(sortFunction);
           totalxprankingsprevious = totalxprankingsprevious.sort(sortFunction);
-     
+          
      
 
           weeklybossrankings = weeklybossrankings.sort(sortFunction);
           weeklyskillrankings = weeklyskillrankings.sort(sortFunction);
           totalxprankings = totalxprankings.sort(sortFunction);
           
-
+        
           document.getElementById("firstplaceskillprevious").innerText =  "#1 "+ weeklyskillrankingsprevious[0][0] + " - " + numberWithCommas(weeklyskillrankingsprevious[0][1]) + " XP"
           document.getElementById("secondplaceskillprevious").innerText =  "#2 "+ weeklyskillrankingsprevious[1][0] + " - " + numberWithCommas(weeklyskillrankingsprevious[1][1]) + " XP"
           document.getElementById("thirdplaceskillprevious").innerText =  "#3 "+ weeklyskillrankingsprevious[2][0] + " - " + numberWithCommas(weeklyskillrankingsprevious[2][1]) + " XP"

@@ -193,6 +193,7 @@ class WebAppViewset(viewsets.ModelViewSet):
             
                     newEntry.weeklyskillxpstart = data[SkillNames.index(weekly.skill)].split(',')[2]
                     newEntry.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
+               
                     newEntry.event="current"
                     newEntry.save()
                     print("created new entry main leaderboard")
