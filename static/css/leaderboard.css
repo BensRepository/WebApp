@@ -77,19 +77,26 @@
       border-collapse: collapse;
       margin: 20px auto;
       font-family: Arial, sans-serif;
+
+
     }
 
     td {
-      border: 1px solid #ffffff;
+     border: none;
       color: white;
       padding: 10px;
       text-align: center;
+      backdrop-filter: blur(3px); /* Blur strength */
+      -webkit-backdrop-filter: blur(3px); /* For Safari */
+      background-color: rgba(255, 255, 255, 0.2); /* Optional: semi-transparent background */
+
+      border: 1px solid rgba(255, 255, 255, 0.3); /* Optional: frosted-glass border */
     }
 
 
        th {
 
-      color: white;
+     color: white;
       padding: 10px;
       text-align: center;
     }
@@ -101,3 +108,31 @@
       font-size: 1.2em;
       margin-bottom: 10px;
     }
+
+    /* Container to handle overflow on smaller screens */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Responsive table */
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Optional: ensure table has a min width */
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: 12px;
+  text-align: center;
+
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Optional: Responsive tweaks */
+@media (max-width: 600px) {
+  .responsive-table {
+    font-size: 14px;
+  }
+}

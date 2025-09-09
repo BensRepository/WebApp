@@ -404,19 +404,34 @@ function populateLeaderboard(){
               sorted = test.sort((a, b) => b[4] - a[4]);
            
            for (let i = 0; i < sorted.length; i++){
-
               newRow = table.insertRow(-1);
-              RSNCell = newRow.insertCell(0)
-              COXCell = newRow.insertCell(1)
-              TOACell = newRow.insertCell(2)
-              TOBCell = newRow.insertCell(3)
-              TotalCell = newRow.insertCell(4)
+        
 
+              Position = newRow.insertCell(0)
+              RSNCell = newRow.insertCell(1)
+              COXCell = newRow.insertCell(2)
+              TOACell = newRow.insertCell(3)
+              TOBCell = newRow.insertCell(4)
+              TotalCell = newRow.insertCell(5)
+
+              Position.textContent = i+1
+              Position.style.fontWeight = "bold";
+              RSNCell.style.fontWeight = "bold";
               RSNCell.textContent = sorted[i][0]
               COXCell.textContent = sorted[i][1]
               TOACell.textContent = sorted[i][2]
               TOBCell.textContent = sorted[i][3]
               TotalCell.textContent = sorted[i][4]
+
+              if(i==0){
+                RSNCell.style.color = "#FFD700"
+              }
+              if(i==1){
+                RSNCell.style.color = "#C0C0C0"
+              }
+              if(i==2){
+                RSNCell.style.color = "#CD7F32"
+              }
   
        }
 

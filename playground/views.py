@@ -273,7 +273,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                     newEntry.tobkccurrent = tobStart
                     
                     newEntry.save()
-                    print("created new entry main leaderboard")
+                    print("created new entry raid leaderboard")
 
                 else:
                     try:
