@@ -179,7 +179,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                 if(addDB == True):
                     print("Add to DB Main Leaderboard")
                     newEntry = RSLeaderboardEntry()
-                    newEntry.rsn = rsn
+                    newEntry.rsn = rsn.lower()
                     if data[minigameNames.index(weekly.boss)+26] == "n-1,-1":
                         newEntry.weeklybosskillsstart = 0
                         newEntry.weeklybosskillscurrent = 0
@@ -270,7 +270,7 @@ class WebAppViewset(viewsets.ModelViewSet):
                     newEntry.coxkccurrent = coxCurrent
 
                     newEntry.tobkcstart = tobStart
-                    newEntry.tobkccurrent = tobStart
+                    newEntry.tobkccurrent = tobCurrent
                     
                     newEntry.save()
                     print("created new entry raid leaderboard")
@@ -302,11 +302,68 @@ class WebAppViewset(viewsets.ModelViewSet):
                         print(DBObject.rsn + " was Updated. " + str(weeklySkillXpGained) + " Weekly XP Gained")
 
 
+                        # Raids manual update
+
+                        rsnRaidEntry = RaidsLeaderboard.objects.get(rsn__iexact = rsn)
+                    
+                        cox = "Chambers of Xeric"
+                        coxcm = "Chambers of Xeric Challenge Mode"
+                        tob = "Theatre of Blood"
+                        tobh = "Theatre of Blood Hard Mode"
+                        toa = "Tombs of Amascut"
+                        toae = "Tombs of Amascut Expert"
+
+                        #Chambers of Xeric
+                        coxCurrent = 0
+                        print(data)
+                        if data[minigameNames.index(cox)+26] == "n-1,-1":
+                            coxCurrent = 0
+                        else:
+                            coxCurrent= int(data[minigameNames.index(cox)+26].split(',')[1])
+
+                        if data[minigameNames.index(coxcm)+26] == "n-1,-1":
+                            print("No CMs")
+                        else:
+                            coxCurrent += int(data[minigameNames.index(coxcm)+26].split(',')[1])
+
+
+                        #Tombs of Amascut
+                        toaCurrent = 0
+                        if data[minigameNames.index(toa)+26] == "n-1,-1":
+                            toaCurrent = 0
+                        else:
+                            toaCurrent = int(data[minigameNames.index(toa)+26].split(',')[1])
+
+                        if data[minigameNames.index(toae)+26] == "n-1,-1":
+                            print("No Experts")
+                        else:
+                            toaCurrent += int(data[minigameNames.index(toae)+26].split(',')[1])
+
+                        #Theatre of Blood
+                        tobCurrent = 0
+                        if data[minigameNames.index(tob)+26] == "n-1,-1":
+                            tobCurrent = 0
+                        else:
+                            tobCurrent = int(data[minigameNames.index(tob)+26].split(',')[1])
+
+                        if data[minigameNames.index(tobh)+26] == "n-1,-1":
+                            print("no hard kc")
+                        else:
+                            tobCurrent += int(data[minigameNames.index(tobh)+26].split(',')[1])
+
+                        rsnRaidEntry.toakccurrent = toaCurrent
+                        rsnRaidEntry.coxkccurrent = coxCurrent
+                        rsnRaidEntry.tobkccurrent = tobCurrent
+                        
+                        rsnRaidEntry.save()
+                        print("Updated RaidEntry manually")
+
+                        print(rsnRaidEntry)
                     except Exception as e:
                         # exc_type, exc_obj, exc_tb = sys.exc_info()
                         # fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
                         print(e)
-
+                 
 
             except Exception as e:
                 print(e)
@@ -419,8 +476,9 @@ class WebAppViewset(viewsets.ModelViewSet):
                 last_updated.weeklyskillxpcurrent = data[SkillNames.index(weekly.skill)].split(',')[2]
 
             weeklySkillXpGained = int(data[0].split(',')[2]) - int(last_updated.totalxpstart)
+            last_updated.save()
 
-            last_updated_raids = RaidsLeaderboard.objects.all().order_by('date_modified').first()
+            last_updated_raids = RaidsLeaderboard.objects.get(rsn=last_updated.rsn)
 
             #Raids updates
             #COX
@@ -440,6 +498,7 @@ class WebAppViewset(viewsets.ModelViewSet):
             last_updated_raids.coxkccurrent = coxkc
             
             #TOA
+            
             toakc = 0
             if data[minigameNames.index("Tombs of Amascut")+26] == "n-1,-1":
                 print("No TOA kc")
@@ -466,8 +525,13 @@ class WebAppViewset(viewsets.ModelViewSet):
             else:
                 tobkc += int(data[minigameNames.index("Theatre of Blood Hard Mode")+26].split(',')[1])
                 print("TOB Hard: "+ data[minigameNames.index("Theatre of Blood Hard Mode")+26].split(',')[1])
-            last_updated_raids.toakccurrent = tobkc
-            last_updated.save()
+
+            print("above")
+            last_updated_raids.toakccurrent = toakc
+        
+            last_updated_raids.save()
+        
+           
             print(last_updated.rsn + " was Updated. " + str(weeklySkillXpGained) + " Weekly XP Gained")
 
 
